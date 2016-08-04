@@ -16,12 +16,13 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By btnLogin = By.XPath("//div[@id='content']//div[@class='btn-login']");
 
 
-        public void Login()
+        public MainPage Login()
         {
             SelectItemByDropdownList(ddlRespository, "SampleRepository");
             TypeValue(txtUserName, "thi.nguyen");
             TypeValue(txtPassWord, "1");
             Click(btnLogin);
+            return new MainPage();
         }
     }
 }
