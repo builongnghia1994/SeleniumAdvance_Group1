@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace SeleniumAdvance_Group2_NgocLe.Common
+namespace SeleniumAdvance_Group2.Common
 {
     public class Constant
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleniumAdvance_Group2_NgocLe.Common
+namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {

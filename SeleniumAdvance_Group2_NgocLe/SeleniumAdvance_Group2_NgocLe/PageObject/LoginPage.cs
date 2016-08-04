@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleniumAdvance_Group2_NgocLe.PageObject
+namespace SeleniumAdvance_Group2.PageObject
 {
     public class LoginPage
     {

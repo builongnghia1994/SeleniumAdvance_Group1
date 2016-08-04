@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
-using SeleniumAdvance_Group2_NgocLe.Common;
+using SeleniumAdvance_Group2.Common;
 
-namespace SeleniumAdvance_Group2_NgocLe.PageObject
+namespace SeleniumAdvance_Group2.PageObject
 {
     public class GeneralPage
     {
