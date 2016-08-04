@@ -11,7 +11,7 @@ namespace SeleniumAdvance_Group2.Common
     {
         public void FindElement(By control)
         {
-string a;
+
         }
     }
 }
