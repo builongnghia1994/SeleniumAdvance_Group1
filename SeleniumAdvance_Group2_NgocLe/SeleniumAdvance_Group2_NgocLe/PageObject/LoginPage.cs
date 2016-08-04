@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class LoginPage:CommonActions
+    public class LoginPage:GeneralPage
     {
         private readonly By ddlRespository = By.Id("repository");
         private readonly By txtUserName = By.Id("username");
@@ -16,13 +16,13 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By btnLogin = By.XPath("//div[@id='content']//div[@class='btn-login']");
 
 
-        public MainPage Login()
+        public GeneralPage Login()
         {
             SelectItemByDropdownList(ddlRespository, "SampleRepository");
             TypeValue(txtUserName, "thi.nguyen");
             TypeValue(txtPassWord, "1");
-            Click(btnLogin);
-            return new MainPage();
+            ClickControl(btnLogin);
+            return new GeneralPage();
         }
     }
 }
