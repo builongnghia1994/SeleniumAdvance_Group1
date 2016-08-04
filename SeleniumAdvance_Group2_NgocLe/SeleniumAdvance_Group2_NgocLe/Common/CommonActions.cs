@@ -12,7 +12,7 @@ namespace SeleniumAdvance_Group2.Common
     {
         public IWebElement FindElement(By control)
         {
-            return Constant.IWebDriver.FindElement(control);
+            return Constant.WebDriver.FindElement(control);
         }
 
         public void Click(By control)
