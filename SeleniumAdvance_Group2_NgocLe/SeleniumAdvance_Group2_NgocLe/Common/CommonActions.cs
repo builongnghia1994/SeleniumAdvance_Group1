@@ -21,7 +21,6 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-
         public void TypeValue(By control, string value)
         {
             FindElement(control).Clear();
@@ -41,7 +40,7 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-        public bool Doescontrolexist(By control)
+        public bool DoesControlExist(By control)
         {
             try
             {
