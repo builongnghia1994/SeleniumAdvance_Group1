@@ -15,7 +15,7 @@ namespace SeleniumAdvance_Group2.Common
             return Constant.IWebDriver.FindElement(control);
         }
 
-        public void Click(By control)
+        public void ClickControl (By control)
         {
             FindElement(control).Click();
         }
