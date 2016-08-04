@@ -28,6 +28,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestCleanup]
         public void TestCleanupMethods()
         {
+
             generalpage.LogOut();
             CloseBrowser();
         }
