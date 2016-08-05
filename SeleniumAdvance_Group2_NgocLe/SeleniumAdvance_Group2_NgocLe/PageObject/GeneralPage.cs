@@ -27,11 +27,11 @@ namespace SeleniumAdvance_Group2.PageObject
             ClickControl(itemPanel);
         }
 
-        public void GotoPanelPage()
+        public PanelManagerPage GotoPanelManagerPage()
         {
             ClickControl(menuAdminister);
             ClickControl(itemDataProfile);
-           // return new PanelManagerPage();
+            return new PanelManagerPage();
         }
 
         public void GotoPage(string way)
