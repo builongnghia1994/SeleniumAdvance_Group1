@@ -17,6 +17,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
           loginPage = OpenURL(Constant.DashboardURL);
           generalPage=  loginPage.Login(Constant.userTrang, Constant.passTrang);
+         panelManagerPage=   generalPage.GotoPanelManagerPage();
 
         }
     }
