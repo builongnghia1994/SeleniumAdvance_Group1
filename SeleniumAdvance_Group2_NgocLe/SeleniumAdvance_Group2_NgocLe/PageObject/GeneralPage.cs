@@ -62,12 +62,12 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void VerifyWelComeUser(string username)
         {
-            Assert.IsTrue(GetText(menuUser).Equals(username));
+            VerifyText(menuUser, username);
         }
 
         public void VerifyText(By element, string expectedText)
         {
-            string actualText = FindElement(element).Text;
+            string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
 
