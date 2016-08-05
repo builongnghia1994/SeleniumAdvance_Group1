@@ -9,11 +9,19 @@ namespace SeleniumAdvance_Group2.PageObject
 {
   public  class PanelPage:GeneralPage
     {
-        public readonly By txtDisplayName = By.Id("txtDisplayName");
-        public readonly By btnOK = By.Id("OK");
-        public readonly By btnCancel = By.Id("Cancel");
+        private readonly By txtDisplayName = By.Id("txtDisplayName");
+        private readonly By btnOK = By.Id("OK");
+        private readonly By btnCancel = By.Id("Cancel");
 
+        public By BtnOK
+        {
+            get { return btnOK; }
+        }
 
-      
+        public By BtnCancel
+        {
+            get { return btnCancel; }
+        }
+
     }
 }
