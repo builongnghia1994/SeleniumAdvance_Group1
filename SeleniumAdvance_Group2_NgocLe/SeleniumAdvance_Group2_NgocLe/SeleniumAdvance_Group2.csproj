@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
+    <Compile Include="PageObject\DataProfilePage.cs" />
     <Compile Include="PageObject\GeneralPage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
