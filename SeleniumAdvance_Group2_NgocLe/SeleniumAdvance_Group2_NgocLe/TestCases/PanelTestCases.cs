@@ -15,7 +15,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC029()
         {
 
-            loginPage = OpenURL(Constant.DashboardURL);
+          loginPage = OpenURL(Constant.DashboardURL);
           generalPage=  loginPage.Login(Constant.userTrang, Constant.passTrang);
 
         }
