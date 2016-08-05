@@ -9,15 +9,16 @@ using SeleniumAdvance_Group2.Common;
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
-   public class PanelTestCases:TestBases
+    public class PanelTestCases : TestBases
     {
         [TestMethod]
         public void DA_PANEL_TC029()
         {
 
             loginPage = OpenURL(Constant.DashboardURL);
-          generalPage=  loginPage.Login(Constant.userTrang, Constant.passTrang);
-         panelManagerPage=   generalPage.GotoPanelManagerPage();
+            generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
+            panelPage = generalPage.GotoPanelPage();
+            ClickControl(panelPage.btnOK);
 
         }
     }

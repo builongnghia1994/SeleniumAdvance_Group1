@@ -6,7 +6,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
         public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
@@ -30,28 +30,34 @@ namespace SeleniumAdvance_Group2.PageObject
         public PanelManagerPage GotoPanelManagerPage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            ClickControl(itemPanel);
             return new PanelManagerPage();
+        }
+
+        public PanelPage GotoPanelPage()
+        {
+            PanelManagerPage panelManagerPage = GotoPanelManagerPage();
+            return panelManagerPage.GoToPanelPage();
         }
 
         public void GotoPage(string way)
         {
             string[] a = way.Split('/');
             int count = 1;
-            for (int i=0;i<way.Length;i++ )
+            for (int i = 0; i < way.Length; i++)
             {
-                if(a[i]=="/")
+                if (a[i] == "/")
                 {
                     count++;
                 }
             }
-            for (int b=1;b<count;b++)
+            for (int b = 1; b < count; b++)
             {
                 Actions builder = new Actions(Constant.WebDriver);
                 Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li//a[contains(.,'" + a[b] + "')]")));
                 hoverClick.Build().Perform();
             }
-            
+
         }
 
     }
