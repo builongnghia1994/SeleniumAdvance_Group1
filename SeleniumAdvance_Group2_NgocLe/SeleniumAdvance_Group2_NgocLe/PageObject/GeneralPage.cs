@@ -4,18 +4,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System;
-
-
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
     public class GeneralPage:CommonActions
     {
-        public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
-        public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-        public readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
-        public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
-        public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
+        private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
+        private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
+        private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
+        private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
+        private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
         public LoginPage LogOut()
         {
@@ -24,17 +23,24 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-        public void GotoDataProfilePage()
+        public DataProfilePage GotoDataProfilePage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+            ClickControl(itemDataProfile);
+            return new DataProfilePage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            ClickControl(itemPanel);
             return new PanelManagerPage();
+        }
+
+        public PanelPage GotoPanelPage()
+        {
+            PanelManagerPage panelManagerPage = GotoPanelManagerPage();
+            return panelManagerPage.GoToPanelPage();
         }
 
         public void GotoPage(string way)
@@ -55,7 +61,13 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void VerifyWelComeUser(string username)
         {
-            Assert.IsTrue(GetText(menuUser).Equals(username));
+            VerifyText(menuUser, username);
+        }
+
+        public void VerifyText(By element, string expectedText)
+        {
+            string actualText = GetText(element);
+            Assert.AreEqual(expectedText, actualText);
         }
 
     }

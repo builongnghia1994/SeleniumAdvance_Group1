@@ -12,9 +12,11 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
 
-            generalPage  = loginPage.Login("nghia.bui", "1");
+            generalPage = loginPage.Login("nghia.bui", "1");
 
-            dataProfilePage.GotoDataProfilePage();
+            dataProfilePage = generalPage.GotoDataProfilePage();
+
+
         }
     }
 }
