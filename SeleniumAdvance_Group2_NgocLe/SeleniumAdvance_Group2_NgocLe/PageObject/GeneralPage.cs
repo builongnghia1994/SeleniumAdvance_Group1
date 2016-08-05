@@ -18,18 +18,7 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-        public void GotoPage(string parentpage, string childpage)
-        {
-            By control = By.XPath("//li/a[contains(.,'" + parentpage + "')]");
-            switch (childpage)
-            {
-                case "":
-                    break;
-                default:
-                    new SelectElement(FindElement(control)).SelectByText(childpage);
-                    break;
-            }
-        }
+
         
     }
 }
