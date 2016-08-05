@@ -69,12 +69,14 @@
   <ItemGroup>
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
+    <Compile Include="PageObject\NewPage.cs" />
     <Compile Include="PageObject\GeneralPage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
     <Compile Include="TestCases\TestBases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\DataProfileTestCases.cs" />
+    <Compile Include="TestCases\MainPageTestCases.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
