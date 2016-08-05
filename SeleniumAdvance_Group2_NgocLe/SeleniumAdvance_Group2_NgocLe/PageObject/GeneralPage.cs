@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System;
@@ -12,8 +13,9 @@ namespace SeleniumAdvance_Group2.PageObject
     {
         public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-        public readonly By menuAdminister = By.XPath("//a[href='#Administer']");
+        public readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
+        public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
         public LoginPage LogOut()
         {
@@ -25,7 +27,14 @@ namespace SeleniumAdvance_Group2.PageObject
         public void GotoDataProfilePage()
         {
             ClickControl(menuAdminister);
+            ClickControl(itemPanel);
+        }
+
+        public PanelManagerPage GotoPanelManagerPage()
+        {
+            ClickControl(menuAdminister);
             ClickControl(itemDataProfile);
+            return new PanelManagerPage();
         }
 
         public void GotoPage(string way)
@@ -42,6 +51,11 @@ namespace SeleniumAdvance_Group2.PageObject
             }
             ClickControl(tam);
 
+        }
+
+        public void VerifyWelComeUser(string username)
+        {
+            Assert.IsTrue(GetText(menuUser).Equals(username));
         }
 
     }
