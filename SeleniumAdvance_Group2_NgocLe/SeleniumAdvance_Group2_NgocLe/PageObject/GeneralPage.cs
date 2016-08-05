@@ -2,6 +2,8 @@
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using System;
+
 
 
 namespace SeleniumAdvance_Group2.PageObject
@@ -28,22 +30,18 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void GotoPage(string way)
         {
+            WaitForControl(menuUser, 5);
             string[] a = way.Split('/');
-            int count = 1;
-            for (int i=0;i<way.Length;i++ )
-            {
-                if(a[i]=="/")
-                {
-                    count++;
-                }
-            }
-            for (int b=1;b<count;b++)
+            By tam=By.XPath("");
+            for (int b=0;b< a.Length; b++)
             {
                 Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li//a[contains(.,'" + a[b] + "')]")));
+                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li/a[contains(.,'" + a[b] + "')]")));
                 hoverClick.Build().Perform();
+                tam = By.XPath("//li/a[contains(.,'" + a[b] + "')]");
             }
-            
+            ClickControl(tam);
+
         }
 
     }

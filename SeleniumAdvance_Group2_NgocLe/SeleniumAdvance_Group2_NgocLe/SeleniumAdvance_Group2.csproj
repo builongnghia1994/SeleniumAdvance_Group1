@@ -73,6 +73,7 @@
     <Compile Include="PageObject\GeneralPage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
+    <Compile Include="TestCases\NgocTC.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />
     <Compile Include="TestCases\TestBases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
