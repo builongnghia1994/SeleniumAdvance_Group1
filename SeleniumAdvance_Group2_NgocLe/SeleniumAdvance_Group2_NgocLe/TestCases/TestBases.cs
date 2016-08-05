@@ -14,6 +14,7 @@ namespace SeleniumAdvance_Group2.TestCases
         #region Create pageobject
         public GeneralPage generalpage;
         public LoginPage loginpage;
+        public DataProfilePage dataProfilePage;
         #endregion
 
         #region TestInitialize
