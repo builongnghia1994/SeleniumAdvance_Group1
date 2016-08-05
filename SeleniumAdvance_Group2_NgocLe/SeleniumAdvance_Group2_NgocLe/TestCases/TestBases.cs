@@ -15,6 +15,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public GeneralPage generalPage;
         public LoginPage loginPage;
         public DataProfilePage dataProfilePage;
+        public PanelManagerPage panelManagerPage;
         #endregion
 
         #region TestInitialize
