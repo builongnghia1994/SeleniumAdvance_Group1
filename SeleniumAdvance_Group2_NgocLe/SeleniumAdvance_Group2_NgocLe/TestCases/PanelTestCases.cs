@@ -10,5 +10,9 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
    public class PanelTestCases
     {
+        public void DA_PANEL_TC029()
+        {
+
+        }
     }
 }

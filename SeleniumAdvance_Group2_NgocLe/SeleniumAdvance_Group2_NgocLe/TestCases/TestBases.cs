@@ -20,7 +20,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMeThod()
         {
-            OpenBrowser("edgewin");
+            OpenBrowser("firefox");
         }
         #endregion
 
