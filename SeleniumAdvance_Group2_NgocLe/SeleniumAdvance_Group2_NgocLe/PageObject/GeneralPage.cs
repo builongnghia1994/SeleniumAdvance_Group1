@@ -10,11 +10,11 @@ namespace SeleniumAdvance_Group2.PageObject
 {
     public class GeneralPage:CommonActions
     {
-        public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
-        public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-        public readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
-        public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
-        public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
+        private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
+        private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
+        private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
+        private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
+        private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
         public LoginPage LogOut()
         {
