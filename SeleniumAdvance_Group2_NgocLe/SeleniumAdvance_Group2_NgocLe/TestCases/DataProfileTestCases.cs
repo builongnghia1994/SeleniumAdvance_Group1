@@ -11,7 +11,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginpage.Login();
 
-            Console.Write("TC65");
+            dataProfilePage.GotoDataProfilePage();
         }
     }
 }
