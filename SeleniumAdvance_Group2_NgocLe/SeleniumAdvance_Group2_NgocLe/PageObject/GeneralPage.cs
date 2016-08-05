@@ -26,6 +26,12 @@ namespace SeleniumAdvance_Group2.PageObject
             ClickControl(itemDataProfile);
         }
 
+        public void GotoPanelPage()
+        {
+            ClickControl(menuAdminister);
+            ClickControl(itemDataProfile);
+        }
+
         public void GotoPage(string way)
         {
             string[] a = way.Split('/');

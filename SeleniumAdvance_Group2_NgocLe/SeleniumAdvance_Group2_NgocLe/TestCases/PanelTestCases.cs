@@ -11,11 +11,13 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
    public class PanelTestCases:TestBases
     {
+        [TestMethod]
         public void DA_PANEL_TC029()
         {
 
-            loginpage = OpenURL(Constant.DashboardURL);
-            loginpage.Login(Constant.userTrang, Constant.passTrang);
+            loginPage = OpenURL(Constant.DashboardURL);
+          generalPage=  loginPage.Login(Constant.userTrang, Constant.passTrang);
+
         }
     }
 }
