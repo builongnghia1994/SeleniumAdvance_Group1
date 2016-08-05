@@ -9,11 +9,12 @@ using SeleniumAdvance_Group2.Common;
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
-   public class PanelTestCases
+   public class PanelTestCases:TestBases
     {
         public void DA_PANEL_TC029()
         {
-            CommonActions.OpenURL(Constant.Url);
+            CommonActions.OpenURL(Constant.DashboardURL);
+            loginpage.Login();
         }
     }
 }

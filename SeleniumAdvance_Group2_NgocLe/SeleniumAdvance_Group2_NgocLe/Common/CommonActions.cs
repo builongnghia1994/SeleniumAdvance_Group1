@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumAdvance_Group2.PageObject;
 
 namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
 
-        public static void OpenURL(string url)
+        public static LoginPage OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
+            return new LoginPage();
         }
         public IWebElement FindElement(By control)
         {
