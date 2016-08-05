@@ -7,9 +7,9 @@ namespace SeleniumAdvance_Group2.TestCases
     public class LoginTestCases : TestBases
     {
         [TestMethod]
-        public void B()
+        public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_with_correct_credentials()
         {
-            Console.WriteLine("sssss");
+           
             
         }
 

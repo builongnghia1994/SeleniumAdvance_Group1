@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 
+
 namespace SeleniumAdvance_Group2.PageObject
 {
     public class LoginPage:GeneralPage
@@ -16,11 +17,11 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By btnLogin = By.XPath("//div[@id='content']//div[@class='btn-login']");
 
 
-        public GeneralPage Login()
+        public GeneralPage Login(string username, string password)
         {
             SelectItemByDropdownList(ddlRespository, Constant.Respository);
-            TypeValue(txtUserName, Constant.UserName);
-            TypeValue(txtPassWord, Constant.PassWord);
+            TypeValue(txtUserName, username);
+            TypeValue(txtPassWord, password);
             ClickControl(btnLogin);
             return new GeneralPage();
         }
