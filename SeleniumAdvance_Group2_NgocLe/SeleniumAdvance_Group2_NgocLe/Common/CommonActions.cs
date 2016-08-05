@@ -53,7 +53,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             try
             {
-                FindElement(control);
+                Constant.WebDriver.FindElement(control);
                 return true;
             }
             catch (NoSuchElementException)

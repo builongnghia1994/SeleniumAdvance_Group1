@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using SeleniumAdvance_Group2.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +11,39 @@ namespace SeleniumAdvance_Group2.PageObject
 {
     public class DataProfilePage: GeneralPage
     {
+        private By tblDataProfile = By.XPath("//table[@class='GridView']");
+        #region Methods
 
+        public string[] GetActualPreDataPRofile()
+        {
+            List<string> tableValues = new List<string>();
+            for (int i = 1; i <= GetTableRow(); i++)
+            {
+                string row ="//table[@class='GridView']//tr["+(i+1)+"]//a[text()='Edit']";
+                if (!DoesControlExist(By.XPath(row)))
+                {
+                    Console.Write(FindElement(By.XPath("//table[@class='GridView']//tr[" + (i + 1) + "]/td[2]")).Text);
+                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" + (i + 1) + "]/td[2]")).Text);
+                }
+            }
+            return tableValues.ToArray();
+        }
+
+        public int GetTableRow()
+        {
+            return Constant.WebDriver.FindElements(tblDataProfile).Count;
+        }
+
+        public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
+        {
+            for (int i = 0; i < actualValues.Length; i++)
+            {
+
+                Assert.AreEqual(expectedValues[i], actualValues[i]);
+            }
+
+        }
+
+        #endregion
     }
 }
