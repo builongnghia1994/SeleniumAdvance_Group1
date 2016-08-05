@@ -33,8 +33,14 @@ namespace SeleniumAdvance_Group2.PageObject
         public PanelManagerPage GotoPanelManagerPage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            ClickControl(itemPanel);
             return new PanelManagerPage();
+        }
+
+        public PanelPage GotoPanelPage()
+        {
+            PanelManagerPage panelManagerPage = GotoPanelManagerPage();
+            return panelManagerPage.GoToPanelPage();
         }
 
         public void GotoPage(string way)
@@ -57,6 +63,12 @@ namespace SeleniumAdvance_Group2.PageObject
         public void VerifyWelComeUser(string username)
         {
             Assert.IsTrue(GetText(menuUser).Equals(username));
+        }
+
+        public void VerifyText(By element, string expectedText)
+        {
+            string actualText = FindElement(element).Text;
+            Assert.AreEqual(expectedText, actualText);
         }
 
     }
