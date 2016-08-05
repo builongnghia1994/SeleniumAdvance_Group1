@@ -67,7 +67,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void VerifyText(By element, string expectedText)
         {
-            string actualText = FindElement(element).Text;
+            string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
 
