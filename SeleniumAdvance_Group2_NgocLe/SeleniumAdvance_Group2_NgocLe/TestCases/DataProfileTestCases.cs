@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -9,7 +10,9 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
-            loginpage.Login();
+            CommonActions.OpenURL(Constant.DashboardURL);
+
+            loginpage.Login("nghia.bui", "1");
 
             dataProfilePage.GotoDataProfilePage();
         }
