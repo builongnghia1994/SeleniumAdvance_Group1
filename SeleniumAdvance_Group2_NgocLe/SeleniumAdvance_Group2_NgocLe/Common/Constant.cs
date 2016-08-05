@@ -15,5 +15,5 @@ namespace SeleniumAdvance_Group2.Common
         public static string parentname_newpage = "Select parent";
         public static string pageafter_newpage = "Overview";
         public static string numbercolumn_newpage = "2";
-    }
+        }
 }
