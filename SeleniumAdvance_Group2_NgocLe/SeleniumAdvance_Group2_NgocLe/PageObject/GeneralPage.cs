@@ -50,7 +50,6 @@ namespace SeleniumAdvance_Group2.PageObject
             By lastpage = By.XPath("");
             for (int b = 0; b < allpages.Length; b++)
             {
-
                 string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
                 Actions builder = new Actions(Constant.WebDriver);
                 Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
@@ -59,6 +58,7 @@ namespace SeleniumAdvance_Group2.PageObject
             }
             ClickControl(lastpage);
         }
+
 
         public void VerifyWelComeUser(string username)
         {
