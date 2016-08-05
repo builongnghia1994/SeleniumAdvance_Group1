@@ -19,12 +19,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-              panelPage = generalPage.GotoPanelPage();
-             ClickControl(panelPage.BtnOK);
-            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
-            Assert.AreEqual("Display Name is a required field.", alert.Text);
-            alert.Accept();
-           Constant.WebDriver.SwitchTo().DefaultContent();           
+            panelPage = generalPage.GotoPanelPage();
+            ClickControl(panelPage.BtnOK);
+            VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
             ClickControl(panelPage.BtnCancel);
             //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
