@@ -38,7 +38,7 @@ namespace SeleniumAdvance_Group2.Common
         public void SelectItemByDropdownList(By control, string value)
         {
             SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
-            SelectElementByXpath.SelectByValue(value);
+            SelectElementByXpath.SelectByText(value);
         }
 
 
