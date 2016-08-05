@@ -72,6 +72,7 @@
     <Compile Include="PageObject\DataProfilePage.cs" />
     <Compile Include="PageObject\GeneralPage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />
+    <Compile Include="PageObject\PanelManagerPage.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />
     <Compile Include="TestCases\TestBases.cs" />

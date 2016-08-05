@@ -10,8 +10,9 @@ namespace SeleniumAdvance_Group2.PageObject
     {
         public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-        public readonly By menuAdminister = By.XPath("//a[href='#Administer']");
+        public readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
+        public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
         public LoginPage LogOut()
         {
@@ -23,13 +24,14 @@ namespace SeleniumAdvance_Group2.PageObject
         public void GotoDataProfilePage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            ClickControl(itemPanel);
         }
 
         public void GotoPanelPage()
         {
             ClickControl(menuAdminister);
             ClickControl(itemDataProfile);
+           // return new PanelManagerPage();
         }
 
         public void GotoPage(string way)
