@@ -13,8 +13,8 @@ namespace SeleniumAdvance_Group2.TestCases
     {
         public void DA_PANEL_TC029()
         {
-            CommonActions.OpenURL(Constant.DashboardURL);
-            loginpage.Login(Constant.userTrang, Constant.passTrang);
+          loginpage=  OpenURL(Constant.DashboardURL);
+           generalpage= loginpage.Login(Constant.userTrang, Constant.passTrang);
         }
     }
 }

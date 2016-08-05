@@ -12,7 +12,7 @@ namespace SeleniumAdvance_Group2.Common
     public class CommonActions
     {
 
-        public static LoginPage OpenURL(string url)
+        public LoginPage OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPage();

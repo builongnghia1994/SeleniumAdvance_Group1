@@ -9,7 +9,7 @@ using System;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
-    public class TestBases
+    public class TestBases:CommonActions
     {
         #region Create pageobject
         public GeneralPage generalpage;
@@ -28,9 +28,8 @@ namespace SeleniumAdvance_Group2.TestCases
         #region TestCleanup
         [TestCleanup]
         public void TestCleanupMethods()
-        {
+        { 
        
-            generalpage.LogOut();
             CloseBrowser();
         }
         #endregion
