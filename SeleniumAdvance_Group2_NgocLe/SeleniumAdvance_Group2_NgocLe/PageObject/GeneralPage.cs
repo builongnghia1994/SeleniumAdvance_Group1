@@ -20,6 +20,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
         public readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
+        public readonly By itemCreateProfile = By.XPath("//a[@class='add' and text()='Create Profile']");
 
         public LoginPage LogOut()
         {
@@ -79,17 +80,24 @@ namespace SeleniumAdvance_Group2.PageObject
 
 
 
-        public void ChoseItemGlobalSetting(string text)
+
+
+
+
+
+
+
+
+
+
+
+        public NewPage GotoNewPage()
+
         {
-            switch(text)
-            {                
-                case "addpage":                    
-                    ClickControl(menuSetting);
-                    ClickControl(itemAddPage);                    
-                    break;
-                   
-                    
-            }
+            ClickControl(menuSetting);
+            ClickControl(itemAddPage);
+            return new NewPage();       
+            
         }
    
     }

@@ -8,7 +8,8 @@ namespace SeleniumAdvance_Group2.TestCases
     public class LoginTestCases : TestBases
     {
        private string username = "thi.nguyen";
-        private string pass = "1";
+       private string pass = "1";
+        
 
         [TestMethod]
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_with_correct_credentials()
@@ -22,14 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
         }
 
-        [TestMethod]
-        public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
-
-        {
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(username, pass);
-            generalPage.ChoseItemGlobalSetting("addpage");
-        }
+        
 
     }
 }
