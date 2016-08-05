@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
-    public class PanelTestCases : TestBases
+    public class NgocTC : TestBases
     {
         [TestMethod]
-        public void DA_PANEL_TC029()
+        public void NgocTC01()
         {
 
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-            panelPage = generalPage.GotoPanelPage();
-            ClickControl(panelPage.btnOK);
-
+            generalPage.GotoPage("sassads/ngocdelte/ngoc11/ngoc22");
         }
+
+
     }
 }
