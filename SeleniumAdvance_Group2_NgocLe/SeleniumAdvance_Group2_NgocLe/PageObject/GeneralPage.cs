@@ -4,8 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System;
-
-
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
@@ -24,10 +23,11 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-        public void GotoDataProfilePage()
+        public DataProfilePage GotoDataProfilePage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+            ClickControl(itemDataProfile);
+            return new DataProfilePage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
