@@ -1,13 +1,15 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
 
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage : CommonActions
+    public class GeneralPage:CommonActions
     {
         public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
@@ -31,40 +33,30 @@ namespace SeleniumAdvance_Group2.PageObject
         public PanelManagerPage GotoPanelManagerPage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+            ClickControl(itemDataProfile);
             return new PanelManagerPage();
-        }
-
-        public PanelPage GotoPanelPage()
-        {
-            PanelManagerPage panelManagerPage = GotoPanelManagerPage();
-            return panelManagerPage.GoToPanelPage();
         }
 
         public void GotoPage(string way)
         {
+            WaitForControl(menuUser, 5);
             string[] a = way.Split('/');
-            int count = 1;
-            for (int i = 0; i < way.Length; i++)
-            {
-                if (a[i] == "/")
-                {
-                    count++;
-                }
-            }
-            for (int b = 1; b < count; b++)
+            By tam=By.XPath("");
+            for (int b=0;b< a.Length; b++)
             {
                 Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li//a[contains(.,'" + a[b] + "')]")));
+                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li/a[contains(.,'" + a[b] + "')]")));
                 hoverClick.Build().Perform();
+                tam = By.XPath("//li/a[contains(.,'" + a[b] + "')]");
             }
+
+            ClickControl(tam);
 
         }
 
-        public void VerifyText(By element, string expectedText)
+        public void VerifyWelComeUser(string username)
         {
-            string actualText = FindElement(element).Text;
-            Assert.AreEqual(expectedText, actualText);
+            Assert.IsTrue(GetText(menuUser).Equals(username));
         }
 
     }
