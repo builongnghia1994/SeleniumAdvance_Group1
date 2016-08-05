@@ -10,11 +10,11 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
-            loginPage = CommonActions.OpenURL(Constant.DashboardURL);
+            OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login("nghia.bui", "1");
+            loginpage.Login("nghia.bui", "1");
 
-            generalPage.GotoDataProfilePage();
+            dataProfilePage.GotoDataProfilePage();
         }
     }
 }

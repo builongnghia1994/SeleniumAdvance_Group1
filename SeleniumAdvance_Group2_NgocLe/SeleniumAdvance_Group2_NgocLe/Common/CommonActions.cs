@@ -12,13 +12,14 @@ namespace SeleniumAdvance_Group2.Common
     public class CommonActions
     {
 
-        public static LoginPage OpenURL(string url)
+        public LoginPage OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPage();
         }
         public IWebElement FindElement(By control)
         {
+            WaitForControl(control, 5);
             return Constant.WebDriver.FindElement(control);
         }
 
@@ -60,7 +61,11 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-    
+        public void WaitForControl(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
+
+        }
 
 
     }

@@ -9,7 +9,7 @@ using System;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
-    public class TestBases
+    public class TestBases:CommonActions
     {
         #region Create pageobject
         public GeneralPage generalPage;
