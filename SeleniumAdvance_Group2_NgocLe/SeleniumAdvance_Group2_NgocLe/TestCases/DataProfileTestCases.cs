@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             dataProfilePage = generalPage.GotoDataProfilePage();
 
-            dataProfilePage.VerifyPreDataProfile(Constant.preSetDateProfile, dataProfilePage.GetActualPreDataPRofile());
+            dataProfilePage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfilePage.GetActualPreDataPRofile());
         }
     }
 }
