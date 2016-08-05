@@ -40,18 +40,17 @@ namespace SeleniumAdvance_Group2.PageObject
         public void GotoPage(string way)
         {
             WaitForControl(menuUser, 5);
-            string[] a = way.Split('/');
-            By tam=By.XPath("");
-            for (int b=0;b< a.Length; b++)
+            string[] allpages = way.Split('/');
+            By lastpage = By.XPath("");
+            for (int b=0;b< allpages.Length; b++)
             {
+                string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
                 Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li/a[contains(.,'" + a[b] + "')]")));
+                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
                 hoverClick.Build().Perform();
-                tam = By.XPath("//li/a[contains(.,'" + a[b] + "')]");
+                lastpage = By.XPath(currentpagexpath);
             }
-
-            ClickControl(tam);
-
+            ClickControl(lastpage);
         }
 
         public void VerifyWelComeUser(string username)
