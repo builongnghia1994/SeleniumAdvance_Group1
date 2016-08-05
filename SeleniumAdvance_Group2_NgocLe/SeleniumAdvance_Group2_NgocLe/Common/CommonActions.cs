@@ -10,6 +10,11 @@ namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
+
+        public void OpenURL(string url)
+        {
+            Constant.WebDriver.Navigate().GoToUrl(url);
+        }
         public IWebElement FindElement(By control)
         {
             return Constant.WebDriver.FindElement(control);
@@ -54,6 +59,7 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
+    
 
 
     }
