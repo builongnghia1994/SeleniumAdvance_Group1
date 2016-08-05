@@ -7,7 +7,7 @@ namespace SeleniumAdvance_Group2.PageObject
     {
         public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-
+        public readonly By itemAdminister = By.XPath("//a[href='#Administer']");
 
         public LoginPage LogOut()
         {
@@ -16,6 +16,6 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-
+        
     }
 }
