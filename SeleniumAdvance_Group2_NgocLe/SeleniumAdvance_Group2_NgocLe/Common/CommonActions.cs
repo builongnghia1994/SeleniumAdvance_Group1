@@ -19,6 +19,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
+            WaitForControl(control, 5);
             return Constant.WebDriver.FindElement(control);
         }
 
@@ -46,7 +47,6 @@ namespace SeleniumAdvance_Group2.Common
             return FindElement(control).Text;
         }
 
-
         public bool DoesControlExist(By control)
         {
             try
@@ -61,7 +61,11 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-    
+        public void WaitForControl(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
+
+        }
 
 
     }

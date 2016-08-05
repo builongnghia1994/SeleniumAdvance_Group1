@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
-using System;
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+
 
 namespace SeleniumAdvance_Group2.PageObject
 {
@@ -12,7 +12,6 @@ namespace SeleniumAdvance_Group2.PageObject
         public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
         public readonly By menuAdminister = By.XPath("//a[href='#Administer']");
         public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
-        
 
         public LoginPage LogOut()
         {
@@ -21,18 +20,31 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-
-
-        public LoginPage Logoutupdage ()
-        {            
-            Actions Action = new Actions(Constant.WebDriver);
-            Action.MoveToElement(FindElement(menuUser)).Perform();
-            WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(10));
-            var element = wait.Until(ExpectedConditions.ElementIsVisible(itemLogOut));
-            ClickControl(itemLogOut);
-            return new LoginPage();
+        public void GotoDataProfilePage()
+        {
+            ClickControl(menuAdminister);
+            ClickControl(itemDataProfile);
         }
 
-       
+        public void GotoPage(string way)
+        {
+            string[] a = way.Split('/');
+            int count = 1;
+            for (int i=0;i<way.Length;i++ )
+            {
+                if(a[i]=="/")
+                {
+                    count++;
+                }
+            }
+            for (int b=1;b<count;b++)
+            {
+                Actions builder = new Actions(Constant.WebDriver);
+                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li//a[contains(.,'" + a[b] + "')]")));
+                hoverClick.Build().Perform();
+            }
+            
+        }
+
     }
 }
