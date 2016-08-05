@@ -2,6 +2,7 @@
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace SeleniumAdvance_Group2.PageObject
@@ -58,6 +59,12 @@ namespace SeleniumAdvance_Group2.PageObject
                 hoverClick.Build().Perform();
             }
 
+        }
+
+        public void VerifyText(By element, string expectedText)
+        {
+            string actualText = FindElement(element).Text;
+            Assert.AreEqual(expectedText, actualText);
         }
 
     }
