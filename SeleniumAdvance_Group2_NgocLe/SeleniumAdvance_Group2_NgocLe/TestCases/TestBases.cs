@@ -12,8 +12,8 @@ namespace SeleniumAdvance_Group2.TestCases
     public class TestBases
     {
         #region Create pageobject
-        public GeneralPage generalPage;
-        public LoginPage loginPage;
+        public GeneralPage generalpage;
+        public LoginPage loginpage;
         public DataProfilePage dataProfilePage;
         #endregion
 
@@ -29,8 +29,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestCleanup]
         public void TestCleanupMethods()
         {
-       
-            //generalpage.LogOut();
+
             CloseBrowser();
         }
         #endregion
@@ -71,9 +70,8 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
+            #endregion
         }
-        #endregion
     }
-
 }
 

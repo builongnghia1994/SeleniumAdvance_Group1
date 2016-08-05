@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.Common;
+using OpenQA.Selenium.Support.UI;
+
 
 namespace SeleniumAdvance_Group2.PageObject
 {
@@ -21,6 +23,18 @@ namespace SeleniumAdvance_Group2.PageObject
         {
             ClickControl(menuAdminister);
             ClickControl(itemDataProfile);
+        }
+        public void GotoPage(string parentpage, string childpage)
+        {
+            By control = By.XPath("//li/a[contains(.,'" + parentpage + "')]");
+            switch (childpage)
+            {
+                case "":
+                    break;
+                default:
+                    new SelectElement(FindElement(control)).SelectByText(childpage);
+                    break;
+            }
         }
     }
 }

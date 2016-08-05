@@ -46,7 +46,6 @@ namespace SeleniumAdvance_Group2.Common
             return FindElement(control).Text;
         }
 
-
         public bool DoesControlExist(By control)
         {
             try
