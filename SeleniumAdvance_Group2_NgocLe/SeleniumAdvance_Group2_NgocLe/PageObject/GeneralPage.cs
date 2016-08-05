@@ -4,18 +4,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System;
-
-
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
-        public readonly By menuUser = By.XPath("//a[@href='#Welcome']");
-        public readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
-        public readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
-        public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
-        public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
+        private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
+        private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
+        private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
+        private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
+        private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
 
         public readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
@@ -29,10 +28,11 @@ namespace SeleniumAdvance_Group2.PageObject
             return new LoginPage();
         }
 
-        public void GotoDataProfilePage()
+        public DataProfilePage GotoDataProfilePage()
         {
             ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+            ClickControl(itemDataProfile);
+            return new DataProfilePage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
@@ -51,30 +51,25 @@ namespace SeleniumAdvance_Group2.PageObject
         public void GotoPage(string way)
         {
             WaitForControl(menuUser, 5);
-            string[] a = way.Split('/');
-            By tam=By.XPath("");
-            for (int b=0;b< a.Length; b++)
+            string[] allpages = way.Split('/');
+            By lastpage = By.XPath("");
+            for (int b = 0; b < allpages.Length; b++)
             {
+                string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
                 Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath("//li/a[contains(.,'" + a[b] + "')]")));
+                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
                 hoverClick.Build().Perform();
-                tam = By.XPath("//li/a[contains(.,'" + a[b] + "')]");
+                lastpage = By.XPath(currentpagexpath);
             }
-
-            ClickControl(tam);
-
+            ClickControl(lastpage);
         }
+
 
         public void VerifyWelComeUser(string username)
         {
-            VerifyText(menuUser, username);
+            VerifyText(username, menuUser);
         }
 
-        public void VerifyText(By element, string expectedText)
-        {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
 
         
 

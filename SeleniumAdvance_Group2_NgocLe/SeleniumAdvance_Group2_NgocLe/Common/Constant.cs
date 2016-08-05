@@ -12,7 +12,6 @@ namespace SeleniumAdvance_Group2.Common
 
         public static string userTrang = "trang.le";
         public static string passTrang = "1";
-
-        
-        }
+        public static string MsgRequiredFieldPanel = "Display Name is a required field.";
+    }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -18,8 +20,10 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
             panelPage = generalPage.GotoPanelPage();
-            ClickControl(panelPage.btnOK);
-
+            ClickControl(panelPage.BtnOK);
+            VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
+            ClickControl(panelPage.BtnCancel);
+            //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-            generalPage.GotoPage("sassads/ngocdelte/ngoc11/ngoc22");
+            generalPage.GotoPage("Trang/Trang1/Trang2");
         }
 
 
