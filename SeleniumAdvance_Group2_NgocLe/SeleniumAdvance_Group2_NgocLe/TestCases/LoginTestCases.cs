@@ -7,7 +7,7 @@ namespace SeleniumAdvance_Group2.TestCases
     public class LoginTestCases : TestBases
     {
         [TestMethod]
-        public void A()
+        public void B()
         {
             Console.WriteLine("sssss");
             
