@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumAdvance_Group2.PageObject;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -24,7 +23,7 @@ namespace SeleniumAdvance_Group2.Common
             return Constant.WebDriver.FindElement(control);
         }
 
-        public void ClickControl(By control)
+        public void ClickControl (By control)
         {
             FindElement(control).Click();
         }
@@ -35,7 +34,7 @@ namespace SeleniumAdvance_Group2.Common
             FindElement(control).Clear();
             FindElement(control).SendKeys(value);
         }
-
+        
         public void SelectItemByDropdownList(By control, string value)
         {
             SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
@@ -69,24 +68,9 @@ namespace SeleniumAdvance_Group2.Common
 
         }
 
-        public void VerifyText(string expectedText, By element)
+        public int GetTableRow(By control)
         {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
-
-        public void VerifyText(string expectedText, string actualText)
-        {
-            Assert.AreEqual(expectedText, actualText);
-        }
-
-        public string GetTextFromAlertPopup()
-        {
-            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
-            string alertText = alert.Text;
-            alert.Accept();
-            Constant.WebDriver.SwitchTo().DefaultContent();
-            return alertText;
+            return Constant.WebDriver.FindElements(control).Count;
         }
     }
 }

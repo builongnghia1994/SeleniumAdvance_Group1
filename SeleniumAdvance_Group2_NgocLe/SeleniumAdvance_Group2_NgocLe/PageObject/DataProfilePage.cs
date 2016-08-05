@@ -11,34 +11,30 @@ namespace SeleniumAdvance_Group2.PageObject
 {
     public class DataProfilePage: GeneralPage
     {
-        private By tblDataProfile = By.XPath("//table[@class='GridView']");
+        private By tblDataProfile = By.XPath("//table[@class='GridView']/tbody/tr");
         #region Methods
 
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
-            for (int i = 1; i <= GetTableRow(); i++)
+            for (int i = 2; i < GetTableRow(tblDataProfile); i++)
             {
-                string row ="//table[@class='GridView']//tr["+(i+1)+"]//a[text()='Edit']";
+                string row ="//table[@class='GridView']//tr["+i+"]//a[text()='Edit']";
                 if (!DoesControlExist(By.XPath(row)))
                 {
-                    Console.Write(FindElement(By.XPath("//table[@class='GridView']//tr[" + (i + 1) + "]/td[2]")).Text);
-                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" + (i + 1) + "]/td[2]")).Text);
+                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" +i+ "]/td[2]")).Text);
                 }
             }
             return tableValues.ToArray();
         }
 
-        public int GetTableRow()
-        {
-            return Constant.WebDriver.FindElements(tblDataProfile).Count;
-        }
+        
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
             for (int i = 0; i < actualValues.Length; i++)
             {
-
+                Console.WriteLine(expectedValues[i]+"\n"+actualValues[i]);
                 Assert.AreEqual(expectedValues[i], actualValues[i]);
             }
 
