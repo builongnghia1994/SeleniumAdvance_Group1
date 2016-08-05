@@ -11,7 +11,7 @@ namespace SeleniumAdvance_Group2.Common
     public class CommonActions
     {
 
-        public void OpenURL(string url)
+        public static void OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
         }
