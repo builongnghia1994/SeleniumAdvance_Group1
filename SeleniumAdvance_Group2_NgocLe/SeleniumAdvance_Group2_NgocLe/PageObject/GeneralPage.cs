@@ -48,6 +48,15 @@ namespace SeleniumAdvance_Group2.PageObject
             return panelManagerPage.GoToPanelPage();
         }
 
+        public NewPage GotoNewPage()
+
+        {
+            ClickControl(menuSetting);
+            ClickControl(itemAddPage);
+            return new NewPage();
+
+        }
+
         public void GotoPage(string way)
         {
             WaitForControl(menuUser, 5);
@@ -86,14 +95,6 @@ namespace SeleniumAdvance_Group2.PageObject
 
 
 
-        public NewPage GotoNewPage()
-
-        {
-            ClickControl(menuSetting);
-            ClickControl(itemAddPage);
-            return new NewPage();       
-            
-        }
-   
+       
     }
 }
