@@ -18,9 +18,9 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public GeneralPage Login()
         {
-            SelectItemByDropdownList(ddlRespository, "SampleRepository");
-            TypeValue(txtUserName, "thi.nguyen");
-            TypeValue(txtPassWord, "1");
+            SelectItemByDropdownList(ddlRespository, Constant.Respository);
+            TypeValue(txtUserName, Constant.UserName);
+            TypeValue(txtPassWord, Constant.PassWord);
             ClickControl(btnLogin);
             return new GeneralPage();
         }
