@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 
@@ -52,6 +53,11 @@ namespace SeleniumAdvance_Group2.PageObject
                 hoverClick.Build().Perform();
             }
             
+        }
+
+        public void VerifyWelComeUser(string username)
+        {
+            Assert.IsTrue(GetText(menuUser).Equals(username));
         }
 
     }
