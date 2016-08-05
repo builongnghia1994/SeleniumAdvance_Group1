@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    class NewPage
+   public class NewPage
     {
     }
 }

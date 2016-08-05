@@ -17,6 +17,10 @@ namespace SeleniumAdvance_Group2.PageObject
         public readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         public readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
+
+        public readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        public readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
+
         public LoginPage LogOut()
         {
             ClickControl(menuUser);
@@ -71,5 +75,22 @@ namespace SeleniumAdvance_Group2.PageObject
             Assert.AreEqual(expectedText, actualText);
         }
 
+        
+
+
+
+        public void ChoseItemGlobalSetting(string text)
+        {
+            switch(text)
+            {                
+                case "addpage":                    
+                    ClickControl(menuSetting);
+                    ClickControl(itemAddPage);                    
+                    break;
+                   
+                    
+            }
+        }
+   
     }
 }
