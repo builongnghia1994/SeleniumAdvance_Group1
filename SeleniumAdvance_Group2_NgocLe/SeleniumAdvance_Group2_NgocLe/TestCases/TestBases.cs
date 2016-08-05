@@ -29,7 +29,6 @@ namespace SeleniumAdvance_Group2.TestCases
         public void TestCleanupMethods()
         {
        
-            generalpage.LogOut();
             CloseBrowser();
         }
         #endregion
@@ -70,7 +69,6 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
-        }
         #endregion
     }
 
