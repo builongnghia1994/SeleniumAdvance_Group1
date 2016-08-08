@@ -17,7 +17,7 @@ namespace SeleniumAdvance_Group2.PageObject
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < GetTableRow(tblDataProfile); i++)
+            for (int i = 2; i < CountItems(tblDataProfile); i++)
             {
                 string row ="//table[@class='GridView']//tr["+i+"]//a[text()='Edit']";
                 if (!DoesControlExist(By.XPath(row)))
@@ -35,7 +35,7 @@ namespace SeleniumAdvance_Group2.PageObject
             for (int i = 0; i < actualValues.Length; i++)
             {
                 Console.WriteLine(expectedValues[i]+"\n"+actualValues[i]);
-                Assert.AreEqual(expectedValues[i], actualValues[i]);
+                VerifyText(expectedValues[i], actualValues[i]);
             }
 
         }
