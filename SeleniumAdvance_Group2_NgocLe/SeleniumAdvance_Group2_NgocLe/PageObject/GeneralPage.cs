@@ -8,23 +8,31 @@ using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage : CommonActions
+    public class GeneralPage:CommonActions
     {
         private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
         private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
-        
+
+        private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
 
 
-        private readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
-        private readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
-        private readonly By itemCreateProfile = By.XPath("//a[@class='add' and text()='Create Profile']");
-        private readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
-        private readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
-        private readonly By menuExecutionDashboard = By.XPath("//a[@href='/TADashboard/2f9njff6y9.page']");
-        private readonly By overview = By.XPath("//div[@id='main-menu']/div/ul/li[1]/a");
+
+
+        private readonly By txtPageName = By.Id("name");
+        private readonly By rdIsPublic = By.Id("ispublic");
+        private readonly By drdparentname = By.Id("parent");
+        private readonly By drdafterpage = By.Id("afterpage");
+        private readonly By drdnumberclm = By.Id("columnnumber");
+        private readonly By btnOK = By.Id("OK");
+
+
+
+
+
+
 
         public LoginPage LogOut()
         {
@@ -53,52 +61,79 @@ namespace SeleniumAdvance_Group2.PageObject
             return panelManagerPage.GoToPanelPage();
         }
 
-        public NewPage GotoNewPage()
-
-        {
-            ClickControl(menuSetting);
-            ClickControl(itemAddPage);
-            return new NewPage();
-
-        }
-
         public void GotoPage(string way)
         {
             WaitForControl(menuUser, 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-            for (int b = 0; b < allpages.Length; b++)
+            int b=0;
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
+
+            if (allpages.Length==1)
             {
-                string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
+                //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
+                lastpage = By.XPath(currentpagexpath);
+                ClickControl(lastpage);
+            }
+            else
+            {
+                //trường hợp nếu phải thông qua nhiều page
+            for (b=0;(b+1)< allpages.Length; b++)
+            {       
                 Actions builder = new Actions(Constant.WebDriver);
                 Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
                 hoverClick.Build().Perform();
+                string next = "/following-sibling::ul/li/a[text()='" + allpages[b+1] + "']";
+                currentpagexpath = currentpagexpath + next;
                 lastpage = By.XPath(currentpagexpath);
             }
-            ClickControl(lastpage);
+                ClickControl(lastpage);
+            }
         }
-
 
         public void VerifyWelComeUser(string username)
         {
-            VerifyText(username, menuUser);
+            VerifyText(menuUser, username);
         }
 
-
-       public GeneralPage  GoToGenernalPage()
+        public void VerifyText(By element, string expectedText)
         {
-            ClickControl(menuExecutionDashboard);
-            return new GeneralPage();
+            string actualText = GetText(element);
+            Assert.AreEqual(expectedText, actualText);
+        }
+        public void GlobalSetting(string settingname)
+        {
+            By a = By.XPath("//li/a[text()='"+settingname+"']");
+            ClickControl(menuGlobalSetting);
+            ClickControl(a);
         }
 
 
-
-      
-        
-
-
-
-
+        public void CreatePage(string pagename, string ispublic, string parentname, string numberclm, string afterpage)
+        {
+            FindElement(txtPageName).SendKeys(pagename);
+            switch (ispublic)
+            {
+                case "public":
+                    FindElement(rdIsPublic).Click();
+                    break;
+                default:
+                    break;
+            }
+            if (parentname != "")
+            {
+                new SelectElement(FindElement(drdparentname)).SelectByText(parentname);
+            }
+            if (afterpage != "")
+            {
+                new SelectElement(FindElement(drdafterpage)).SelectByText(afterpage);
+            }
+            if (numberclm != "")
+            {
+                new SelectElement(FindElement(drdnumberclm)).SelectByText(numberclm);
+            }
+            ClickControl(btnOK);
+        }
 
 
 

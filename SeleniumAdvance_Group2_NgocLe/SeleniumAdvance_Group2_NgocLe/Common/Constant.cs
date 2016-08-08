@@ -17,7 +17,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string pageafter_newpage = "Overview";
         public static string numbercolumn_newpage = "2";
 
-        public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
+        public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
             "Test Case Execution Results", "Test Case Execution Trend",
             "Test Module Execution", "Test Module Execution Failure Trend",
