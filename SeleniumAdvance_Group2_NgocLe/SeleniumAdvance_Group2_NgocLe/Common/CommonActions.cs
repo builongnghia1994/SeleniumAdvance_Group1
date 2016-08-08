@@ -48,7 +48,6 @@ namespace SeleniumAdvance_Group2.Common
             return FindElement(control).Text;
         }
 
-
         public bool DoesControlExist(By control)
         {
             try
@@ -61,7 +60,6 @@ namespace SeleniumAdvance_Group2.Common
                 return false;
             }
         }
-
 
         public void WaitForControl(By control, int timesecond)
         {
@@ -94,9 +92,20 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.SwitchTo().DefaultContent();
             return alertText;
         }
+
         public void WaitForAlertPresent(int timeout)
         {
             new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
+        }
+
+        public void VerifyDoesControlNotExist(By control)
+        {
+            Assert.IsFalse(DoesControlExist(control));
+        }
+
+        public void VerifyDoesControlExist(By control)
+        {
+            Assert.IsTrue(DoesControlExist(control));
         }
     }
 }
