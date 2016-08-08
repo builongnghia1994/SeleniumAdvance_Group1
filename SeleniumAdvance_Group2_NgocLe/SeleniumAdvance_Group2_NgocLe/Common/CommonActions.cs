@@ -38,7 +38,7 @@ namespace SeleniumAdvance_Group2.Common
         public void SelectItemByDropdownList(By control, string value)
         {
             SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
-            SelectElementByXpath.SelectByValue(value);
+            SelectElementByXpath.SelectByText(value);
         }
 
 
@@ -52,7 +52,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             try
             {
-                FindElement(control);
+                Constant.WebDriver.FindElement(control);
                 return true;
             }
             catch (NoSuchElementException)
@@ -68,6 +68,9 @@ namespace SeleniumAdvance_Group2.Common
 
         }
 
-
+        public int GetTableRow(By control)
+        {
+            return Constant.WebDriver.FindElements(control).Count;
+        }
     }
 }
