@@ -9,8 +9,8 @@ using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-   public class NewPage:GeneralPage
-    {      
+    public class NewPage : GeneralPage
+    {
 
         private readonly By txtPageName = By.Id("name");
         private readonly By ddlParentName = By.Id("parent");
@@ -18,8 +18,13 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By rdPublic = By.Id("ispublic");
         private readonly By ddlnumbercolum = By.Id("columnnumber");
         private readonly By btnOk = By.Id("OK");
+        private readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
 
-        public void CreadNewPage(string status,string pagename, string parentname, string afterpage, string numbercolum)
+        private readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
+
+
+
+        public void CreadNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
             if (parentname == null)
@@ -31,7 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject
             {
                 afterpage = Constant.pageafter_newpage;
             }
-            if (numbercolum==null)
+            if (numbercolum == null)
             {
                 numbercolum = Constant.numbercolumn_newpage;
             }
@@ -44,15 +49,42 @@ namespace SeleniumAdvance_Group2.PageObject
                 default:
                     break;
             }
+
             TypeValue(txtPageName, pagename);
             SelectItemByDropdownList(ddlParentName, parentname);
             SelectItemByDropdownList(ddlnumbercolum, numbercolum);
-            SelectItemByDropdownList(ddlDisplayAfter, afterpage);         
-            ClickControl(btnOk);           
+            SelectItemByDropdownList(ddlDisplayAfter, afterpage);
+            ClickControl(btnOk);
 
-           
+
         }
 
 
+        public void VerifyNameOfNewPageDisplayedBesidesOverviewPage(string namepage)
+        {
+            int numberitemsmainmenu = CountItems(itemsMainPage) - 2;
+            for (int i = 1; i <= numberitemsmainmenu; i++)
+            {
+
+                string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
+                By realitemMainpage = By.XPath(itemmenuMainPage);
+                if (GetText(realitemMainpage).Equals("Overview"))
+
+                {
+                    string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
+                    By realitemnamepage = By.XPath(itemnamepage);
+                    string real = GetText(realitemnamepage);
+                    VerifyText(namepage, realitemnamepage);
+
+                }
+            }
+
+        }
+
+
+        
+
+
+        
     }
 }
