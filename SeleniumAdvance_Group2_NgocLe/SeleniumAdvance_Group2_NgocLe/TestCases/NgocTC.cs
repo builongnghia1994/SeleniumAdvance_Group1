@@ -11,11 +11,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void NgocTC01()
         {
 
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-            generalPage.GlobalSetting("Add Page");
-            generalPage.CreatePage("hihi", "public", "Select parent", "2", "Overview");
-            Console.Read();
+
         }
 
 
