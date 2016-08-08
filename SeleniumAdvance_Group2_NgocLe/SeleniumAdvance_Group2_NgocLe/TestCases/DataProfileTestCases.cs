@@ -7,16 +7,28 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class DataProfileTestCases: TestBases
     {
+        string username = "nghia.bui";
+        string password = "1";
+
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
             loginPage = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login("nghia.bui", "1");
+            generalPage = loginPage.Login(username, password);
 
             dataProfilePage = generalPage.GotoDataProfilePage();
 
             dataProfilePage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfilePage.GetActualPreDataPRofile());
+        }
+
+        public void DA_DP_TC066_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
+        {
+            loginPage = OpenURL(Constant.DashboardURL);
+
+            generalPage = loginPage.Login(username, password);
+
+            dataProfilePage = generalPage.GotoDataProfilePage();
         }
     }
 }
