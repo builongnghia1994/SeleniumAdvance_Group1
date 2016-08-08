@@ -35,7 +35,7 @@ namespace SeleniumAdvance_Group2.PageObject
             for (int i = 0; i < actualValues.Length; i++)
             {
                 Console.WriteLine(expectedValues[i]+"\n"+actualValues[i]);
-                Assert.AreEqual(expectedValues[i], actualValues[i]);
+                VerifyText(expectedValues[i], actualValues[i]);
             }
 
         }
