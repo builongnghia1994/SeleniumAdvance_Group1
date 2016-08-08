@@ -5,7 +5,7 @@ using SeleniumAdvance_Group2.Common;
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
-    public class DemoThi:TestBases
+    public class DemoThi : TestBases
     {
 
         private string username = "thi.nguyen";
@@ -14,8 +14,8 @@ namespace SeleniumAdvance_Group2.TestCases
         private string pagename = "Thiaddpage3";
 
         [TestMethod]
-       
-        public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
+
+       public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
 
         {
             loginPage = OpenURL(Constant.DashboardURL);

@@ -6,10 +6,12 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.Common;
 using System;
+using System.Configuration;
+using System.Configuration.Assemblies;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
-    public class TestBases:CommonActions
+    public class TestBases : CommonActions
     {
         #region Create pageobject
         public GeneralPage generalPage;
@@ -24,7 +26,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMeThod()
         {
-            OpenBrowser("firefox");
+            OpenBrowser(Constant.Browser);
         }
         #endregion
 
@@ -46,7 +48,9 @@ namespace SeleniumAdvance_Group2.TestCases
             {
 
                 case "chrome":
-                    Constant.WebDriver = new ChromeDriver();
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("--disable-extensions");
+                    Constant.WebDriver = new ChromeDriver(options);
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":

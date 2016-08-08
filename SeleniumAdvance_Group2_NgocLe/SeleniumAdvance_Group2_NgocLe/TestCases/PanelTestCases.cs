@@ -21,8 +21,9 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
             panelPage = generalPage.GotoPanelPage();
             ClickControl(panelPage.BtnOK);
-            VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
-            ClickControl(panelPage.BtnCancel);
+            //  VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
+            // ClickControl(panelPage.BtnCancel);
+            panelPage.VerifyTextInAlertPopup();
             //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
     }

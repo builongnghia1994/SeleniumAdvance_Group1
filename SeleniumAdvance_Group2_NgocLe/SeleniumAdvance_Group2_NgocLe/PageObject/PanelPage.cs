@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
@@ -23,5 +24,10 @@ namespace SeleniumAdvance_Group2.PageObject
             get { return btnCancel; }
         }
 
+        public void VerifyTextInAlertPopup()
+        {
+            VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
+            ClickControl(this.BtnCancel);
+        }
     }
 }
