@@ -17,7 +17,7 @@ namespace SeleniumAdvance_Group2.PageObject
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < GetTableRow(tblDataProfile); i++)
+            for (int i = 2; i < CountItems(tblDataProfile); i++)
             {
                 string row ="//table[@class='GridView']//tr["+i+"]//a[text()='Edit']";
                 if (!DoesControlExist(By.XPath(row)))

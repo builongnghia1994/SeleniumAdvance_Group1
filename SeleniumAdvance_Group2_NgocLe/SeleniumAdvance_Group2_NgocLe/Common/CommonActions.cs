@@ -69,7 +69,7 @@ namespace SeleniumAdvance_Group2.Common
 
         }
 
-        public int GetTableRow(By control)
+        public int CountItems(By control)
         {
             return Constant.WebDriver.FindElements(control).Count;
         }
