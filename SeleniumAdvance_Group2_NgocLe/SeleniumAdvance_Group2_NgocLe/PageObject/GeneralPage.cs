@@ -135,8 +135,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public NewPage GotoNewPage()
         {
-            ClickControl(menuGlobalSetting);
-            ClickControl(itemAddPage);
+            GlobalSetting("Add Page");
             return new NewPage();
         }
 

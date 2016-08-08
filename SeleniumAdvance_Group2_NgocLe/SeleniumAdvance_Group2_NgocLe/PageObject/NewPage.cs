@@ -51,7 +51,7 @@ namespace SeleniumAdvance_Group2.PageObject
         }
 
 
-        public void VerifyNameOfNewPageDisplayedBesidesOverviewPage(string namepage)
+        public void VerifyNameOfNewPageDisplayedBesidesSpecificItemDisplayAfter(string itemdisplayafter, string namepage)
         {
             int numberitemsmainmenu = CountItems(itemsMainPage) - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
@@ -59,7 +59,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
                 string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
                 By realitemMainpage = By.XPath(itemmenuMainPage);
-                if (GetText(realitemMainpage).Equals("Overview"))
+                if (GetText(realitemMainpage).Equals(itemdisplayafter))
 
                 {
                     string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
