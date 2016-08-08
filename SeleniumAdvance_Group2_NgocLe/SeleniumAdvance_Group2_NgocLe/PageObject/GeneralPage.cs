@@ -15,11 +15,16 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
+        
 
 
-        public readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
-        public readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
-        public readonly By itemCreateProfile = By.XPath("//a[@class='add' and text()='Create Profile']");
+        private readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        private readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
+        private readonly By itemCreateProfile = By.XPath("//a[@class='add' and text()='Create Profile']");
+        private readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
+        private readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
+        private readonly By menuExecutionDashboard = By.XPath("//a[@href='/TADashboard/2f9njff6y9.page']");
+        private readonly By overview = By.XPath("//div[@id='main-menu']/div/ul/li[1]/a");
 
         public LoginPage LogOut()
         {
@@ -80,6 +85,15 @@ namespace SeleniumAdvance_Group2.PageObject
         }
 
 
+       public GeneralPage  GoToGenernalPage()
+        {
+            ClickControl(menuExecutionDashboard);
+            return new GeneralPage();
+        }
+
+
+
+      
         
 
 
@@ -92,9 +106,5 @@ namespace SeleniumAdvance_Group2.PageObject
 
 
 
-
-
-
-       
     }
 }
