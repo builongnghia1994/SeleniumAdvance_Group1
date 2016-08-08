@@ -27,19 +27,7 @@ namespace SeleniumAdvance_Group2.PageObject
         public void CreadNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
-            if (parentname == null)
-            {
-                parentname = Constant.parentname_newpage;
-            }
-
-            if (afterpage == null)
-            {
-                afterpage = Constant.pageafter_newpage;
-            }
-            if (numbercolum == null)
-            {
-                numbercolum = Constant.numbercolumn_newpage;
-            }
+         
 
             switch (status.ToLower())
             {
@@ -49,11 +37,14 @@ namespace SeleniumAdvance_Group2.PageObject
                 default:
                     break;
             }
-
-            TypeValue(txtPageName, pagename);
-            SelectItemByDropdownList(ddlParentName, parentname);
-            SelectItemByDropdownList(ddlnumbercolum, numbercolum);
-            SelectItemByDropdownList(ddlDisplayAfter, afterpage);
+            if (pagename !=null)
+            {TypeValue(txtPageName, pagename); }
+            if (parentname != null)
+            { SelectItemByDropdownList(ddlParentName, parentname); }
+            if (numbercolum != null)
+            { SelectItemByDropdownList(ddlnumbercolum, numbercolum); }
+            if (afterpage != null)
+            { SelectItemByDropdownList(ddlDisplayAfter, afterpage); }
             ClickControl(btnOk);
 
 

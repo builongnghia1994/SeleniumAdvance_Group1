@@ -15,10 +15,9 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
             loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(username, pass);
-          
-            newpage.CreadNewPage(statuspublic, pagename, null, null, null);           
-           newpage.VerifyNameOfNewPageDisplayedBesidesOverviewPage(pagename);
+            generalPage = loginPage.Login(username, pass);          
+            newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);           
+            newpage.VerifyNameOfNewPageDisplayedBesidesOverviewPage(pagename);
         }
     }
 }

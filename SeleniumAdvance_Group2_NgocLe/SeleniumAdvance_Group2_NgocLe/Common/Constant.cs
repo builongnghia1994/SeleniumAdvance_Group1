@@ -30,6 +30,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
         public static string Browser = ConfigurationManager.AppSettings["Browser"];
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
+        public static string defaultValue = null;
 
 
     }
