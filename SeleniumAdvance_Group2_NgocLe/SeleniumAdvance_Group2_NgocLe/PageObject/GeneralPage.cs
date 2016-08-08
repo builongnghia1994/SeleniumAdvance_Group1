@@ -94,14 +94,10 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void VerifyWelComeUser(string username)
         {
-            VerifyText(menuUser, username);
+            VerifyText(username, menuUser);
         }
 
-        public void VerifyText(By element, string expectedText)
-        {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
+       
         public void GlobalSetting(string settingname)
         {
             By a = By.XPath("//li/a[text()='"+settingname+"']");
