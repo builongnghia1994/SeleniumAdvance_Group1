@@ -14,9 +14,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string userTrang = "trang.le";
         public static string passTrang = "1";
         public static string MsgRequiredFieldPanel = "Display Name is a required field.";
-        public static string parentname_newpage = "Select parent";
-        public static string pageafter_newpage = "Overview";
-        public static string numbercolumn_newpage = "2";
+       
 
         public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
