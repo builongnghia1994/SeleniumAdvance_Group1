@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMeThod()
         {
-            OpenBrowser("firefox");
+            OpenBrowser("ie");
         }
         #endregion
 

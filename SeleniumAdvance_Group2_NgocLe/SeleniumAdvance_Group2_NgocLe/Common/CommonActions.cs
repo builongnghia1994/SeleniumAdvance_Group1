@@ -20,7 +20,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, 5);
+            WaitForControl(control, 3000);
             return Constant.WebDriver.FindElement(control);
         }
 
