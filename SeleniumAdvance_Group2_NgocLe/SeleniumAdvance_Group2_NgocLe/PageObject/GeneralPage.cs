@@ -37,6 +37,15 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public PanelManagerPage GotoPanelManagerPage()
         {
+            //Actions actions = new Actions(Constant.WebDriver);
+            //IWebElement a = FindElement(menuAdminister);
+            //actions.MoveToElement(a).Build().Perform();
+            //WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(15));
+            //wait.Until(ExpectedConditions.ElementToBeClickable(a)).Click();
+            //IWebElement b = FindElement(itemPanel);
+            //wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(15));
+            //wait.Until(ExpectedConditions.ElementToBeClickable(b)).Click();
+
             ClickControl(menuAdminister);
             ClickControl(itemPanel);
             return new PanelManagerPage();
@@ -80,7 +89,6 @@ namespace SeleniumAdvance_Group2.PageObject
         }
 
 
-        
 
 
 
@@ -95,6 +103,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
 
 
-       
+
+
     }
 }
