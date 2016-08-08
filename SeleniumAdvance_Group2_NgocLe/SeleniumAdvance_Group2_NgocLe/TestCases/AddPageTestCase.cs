@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(username, pass);
-            newpage = generalPage.GotoNewPage();
+          
             newpage.CreadNewPage(statuspublic, pagename, null, null, null);           
            newpage.VerifyNameOfNewPageDisplayedBesidesOverviewPage(pagename);
         }

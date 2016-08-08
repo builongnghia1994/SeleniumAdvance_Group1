@@ -17,6 +17,7 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
         private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        private readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
 
 
 
@@ -136,7 +137,12 @@ namespace SeleniumAdvance_Group2.PageObject
         }
 
 
-
+        public NewPage GotoNewPage()
+        {
+            ClickControl(menuGlobalSetting);
+            ClickControl(itemAddPage);
+            return new NewPage();
+        }
 
 
 
