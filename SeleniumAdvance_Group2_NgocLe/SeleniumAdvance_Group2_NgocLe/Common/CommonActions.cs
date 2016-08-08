@@ -24,7 +24,7 @@ namespace SeleniumAdvance_Group2.Common
             return Constant.WebDriver.FindElement(control);
         }
 
-        public void ClickControl (By control)
+        public void ClickControl(By control)
         {
             FindElement(control).Click();
         }
@@ -35,7 +35,7 @@ namespace SeleniumAdvance_Group2.Common
             FindElement(control).Clear();
             FindElement(control).SendKeys(value);
         }
-        
+
         public void SelectItemByDropdownList(By control, string value)
         {
             SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
@@ -87,11 +87,16 @@ namespace SeleniumAdvance_Group2.Common
 
         public string GetTextFromAlertPopup()
         {
+            WaitForAlertPresent(10);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             string alertText = alert.Text;
             alert.Accept();
             Constant.WebDriver.SwitchTo().DefaultContent();
             return alertText;
+        }
+        public void WaitForAlertPresent(int timeout)
+        {
+            new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
         }
     }
 }
