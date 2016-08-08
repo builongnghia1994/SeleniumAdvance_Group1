@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Configuration;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -7,7 +8,7 @@ namespace SeleniumAdvance_Group2.Common
     {
         public static IWebDriver WebDriver;
         public static IWebElement WebElement;
-        public static string DashboardURL = "http://192.168.190.205:54000/TADashboard/2f9njff6y9.page";
+      //  public static string DashboardURL = "http://192.168.190.205:54000/TADashboard/2f9njff6y9.page";
        
         public static string Respository = "SampleRepository";
         public static string userTrang = "trang.le";
@@ -27,5 +28,9 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Status per Assigned Users", "Test Objective Execution" };
 
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
+        public static string Browser = ConfigurationManager.AppSettings["Browser"];
+        public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
+
+
     }
 }
