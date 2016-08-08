@@ -16,6 +16,11 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
+
+        public readonly By menuSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        public readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
+        public readonly By itemCreateProfile = By.XPath("//a[@class='add' and text()='Create Profile']");
+
         public LoginPage LogOut()
         {
             ClickControl(menuUser);
@@ -43,6 +48,15 @@ namespace SeleniumAdvance_Group2.PageObject
             return panelManagerPage.GoToPanelPage();
         }
 
+        public NewPage GotoNewPage()
+
+        {
+            ClickControl(menuSetting);
+            ClickControl(itemAddPage);
+            return new NewPage();
+
+        }
+
         public void GotoPage(string way)
         {
             WaitForControl(menuUser, 5);
@@ -50,7 +64,6 @@ namespace SeleniumAdvance_Group2.PageObject
             By lastpage = By.XPath("");
             for (int b = 0; b < allpages.Length; b++)
             {
-
                 string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
                 Actions builder = new Actions(Constant.WebDriver);
                 Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
@@ -60,11 +73,28 @@ namespace SeleniumAdvance_Group2.PageObject
             ClickControl(lastpage);
         }
 
+
         public void VerifyWelComeUser(string username)
         {
             VerifyText(username, menuUser);
         }
 
 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
     }
 }

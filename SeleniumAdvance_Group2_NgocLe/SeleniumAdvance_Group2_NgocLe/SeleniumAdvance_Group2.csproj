@@ -81,6 +81,8 @@
     <Compile Include="TestCases\TestBases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\DataProfileTestCases.cs" />
+    <Compile Include="TestCases\DemoThi.cs" />
+    <Compile Include="TestCases\AddPageTestCase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
