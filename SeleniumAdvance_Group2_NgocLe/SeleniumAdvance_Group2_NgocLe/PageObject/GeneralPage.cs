@@ -66,16 +66,29 @@ namespace SeleniumAdvance_Group2.PageObject
             WaitForControl(menuUser, 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-            for (int b=0;b< allpages.Length; b++)
-            {
+            int b=0;
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
 
-                string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
+            if (allpages.Length==1)
+            {
+                //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
+                lastpage = By.XPath(currentpagexpath);
+                ClickControl(lastpage);
+            }
+            else
+            {
+                //trường hợp nếu phải thông qua nhiều page
+            for (b=0;(b+1)< allpages.Length; b++)
+            {       
                 Actions builder = new Actions(Constant.WebDriver);
                 Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
                 hoverClick.Build().Perform();
+                string next = "/following-sibling::ul/li/a[text()='" + allpages[b+1] + "']";
+                currentpagexpath = currentpagexpath + next;
                 lastpage = By.XPath(currentpagexpath);
             }
-            ClickControl(lastpage);
+                ClickControl(lastpage);
+            }
         }
 
         public void VerifyWelComeUser(string username)

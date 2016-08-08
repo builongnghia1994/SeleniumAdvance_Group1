@@ -13,9 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-            generalPage.GlobalSetting("Add Page");
-            generalPage.CreatePage("hihi", "public", "Select parent", "2", "Overview");
-            Console.Read();
+            generalPage.GotoPage("Trang/Trang1/Trang2");
         }
 
 
