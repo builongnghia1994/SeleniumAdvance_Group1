@@ -140,6 +140,14 @@ namespace SeleniumAdvance_Group2.Common
             return alertText;
         }
 
+        public void AcceptAlert()
+        {
+            WaitForAlertPresent(10);
+            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+            alert.Accept();
+            Constant.WebDriver.SwitchTo().DefaultContent();
+        }
+
         public void WaitForAlertPresent(int timeout)
         {
             new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
