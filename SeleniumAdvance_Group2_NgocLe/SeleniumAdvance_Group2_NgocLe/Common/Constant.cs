@@ -14,7 +14,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string userTrang = "trang.le";
         public static string passTrang = "1";
         public static string MsgRequiredFieldPanel = "Display Name is a required field.";
-       
+        public static string MsgDashboardErrorLogin = "Username or password is invalid";
 
         public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
@@ -29,6 +29,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string Browser = ConfigurationManager.AppSettings["Browser"];
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
         public static string defaultValue = null;
+        
 
 
     }

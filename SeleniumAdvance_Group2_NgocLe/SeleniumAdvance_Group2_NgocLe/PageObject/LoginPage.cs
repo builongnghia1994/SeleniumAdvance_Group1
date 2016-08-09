@@ -25,6 +25,20 @@ namespace SeleniumAdvance_Group2.PageObject
             ClickControl(btnLogin);
             return new GeneralPage();
         }
+
+        public void LoginWithInvalidUsernameAndPassword(string username, string password)
+        {
+            SelectItemByDropdownList(ddlRespository, Constant.Respository);
+            TypeValue(txtUserName, username);
+            TypeValue(txtPassWord, password);
+            ClickControl(btnLogin);
+        }
+
+        public void VerifyDashboardErrorMessageLogin(string expectederromessage)
+        {
+            VerifyText(expectederromessage, GetTextFromAlertPopup());
+        }
     }
+
     
 }
