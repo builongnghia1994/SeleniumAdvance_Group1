@@ -8,7 +8,7 @@ namespace SeleniumAdvance_Group2.TestCases
     public class AddPageTestCase:TestBases
     {
         private string username = "thi.nguyen";
-        private string pass = "1";
+        private string pass = "1";       
         private string statuspublic = "public";
         private string pagename = "test"+ Constant.timesystem;
         private string specificitemdisplayafter = "Overview";
@@ -19,7 +19,10 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.Login(username, pass);
             newpage = generalPage.GotoNewPage();     
             newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            //vp
             newpage.VerifyNameOfNewPageDisplayedBesidesSpecificItemDisplayAfter(specificitemdisplayafter, pagename);
         }
+
+       
     }
 }
