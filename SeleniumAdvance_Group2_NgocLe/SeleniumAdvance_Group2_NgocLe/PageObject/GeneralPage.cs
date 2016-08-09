@@ -122,7 +122,32 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
-      
+        public void DeletePages()
+        {
+            int numberitems = CountItems(itemsMainPage);
+            for (int i = 2; i <= numberitems; i++)
+            {
+                string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a]";
+                By realitempage = By.XPath(curentitempagexpath);
+                string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
+                if (itemclass.Equals(""))
+                {
+                    ClickControl(realitempage);
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
+                }
+
+                if (itemclass.Equals("haschild")) 
+                {
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(curentitempagexpath)));
+                    hoverClick.Build().Perform();
+
+                }
+
+            }
+        }
+
 
         public void VerifyWelComeUserDisplayed(string username)
         {
