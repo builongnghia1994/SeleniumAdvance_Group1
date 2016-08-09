@@ -37,8 +37,17 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public LoginPage LogOut()
         {
-            ClickControl(menuUser);
-            ClickControl(itemLogOut);
+            if (Constant.Browser == "ie")
+            {
+
+                ClickControlByJS(menuUser);
+                ClickControlByJS(itemLogOut);
+            }
+            else
+            {
+                ClickControl(menuUser);
+                ClickControl(itemLogOut);
+            }
             return new LoginPage();
         }
 
@@ -47,14 +56,8 @@ namespace SeleniumAdvance_Group2.PageObject
             if (Constant.Browser == "ie")
             {
 
-                IWebElement webElement = FindElement(menuAdminister);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
-
-                IWebElement webElement1 = FindElement(itemDataProfile);
-                executor = (IJavaScriptExecutor)Constant.WebDriver;
-                executor.ExecuteScript("arguments[0].click();", webElement1);
-
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemDataProfile);
             }
             else
             {
@@ -71,14 +74,8 @@ namespace SeleniumAdvance_Group2.PageObject
 
             if (Constant.Browser == "ie")
             {
-
-                IWebElement webElement = FindElement(menuAdminister);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
-
-                IWebElement webElement1 = FindElement(itemPanel);
-                executor = (IJavaScriptExecutor)Constant.WebDriver;
-                executor.ExecuteScript("arguments[0].click();", webElement1);
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemPanel);
             }
 
             else
@@ -125,7 +122,7 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
-        public void VerifyWelComeUser(string username)
+        public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyText(username, menuUser);
         }

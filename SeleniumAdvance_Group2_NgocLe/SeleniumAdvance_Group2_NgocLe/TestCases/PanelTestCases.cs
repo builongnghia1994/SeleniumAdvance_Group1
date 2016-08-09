@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
 
             loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
+            generalPage = loginPage.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             panelPage = generalPage.GotoPanelPage();
             ClickControl(panelPage.BtnOK);
             //  VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());

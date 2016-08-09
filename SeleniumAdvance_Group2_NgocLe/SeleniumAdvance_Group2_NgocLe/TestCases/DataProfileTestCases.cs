@@ -9,13 +9,14 @@ namespace SeleniumAdvance_Group2.TestCases
     {
         string username = "nghia.bui";
         string password = "1";
+        private string respository_SampleRepository = "SampleRepository";
 
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
             loginPage = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login(username, password);
+            generalPage = loginPage.Login(respository_SampleRepository,username, password);
 
             dataProfilePage = generalPage.GotoDataProfilePage();
 
@@ -27,7 +28,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login(username, password);
+            generalPage = loginPage.Login(respository_SampleRepository,username, password);
 
             dataProfilePage = generalPage.GotoDataProfilePage();
         }
@@ -37,7 +38,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login(username, password);
+            generalPage = loginPage.Login(respository_SampleRepository,username, password);
 
             dataProfilePage = generalPage.GotoDataProfilePage();
 
