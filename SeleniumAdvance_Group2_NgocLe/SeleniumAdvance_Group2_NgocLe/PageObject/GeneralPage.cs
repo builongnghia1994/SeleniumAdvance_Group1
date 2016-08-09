@@ -101,8 +101,7 @@ namespace SeleniumAdvance_Group2.PageObject
             WaitForControl(menuUser, 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-            int b = 0;
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
             if (allpages.Length == 1)
             {
@@ -113,12 +112,12 @@ namespace SeleniumAdvance_Group2.PageObject
             else
             {
                 //trường hợp nếu phải thông qua nhiều page
-                for (b = 0; (b + 1) < allpages.Length; b++)
+                for (int b = 1; b < allpages.Length; b++)
                 {
                     Actions builder = new Actions(Constant.WebDriver);
                     Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
                     hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b + 1] + "']";
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
                     currentpagexpath = currentpagexpath + next;
                     lastpage = By.XPath(currentpagexpath);
                 }
