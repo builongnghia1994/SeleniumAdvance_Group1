@@ -21,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(respository_SampleRepository,validusername, validpass);
             //VP
-            generalPage.VerifyWelComeUser(validusername);
+            generalPage.VerifyWelComeUserDisplayed(validusername);
             loginPage = generalPage.LogOut();
         }
 
@@ -53,7 +53,9 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.Login(respository_SampleRepository,validusername, validpass);
             loginPage = generalPage.LogOut();
             generalPage = loginPage.Login(respository_TestRepository, validusername, validpass);
-           
+            //VP
+            generalPage.VerifyWelComeUserDisplayed(validusername);
+            loginPage = generalPage.LogOut();
         }
     }
 }

@@ -123,7 +123,7 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
-        public void VerifyWelComeUser(string username)
+        public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyText(username, menuUser);
         }
