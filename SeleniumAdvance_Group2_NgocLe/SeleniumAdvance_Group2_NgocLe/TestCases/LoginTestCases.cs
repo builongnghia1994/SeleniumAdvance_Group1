@@ -52,6 +52,7 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(respository_SampleRepository,validusername, validpass);
             loginPage = generalPage.LogOut();
+            generalPage = loginPage.Login(respository_TestRepository, validusername, validpass);
            
         }
     }

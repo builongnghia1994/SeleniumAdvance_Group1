@@ -10,8 +10,8 @@ namespace SeleniumAdvance_Group2.TestCases
 
         private string username = "thi.nguyen";
         private string pass = "1";
-        private string statuspublic = "public";
-        private string pagename = "Thiaddpage3";
+       // private string statuspublic = "public";
+        //private string pagename = "Thiaddpage3";
 
         [TestMethod]
 
@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
         {
             loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(username, pass);
+            generalPage = loginPage.Login(Constant.Respository, username, pass);
            
         }
     }
