@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
-        public void OpenBrowser(string browser)
+        public static void OpenBrowser(string browser)
 
         {
             switch (browser.ToLower())
@@ -29,7 +29,9 @@ namespace SeleniumAdvance_Group2.Common
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":
-                    Constant.WebDriver = new InternetExplorerDriver();
+                    InternetExplorerOptions optionIE = new InternetExplorerOptions();
+                    optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+                    Constant.WebDriver = new InternetExplorerDriver(optionIE);
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "firefox":
@@ -48,7 +50,7 @@ namespace SeleniumAdvance_Group2.Common
             }
         }
 
-        public void CloseBrowser()
+        public static void CloseBrowser()
         {
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();

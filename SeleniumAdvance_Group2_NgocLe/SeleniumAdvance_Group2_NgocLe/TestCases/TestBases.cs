@@ -11,6 +11,7 @@ using System.Configuration.Assemblies;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
+    [TestClass]
     public class TestBases : CommonActions
     {
         #region Create pageobject
@@ -22,23 +23,25 @@ namespace SeleniumAdvance_Group2.TestCases
         public NewPage newpage;
         #endregion
 
-        #region TestInitialize
-        [TestInitialize]
-        public void TestInitializeMeThod()
+        public TestContext TestContext { get; set; }
+
+        [AssemblyInitialize]
+        public static void AssemblyInitializeMeThod(TestContext testContext)
         {
             OpenBrowser(Constant.Browser);
         }
-        #endregion
 
-        #region TestCleanup
+        [AssemblyCleanup]
+        public static void AssemblyCleanupMethod()
+        {
+            Constant.WebDriver.Quit();
+        }
+
         [TestCleanup]
         public void TestCleanupMethods()
         {
-
-            CloseBrowser();
+            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
         }
-        #endregion
-
 
     }
 }

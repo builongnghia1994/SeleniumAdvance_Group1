@@ -24,6 +24,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //  VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
             // ClickControl(panelPage.BtnCancel);
             panelPage.VerifyTextInAlertPopup();
+            generalPage.LogOut();
             //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
     }
