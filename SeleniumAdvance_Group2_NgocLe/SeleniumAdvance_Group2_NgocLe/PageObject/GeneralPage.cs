@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
         private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
@@ -37,22 +37,53 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public LoginPage LogOut()
         {
-            ClickControl(menuUser);
-            ClickControl(itemLogOut);
+            if (Constant.Browser == "ie")
+            {
+
+                ClickControlByJS(menuUser);
+                ClickControlByJS(itemLogOut);
+            }
+            else
+            {
+                ClickControl(menuUser);
+                ClickControl(itemLogOut);
+            }
             return new LoginPage();
         }
 
         public DataProfilePage GotoDataProfilePage()
         {
-            ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            if (Constant.Browser == "ie")
+            {
+
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemDataProfile);
+            }
+            else
+            {
+                ClickControl(menuAdminister);
+                ClickControl(itemDataProfile);
+            }
+
             return new DataProfilePage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
         {
-            ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+
+
+            if (Constant.Browser == "ie")
+            {
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemPanel);
+            }
+
+            else
+            {
+                ClickControl(menuAdminister);
+                ClickControl(itemPanel);
+            }
+
             return new PanelManagerPage();
         }
 
@@ -67,10 +98,10 @@ namespace SeleniumAdvance_Group2.PageObject
             WaitForControl(menuUser, 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-            int b=0;
+            int b = 0;
             string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
 
-            if (allpages.Length==1)
+            if (allpages.Length == 1)
             {
                 //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
                 lastpage = By.XPath(currentpagexpath);
@@ -79,15 +110,15 @@ namespace SeleniumAdvance_Group2.PageObject
             else
             {
                 //trường hợp nếu phải thông qua nhiều page
-            for (b=0;(b+1)< allpages.Length; b++)
-            {       
-                Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
-                hoverClick.Build().Perform();
-                string next = "/following-sibling::ul/li/a[text()='" + allpages[b+1] + "']";
-                currentpagexpath = currentpagexpath + next;
-                lastpage = By.XPath(currentpagexpath);
-            }
+                for (b = 0; (b + 1) < allpages.Length; b++)
+                {
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
+                    hoverClick.Build().Perform();
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b + 1] + "']";
+                    currentpagexpath = currentpagexpath + next;
+                    lastpage = By.XPath(currentpagexpath);
+                }
                 ClickControl(lastpage);
             }
         }
@@ -97,10 +128,10 @@ namespace SeleniumAdvance_Group2.PageObject
             VerifyText(username, menuUser);
         }
 
-       
+
         public void GlobalSetting(string settingname)
         {
-            By a = By.XPath("//li/a[text()='"+settingname+"']");
+            By a = By.XPath("//li/a[text()='" + settingname + "']");
             ClickControl(menuGlobalSetting);
             ClickControl(a);
         }
@@ -141,7 +172,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
 
 
-      
+
 
 
 
