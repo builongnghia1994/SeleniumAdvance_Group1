@@ -29,7 +29,7 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By drdnumberclm = By.Id("columnnumber");
         private readonly By btnOK = By.Id("OK");
 
-
+        private readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
 
 
 
@@ -123,13 +123,42 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
+        public void DeletePages()
+        {
+            int numberitems = CountItems(itemsMainPage);
+            for (int i=2; i<=numberitems; i++)
+            {
+                string itempage = "//div[@id='main-menu']/div/ul/li["+i+"]/a]";
+                By realitempage = By.XPath(itempage);
+                string itemclass= FindElement(realitempage).GetAttribute("class").ToString();
+                if(itemclass.Equals(""))
+                {
+                    ClickControl(realitempage);
+                    SelectGlobalSetting("Delete");
+                }
+                
+            }
+        }
+
+        public void DeMoDeletePages()
+        {
+           
+                string itempage = "//div[@id='main-menu']/div/ul/li[3]";
+                By realitempage = By.XPath(itempage);
+                string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
+                
+            Assert.IsTrue(itemclass.Equals("haschild"));
+
+            
+        }
+
         public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyText(username, menuUser);
         }
 
 
-        public void GlobalSetting(string settingname)
+        public void SelectGlobalSetting(string settingname)
         {
             By a = By.XPath("//li/a[text()='" + settingname + "']");
             ClickControl(menuGlobalSetting);
