@@ -7,8 +7,8 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class LoginTestCases : TestBases
     {
-       private string validusername = "thi.nguyen";
-       private string validpass = "1";
+       private string validusername = "administrator";
+       private string validpass = "";
         private string invalidusername = "abc";
         private string invalidpass = "abc";
 
