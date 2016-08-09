@@ -29,6 +29,13 @@ namespace SeleniumAdvance_Group2.Common
             FindElement(control).Click();
         }
 
+        public void ClickControlByJS(By control)
+        {
+            IWebElement webElement = FindElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
 
         public void TypeValue(By control, string value)
         {
@@ -45,7 +52,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public string GetText(By control)
         {
-           return FindElement(control).Text;
+            return FindElement(control).Text;
         }
 
         public bool DoesControlExist(By control)
