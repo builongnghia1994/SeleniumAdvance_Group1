@@ -51,8 +51,26 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public PanelManagerPage GotoPanelManagerPage()
         {
-            ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+
+
+            if (Constant.Browser == "ie")
+            {
+
+                IWebElement webElement = FindElement(menuAdminister);
+                IJavaScriptExecutor executor = (IJavaScriptExecutor) Constant.WebDriver;
+                executor.ExecuteScript("arguments[0].click();", webElement);
+
+                IWebElement webElement1 = FindElement(itemPanel);
+                 executor = (IJavaScriptExecutor)Constant.WebDriver;
+                executor.ExecuteScript("arguments[0].click();", webElement1);
+            }
+
+            else
+            {
+                ClickControl(menuAdminister);
+                ClickControl(itemPanel);
+            }
+
             return new PanelManagerPage();
         }
 
