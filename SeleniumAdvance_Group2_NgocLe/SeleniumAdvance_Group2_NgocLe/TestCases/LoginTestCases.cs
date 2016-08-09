@@ -7,8 +7,8 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class LoginTestCases : TestBases
     {
-       private string username = "thi.nguyen";
-       private string pass = "1";
+       private string validusername = "thi.nguyen";
+       private string validpass = "1";
         private string invalidusername = "abc";
         private string invalidpass = "abc";
 
@@ -18,9 +18,9 @@ namespace SeleniumAdvance_Group2.TestCases
         {
 
             loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(username, pass);
+            generalPage = loginPage.Login(validusername, validpass);
             //VP
-            generalPage.VerifyWelComeUser(username);
+            generalPage.VerifyWelComeUser(validusername);
             loginPage = generalPage.LogOut();
         }
 
@@ -33,5 +33,14 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
         }
 
+        [TestMethod]
+
+        public void DA_LOGIN_TC003_Verify_that_user_fails_to_login_with_correct_username_and_incorrect_password()
+        {
+            loginPage = OpenURL(Constant.DashboardURL);
+            loginPage.LoginWithInvalidUsernameAndPassword(validusername, invalidpass);
+            //vp
+            loginPage.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
+        }
     }
 }
