@@ -37,6 +37,22 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
+        public void VerifyPreDataProfileInAlphabeticalOrder()
+        {
+            bool alphabetical = true;
+            string[] listPreSetDataProfile = GetActualPreDataPRofile();
+            for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
+            {
+                if (StringComparer.Ordinal.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
+                {
+                    alphabetical = false;
+                    break;
+                }
+            }
+
+            Assert.IsTrue(alphabetical);
+        }
+
         #endregion
     }
 }
