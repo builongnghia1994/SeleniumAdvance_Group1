@@ -60,7 +60,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, 3000);
+            WaitForControl(control, Constant.timeout);
             return Constant.WebDriver.FindElement(control);
         }
 
@@ -132,7 +132,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public string GetTextFromAlertPopup()
         {
-            WaitForAlertPresent(10);
+            WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             string alertText = alert.Text;
             alert.Accept();
@@ -142,7 +142,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public void AcceptAlert()
         {
-            WaitForAlertPresent(10);
+            WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Accept();
             Constant.WebDriver.SwitchTo().DefaultContent();
