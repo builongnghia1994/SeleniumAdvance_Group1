@@ -20,8 +20,8 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
             newPageActions = generalPageActions.GotoNewPage();     
             generalPageActions= newPageActions.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-            //vp          
-            generalPageActions.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
+            //vp  
+            generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
             loginPageActions = generalPageActions.LogOut();
            
         }
