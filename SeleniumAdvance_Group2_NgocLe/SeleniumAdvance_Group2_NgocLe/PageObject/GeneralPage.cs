@@ -128,32 +128,45 @@ namespace SeleniumAdvance_Group2.PageObject
             //string  xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
             //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
             //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
-            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[3]/a"));
+            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[1]/a"));
 
             int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
-            Console.WriteLine(items);
+            //Console.WriteLine(items);
 
 
             //By lastitempage = By.XPath("") ;
 
+            string itemclasscurrent = string.Empty;
+            string xpath = string.Empty; 
 
-
-            for (int i = items - 3; i >=2;)
+            for (int i = items - 3; i >=2;i--)
             {
-                string xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
-                string itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                Console.WriteLine(i);
+                //Constant.WebDriver.Navigate().Refresh();
+                xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
+                Console.WriteLine(xpath);
+                itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                
                 while (itemclasscurrent.Equals("haschild"))
                 {
                     Actions builder = new Actions(Constant.WebDriver);
                     Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
+                    hoverClick.Build().Perform();
                     string next = "/following-sibling::ul/li/a";
                     xpath = xpath + next;
+                    itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString(); 
                     //lastitempage = By.XPath(xpath);
                 }
+                
                 ClickControl(By.XPath(xpath));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
-                i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
+                //if (!DoesControlExist(By.XPath(xpath)))
+                //{
+                //    i--;
+                //}
+
+                
 
             }
 
