@@ -117,6 +117,10 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
 
         }
+        public void WaitForControlNotVisible(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
+        }
 
         public int CountItems(By control)
         {

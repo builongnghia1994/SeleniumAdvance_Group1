@@ -30,7 +30,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
             if (afterpage != null)
             { SelectItemByDropdownList(NewPageUI.ddlDisplayAfter, afterpage); }
             ClickControl(NewPageUI.btnOk);
-
+            WaitForControlNotVisible(NewPageUI.txtPageName, 10);
 
         }
 

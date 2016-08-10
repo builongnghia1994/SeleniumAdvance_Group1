@@ -32,6 +32,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.itemLogOut);
             }
             return new LoginPageActions();
+            
         }
 
         public DataProfileManagerPageActions GotoDataProfilePage()

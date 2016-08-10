@@ -14,10 +14,10 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPageActions = OpenURL(Constant.DashboardURL);
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
-            newPageActions.CreadNewPage("public", "TC014", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             loginPageActions = newPageActions.LogOut();
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
-            generalPageActions.
+            generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
         }
 
 
