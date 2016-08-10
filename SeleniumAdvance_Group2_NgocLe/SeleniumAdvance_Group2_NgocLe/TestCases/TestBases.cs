@@ -26,7 +26,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public DataProfileManagerPageActions dataProfileManagerPageActions;
         public PanelManagerPageActions panelManagerPageActions;
         public NewPanelPageActions newPanelPageActions;
-        public NewPageActions newpageActions;
+        public NewPageActions newPageActions;
         #endregion
 
         public TestContext TestContext { get; set; }
