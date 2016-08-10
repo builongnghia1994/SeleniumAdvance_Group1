@@ -5,9 +5,15 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
 using System;
 using System.Configuration;
 using System.Configuration.Assemblies;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -15,12 +21,12 @@ namespace SeleniumAdvance_Group2.TestCases
     public class TestBases : CommonActions
     {
         #region Create pageobject
-        public GeneralPage generalPage;
-        public LoginPage loginPage;
-        public DataProfilePage dataProfilePage;
-        public PanelManagerPage panelManagerPage;
-        public PanelPage panelPage;
-        public NewPage newpage;
+        public GeneralPageActions generalPage;
+        public LoginPageActions loginPageActions;
+        public DataProfileManagerPageActions dataProfileManagerPageActions;
+        public PanelManagerPageActions panelManagerPageActions;
+        public PageObject.PanelPage.NewPanelPageActions newPanelPageActions;
+        public NewPageActions newpage;
         #endregion
 
         public TestContext TestContext { get; set; }
