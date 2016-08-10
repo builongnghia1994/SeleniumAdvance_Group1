@@ -55,10 +55,10 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
         }
-        public LoginPage OpenURL(string url)
+        public LoginPage1 OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPage();
+            return new LoginPage1();
         }
         public IWebElement FindElement(By control)
         {

@@ -11,10 +11,10 @@ namespace SeleniumAdvance_Group2.PageObject
 {
     public class LoginPage:GeneralPage
     {
-        private readonly By ddlRespository = By.Id("repository");
-        private readonly By txtUserName = By.Id("username");
-        private readonly By txtPassWord = By.Id("password");
-        private readonly By btnLogin = By.XPath("//div[@id='content']//div[@class='btn-login']");
+        public readonly By ddlRespository = By.Id("repository");
+        public readonly By txtUserName = By.Id("username");
+        public readonly By txtPassWord = By.Id("password");
+        public readonly By btnLogin = By.XPath("//div[@id='content']//div[@class='btn-login']");
 
 
         public GeneralPage Login(string respository,string username, string password)

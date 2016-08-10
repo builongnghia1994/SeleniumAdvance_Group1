@@ -12,13 +12,13 @@ namespace SeleniumAdvance_Group2.PageObject
     public class NewPage : GeneralPage
     {
 
-        private readonly By txtPageName = By.Id("name");
-        private readonly By ddlParentName = By.Id("parent");
-        private readonly By ddlDisplayAfter = By.Id("afterpage");
-        private readonly By rdPublic = By.Id("ispublic");
-        private readonly By ddlnumbercolum = By.Id("columnnumber");
-        private readonly By btnOk = By.Id("OK");
-        private readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
+        public readonly By txtPageName = By.Id("name");
+        public readonly By ddlParentName = By.Id("parent");
+        public readonly By ddlDisplayAfter = By.Id("afterpage");
+        public readonly By rdPublic = By.Id("ispublic");
+        public readonly By ddlnumbercolum = By.Id("columnnumber");
+        public readonly By btnOk = By.Id("OK");
+        public readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
 
         private readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
 
