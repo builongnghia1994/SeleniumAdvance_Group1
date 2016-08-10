@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class DataProfilePage: GeneralPage
+    public class DataProfilePage : GeneralPage
     {
         private By tblDataProfile = By.XPath("//table[@class='GridView']/tbody/tr");
         #region Methods
@@ -19,25 +19,38 @@ namespace SeleniumAdvance_Group2.PageObject
             List<string> tableValues = new List<string>();
             for (int i = 2; i < CountItems(tblDataProfile); i++)
             {
-                string row ="//table[@class='GridView']//tr["+i+"]//a[text()='Edit']";
+                string row = "//table[@class='GridView']//tr[" + i + "]//a[text()='Edit']";
                 if (!DoesControlExist(By.XPath(row)))
                 {
-                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" +i+ "]/td[2]")).Text);
+                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" + i + "]/td[2]")).Text);
                 }
             }
             return tableValues.ToArray();
         }
 
-        
-
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
             for (int i = 0; i < actualValues.Length; i++)
             {
-                Console.WriteLine(expectedValues[i]+"\n"+actualValues[i]);
+                Console.WriteLine(expectedValues[i] + "\n" + actualValues[i]);
                 VerifyText(expectedValues[i], actualValues[i]);
             }
+        }
 
+        public void VerifyPreDataProfileInAlphabeticalOrder()
+        {
+            bool alphabetical = true;
+            string[] listPreSetDataProfile = GetActualPreDataPRofile();
+            for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
+            {
+                if (StringComparer.Ordinal.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
+                {
+                    alphabetical = false;
+                    break;
+                }
+            }
+
+            Assert.IsTrue(alphabetical);
         }
 
         #endregion

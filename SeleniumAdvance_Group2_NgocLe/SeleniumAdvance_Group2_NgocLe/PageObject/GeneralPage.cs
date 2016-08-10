@@ -8,14 +8,18 @@ using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject
 {
-    public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
         private readonly By menuUser = By.XPath("//a[@href='#Welcome']");
         private readonly By itemLogOut = By.XPath("//a[@href='logout.do']");
         private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
-        private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a");
+
+        private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        private readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
+
+
 
 
         private readonly By txtPageName = By.Id("name");
@@ -33,22 +37,53 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public LoginPage LogOut()
         {
-            ClickControl(menuUser);
-            ClickControl(itemLogOut);
+            if (Constant.Browser == "ie")
+            {
+
+                ClickControlByJS(menuUser);
+                ClickControlByJS(itemLogOut);
+            }
+            else
+            {
+                ClickControl(menuUser);
+                ClickControl(itemLogOut);
+            }
             return new LoginPage();
         }
 
         public DataProfilePage GotoDataProfilePage()
         {
-            ClickControl(menuAdminister);
-            ClickControl(itemDataProfile);
+            if (Constant.Browser == "ie")
+            {
+
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemDataProfile);
+            }
+            else
+            {
+                ClickControl(menuAdminister);
+                ClickControl(itemDataProfile);
+            }
+
             return new DataProfilePage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
         {
-            ClickControl(menuAdminister);
-            ClickControl(itemPanel);
+
+
+            if (Constant.Browser == "ie")
+            {
+                ClickControlByJS(menuAdminister);
+                ClickControlByJS(itemPanel);
+            }
+
+            else
+            {
+                ClickControl(menuAdminister);
+                ClickControl(itemPanel);
+            }
+
             return new PanelManagerPage();
         }
 
@@ -63,10 +98,9 @@ namespace SeleniumAdvance_Group2.PageObject
             WaitForControl(menuUser, 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-            int b=0;
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[b] + "']";
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
-            if (allpages.Length==1)
+            if (allpages.Length == 1)
             {
                 //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
                 lastpage = By.XPath(currentpagexpath);
@@ -75,51 +109,71 @@ namespace SeleniumAdvance_Group2.PageObject
             else
             {
                 //trường hợp nếu phải thông qua nhiều page
-            for (b=0;(b+1)< allpages.Length; b++)
-            {       
-                Actions builder = new Actions(Constant.WebDriver);
-                Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
-                hoverClick.Build().Perform();
-                string next = "/following-sibling::ul/li/a[text()='" + allpages[b+1] + "']";
-                currentpagexpath = currentpagexpath + next;
-                lastpage = By.XPath(currentpagexpath);
-            }
+                for (int b = 1; b < allpages.Length; b++)
+                {
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
+                    hoverClick.Build().Perform();
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
+                    currentpagexpath = currentpagexpath + next;
+                    lastpage = By.XPath(currentpagexpath);
+                }
                 ClickControl(lastpage);
             }
         }
 
-        public void VerifyWelComeUser(string username)
+        public void VerifyWelComeUserDisplayed(string username)
         {
-            VerifyText(menuUser, username);
-        }
-
-        public void VerifyText(By element, string expectedText)
-        {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
+            VerifyText(username, menuUser);
         }
 
 
-
-
-
-        public void SelectGlobalSetting(string settingname)
+        public void GlobalSetting(string settingname)
         {
-            By itemGlobal = By.XPath("//li/a[text()='"+settingname+"']");
+            By a = By.XPath("//li/a[text()='" + settingname + "']");
             ClickControl(menuGlobalSetting);
-            ClickControl(itemGlobal);
+            ClickControl(a);
         }
-        public void DeletePage(string pagelink)
-        {
-            string[] allpages = pagelink.Split('/');
-            string deletepage = allpages[allpages.Length - 1];
 
-            string childpage = "//li[@class='haschild']/a[text()='" + deletepage + "']//following-sibling::ul//li[@class!='haschild']";
-            GotoPage(pagelink);
-            SelectGlobalSetting("Delete");
-            Constant.WebDriver.SwitchTo().Alert().Accept();
+
+        public void CreatePage(string pagename, string ispublic, string parentname, string numberclm, string afterpage)
+        {
+            FindElement(txtPageName).SendKeys(pagename);
+            switch (ispublic)
+            {
+                case "public":
+                    FindElement(rdIsPublic).Click();
+                    break;
+                default:
+                    break;
+            }
+            if (parentname != "")
+            {
+                new SelectElement(FindElement(drdparentname)).SelectByText(parentname);
+            }
+            if (afterpage != "")
+            {
+                new SelectElement(FindElement(drdafterpage)).SelectByText(afterpage);
+            }
+            if (numberclm != "")
+            {
+                new SelectElement(FindElement(drdnumberclm)).SelectByText(numberclm);
+            }
+            ClickControl(btnOK);
         }
- 
+
+
+        public NewPage GotoNewPage()
+        {
+            GlobalSetting("Add Page");
+            return new NewPage();
+        }
+
+
+
+
+
+
 
     }
 }
