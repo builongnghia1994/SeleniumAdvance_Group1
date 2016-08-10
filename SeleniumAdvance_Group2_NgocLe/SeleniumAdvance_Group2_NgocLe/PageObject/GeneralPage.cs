@@ -129,27 +129,39 @@ namespace SeleniumAdvance_Group2.PageObject
             //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
             //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
 
-            Console.WriteLine("aaaaaaaaaaaaaaa"+(CountItems(By.XPath("//div[@id='main-menu']/div/ul/li"))));
-            for(int i = 14; i >=2;)
+
+            By lastxpath = By.XPath("");
+            By imtecalss = By.XPath("");
+            string xpath = "//div[@id='main-menu']/div/ul/li[5]/a";
+            string itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+
+            if (itemclasscurrent.Equals(""))
             {
-                
-                string xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
-                string itemclass = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                while (itemclass.Equals("haschild"))
-                {
-                    Console.WriteLine(itemclass);
-                    Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
-                    hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a";
-                    xpath = xpath + next;
-                    itemclass = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                }
                 ClickControl(By.XPath(xpath));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
-
             }
+            else
+            {
+              
+                    while (itemclasscurrent.Equals("haschild"))
+                    {
+                        Console.WriteLine(itemclasscurrent);
+                        Actions builder = new Actions(Constant.WebDriver);
+                        Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
+                        hoverClick.Build().Perform();
+                        string next = "/following-sibling::ul/li/a";
+                        xpath = xpath + next;
+                        
+                        lastxpath = By.XPath(xpath);
+                        
+                    }
+                    ClickControl(lastxpath);
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
+                
+            }
+            
             //for (int i = 2; i <= numberitems; i++)
             //{
             //    string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[2]/a";
