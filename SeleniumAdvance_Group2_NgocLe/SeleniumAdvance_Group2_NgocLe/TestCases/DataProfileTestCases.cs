@@ -16,9 +16,9 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
 
-            dataProfileManagerPageActions = generalPage.GotoDataProfilePage();
+            dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
             dataProfileManagerPageActions.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfileManagerPageActions.GetActualPreDataPRofile());
         }
@@ -28,9 +28,9 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
 
-            dataProfileManagerPageActions = generalPage.GotoDataProfilePage();
+            dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
             dataProfileManagerPageActions.VerifyPreDataProfileInAlphabeticalOrder();
         }
