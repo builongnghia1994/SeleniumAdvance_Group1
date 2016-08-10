@@ -10,17 +10,15 @@ namespace SeleniumAdvance_Group2.TestCases
 
         private string username = "thi.nguyen";
         private string pass = "1";
-       // private string statuspublic = "public";
+        //private string statuspublic = "public";
         //private string pagename = "Thiaddpage3";
 
         [TestMethod]
 
        public void Demo_Thi()
-
         {
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.Respository, username, pass);
-           
+            loginPageActions = OpenURL(Constant.DashboardURL);
+            generalPage = loginPageActions.Login(Constant.Respository, username, pass);          
         }
     }
 }
