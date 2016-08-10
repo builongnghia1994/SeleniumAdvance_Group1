@@ -93,34 +93,7 @@ namespace SeleniumAdvance_Group2.PageObject
             return panelManagerPage.GoToPanelPage();
         }
 
-        public void GotoPage(string way)
-        {
-            WaitForControl(menuUser, 5);
-            string[] allpages = way.Split('/');
-            By lastpage = By.XPath("");
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
-            if (allpages.Length == 1)
-            {
-                //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
-                lastpage = By.XPath(currentpagexpath);
-                ClickControl(lastpage);
-            }
-            else
-            {
-                //trường hợp nếu phải thông qua nhiều page
-                for (int b = 1; b < allpages.Length; b++)
-                {
-                    Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
-                    hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
-                    currentpagexpath = currentpagexpath + next;
-                    lastpage = By.XPath(currentpagexpath);
-                }
-                ClickControl(lastpage);
-            }
-        }
 
         public void VerifyWelComeUserDisplayed(string username)
         {

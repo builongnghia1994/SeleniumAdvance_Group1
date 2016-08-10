@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenQA.Selenium;
+using SeleniumAdvance_Group2.Common;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
-    class GeneralPageActions
+    public class GeneralPageActions
     {
     }
 }
+
+        
+       
