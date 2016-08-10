@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using OpenQA.Selenium;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -20,8 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.Respository, username, pass);
-            generalPage.DeMoDeletePages();
-           
+            Console.WriteLine(Constant.WebDriver.FindElements(By.XPath(".//*[@id='main-menu']/div/ul/li/a")).Count);
         }
     }
 }

@@ -124,28 +124,59 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public void DeletePages()
         {
-            int numberitems = CountItems(itemsMainPage);
-            for (int i = 2; i <= numberitems; i++)
+            //int numberitems = CountItems(itemsMainPage);
+            //string  xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
+            //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
+            //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
+            Console.WriteLine("aaaaaaaaaaaaaaa"+(CountItems(By.XPath("//div[@id='main-menu']/div/ul/li"))));
+            for(int i = 14; i >=2;)
             {
-                string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a]";
-                By realitempage = By.XPath(curentitempagexpath);
-                string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
-                if (itemclass.Equals(""))
+                
+                string xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
+                string itemclass = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                while (itemclass.Equals("haschild"))
                 {
-                    ClickControl(realitempage);
-                    SelectGlobalSetting("Delete");
-                    AcceptAlert();
-                }
-
-                if (itemclass.Equals("haschild")) 
-                {
+                    Console.WriteLine(itemclass);
                     Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(curentitempagexpath)));
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
                     hoverClick.Build().Perform();
-
+                    string next = "/following-sibling::ul/li/a";
+                    xpath = xpath + next;
+                    itemclass = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                 }
+                ClickControl(By.XPath(xpath));
+                SelectGlobalSetting("Delete");
+                AcceptAlert();
 
             }
+            //for (int i = 2; i <= numberitems; i++)
+            //{
+            //    string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[2]/a";
+            //    By realitempage = By.XPath(curentitempagexpath);
+            //    string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
+            //    if (itemclass.Equals(""))
+            //    {
+            //        ClickControl(realitempage);
+            //        SelectGlobalSetting("Delete");
+            //        AcceptAlert();
+            //    }
+            //    else
+            //    {
+            //        while (itemclass.Equals("haschild"))
+            //        {
+
+            //            Actions builder = new Actions(Constant.WebDriver);
+            //            Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(curentitempagexpath)));
+            //            string next = "/following-sibling::ul/li";
+            //            curentitempagexpath = curentitempagexpath + next;
+            //            By lastitempage = By.XPath(curentitempagexpath);
+
+            //        }
+            //    }
+
+
+
+            //}
         }
 
 
@@ -192,7 +223,7 @@ namespace SeleniumAdvance_Group2.PageObject
 
         public NewPage GotoNewPage()
         {
-            GlobalSetting("Add Page");
+            SelectGlobalSetting("Add Page");
             return new NewPage();
         }
 
