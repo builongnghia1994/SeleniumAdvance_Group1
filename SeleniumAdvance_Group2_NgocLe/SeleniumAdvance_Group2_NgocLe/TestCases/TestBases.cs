@@ -21,12 +21,12 @@ namespace SeleniumAdvance_Group2.TestCases
     public class TestBases : CommonActions
     {
         #region Create pageobject
-        public GeneralPageActions generalPage;
+        public GeneralPageActions generalPageActions;
         public LoginPageActions loginPageActions;
         public DataProfileManagerPageActions dataProfileManagerPageActions;
         public PanelManagerPageActions panelManagerPageActions;
-        public PageObject.PanelPage.NewPanelPageActions newPanelPageActions;
-        public NewPageActions newpage;
+        public NewPanelPageActions newPanelPageActions;
+        public NewPageActions newpageActions;
         #endregion
 
         public TestContext TestContext { get; set; }
