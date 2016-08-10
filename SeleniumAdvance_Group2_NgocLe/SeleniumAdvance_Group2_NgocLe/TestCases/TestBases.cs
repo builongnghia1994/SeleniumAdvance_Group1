@@ -25,7 +25,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public LoginPageActions loginPageActions;
         public DataProfileManagerPageActions dataProfileManagerPageActions;
         public PanelManagerPageActions panelManagerPageActions;
-        public PageObject.PanelPage.NewPanelPageActions newPanelPageActions;
+        public NewPanelPageActions newPanelPageActions;
         public NewPageActions newPageActions;
         #endregion
 

@@ -10,7 +10,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
 {
     public class NewPageActions : GeneralPageActions
     {
-        public void CreadNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
+        public GeneralPageActions CreadNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
             switch (status.ToLower())
@@ -30,10 +30,10 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
             if (afterpage != null)
             { SelectItemByDropdownList(NewPageUI.ddlDisplayAfter, afterpage); }
             ClickControl(NewPageUI.btnOk);
-            WaitForControlNotVisible(NewPageUI.txtPageName, 10);
 
+            return new GeneralPageActions();
         }
 
        
     }
-}
+} 
