@@ -10,10 +10,10 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void NgocTC01()
         {
-
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.userTrang, Constant.passTrang);
-            generalPage.GotoPage("Trang/Trang1/Trang2");
+            generalPage.GotoPage("Trang/Trang1");
+            generalPage.DeletePage("Trang/Trang1");
         }
 
 

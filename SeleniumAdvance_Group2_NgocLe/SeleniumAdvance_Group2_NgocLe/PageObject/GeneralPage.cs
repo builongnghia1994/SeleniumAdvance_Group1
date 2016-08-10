@@ -15,10 +15,7 @@ namespace SeleniumAdvance_Group2.PageObject
         private readonly By menuAdminister = By.XPath("//a[@href='#Administer']");
         private readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         private readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
-
-        private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
-
-
+        private readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a");
 
 
         private readonly By txtPageName = By.Id("name");
@@ -101,45 +98,28 @@ namespace SeleniumAdvance_Group2.PageObject
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
-        public void GlobalSetting(string settingname)
+
+
+
+
+
+        public void SelectGlobalSetting(string settingname)
         {
-            By a = By.XPath("//li/a[text()='"+settingname+"']");
+            By itemGlobal = By.XPath("//li/a[text()='"+settingname+"']");
             ClickControl(menuGlobalSetting);
-            ClickControl(a);
+            ClickControl(itemGlobal);
         }
-
-
-        public void CreatePage(string pagename, string ispublic, string parentname, string numberclm, string afterpage)
+        public void DeletePage(string pagelink)
         {
-            FindElement(txtPageName).SendKeys(pagename);
-            switch (ispublic)
-            {
-                case "public":
-                    FindElement(rdIsPublic).Click();
-                    break;
-                default:
-                    break;
-            }
-            if (parentname != "")
-            {
-                new SelectElement(FindElement(drdparentname)).SelectByText(parentname);
-            }
-            if (afterpage != "")
-            {
-                new SelectElement(FindElement(drdafterpage)).SelectByText(afterpage);
-            }
-            if (numberclm != "")
-            {
-                new SelectElement(FindElement(drdnumberclm)).SelectByText(numberclm);
-            }
-            ClickControl(btnOK);
+            string[] allpages = pagelink.Split('/');
+            string deletepage = allpages[allpages.Length - 1];
+
+            string childpage = "//li[@class='haschild']/a[text()='" + deletepage + "']//following-sibling::ul//li[@class!='haschild']";
+            GotoPage(pagelink);
+            SelectGlobalSetting("Delete");
+            Constant.WebDriver.SwitchTo().Alert().Accept();
         }
-
-
-
-
-
-
+ 
 
     }
 }
