@@ -11,6 +11,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -55,10 +56,10 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
         }
-        public LoginPage1 OpenURL(string url)
+        public LoginPageActions OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPage1();
+            return new LoginPageActions();
         }
         public IWebElement FindElement(By control)
         {

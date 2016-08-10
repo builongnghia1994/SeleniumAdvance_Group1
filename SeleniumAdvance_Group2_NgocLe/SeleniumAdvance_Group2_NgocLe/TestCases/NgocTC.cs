@@ -11,8 +11,8 @@ namespace SeleniumAdvance_Group2.TestCases
         public void NgocTC01()
         {
 
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            loginPageActions = OpenURL(Constant.DashboardURL);
+            generalPage = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             generalPage.GotoPage("Trang/Trang1/Trang2");
         }
 
