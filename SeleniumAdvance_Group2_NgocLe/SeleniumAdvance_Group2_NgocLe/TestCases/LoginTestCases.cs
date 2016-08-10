@@ -18,10 +18,10 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_with_correct_credentials()
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPage = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
             //VP
-            generalPage.VerifyWelComeUserDisplayed(validusername);
-            loginPageActions = generalPage.LogOut();
+            generalPageActions.VerifyWelComeUserDisplayed(validusername);
+            loginPageActions = generalPageActions.LogOut();
         }
 
         [TestMethod]
@@ -46,12 +46,12 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_LOGIN_TC004_Verify_that_user_login_different_repositories_successfully_after_logging_out_current_repository()
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPage = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
-            loginPageActions = generalPage.LogOut();
-            generalPage = loginPageActions.Login(respository_TestRepository, validusername, validpass);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            loginPageActions = generalPageActions.LogOut();
+            generalPageActions = loginPageActions.Login(respository_TestRepository, validusername, validpass);
             //VP
-            generalPage.VerifyWelComeUserDisplayed(validusername);
-            loginPageActions = generalPage.LogOut();
+            generalPageActions.VerifyWelComeUserDisplayed(validusername);
+            loginPageActions = generalPageActions.LogOut();
         }
     }
 }

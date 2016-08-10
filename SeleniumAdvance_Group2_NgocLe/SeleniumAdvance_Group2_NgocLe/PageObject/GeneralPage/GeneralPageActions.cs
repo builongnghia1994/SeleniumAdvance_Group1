@@ -113,36 +113,9 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
         public void GlobalSetting(string settingname)
         {
-            By a = By.XPath("//li/a[text()='" + settingname + "']");
+            By control = By.XPath("//li/a[text()='" + settingname + "']");
             ClickControl(GeneralPageUI.menuGlobalSetting);
-            ClickControl(a);
-        }
-
-
-        public void CreatePage(string pagename, string ispublic, string parentname, string numberclm, string afterpage)
-        {
-            FindElement(GeneralPageUI.txtPageName).SendKeys(pagename);
-            switch (ispublic)
-            {
-                case "public":
-                    FindElement(GeneralPageUI.rdIsPublic).Click();
-                    break;
-                default:
-                    break;
-            }
-            if (parentname != "")
-            {
-                new SelectElement(FindElement(GeneralPageUI.drdparentname)).SelectByText(parentname);
-            }
-            if (afterpage != "")
-            {
-                new SelectElement(FindElement(GeneralPageUI.drdafterpage)).SelectByText(afterpage);
-            }
-            if (numberclm != "")
-            {
-                new SelectElement(FindElement(GeneralPageUI.drdnumberclm)).SelectByText(numberclm);
-            }
-            ClickControl(GeneralPageUI.btnOK);
+            ClickControl(control);
         }
 
 
