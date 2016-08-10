@@ -18,6 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPageActions = newPageActions.LogOut();
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
+
         }
 
 
