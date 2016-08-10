@@ -128,40 +128,37 @@ namespace SeleniumAdvance_Group2.PageObject
             //string  xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
             //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
             //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
+            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[3]/a"));
+
+            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
+            Console.WriteLine(items);
 
 
-            By lastxpath = By.XPath("");
-            By imtecalss = By.XPath("");
-            string xpath = "//div[@id='main-menu']/div/ul/li[5]/a";
-            string itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+            //By lastitempage = By.XPath("") ;
 
-            if (itemclasscurrent.Equals(""))
+
+
+            for (int i = items - 3; i >=2;)
             {
+                string xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
+                string itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                while (itemclasscurrent.Equals("haschild"))
+                {
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
+                    string next = "/following-sibling::ul/li/a";
+                    xpath = xpath + next;
+                    //lastitempage = By.XPath(xpath);
+                }
                 ClickControl(By.XPath(xpath));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
+                i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
+
             }
-            else
-            {
-              
-                    while (itemclasscurrent.Equals("haschild"))
-                    {
-                        Console.WriteLine(itemclasscurrent);
-                        Actions builder = new Actions(Constant.WebDriver);
-                        Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
-                        hoverClick.Build().Perform();
-                        string next = "/following-sibling::ul/li/a";
-                        xpath = xpath + next;
-                        
-                        lastxpath = By.XPath(xpath);
-                        
-                    }
-                    ClickControl(lastxpath);
-                    SelectGlobalSetting("Delete");
-                    AcceptAlert();
-                
-            }
-            
+
+
+
             //for (int i = 2; i <= numberitems; i++)
             //{
             //    string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[2]/a";

@@ -30,14 +30,14 @@ namespace SeleniumAdvance_Group2.TestCases
         }
         #endregion
 
-        //#region TestCleanup
-        //[TestCleanup]
-        //public void TestCleanupMethods()
-        //{
+        #region TestCleanup
+        [TestCleanup]
+        public void TestCleanupMethods()
+        {
 
-        //    CloseBrowser();
-        //}
-        //#endregion
+            CloseBrowser();
+        }
+        #endregion
 
 
     }
