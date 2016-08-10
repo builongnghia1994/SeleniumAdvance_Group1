@@ -54,9 +54,10 @@ namespace SeleniumAdvance_Group2.PageObject
         public void VerifyNameOfNewPageDisplayedBesidesSpecificItemDisplayAfter(string itemdisplayafter, string namepage)
         {
             int numberitemsmainmenu = CountItems(itemsMainPage) - 2;
+            Console.WriteLine(numberitemsmainmenu);
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
-
+                WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='"+namepage+"']"), 2);
                 string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
                 By realitemMainpage = By.XPath(itemmenuMainPage);
                 if (GetText(realitemMainpage).Equals(itemdisplayafter))

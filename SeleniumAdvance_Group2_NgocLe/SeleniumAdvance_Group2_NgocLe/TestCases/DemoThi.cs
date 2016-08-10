@@ -21,7 +21,9 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.Respository, username, pass);
-            Console.WriteLine(Constant.WebDriver.FindElements(By.XPath(".//*[@id='main-menu']/div/ul/li/a")).Count);
+            By control = By.XPath("//div[@id='main-menu']/div/ul/li/a");
+            int numbers =CountItems(control);
+            Console.WriteLine(numbers);
         }
     }
 }

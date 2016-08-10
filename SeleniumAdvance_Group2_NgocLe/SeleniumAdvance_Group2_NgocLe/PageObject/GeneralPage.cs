@@ -128,6 +128,7 @@ namespace SeleniumAdvance_Group2.PageObject
             //string  xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
             //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
             //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
+
             Console.WriteLine("aaaaaaaaaaaaaaa"+(CountItems(By.XPath("//div[@id='main-menu']/div/ul/li"))));
             for(int i = 14; i >=2;)
             {
