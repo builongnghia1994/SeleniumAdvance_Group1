@@ -146,8 +146,9 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
-        { 
-
+        {
+            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='"+namepage+"']"), 3);
+            
             int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {

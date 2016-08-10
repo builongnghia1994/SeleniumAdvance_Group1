@@ -19,11 +19,11 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPageActions = OpenURL(Constant.DashboardURL);
             generalPage = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
             newpage = generalPage.GotoNewPage();     
-            newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-            //vp
-            //loginPageActions = newpage.LogOut();
-            //generalPage = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            generalPage= newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            //vp          
             generalPage.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
+            loginPageActions = generalPage.LogOut();
+           
         }
 
        
