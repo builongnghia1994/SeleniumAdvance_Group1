@@ -21,7 +21,9 @@ namespace SeleniumAdvance_Group2.TestCases
             newpage = generalPage.GotoNewPage();     
             newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp
-            newpage.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
+            //loginPageActions = newpage.LogOut();
+            //generalPage = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
         }
 
        

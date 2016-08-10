@@ -146,7 +146,8 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
-        {
+        { 
+
             int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
