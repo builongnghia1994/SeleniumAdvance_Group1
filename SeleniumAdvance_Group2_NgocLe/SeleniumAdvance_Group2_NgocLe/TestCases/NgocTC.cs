@@ -13,7 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
-            generalPage.GotoPage("Trang/Trang1/Trang2");
+            generalPage.GotoPage("trang.le/Logout");
         }
 
 

@@ -64,6 +64,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             WaitForControl(control, Constant.timeout);
             return Constant.WebDriver.FindElement(control);
+
         }
 
         public void ClickControl(By control)
