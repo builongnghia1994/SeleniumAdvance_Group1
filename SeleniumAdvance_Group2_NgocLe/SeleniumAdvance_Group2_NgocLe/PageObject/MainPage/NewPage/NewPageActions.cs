@@ -34,25 +34,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
 
         }
 
-        public void VerifyNameOfNewPageDisplayedBesidesSpecificItemDisplayAfter(string itemdisplayafter, string namepage)
-        {
-            int numberitemsmainmenu = CountItems(NewPageUI.itemsMainPage) - 2;
-            for (int i = 1; i <= numberitemsmainmenu; i++)
-            {
-
-                string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
-                By realitemMainpage = By.XPath(itemmenuMainPage);
-                if (GetText(realitemMainpage).Equals(itemdisplayafter))
-
-                {
-                    string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
-                    By realitemnamepage = By.XPath(itemnamepage);
-                    string real = GetText(realitemnamepage);
-                    VerifyText(namepage, realitemnamepage);
-
-                }
-            }
-
-        }
+       
     }
 }

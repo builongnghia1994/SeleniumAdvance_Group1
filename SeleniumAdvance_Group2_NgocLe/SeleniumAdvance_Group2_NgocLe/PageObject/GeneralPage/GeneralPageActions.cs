@@ -145,7 +145,28 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             ClickControl(GeneralPageUI.btnOK);
         }
 
+        public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
+        {
+            int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
+            for (int i = 1; i <= numberitemsmainmenu; i++)
+            {
 
+                string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
+                By realitemMainpage = By.XPath(itemmenuMainPage);
+                if (GetText(realitemMainpage).Equals(itemdisplayafter))
+
+                {
+                    string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
+                    By realitemnamepage = By.XPath(itemnamepage);
+                    string real = GetText(realitemnamepage);
+                    VerifyText(namepage, realitemnamepage);
+
+                }
+            }
+
+        }
+
+     
         public NewPageActions GotoNewPage()
         {
             GlobalSetting("Add Page");

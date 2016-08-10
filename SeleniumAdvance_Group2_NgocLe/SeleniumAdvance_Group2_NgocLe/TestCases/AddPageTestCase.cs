@@ -21,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newpage = generalPage.GotoNewPage();     
             newpage.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp
-            newpage.VerifyNameOfNewPageDisplayedBesidesSpecificItemDisplayAfter(specificitemdisplayafter, pagename);
+            newpage.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
         }
 
        
