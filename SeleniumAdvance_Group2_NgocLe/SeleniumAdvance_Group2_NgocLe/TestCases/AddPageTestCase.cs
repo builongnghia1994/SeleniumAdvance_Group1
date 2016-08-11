@@ -17,11 +17,13 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername,validpass);
-            newPageActions = generalPageActions.GotoNewPage();
-            newPageActions.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-            //vp
-            newPageActions.VerifyPageDisplayedBesideAnotherPage(specificitemdisplayafter, pagename);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            newPageActions = generalPageActions.GotoNewPage();     
+            generalPageActions= newPageActions.CreadNewPage(statuspublic, pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            //vp  
+            generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
+            loginPageActions = generalPageActions.LogOut();
+           
         }
 
        
