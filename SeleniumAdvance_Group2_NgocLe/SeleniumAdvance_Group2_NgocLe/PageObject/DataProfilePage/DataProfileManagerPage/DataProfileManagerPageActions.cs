@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
 using SeleniumAdvance_Group2.PageObject.GeneralPage;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage.NewDataProfilePage;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage
 {
     public class DataProfileManagerPageActions : GeneralPageActions
     {
+        #region GotoPage methods
+
+        public NewDataProfileActions GotoNewDataProfile()
+        {
+            ClickControl(DataProfileManagerPageUI.linkAddNew);
+            return new NewDataProfileActions();
+        }
+
+        #endregion
+
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
@@ -23,6 +32,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
             }
             return tableValues.ToArray();
         }
+
+        #region Verify methods
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
@@ -55,5 +66,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
             }
             Assert.IsTrue(alphabetical, errorMessage);
         }
+
+        #endregion
     }
 }

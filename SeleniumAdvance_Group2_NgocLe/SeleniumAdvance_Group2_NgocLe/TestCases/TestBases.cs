@@ -15,6 +15,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage.NewDataProfilePage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -25,10 +26,12 @@ namespace SeleniumAdvance_Group2.TestCases
         public GeneralPageActions generalPageActions;
         public LoginPageActions loginPageActions;
         public DataProfileManagerPageActions dataProfileManagerPageActions;
+        public NewDataProfileActions newDataProfileActions;
         public PanelManagerPageActions panelManagerPageActions;
         public NewPanelPageActions newPanelPageActions;
         public NewPageActions newPageActions;
         public EditPageActions editPageActions;
+        
         #endregion
 
         public TestContext TestContext { get; set; }

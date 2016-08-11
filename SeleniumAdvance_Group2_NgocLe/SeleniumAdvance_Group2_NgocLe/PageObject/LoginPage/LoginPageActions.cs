@@ -20,6 +20,15 @@ namespace SeleniumAdvance_Group2.PageObject.LoginPage
             return new GeneralPageActions();
         }
 
+        public GeneralPageActions Login1(string respository, string username, string password)
+        {
+            SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
+            TypeValue(LoginPageUI.txtUserName, username);
+            TypeValue(LoginPageUI.txtPassWord, password);
+            ClickControl(LoginPageUI.btnLogin);
+            return new GeneralPageActions();
+        }
+
         public void LoginWithInvalidUsernameAndPassword(string respository, string username, string password)
         {
             SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
