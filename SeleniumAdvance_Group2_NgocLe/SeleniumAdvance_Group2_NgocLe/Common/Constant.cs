@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Configuration;
+using System.IO;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -30,7 +31,8 @@ namespace SeleniumAdvance_Group2.Common
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
         public static string defaultValue = null;
         public static int timeout = 10;
-
+        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\PageObject\\XML\\";
+        public static string XMLLoginPage = "LoginPage.xml";
 
     }
 }
