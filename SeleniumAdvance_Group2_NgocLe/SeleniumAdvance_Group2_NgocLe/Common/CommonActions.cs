@@ -170,5 +170,10 @@ namespace SeleniumAdvance_Group2.Common
         {
             Assert.IsTrue(DoesControlExist(control));
         }
+
+
+
+
+       
     }
 }

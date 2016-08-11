@@ -19,6 +19,8 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
     public class GeneralPageActions : CommonActions
     {
+     
+
         public LoginPageActions LogOut()
         {
             if (Constant.Browser == "ie")
@@ -147,7 +149,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
      
         public NewPageActions GotoNewPage()
         {
-           
+            
             GlobalSetting("Add Page");
             return new NewPageActions();
         }

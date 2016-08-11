@@ -39,17 +39,17 @@ namespace SeleniumAdvance_Group2.TestCases
             OpenBrowser(Constant.Browser);
         }
 
-        //[AssemblyCleanup]
-        //public static void AssemblyCleanupMethod()
-        //{
-        //    Constant.WebDriver.Quit();
-        //}
+        [AssemblyCleanup]
+        public static void AssemblyCleanupMethod()
+        {
+            Constant.WebDriver.Quit();
+        }
 
-        //[TestCleanup]
-        //public void TestCleanupMethods()
-        //{
-        //    Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
-        //}
+        [TestCleanup]
+        public void TestCleanupMethods()
+        {
+            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
+        }
 
     }
 }
