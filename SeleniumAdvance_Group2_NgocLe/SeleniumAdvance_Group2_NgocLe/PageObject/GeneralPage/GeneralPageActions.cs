@@ -140,7 +140,6 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                     By realitemnamepage = By.XPath(itemnamepage);
                     string real = GetText(realitemnamepage);
                     VerifyText(namepage, realitemnamepage);
-
                 }
             }
 
@@ -156,7 +155,6 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
         public EditPageActions GotoEditPage(string namepage)
         {
-           
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             GlobalSetting("Edit");
             return new EditPageActions();

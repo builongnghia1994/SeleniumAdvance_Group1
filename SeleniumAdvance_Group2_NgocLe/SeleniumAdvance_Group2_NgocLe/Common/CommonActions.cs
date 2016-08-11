@@ -199,6 +199,7 @@ namespace SeleniumAdvance_Group2.Common
             Assert.IsTrue(DoesControlExist(control));
         }
 
+
         public Dictionary<string, string>[] ReadXMlFile(string filename)
         {
             XmlDocument xd = new XmlDocument();
