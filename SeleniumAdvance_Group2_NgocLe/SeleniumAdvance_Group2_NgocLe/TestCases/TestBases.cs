@@ -24,7 +24,9 @@ namespace SeleniumAdvance_Group2.TestCases
     {
         #region Create pageobject
         public GeneralPageActions generalPageActions;
+        public GeneralPageUI generalPageUI;
         public LoginPageActions loginPageActions;
+        public LoginPageUI loginPageUI;
         public DataProfileManagerPageActions dataProfileManagerPageActions;
         public NewDataProfileActions newDataProfileActions;
         public PanelManagerPageActions panelManagerPageActions;

@@ -9,8 +9,9 @@ using SeleniumAdvance_Group2.PageObject.GeneralPage;
 
 namespace SeleniumAdvance_Group2.PageObject.LoginPage
 {
-    public class LoginPageActions : GeneralPageActions
+    public class LoginPageActions
     {
+        
         public GeneralPageActions Login(string respository, string username, string password)
         {
             SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
@@ -20,13 +21,13 @@ namespace SeleniumAdvance_Group2.PageObject.LoginPage
             return new GeneralPageActions();
         }
 
-        public GeneralPageActions Login1(string respository, string username, string password)
+        public GeneralPageUI Login1(string respository, string username, string password)
         {
-            SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
-            TypeValue(LoginPageUI.txtUserName, username);
-            TypeValue(LoginPageUI.txtPassWord, password);
-            ClickControl(LoginPageUI.btnLogin);
-            return new GeneralPageActions();
+            SelectItemByDropdownList(LoginPageUI.ddlRespository1, respository);
+            TypeValue(LoginPageUI.txtUserName1, username);
+            TypeValue(LoginPageUI.txtPassWord1, password);
+            ClickControl(LoginPageUI.btnLogin1);
+            return new GeneralPageUI();
         }
 
         public void LoginWithInvalidUsernameAndPassword(string respository, string username, string password)
