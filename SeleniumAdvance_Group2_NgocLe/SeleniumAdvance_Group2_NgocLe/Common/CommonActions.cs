@@ -11,12 +11,13 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
 
 namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
-        public void OpenBrowser(string browser)
+        public static void OpenBrowser(string browser)
 
         {
             switch (browser.ToLower())
@@ -29,7 +30,9 @@ namespace SeleniumAdvance_Group2.Common
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":
-                    Constant.WebDriver = new InternetExplorerDriver();
+                    InternetExplorerOptions optionIE = new InternetExplorerOptions();
+                    optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+                    Constant.WebDriver = new InternetExplorerDriver(optionIE);
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "firefox":
@@ -48,20 +51,21 @@ namespace SeleniumAdvance_Group2.Common
             }
         }
 
-        public void CloseBrowser()
+        public static void CloseBrowser()
         {
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
         }
-        public LoginPage OpenURL(string url)
+        public LoginPageActions OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPage();
+            return new LoginPageActions();
         }
         public IWebElement FindElement(By control)
         {
             WaitForControl(control, Constant.timeout);
             return Constant.WebDriver.FindElement(control);
+
         }
 
         public void ClickControl(By control)
@@ -110,8 +114,12 @@ namespace SeleniumAdvance_Group2.Common
 
         public void WaitForControl(By control, int timesecond)
         {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
 
+        }
+        public void WaitForControlNotVisible(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
         }
 
         public int CountItems(By control)
@@ -162,5 +170,10 @@ namespace SeleniumAdvance_Group2.Common
         {
             Assert.IsTrue(DoesControlExist(control));
         }
+
+
+
+
+       
     }
 }

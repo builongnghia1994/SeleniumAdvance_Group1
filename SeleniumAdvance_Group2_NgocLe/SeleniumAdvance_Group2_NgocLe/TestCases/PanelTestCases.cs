@@ -17,13 +17,14 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC029()
         {
 
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
-            panelPage = generalPage.GotoPanelPage();
-            ClickControl(panelPage.BtnOK);
+            loginPageActions = OpenURL(Constant.DashboardURL);
+            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            newPanelPageActions = generalPageActions.GotoPanelPage();
+            ClickControl(newPanelPageActions.BtnOK);
             //  VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
             // ClickControl(panelPage.BtnCancel);
-            panelPage.VerifyTextInAlertPopup();
+            newPanelPageActions.VerifyTextInAlertPopup();
+            generalPageActions.LogOut();
             //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
     }

@@ -14,25 +14,25 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
-            loginPage = OpenURL(Constant.DashboardURL);
+            loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
 
-            dataProfilePage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
-            dataProfilePage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfilePage.GetActualPreDataPRofile());
+            dataProfileManagerPageActions.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfileManagerPageActions.GetActualPreDataPRofile());
         }
 
         [TestMethod]
         public void DA_DP_TC067_Verify_that_Data_Profiles_are_listed_alphabetically()
         {
-            loginPage = OpenURL(Constant.DashboardURL);
+            loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPage = loginPage.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
 
-            dataProfilePage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
-            dataProfilePage.VerifyPreDataProfileInAlphabeticalOrder();
+            dataProfileManagerPageActions.VerifyPreDataProfileInAlphabeticalOrder();
         }
     }
 }

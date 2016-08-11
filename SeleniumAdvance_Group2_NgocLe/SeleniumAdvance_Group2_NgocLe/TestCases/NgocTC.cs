@@ -8,12 +8,17 @@ namespace SeleniumAdvance_Group2.TestCases
     public class NgocTC : TestBases
     {
         [TestMethod]
-        public void NgocTC01()
+        public void DA_MP_TC014_Public_pages_can_be_visible_and_accessed_by_all_users()
         {
 
-            loginPage = OpenURL(Constant.DashboardURL);
-            generalPage = loginPage.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
-            generalPage.GotoPage("Trang/Trang1/Trang2");
+            loginPageActions = OpenURL(Constant.DashboardURL);
+            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            newPageActions = generalPageActions.GotoNewPage();
+            newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            loginPageActions = newPageActions.LogOut();
+            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
+
         }
 
 

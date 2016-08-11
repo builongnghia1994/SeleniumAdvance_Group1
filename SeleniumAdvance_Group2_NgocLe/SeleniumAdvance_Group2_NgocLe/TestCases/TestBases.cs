@@ -5,40 +5,51 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
 using System;
 using System.Configuration;
 using System.Configuration.Assemblies;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
+    [TestClass]
     public class TestBases : CommonActions
     {
         #region Create pageobject
-        public GeneralPage generalPage;
-        public LoginPage loginPage;
-        public DataProfilePage dataProfilePage;
-        public PanelManagerPage panelManagerPage;
-        public PanelPage panelPage;
-        public NewPage newpage;
+        public GeneralPageActions generalPageActions;
+        public LoginPageActions loginPageActions;
+        public DataProfileManagerPageActions dataProfileManagerPageActions;
+        public PanelManagerPageActions panelManagerPageActions;
+        public NewPanelPageActions newPanelPageActions;
+        public NewPageActions newPageActions;
+        public EditPageActions editPageActions;
         #endregion
 
-        #region TestInitialize
-        [TestInitialize]
-        public void TestInitializeMeThod()
+        public TestContext TestContext { get; set; }
+
+        [AssemblyInitialize]
+        public static void AssemblyInitializeMeThod(TestContext testContext)
         {
             OpenBrowser(Constant.Browser);
         }
-        #endregion
 
-        #region TestCleanup
+        [AssemblyCleanup]
+        public static void AssemblyCleanupMethod()
+        {
+            Constant.WebDriver.Quit();
+        }
+
         [TestCleanup]
         public void TestCleanupMethods()
         {
-
-            CloseBrowser();
+            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
         }
-        #endregion
-
 
     }
 }

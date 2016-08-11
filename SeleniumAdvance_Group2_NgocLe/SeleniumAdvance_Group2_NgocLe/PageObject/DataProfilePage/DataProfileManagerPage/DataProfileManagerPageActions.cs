@@ -1,23 +1,22 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using SeleniumAdvance_Group2.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeleniumAdvance_Group2.Common;
+using OpenQA.Selenium;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
 
-namespace SeleniumAdvance_Group2.PageObject
+namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage
 {
-    public class DataProfilePage : GeneralPage
+    public class DataProfileManagerPageActions : GeneralPageActions
     {
-        private By tblDataProfile = By.XPath("//table[@class='GridView']/tbody/tr");
-        #region Methods
-
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < CountItems(tblDataProfile); i++)
+            for (int i = 2; i < CountItems(DataProfileManagerPageUI.tblDataProfile); i++)
             {
                 string row = "//table[@class='GridView']//tr[" + i + "]//a[text()='Edit']";
                 if (!DoesControlExist(By.XPath(row)))
@@ -52,7 +51,5 @@ namespace SeleniumAdvance_Group2.PageObject
 
             Assert.IsTrue(alphabetical);
         }
-
-        #endregion
     }
 }
