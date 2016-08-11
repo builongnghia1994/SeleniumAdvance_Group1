@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public static readonly By itemDataProfile = By.XPath("//a[@href='profiles.jsp']");
         public static readonly By itemPanel = By.XPath("//a[@href='panels.jsp']");
 
-        public static readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a[@href='javascript:void(0);']");
+        public static readonly By menuGlobalSetting = By.XPath("//li[@class='mn-setting']/a");
         public static readonly By itemAddPage = By.XPath("//a[@class='add' and text()='Add Page']");
 
         public static readonly By txtPageName = By.Id("name");

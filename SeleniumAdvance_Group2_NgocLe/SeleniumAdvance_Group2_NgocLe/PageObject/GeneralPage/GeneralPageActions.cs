@@ -13,6 +13,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
@@ -115,6 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public void GlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
+           
             ClickControl(GeneralPageUI.menuGlobalSetting);
             ClickControl(control);
         }
@@ -145,8 +147,17 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
      
         public NewPageActions GotoNewPage()
         {
+           
             GlobalSetting("Add Page");
             return new NewPageActions();
+        }
+
+        public EditPageActions GotoEditPage(string namepage)
+        {
+           
+            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
+            GlobalSetting("Edit");
+            return new EditPageActions();
         }
     }
 }

@@ -14,6 +14,7 @@ using SeleniumAdvance_Group2.PageObject.LoginPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -27,6 +28,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public PanelManagerPageActions panelManagerPageActions;
         public NewPanelPageActions newPanelPageActions;
         public NewPageActions newPageActions;
+        public EditPageActions editPageActions;
         #endregion
 
         public TestContext TestContext { get; set; }
@@ -37,17 +39,17 @@ namespace SeleniumAdvance_Group2.TestCases
             OpenBrowser(Constant.Browser);
         }
 
-        [AssemblyCleanup]
-        public static void AssemblyCleanupMethod()
-        {
-            Constant.WebDriver.Quit();
-        }
+        //[AssemblyCleanup]
+        //public static void AssemblyCleanupMethod()
+        //{
+        //    Constant.WebDriver.Quit();
+        //}
 
-        [TestCleanup]
-        public void TestCleanupMethods()
-        {
-            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
-        }
+        //[TestCleanup]
+        //public void TestCleanupMethods()
+        //{
+        //    Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
+        //}
 
     }
 }
