@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -14,13 +15,43 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPageActions = OpenURL(Constant.DashboardURL);
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
-            newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPageActions = newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             loginPageActions = newPageActions.LogOut();
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
 
         }
 
+        [TestMethod]
+        public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children()
+        {
+            loginPageActions = OpenURL(Constant.DashboardURL);
+            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            newPageActions = generalPageActions.GotoNewPage();
+  
+            generalPageActions = newPageActions.CreadNewPage("public", Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            newPageActions = generalPageActions.GotoNewPage();
+            generalPageActions = newPageActions.CreadNewPage("public", Constant.timesystem+"1", Constant.timesystem, Constant.defaultValue, Constant.defaultValue);
+            
+
+            generalPageActions.DeletePage(Constant.timesystem);
+            generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
+            generalPageActions.ClickAcceptInPopup();
+
+            generalPageActions.VerifyAlertMessenge("Cannot delete page '"+Constant.timesystem+"' since it has child page(s)");
+            generalPageActions.ClickAcceptInPopup();
+
+            generalPageActions.DeletePage(Constant.timesystem + "/" + Constant.timesystem + "1");
+            generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
+            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.VerifyPageNotExist(Constant.timesystem + "/" + Constant.timesystem + "1");
+
+            generalPageActions.DeletePage(Constant.timesystem);
+            generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
+            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.VerifyPageNotExist(Constant.timesystem);
+            generalPageActions.VerifyControlNotExist(PageObject.GeneralPage.GeneralPageUI.itemDelete);
+        }
 
     }
 }

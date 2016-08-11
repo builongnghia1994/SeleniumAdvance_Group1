@@ -194,7 +194,7 @@ namespace SeleniumAdvance_Group2.Common
             new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
         }
 
-        public void VerifyDoesControlNotExist(By control)
+        public void VerifyControlNotExist(By control)
         {
             Assert.IsFalse(DoesControlExist(control));
         }

@@ -28,5 +28,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
         public static readonly By menuitemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li[{0}]/a");
         public static readonly By itemsMainPage = By.XPath("//div[@id='main-menu']/div/ul/li/a");
+        public static readonly By itemDelete = By.XPath("//li/a[@class='delete']");
+
     }
 }

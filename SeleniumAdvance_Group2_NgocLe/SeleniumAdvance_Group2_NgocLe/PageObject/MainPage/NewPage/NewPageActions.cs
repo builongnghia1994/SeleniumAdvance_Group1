@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
 {
@@ -30,10 +31,11 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
             if (afterpage != null)
             { SelectItemByDropdownList(NewPageUI.ddlDisplayAfter, afterpage); }
             ClickControl(NewPageUI.btnOk);
+            Thread.Sleep(500);
 
             return new GeneralPageActions();
+            
         }
 
-       
     }
 } 

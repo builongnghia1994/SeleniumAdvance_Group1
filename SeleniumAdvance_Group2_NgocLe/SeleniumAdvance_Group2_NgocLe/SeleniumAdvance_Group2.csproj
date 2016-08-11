@@ -83,7 +83,6 @@
     <Compile Include="PageObject\MainPage\EditPage\EditPageUI.cs" />
     <Compile Include="PageObject\MainPage\NewPage\NewPageActions.cs" />
     <Compile Include="PageObject\MainPage\NewPage\NewPageUI.cs" />
-    <Compile Include="PageObject\MainPage\NewPage\Ngoc TC.cs" />
     <Compile Include="PageObject\PanelPage\NewPanelPage\NewPanelPageActions.cs" />
     <Compile Include="PageObject\PanelPage\NewPanelPage\NewPanelPageUI.cs" />
     <Compile Include="PageObject\PanelPage\PanelManagerPage\PanelManagerPageActions.cs" />
@@ -118,6 +117,7 @@
     <Content Include="PageObject\XML\NewDataProfile.xml" />
     <Content Include="PageObject\XML\NewPanelPage.xml" />
     <Content Include="PageObject\XML\PanelManagerPage.xml" />
+    <Content Include="PageObject\XML\DataManagerProfilePage.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

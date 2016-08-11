@@ -14,6 +14,9 @@ using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
+
 
 namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
@@ -113,7 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
 
-        public void GlobalSetting(string settingname)
+        public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
            
@@ -148,7 +151,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public NewPageActions GotoNewPage()
         {
            
-            GlobalSetting("Add Page");
+            SelectGlobalSetting("Add Page");
             return new NewPageActions();
         }
 
@@ -156,8 +159,56 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         {
            
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
-            GlobalSetting("Edit");
+            SelectGlobalSetting("Edit");
             return new EditPageActions();
         }
+
+
+        public void DeletePage(string path)
+        {
+            GotoPage(path);
+            SelectGlobalSetting("Delete");
+        }
+        public void ClickAcceptInPopup()
+        {
+            Constant.WebDriver.SwitchTo().Alert().Accept();
+            Thread.Sleep(500);
+        }
+        public void VerifyAlertMessenge(string expected)
+        {
+            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+
+        public void VerifyPageNotExist(string way)
+        {
+
+            WaitForControl(GeneralPageUI.menuUser, 5);
+            string[] allpages = way.Split('/');
+            By lastpage = By.XPath("");
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
+
+            if (allpages.Length == 1)
+            {
+                lastpage = By.XPath(currentpagexpath);
+                Assert.IsFalse(DoesControlExist(lastpage));
+            }
+            else
+            {
+                for (int b = 1; b < allpages.Length; b++)
+                {
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
+                    currentpagexpath = currentpagexpath + next;
+                    lastpage = By.XPath(currentpagexpath);
+                }
+                Assert.IsFalse(DoesControlExist(lastpage));
+            }
+        }
+
     }
 }
+
+
