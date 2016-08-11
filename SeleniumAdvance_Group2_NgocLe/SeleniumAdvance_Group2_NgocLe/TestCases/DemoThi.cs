@@ -18,7 +18,8 @@ namespace SeleniumAdvance_Group2.TestCases
        public void Demo_Thi()
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.Login(Constant.Respository, username, pass);          
+            generalPageActions = loginPageActions.Login(Constant.Respository, username, pass);
+            generalPageActions.DeletePages();        
         }
     }
 } 

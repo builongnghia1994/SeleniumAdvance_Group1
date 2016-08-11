@@ -40,7 +40,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //add page2
 
-           Thread.Sleep(500);
+            Thread.Sleep(500);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             Thread.Sleep(500);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -161,5 +161,54 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             GlobalSetting("Edit");
             return new EditPageActions();
         }
+
+
+
+        public void DeletePages()
+        {
+
+            //ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[1]/a"));
+            Thread.Sleep(500);
+            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
+            string itemclasscurrent = string.Empty;
+            string xpath = string.Empty;
+
+
+            for (int i = items - 3; i >= 2; i--)
+            {
+
+                Console.WriteLine(i);
+                Thread.Sleep(500);
+                xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
+                Console.WriteLine(xpath);
+                Thread.Sleep(500);
+                itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+
+                // if (GetText(By.XPath("//div[@id='main-menu']/div/ul/li[" + i + "]/a")) !=("Execution Dashboard"))
+                //{
+                while (itemclasscurrent.Equals("haschild"))
+                {
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
+                    hoverClick.Build().Perform();
+                    string next = "/following-sibling::ul/li/a";
+                    xpath = xpath + next;
+                    itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+
+                }
+
+                ClickControl(By.XPath(xpath));
+                GlobalSetting("Delete");
+                AcceptAlert();
+
+                Thread.Sleep(500);
+                items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
+                Console.WriteLine(items);
+
+                //}
+            }
+
+        }
+
     }
 }
