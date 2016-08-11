@@ -21,6 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = OpenURL(Constant.DashboardURL);
             generalPage = loginPage.Login(Constant.Respository, username, pass);
+        
             generalPage.DeletePages();
                        
         }
