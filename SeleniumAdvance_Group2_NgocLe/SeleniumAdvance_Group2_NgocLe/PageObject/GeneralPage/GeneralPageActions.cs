@@ -169,11 +169,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             GotoPage(path);
             SelectGlobalSetting("Delete");
         }
-        public void ClickAcceptInPopup()
-        {
-            Constant.WebDriver.SwitchTo().Alert().Accept();
-            Thread.Sleep(500);
-        }
+
         public void VerifyAlertMessenge(string expected)
         {
             string actual = Constant.WebDriver.SwitchTo().Alert().Text;
