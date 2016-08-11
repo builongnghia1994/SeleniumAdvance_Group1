@@ -25,6 +25,9 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Implementation By Priority", "Test Module Implementation By Status",
             "Test Module Status per Assigned Users", "Test Objective Execution"};
 
+        public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
+            "Actions", "Interface Entities", "Test Results", "Test Cases results" };
+
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
         public static string Browser = ConfigurationManager.AppSettings["Browser"];
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
