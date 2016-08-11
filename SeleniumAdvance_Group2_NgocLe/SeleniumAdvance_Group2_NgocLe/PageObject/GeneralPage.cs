@@ -6,6 +6,9 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Threading;
 
+
+
+
 namespace SeleniumAdvance_Group2.PageObject
 {
     public class GeneralPage : CommonActions
@@ -122,85 +125,40 @@ namespace SeleniumAdvance_Group2.PageObject
             }
         }
 
-        public void DeletePages()
-        {
-            //int numberitems = CountItems(itemsMainPage);
-            //string  xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
-            //By curentItemPageXpath = By.XPath("//div[@id='main-menu']/div/ul/li[2]/a");
-            //while (GetText(By.XPath(xpath)) != ("Execution Dashboard"))
-            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[1]/a"));
-
-            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
-            //Console.WriteLine(items);
-
-
-            //By lastitempage = By.XPath("") ;
-
-            string itemclasscurrent = string.Empty;
-            string xpath = string.Empty; 
-
-            for (int i = items - 3; i >=2;i--)
-            {
-                Console.WriteLine(i);
-                //Constant.WebDriver.Navigate().Refresh();
-                xpath = "//div[@id='main-menu']/div/ul/li["+i+"]/a";
-                Console.WriteLine(xpath);
-                itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                
-                while (itemclasscurrent.Equals("haschild"))
-                {
-                    Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
-                    hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a";
-                    xpath = xpath + next;
-                    itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString(); 
-                    //lastitempage = By.XPath(xpath);
-                }
-                
-                ClickControl(By.XPath(xpath));
-                SelectGlobalSetting("Delete");
-                AcceptAlert();
-                //if (!DoesControlExist(By.XPath(xpath)))
-                //{
-                //    i--;
-                //}
-
-                
-
-            }
+       
+        // }
 
 
 
-            //for (int i = 2; i <= numberitems; i++)
-            //{
-            //    string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[2]/a";
-            //    By realitempage = By.XPath(curentitempagexpath);
-            //    string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
-            //    if (itemclass.Equals(""))
-            //    {
-            //        ClickControl(realitempage);
-            //        SelectGlobalSetting("Delete");
-            //        AcceptAlert();
-            //    }
-            //    else
-            //    {
-            //        while (itemclass.Equals("haschild"))
-            //        {
+        //for (int i = 2; i <= numberitems; i++)
+        //{
+        //    string curentitempagexpath = "//div[@id='main-menu']/div/ul/li[2]/a";
+        //    By realitempage = By.XPath(curentitempagexpath);
+        //    string itemclass = FindElement(realitempage).GetAttribute("class").ToString();
+        //    if (itemclass.Equals(""))
+        //    {
+        //        ClickControl(realitempage);
+        //        SelectGlobalSetting("Delete");
+        //        AcceptAlert();
+        //    }
+        //    else
+        //    {
+        //        while (itemclass.Equals("haschild"))
+        //        {
 
-            //            Actions builder = new Actions(Constant.WebDriver);
-            //            Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(curentitempagexpath)));
-            //            string next = "/following-sibling::ul/li";
-            //            curentitempagexpath = curentitempagexpath + next;
-            //            By lastitempage = By.XPath(curentitempagexpath);
+        //            Actions builder = new Actions(Constant.WebDriver);
+        //            Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(curentitempagexpath)));
+        //            string next = "/following-sibling::ul/li";
+        //            curentitempagexpath = curentitempagexpath + next;
+        //            By lastitempage = By.XPath(curentitempagexpath);
 
-            //        }
-            //    }
+        //        }
+        //    }
 
 
 
-            //}
-        }
+        //}
+
 
 
         public void VerifyWelComeUserDisplayed(string username)
