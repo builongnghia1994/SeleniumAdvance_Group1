@@ -13,7 +13,7 @@ using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
 using SeleniumAdvance_Group2.PageObject.LoginPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
-using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 using SeleniumAdvance_Group2.PageObject.DataProfilePage.NewDataProfilePage;
 
@@ -23,17 +23,18 @@ namespace SeleniumAdvance_Group2.TestCases
     public class TestBases : CommonActions
     {
         #region Create pageobject
-        public GeneralPageActions generalPageActions;
+        public GeneralPageActions generalPageActions = new GeneralPageActions();
         public GeneralPageUI generalPageUI;
-        public LoginPageActions loginPageActions;
+        public LoginPageActions loginPageActions = new LoginPageActions();
         public LoginPageUI loginPageUI;
-        public DataProfileManagerPageActions dataProfileManagerPageActions;
+        public DataProfileManagerPageActions dataProfileManagerPageActions = new DataProfileManagerPageActions();
         public NewDataProfileActions newDataProfileActions;
         public PanelManagerPageActions panelManagerPageActions;
-        public NewPanelPageActions newPanelPageActions;
+        public NewPanelPageActions newPanelPageActions=new NewPanelPageActions();
+        public NewPanelPageUI newPanelPageUI;
         public NewPageActions newPageActions;
         public EditPageActions editPageActions;
-        
+
         #endregion
 
         public TestContext TestContext { get; set; }

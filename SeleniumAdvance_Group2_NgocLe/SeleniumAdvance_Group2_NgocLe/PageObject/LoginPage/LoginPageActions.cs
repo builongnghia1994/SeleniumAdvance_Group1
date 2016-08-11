@@ -9,7 +9,7 @@ using SeleniumAdvance_Group2.PageObject.GeneralPage;
 
 namespace SeleniumAdvance_Group2.PageObject.LoginPage
 {
-    public class LoginPageActions
+    public class LoginPageActions:GeneralPageActions
     {
         
         public GeneralPageActions Login(string respository, string username, string password)

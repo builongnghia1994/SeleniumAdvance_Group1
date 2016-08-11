@@ -10,7 +10,7 @@ using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.PageObject.LoginPage
 {
-    public class LoginPageUI 
+    public class LoginPageUI : CommonActions
     {
         public static readonly By ddlRespository = By.Id("repository");
         public static readonly By txtUserName = By.Id("username");
@@ -20,17 +20,17 @@ namespace SeleniumAdvance_Group2.PageObject.LoginPage
         public static IWebElement ddlRespository1, txtUserName1, txtPassWord1, btnLogin1;
         public LoginPageUI()
         {
-            Dictionary<string, string>[] iDictionary = CommonActions.ReadXMlFile(Constant.XMLPath + Constant.XMLLoginPage);
+            Dictionary<string, string>[] iDictionary = ReadXMlFile(Constant.XMLPath + Constant.XMLLoginPage);
 
-            ddlRespository1 = CommonActions.FindElementFromXML("ddlRespository", iDictionary);
-            txtUserName1 = CommonActions.FindElementFromXML("txtUserName", iDictionary);
-            txtPassWord1 = CommonActions.FindElementFromXML("txtPassWord", iDictionary);
-            btnLogin1 = CommonActions.FindElementFromXML("btnLogin", iDictionary);
+            ddlRespository1 = FindElementFromXML("ddlRespository", iDictionary);
+            txtUserName1 = FindElementFromXML("txtUserName", iDictionary);
+            txtPassWord1 = FindElementFromXML("txtPassWord", iDictionary);
+            btnLogin1 = FindElementFromXML("btnLogin", iDictionary);
         }
 
         public IWebElement DdlRepository
         {
-            get { return ddlRespository1; } 
+            get { return ddlRespository1; }
         }
 
         public IWebElement TxtUserName

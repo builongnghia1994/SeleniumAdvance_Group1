@@ -165,7 +165,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
-        } 
+        }
         public void VerifyText(string expectedText, string actualText)
         {
             Assert.AreEqual(expectedText, actualText);
@@ -204,7 +204,7 @@ namespace SeleniumAdvance_Group2.Common
             Assert.IsTrue(DoesControlExist(control));
         }
 
-        public static Dictionary<string, string>[] ReadXMlFile(string filename)
+        public Dictionary<string, string>[] ReadXMlFile(string filename)
         {
             XmlDocument xd = new XmlDocument();
             xd.Load(filename);
@@ -222,7 +222,7 @@ namespace SeleniumAdvance_Group2.Common
             return iDictionary;
         }
 
-        public static IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
+        public IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
         {
             return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
         }
