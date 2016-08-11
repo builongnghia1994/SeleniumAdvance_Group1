@@ -61,6 +61,11 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPageActions();
         }
+        public LoginPageUI OpenURL1(string url)
+        {
+            Constant.WebDriver.Navigate().GoToUrl(url);
+            return new LoginPageUI();
+        }
         public IWebElement FindElement(By control)
         {
             WaitForControl(control, Constant.timeout);
@@ -199,7 +204,7 @@ namespace SeleniumAdvance_Group2.Common
             Assert.IsTrue(DoesControlExist(control));
         }
 
-        public Dictionary<string, string>[] ReadXMlFile(string filename)
+        public static Dictionary<string, string>[] ReadXMlFile(string filename)
         {
             XmlDocument xd = new XmlDocument();
             xd.Load(filename);
@@ -217,7 +222,7 @@ namespace SeleniumAdvance_Group2.Common
             return iDictionary;
         }
 
-        public IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
+        public static IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
         {
             return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
         }

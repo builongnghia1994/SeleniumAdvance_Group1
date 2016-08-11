@@ -27,5 +27,14 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPageActions.LogOut();
             //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
+
+        [TestMethod]
+        public void test()
+        {
+
+            loginPageUI = OpenURL1(Constant.DashboardURL);
+            loginPageActions = new PageObject.LoginPage.LoginPageActions();
+            generalPageUI = loginPageActions.Login1(Constant.Respository, Constant.userTrang, Constant.passTrang);
+        }
     }
 }
