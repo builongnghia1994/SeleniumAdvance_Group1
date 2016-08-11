@@ -116,7 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public void GlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-            WaitForControl()
+           
             ClickControl(GeneralPageUI.menuGlobalSetting);
             ClickControl(control);
         }
@@ -147,13 +147,14 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
      
         public NewPageActions GotoNewPage()
         {
-            //ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[1]/a"));
+           
             GlobalSetting("Add Page");
             return new NewPageActions();
         }
 
         public EditPageActions GotoEditPage(string namepage)
         {
+           
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             GlobalSetting("Edit");
             return new EditPageActions();

@@ -40,10 +40,10 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //add page2
 
-           // Thread.Sleep(5000);
+           //Thread.Sleep(5000);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-           // Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             editPageActions = generalPageActions.GotoEditPage(pagename1);
             generalPageActions = editPageActions.EditPage(statuspublic, pagename1, Constant.defaultValue, specificitemdisplayafter, Constant.defaultValue);
             //vp
