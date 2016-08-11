@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
     public class GeneralPageActions : CommonActions
     {
-     
+        string deletedPageXpath = string.Empty;
 
         public LoginPageActions LogOut()
         {
@@ -160,32 +160,23 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             GlobalSetting("Edit");
             return new EditPageActions();
-        }
+        }     
 
 
 
-        public void DeletePages()
-        {
 
-            //ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li[1]/a"));
+        public void DeleteAllPages()
+        {           
             Thread.Sleep(500);
             int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
 
-
-            for (int i = items - 3; i >= 2; i--)
-            {
-
-                Console.WriteLine(i);
-                Thread.Sleep(500);
-                xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
-                Console.WriteLine(xpath);
-                Thread.Sleep(500);
+            for (int i = items - 3; i >= 2;)
+            {                            
+                xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";               
                 itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-
-                // if (GetText(By.XPath("//div[@id='main-menu']/div/ul/li[" + i + "]/a")) !=("Execution Dashboard"))
-                //{
+                               
                 while (itemclasscurrent.Equals("haschild"))
                 {
                     Actions builder = new Actions(Constant.WebDriver);
@@ -194,21 +185,24 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                     string next = "/following-sibling::ul/li/a";
                     xpath = xpath + next;
                     itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-
-                }
-
+                  }
+                
                 ClickControl(By.XPath(xpath));
                 GlobalSetting("Delete");
                 AcceptAlert();
 
-                Thread.Sleep(500);
-                items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
-                Console.WriteLine(items);
-
-                //}
+               Thread.Sleep(300);
+               i= CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
+               Console.WriteLine("a"+i);               
             }
 
         }
+
+
+
+
+
+
 
     }
 }
