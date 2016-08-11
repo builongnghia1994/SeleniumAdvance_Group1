@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Configuration;
+using System.IO;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -23,15 +24,18 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Execution History", "Test Module Execution Results",
             "Test Module Execution Results Report", "Test Module Execution Trend",
             "Test Module Implementation By Priority", "Test Module Implementation By Status",
-            "Test Module Status per Assigned Users", "Test Objective Execution" };
+            "Test Module Status per Assigned Users", "Test Objective Execution"};
+
+        public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
+            "Actions", "Interface Entities", "Test Results", "Test Cases results" };
 
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
         public static string Browser = ConfigurationManager.AppSettings["Browser"];
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
         public static string defaultValue = null;
-        public static int timeout = 3000;
-
-
+        public static int timeout = 10;
+        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\PageObject\\XML\\";
+        public static string XMLLoginPage = "LoginPage.xml";
 
     }
 }

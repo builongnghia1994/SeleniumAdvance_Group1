@@ -10,5 +10,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
     class DataProfileManagerPageUI
     {
         public static By tblDataProfile = By.XPath("//table[@class='GridView']/tbody/tr");
+        public static By linkAddNew = By.XPath("//form[@id='form1']//a[@href='profile.jsp?action=create']");
     }
 }

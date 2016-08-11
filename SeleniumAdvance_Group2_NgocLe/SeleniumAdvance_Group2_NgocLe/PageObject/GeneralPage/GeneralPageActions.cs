@@ -13,8 +13,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
 using SeleniumAdvance_Group2.PageObject.PanelPage;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
@@ -114,9 +113,10 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
 
-        public void SelectGlobalSetting(string settingname)
+        public void GlobalSetting(string settingname)
         {
-            By control = By.XPath("//li[@class='mn-setting']//li/a[text()='" + settingname + "']");
+            By control = By.XPath("//li/a[text()='" + settingname + "']");
+           
             ClickControl(GeneralPageUI.menuGlobalSetting);
             ClickControl(control);
         }
@@ -147,59 +147,17 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
      
         public NewPageActions GotoNewPage()
         {
-            SelectGlobalSetting("Add Page");
+           
+            GlobalSetting("Add Page");
             return new NewPageActions();
         }
 
-        public void DeletePage(string path)
+        public EditPageActions GotoEditPage(string namepage)
         {
-            GotoPage(path);
-            SelectGlobalSetting("Delete");
+           
+            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
+            GlobalSetting("Edit");
+            return new EditPageActions();
         }
-        public void ClickAcceptInPopup()
-        {
-            Constant.WebDriver.SwitchTo().Alert().Accept();
-            Thread.Sleep(500);
-        }
-        public void VerifyAlertMessenge(string expected)
-        {
-            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
-            Assert.AreEqual(expected, actual);
-        }
-
-
-
-
-        public void VerifyPageNotExist(string way)
-        {
-
-            WaitForControl(GeneralPageUI.menuUser, 5);
-            string[] allpages = way.Split('/');
-            By lastpage = By.XPath("");
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
-
-            if (allpages.Length == 1)
-            {
-                lastpage = By.XPath(currentpagexpath);
-                Assert.IsFalse(DoesControlExist(lastpage));
-            }
-            else
-            {
-                for (int b = 1; b <allpages.Length; b++)
-                {
-                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
-                    currentpagexpath = currentpagexpath + next;
-                    lastpage = By.XPath(currentpagexpath);
-                }
-                Assert.IsFalse(DoesControlExist(lastpage));
-            }
-        }
-
-       // public void VerifyPageNotExist(string way)
-        //{
-       //     Assert.IsFalse(DoesPageExist(way));
-        //}
-    //
-
     }
 }

@@ -112,6 +112,11 @@
       <Link>MicrosoftWebDriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="PageObject\XML\GeneralPage.xml" />
+    <Content Include="PageObject\XML\LoginPage.xml" />
+    <Content Include="PageObject\XML\NewPanelPage.xml" />
+    <Content Include="PageObject\XML\PanelManagerPage.xml" />
+    <Content Include="PageObject\XML\DataManagerProfilePage.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
