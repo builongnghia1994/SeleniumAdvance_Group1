@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Execution History", "Test Module Execution Results",
             "Test Module Execution Results Report", "Test Module Execution Trend",
             "Test Module Implementation By Priority", "Test Module Implementation By Status",
-            "Test Module Status per Assigned Users", "Test Objective Execution" };
+            "Test Module Status per Assigned Users", "Test Objective Execution"};
 
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
         public static string Browser = ConfigurationManager.AppSettings["Browser"];

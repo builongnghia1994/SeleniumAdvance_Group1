@@ -18,38 +18,42 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
             List<string> tableValues = new List<string>();
             for (int i = 2; i < CountItems(DataProfileManagerPageUI.tblDataProfile); i++)
             {
-                string row = "//table[@class='GridView']//tr[" + i + "]//a[text()='Edit']";
-                if (!DoesControlExist(By.XPath(row)))
-                {
-                    tableValues.Add(FindElement(By.XPath("//table[@class='GridView']//tr[" + i + "]/td[2]")).Text);
-                }
+                string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
+                tableValues.Add(FindElement(By.XPath(row)).Text);
             }
             return tableValues.ToArray();
         }
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
-            for (int i = 0; i < actualValues.Length; i++)
+            if (expectedValues.Length > actualValues.Length)
             {
-                Console.WriteLine(expectedValues[i] + "\n" + actualValues[i]);
-                VerifyText(expectedValues[i], actualValues[i]);
+                Assert.Fail("The actual results are less than the expected results");
+            }
+            else
+            {        
+                for (int i = 0; i < expectedValues.Length; i++)
+                {
+                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '"+expectedValues[i]+"' does not exist in actual results");
+                }
             }
         }
 
         public void VerifyPreDataProfileInAlphabeticalOrder()
         {
             bool alphabetical = true;
+            string errorMessage = string.Empty;
             string[] listPreSetDataProfile = GetActualPreDataPRofile();
             for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
             {
                 if (StringComparer.Ordinal.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
                 {
                     alphabetical = false;
+                    errorMessage = "The '"+ listPreSetDataProfile[i]+"' and the '"+ listPreSetDataProfile[i + 1]+"' do not display in alphabet";
                     break;
                 }
             }
-
-            Assert.IsTrue(alphabetical);
+            Assert.IsTrue(alphabetical, errorMessage);
         }
     }
 }
