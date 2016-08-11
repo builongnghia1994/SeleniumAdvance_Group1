@@ -20,6 +20,10 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
         }
 
+        [TestMethod]
+        public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children()
+        {
+        }
 
     }
 }

@@ -29,7 +29,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string Browser = ConfigurationManager.AppSettings["Browser"];
         public static string DashboardURL= ConfigurationManager.AppSettings["URL"];
         public static string defaultValue = null;
-        public static int timeout = 10;
+        public static int timeout = 3000;
 
 
     }
