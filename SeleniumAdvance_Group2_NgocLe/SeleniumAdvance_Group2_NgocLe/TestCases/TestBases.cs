@@ -51,6 +51,11 @@ namespace SeleniumAdvance_Group2.TestCases
             Constant.WebDriver.Quit();
         }
 
+        [TestInitialize]
+        public void TestInitializeMethods()
+        {
+            OpenURL(Constant.DashboardURL);
+        }
         [TestCleanup]
         public void TestCleanupMethods()
         {
