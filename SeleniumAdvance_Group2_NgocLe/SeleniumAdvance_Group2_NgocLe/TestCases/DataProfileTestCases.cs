@@ -14,16 +14,13 @@ namespace SeleniumAdvance_Group2.TestCases
         LoginPageActions loginPageActions;
         GeneralPageActions generalPageActions;
         DataProfileManagerPageActions dataProfileManagerPageActions;
-        string username = "nghia.bui";
-        string password = "1";
-        private string respository_SampleRepository = "SampleRepository";
-
+        
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -35,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password));
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -49,7 +46,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository, username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password));
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
