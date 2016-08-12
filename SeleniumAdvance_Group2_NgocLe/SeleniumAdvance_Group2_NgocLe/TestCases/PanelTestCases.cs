@@ -22,7 +22,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC029_Verify_that_user_is_unable_to_create_new_panel_when_required_field_is_not_filled()
         {
             loginPageUI = OpenURL1(Constant.DashboardURL);
-            generalPageUI = loginPageActions.Login1(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            generalPageUI = loginPageActions.Login1(Constant.Respository, Constant.Username_trang, Constant.Password);
             newPanelPageUI = generalPageActions.GotoPanelPage();
             newPanelPageActions.ClickOK();
             newPanelPageActions.VerifyTextInAlertPopup(Constant.MsgRequiredFieldPanel);

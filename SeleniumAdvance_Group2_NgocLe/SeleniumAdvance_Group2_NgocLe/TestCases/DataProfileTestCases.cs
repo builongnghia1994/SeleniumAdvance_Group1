@@ -7,8 +7,7 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class DataProfileTestCases: TestBases
     {
-        string username = "nghia.bui";
-        string password = "1";
+       
         private string respository_SampleRepository = "SampleRepository";
 
         [TestMethod]
@@ -16,7 +15,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -28,7 +27,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -40,7 +39,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = OpenURL(Constant.DashboardURL);
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository, username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
