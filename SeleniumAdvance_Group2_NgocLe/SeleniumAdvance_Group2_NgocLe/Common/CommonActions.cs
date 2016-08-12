@@ -175,9 +175,17 @@ namespace SeleniumAdvance_Group2.Common
             WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             string alertText = alert.Text;
-            alert.Accept();
             Constant.WebDriver.SwitchTo().DefaultContent();
             return alertText;
+        }
+
+
+        public void DismissAlert()
+        {
+            WaitForAlertPresent(Constant.timeout);
+            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+            alert.Dismiss();
+            Constant.WebDriver.SwitchTo().DefaultContent();
         }
 
         public void AcceptAlert()

@@ -22,6 +22,7 @@ namespace SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage
         public void VerifyTextInAlertPopup(string expectedString)
         {
             VerifyText(expectedString, GetTextFromAlertPopup());
+            AcceptAlert();
             ClickControl(NewPanelPageUI.btnCancel);
         }
     }
