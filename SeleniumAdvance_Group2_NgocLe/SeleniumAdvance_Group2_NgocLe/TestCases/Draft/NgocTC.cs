@@ -36,19 +36,19 @@ namespace SeleniumAdvance_Group2.TestCases
 
             generalPageActions.DeletePage(Constant.timesystem);
             generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
-            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.AcceptAlert();
 
             generalPageActions.VerifyAlertMessenge("Cannot delete page '"+Constant.timesystem+"' since it has child page(s)");
-            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.AcceptAlert();
 
             generalPageActions.DeletePage(Constant.timesystem + "/" + Constant.timesystem + "1");
             generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
-            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.AcceptAlert();
             generalPageActions.VerifyPageNotExist(Constant.timesystem + "/" + Constant.timesystem + "1");
 
             generalPageActions.DeletePage(Constant.timesystem);
             generalPageActions.VerifyAlertMessenge("Are you sure you want to remove this page?");
-            generalPageActions.ClickAcceptInPopup();
+            generalPageActions.AcceptAlert();
             generalPageActions.VerifyPageNotExist(Constant.timesystem);
             generalPageActions.VerifyControlNotExist(PageObject.GeneralPage.GeneralPageUI.itemDelete);
         }
