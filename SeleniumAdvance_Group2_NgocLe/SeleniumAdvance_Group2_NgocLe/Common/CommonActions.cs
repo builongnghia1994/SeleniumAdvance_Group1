@@ -142,9 +142,11 @@ namespace SeleniumAdvance_Group2.Common
 
         public void WaitForControl(By control, int timesecond)
         {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
 
+                Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));   
         }
+
+
         public void WaitForControlNotVisible(By control, int timesecond)
         {
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
@@ -180,6 +182,11 @@ namespace SeleniumAdvance_Group2.Common
             return alertText;
         }
 
+        public void VerifyAlertMessenge(string expectedText)
+        {
+            VerifyText(expectedText, GetTextFromAlertPopup());
+        }
+
 
         public void DismissAlert()
         {
@@ -200,7 +207,8 @@ namespace SeleniumAdvance_Group2.Common
         public void WaitForAlertPresent(int timeout)
         {
             new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
-        }
+
+}
 
         public void VerifyControlNotExist(By control)
         {

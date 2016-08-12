@@ -171,14 +171,6 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             SelectGlobalSetting("Delete");
         }
 
-        public void VerifyAlertMessenge(string expected)
-        {
-            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
-            Assert.AreEqual(expected, actual);
-        }
-
-
-
 
         public void VerifyPageNotExist(string way)
         {
