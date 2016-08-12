@@ -10,12 +10,9 @@ namespace SeleniumAdvance_Group2.PageObject.LoginPage
     public class LoginPageActions : GeneralPageActions
     {
 
-        public GeneralPageActions Login(string respository, string username, string password)
+        public GeneralPageActions LoginSuccessfully(string respository, string username, string password)
         {
-            SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
-            TypeValue(LoginPageUI.txtUserName, username);
-            TypeValue(LoginPageUI.txtPassWord, password);
-            ClickControl(LoginPageUI.btnLogin);
+            Login(respository, username, password);
             return new GeneralPageActions();
         }
 
@@ -28,7 +25,7 @@ namespace SeleniumAdvance_Group2.PageObject.LoginPage
             return new GeneralPageUI();
         }
 
-        public void LoginWithInvalidUsernameAndPassword(string respository, string username, string password)
+        public void Login(string respository, string username, string password)
         {
             SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
             TypeValue(LoginPageUI.txtUserName, username);

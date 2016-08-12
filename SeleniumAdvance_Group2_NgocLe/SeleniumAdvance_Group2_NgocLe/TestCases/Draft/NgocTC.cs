@@ -20,11 +20,11 @@ namespace SeleniumAdvance_Group2.TestCases
         {
 
             loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             loginPageActions = newPageActions.LogOut();
-            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respository, Constant.userTrang, Constant.passTrang);
             generalPageActions.VerifyPageDisplayedBesideAnotherPage("Overview", "TC016");
 
         }
@@ -33,7 +33,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children()
         {
             loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
   
             generalPageActions = newPageActions.CreadNewPage("public", Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);

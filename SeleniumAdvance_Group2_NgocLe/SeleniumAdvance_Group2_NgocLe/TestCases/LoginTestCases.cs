@@ -24,7 +24,7 @@ namespace SeleniumAdvance_Group2.TestCases
             GeneralPageActions generalPageActions;
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,validusername, validpass);
             //VP
             generalPageActions.VerifyWelComeUserDisplayed(validusername);
             loginPageActions = generalPageActions.LogOut();
@@ -34,7 +34,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_LOGIN_TC002_Verify_that_user_fails_to_login_with_incorrect_credentials()
         {
             loginPageActions = new LoginPageActions();
-            loginPageActions.LoginWithInvalidUsernameAndPassword(respository_SampleRepository,invalidusername, invalidpass);
+            loginPageActions.Login(respository_SampleRepository,invalidusername, invalidpass);
             //vp
             loginPageActions.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
         }
@@ -43,7 +43,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_LOGIN_TC003_Verify_that_user_fails_to_login_with_correct_username_and_incorrect_password()
         {
             loginPageActions = new LoginPageActions();
-            loginPageActions.LoginWithInvalidUsernameAndPassword(respository_SampleRepository,validusername, invalidpass);
+            loginPageActions.Login(respository_SampleRepository,validusername, invalidpass);
             //vp
             loginPageActions.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
         }
@@ -54,9 +54,9 @@ namespace SeleniumAdvance_Group2.TestCases
             GeneralPageActions generalPageActions;
 
             loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,validusername, validpass);
             loginPageActions = generalPageActions.LogOut();
-            generalPageActions = loginPageActions.Login(respository_TestRepository, validusername, validpass);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_TestRepository, validusername, validpass);
             //VP
             generalPageActions.VerifyWelComeUserDisplayed(validusername);
             loginPageActions = generalPageActions.LogOut();
