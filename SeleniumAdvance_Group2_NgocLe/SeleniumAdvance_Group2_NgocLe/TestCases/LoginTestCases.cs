@@ -2,12 +2,15 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class LoginTestCases : TestBases
     {
+        LoginPageActions loginPageActions;
+
        private string validusername = "administrator";
        private string validpass = "";
        private string invalidusername = "abc";
@@ -18,6 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_with_correct_credentials()
         {
+            GeneralPageActions generalPageActions;
             loginPageActions = new LoginPageActions();
 
             generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
@@ -47,6 +51,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_LOGIN_TC004_Verify_that_user_login_different_repositories_successfully_after_logging_out_current_repository()
         {
+            GeneralPageActions generalPageActions;
+
             loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(respository_SampleRepository,validusername, validpass);
             loginPageActions = generalPageActions.LogOut();

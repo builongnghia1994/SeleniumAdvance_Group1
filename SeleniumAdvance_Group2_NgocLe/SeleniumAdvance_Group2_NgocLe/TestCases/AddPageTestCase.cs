@@ -3,12 +3,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using System.Threading;
 using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class AddPageTestCase : TestBases
     {
+        LoginPageActions loginPageActions;
+        GeneralPageActions generalPageActions;
+        NewPageActions newPageActions;
+
         private string validusername = "thi.nguyen";
         private string validpass = "1";
         private string statuspublic = "public";
@@ -32,6 +39,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
+            EditPageActions editPageActions;
+
             loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
 
