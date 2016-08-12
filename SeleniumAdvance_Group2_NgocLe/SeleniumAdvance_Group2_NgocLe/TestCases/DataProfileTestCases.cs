@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,username, password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -35,7 +35,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository,username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository,username, password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -49,7 +49,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.Login(respository_SampleRepository, username, password);
+            generalPageActions = loginPageActions.LoginSuccessfully(respository_SampleRepository, username, password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 

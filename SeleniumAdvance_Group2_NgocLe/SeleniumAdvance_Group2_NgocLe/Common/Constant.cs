@@ -60,7 +60,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string statuspublic = "public";
         public static string pagename1 = "page1" + Constant.timesystem;
         public static string pagename2 = "page2" + Constant.timesystem;
-        public static string specificitemdisplayafter = "Overview";
+        public static string itemdisplayafter = "Overview";
                
         #endregion
 
