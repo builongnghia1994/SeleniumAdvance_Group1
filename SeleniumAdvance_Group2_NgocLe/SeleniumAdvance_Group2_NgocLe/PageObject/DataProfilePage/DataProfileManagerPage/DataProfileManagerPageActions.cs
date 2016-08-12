@@ -50,7 +50,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
             }
         }
 
-        public void VerifyPreDataProfileInAlphabeticalOrder()
+        public void VerifyDataProfileInAlphabeticalOrder()
         {
             bool alphabetical = true;
             string errorMessage = string.Empty;

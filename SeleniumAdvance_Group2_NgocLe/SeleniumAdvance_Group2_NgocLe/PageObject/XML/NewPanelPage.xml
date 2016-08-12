@@ -1,1 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NewPanel>
+  <txtDisplayName>
+    <type>id</type>
+    <value>txtDisplayName</value>
+  </txtDisplayName>
+  <btnOK>
+    <type>id</type>
+    <value>OK</value>
+  </btnOK>
+  <btnCancel>
+    <type>id</type>
+    <value>Cancel</value>
+  </btnCancel>
+</NewPanel>

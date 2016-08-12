@@ -7,6 +7,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
+using SeleniumAdvance_Group2.PageObject.DataProfilePage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
+
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -16,16 +21,12 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC029()
         {
-
-            loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
-            newPanelPageActions = generalPageActions.GotoPanelPage();
-            ClickControl(newPanelPageActions.BtnOK);
-            //  VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
-            // ClickControl(panelPage.BtnCancel);
-            newPanelPageActions.VerifyTextInAlertPopup();
+            loginPageUI = OpenURL1(Constant.DashboardURL);
+            generalPageUI = loginPageActions.Login1(Constant.Respository, Constant.userTrang, Constant.passTrang);
+            newPanelPageUI = generalPageActions.GotoPanelPage();
+            newPanelPageActions.ClickOK();
+            newPanelPageActions.VerifyTextInAlertPopup(Constant.MsgRequiredFieldPanel);
             generalPageActions.LogOut();
-            //  generalPage.GotoPage("Trang/Trang1/Trang2");
         }
     }
 }

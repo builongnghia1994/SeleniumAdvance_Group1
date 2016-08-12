@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
-            dataProfileManagerPageActions.VerifyPreDataProfileInAlphabeticalOrder();
+            dataProfileManagerPageActions.VerifyDataProfileInAlphabeticalOrder();
         }
 
         [TestMethod]
