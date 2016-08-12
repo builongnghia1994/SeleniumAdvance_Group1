@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
        public void Demo_Thi()
         {
             loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password));
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             generalPageActions.DeleteAllPages();        
         }
     }

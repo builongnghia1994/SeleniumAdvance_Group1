@@ -9,15 +9,11 @@ namespace SeleniumAdvance_Group2.Common
     {
         public static IWebDriver WebDriver;
         public static IWebElement WebElement;
-        //  public static string DashboardURL = "http://192.168.190.205:54000/TADashboard/2f9njff6y9.page";
 
-        public static string defaultValue = null;
         public static int timeout = 10;
-        public static string Respository = "SampleRepository";
-        public static string userTrang = "trang.le";
-        public static string passTrang = "1";
-        public static string MsgRequiredFieldPanel = "Display Name is a required field.";
-        public static string MsgDashboardErrorLogin = "Username or password is invalid";
+        public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
+
+      
 
         public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
@@ -30,9 +26,10 @@ namespace SeleniumAdvance_Group2.Common
 
         public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
             "Actions", "Interface Entities", "Test Results", "Test Cases results" };
-        #region AppConfig
 
-        public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
+        #region MessageLogin
+        public static string MsgRequiredFieldPanel = "Display Name is a required field.";
+        public static string MsgDashboardErrorLogin = "Username or password is invalid";
         #endregion
 
         #region Browser/Url
@@ -61,7 +58,8 @@ namespace SeleniumAdvance_Group2.Common
         public static string pagename1 = "page1" + Constant.timesystem;
         public static string pagename2 = "page2" + Constant.timesystem;
         public static string itemdisplayafter = "Overview";
-               
+        public static string defaultValue = null;
+
         #endregion
 
 

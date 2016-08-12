@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password));
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
@@ -46,7 +46,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPageActions = new LoginPageActions();
 
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password));
+            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPageActions = generalPageActions.GotoDataProfilePage();
 
