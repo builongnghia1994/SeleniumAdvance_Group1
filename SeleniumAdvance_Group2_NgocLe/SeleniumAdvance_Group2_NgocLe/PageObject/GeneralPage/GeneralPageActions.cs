@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -12,15 +12,16 @@ using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
-using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
+
 
 namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 {
     public class GeneralPageActions : CommonActions
     {
-        string deletedPageXpath = string.Empty;
-
         public LoginPageActions LogOut()
         {
             if (Constant.Browser == "ie")
@@ -35,7 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.itemLogOut);
             }
             return new LoginPageActions();
-            
+
         }
 
         public DataProfileManagerPageActions GotoDataProfilePage()
@@ -55,7 +56,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             return new DataProfileManagerPageActions();
         }
 
-        public PanelManagerPageActions GotoPanelManagerPage()
+        public PanelManagerPageUI GotoPanelManagerPage()
         {
 
 
@@ -71,13 +72,14 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.itemPanel);
             }
 
-            return new PanelManagerPageActions();
+            return new PanelManagerPageUI();
         }
 
-        public NewPanelPageActions GotoPanelPage()
+        public NewPanelPageUI GotoPanelPage()
         {
-            PanelManagerPageActions panelManagerPage = GotoPanelManagerPage();
-            return panelManagerPage.GoToPanelPage();
+            PanelManagerPageUI panelManagerPage = GotoPanelManagerPage();
+            PanelManagerPageActions pmpa = new PanelManagerPageActions();
+            return pmpa.GoToPanelPage();
         }
 
         public void GotoPage(string way)
@@ -115,18 +117,18 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
 
-        public void GlobalSetting(string settingname)
+        public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-           
+
             ClickControl(GeneralPageUI.menuGlobalSetting);
             ClickControl(control);
         }
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
         {
-            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='"+namepage+"']"), 3);
-            
+            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
+
             int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
@@ -140,67 +142,74 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                     By realitemnamepage = By.XPath(itemnamepage);
                     string real = GetText(realitemnamepage);
                     VerifyText(namepage, realitemnamepage);
+
                 }
             }
 
         }
 
-     
+
         public NewPageActions GotoNewPage()
         {
-            
-            GlobalSetting("Add Page");
+
+            SelectGlobalSetting("Add Page");
             return new NewPageActions();
         }
 
         public EditPageActions GotoEditPage(string namepage)
         {
+
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
-            GlobalSetting("Edit");
+            SelectGlobalSetting("Edit");
             return new EditPageActions();
-        }     
+        }
 
 
-
-
-        public void DeleteAllPages()
-        {           
+        public void DeletePage(string path)
+        {
+            GotoPage(path);
+            SelectGlobalSetting("Delete");
+        }
+        public void ClickAcceptInPopup()
+        {
+            Constant.WebDriver.SwitchTo().Alert().Accept();
             Thread.Sleep(500);
-            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
-            string itemclasscurrent = string.Empty;
-            string xpath = string.Empty;
-
-            for (int i = items - 3; i >= 2;)
-            {                            
-                xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";               
-                itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                               
-                while (itemclasscurrent.Equals("haschild"))
-                {
-                    Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
-                    hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a";
-                    xpath = xpath + next;
-                    itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                  }
-                
-                ClickControl(By.XPath(xpath));
-                GlobalSetting("Delete");
-                AcceptAlert();
-
-               Thread.Sleep(300);
-               i= CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
-               Console.WriteLine("a"+i);               
-            }
-
+        }
+        public void VerifyAlertMessenge(string expected)
+        {
+            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
+            Assert.AreEqual(expected, actual);
         }
 
 
 
 
+        public void VerifyPageNotExist(string way)
+        {
 
+            WaitForControl(GeneralPageUI.menuUser, 5);
+            string[] allpages = way.Split('/');
+            By lastpage = By.XPath("");
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
+            if (allpages.Length == 1)
+            {
+                lastpage = By.XPath(currentpagexpath);
+                Assert.IsFalse(DoesControlExist(lastpage));
+            }
+            else
+            {
+                for (int b = 1; b < allpages.Length; b++)
+                {
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
+                    currentpagexpath = currentpagexpath + next;
+                    lastpage = By.XPath(currentpagexpath);
+                }
+                Assert.IsFalse(DoesControlExist(lastpage));
+            }
+        }
 
     }
 }
+
+

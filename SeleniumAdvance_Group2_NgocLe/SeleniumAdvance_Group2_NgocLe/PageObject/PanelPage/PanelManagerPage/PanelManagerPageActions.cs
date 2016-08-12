@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
 
 namespace SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage
 {
     public class PanelManagerPageActions: GeneralPageActions
     {
-        public NewPanelPageActions GoToPanelPage()
+        public NewPanelPageUI GoToPanelPage()
         {
             ClickControl(PanelManagerPageUI.linkAddNewPanel);
-            return new NewPanelPageActions();
+            return new NewPanelPageUI();
         }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using SeleniumAdvance_Group2.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
 {
     public class NewPageActions : GeneralPageActions
     {
-       
-
         public GeneralPageActions CreadNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
@@ -33,9 +31,11 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.NewPage
             if (afterpage != null)
             { SelectItemByDropdownList(NewPageUI.ddlDisplayAfter, afterpage); }
             ClickControl(NewPageUI.btnOk);
+            Thread.Sleep(500);
+
             return new GeneralPageActions();
+            
         }
 
-       
     }
 } 
