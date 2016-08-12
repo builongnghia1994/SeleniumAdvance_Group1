@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumAdvance_Group2.PageObject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;

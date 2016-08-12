@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using System.Threading;
-
+using SeleniumAdvance_Group2.PageObject.LoginPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
+            loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
+            loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
 
             //add page1

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -17,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
        public void Demo_Thi()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
+            loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(Constant.Respository, username, pass);
             generalPageActions.DeleteAllPages();        
         }

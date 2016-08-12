@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using System.Threading;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -12,7 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC014_Public_pages_can_be_visible_and_accessed_by_all_users()
         {
 
-            loginPageActions = OpenURL(Constant.DashboardURL);
+            loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage("public", "TC016", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
@@ -25,7 +26,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
+            loginPageActions = new LoginPageActions();
             generalPageActions = loginPageActions.Login(Constant.Respository, Constant.userTrang, Constant.passTrang);
             newPageActions = generalPageActions.GotoNewPage();
   

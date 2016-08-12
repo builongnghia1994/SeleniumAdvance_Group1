@@ -1,14 +1,6 @@
-﻿using SeleniumAdvance_Group2.PageObject;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Edge;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using System;
-using System.Configuration;
-using System.Configuration.Assemblies;
 using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
 using SeleniumAdvance_Group2.PageObject.LoginPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
