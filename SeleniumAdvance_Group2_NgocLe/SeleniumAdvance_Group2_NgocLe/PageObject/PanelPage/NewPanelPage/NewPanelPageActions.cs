@@ -8,24 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleniumAdvance_Group2.PageObject.PanelPage
+
+namespace SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage
 {
     public class NewPanelPageActions : GeneralPageActions
     {
-        public By BtnOK
-        {
-            get { return NewPanelPageUI.btnOK; }
-        }
 
-        public By BtnCancel
+        public void ClickOK()
         {
-            get { return NewPanelPageUI.btnCancel; }
-        }
+            ClickControl(NewPanelPageUI.btnOK);
 
-        public void VerifyTextInAlertPopup()
+        }
+        public void VerifyTextInAlertPopup(string expectedString)
         {
-            VerifyText(Constant.MsgRequiredFieldPanel, GetTextFromAlertPopup());
-            ClickControl(this.BtnCancel);
+            VerifyText(expectedString, GetTextFromAlertPopup());
+            ClickControl(NewPanelPageUI.btnCancel);
         }
     }
 }

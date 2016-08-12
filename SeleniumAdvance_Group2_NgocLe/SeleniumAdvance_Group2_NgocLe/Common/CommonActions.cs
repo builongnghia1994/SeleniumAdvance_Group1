@@ -61,6 +61,11 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPageActions();
         }
+        public LoginPageUI OpenURL1(string url)
+        {
+            Constant.WebDriver.Navigate().GoToUrl(url);
+            return new LoginPageUI();
+        }
         public IWebElement FindElement(By control)
         {
             WaitForControl(control, Constant.timeout);
@@ -160,7 +165,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
-        } 
+        }
         public void VerifyText(string expectedText, string actualText)
         {
             Assert.AreEqual(expectedText, actualText);

@@ -12,7 +12,7 @@ using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
 using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
-using SeleniumAdvance_Group2.PageObject.PanelPage;
+using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
@@ -36,7 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.itemLogOut);
             }
             return new LoginPageActions();
-            
+
         }
 
         public DataProfileManagerPageActions GotoDataProfilePage()
@@ -56,7 +56,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
             return new DataProfileManagerPageActions();
         }
 
-        public PanelManagerPageActions GotoPanelManagerPage()
+        public PanelManagerPageUI GotoPanelManagerPage()
         {
 
 
@@ -72,13 +72,14 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.itemPanel);
             }
 
-            return new PanelManagerPageActions();
+            return new PanelManagerPageUI();
         }
 
-        public NewPanelPageActions GotoPanelPage()
+        public NewPanelPageUI GotoPanelPage()
         {
-            PanelManagerPageActions panelManagerPage = GotoPanelManagerPage();
-            return panelManagerPage.GoToPanelPage();
+            PanelManagerPageUI panelManagerPage = GotoPanelManagerPage();
+            PanelManagerPageActions pmpa = new PanelManagerPageActions();
+            return pmpa.GoToPanelPage();
         }
 
         public void GotoPage(string way)
@@ -119,15 +120,15 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-           
+
             ClickControl(GeneralPageUI.menuGlobalSetting);
             ClickControl(control);
         }
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
         {
-            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='"+namepage+"']"), 3);
-            
+            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
+
             int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
@@ -147,17 +148,17 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
         }
 
-     
+
         public NewPageActions GotoNewPage()
         {
-           
+
             SelectGlobalSetting("Add Page");
             return new NewPageActions();
         }
 
         public EditPageActions GotoEditPage(string namepage)
         {
-           
+
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             SelectGlobalSetting("Edit");
             return new EditPageActions();
