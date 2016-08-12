@@ -165,39 +165,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
 
 
-        public void DeleteAllPages()
-        {           
-            Thread.Sleep(500);
-            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
-            string itemclasscurrent = string.Empty;
-            string xpath = string.Empty;
-
-            for (int i = items - 3; i >= 2;)
-            {                            
-                xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";               
-                itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                               
-                while (itemclasscurrent.Equals("haschild"))
-                {
-                    Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath)));
-                    hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a";
-                    xpath = xpath + next;
-                    itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                  }
-                
-                ClickControl(By.XPath(xpath));
-                GlobalSetting("Delete");
-                AcceptAlert();
-
-               Thread.Sleep(300);
-               i= CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
-               Console.WriteLine("a"+i);               
-            }
-
-        }
-
+     
 
 
 
