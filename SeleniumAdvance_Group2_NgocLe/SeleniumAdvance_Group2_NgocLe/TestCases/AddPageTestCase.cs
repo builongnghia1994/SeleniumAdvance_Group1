@@ -2,14 +2,22 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using System.Threading;
-
+using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class AddPageTestCase : TestBases
     {
-     
+        LoginPageActions loginPageActions;
+        GeneralPageActions generalPageActions;
+        NewPageActions newPageActions;
+
+        private string validusername = "thi.nguyen";
+        private string validpass = "1";
         private string statuspublic = "public";
         private string pagename1 = "page1" + Constant.timesystem;
         private string pagename2 = "page2" + Constant.timesystem;
@@ -18,8 +26,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            loginPageActions = new LoginPageActions();
+            generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
@@ -31,9 +39,11 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-           
+            EditPageActions editPageActions;
+
+            loginPageActions = new LoginPageActions();
+            generalPageActions = loginPageActions.Login(respository_SampleRepository, validusername, validpass);
+
             //add page1
             newPageActions = generalPageActions.GotoNewPage();
             generalPageActions = newPageActions.CreadNewPage(statuspublic, pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);

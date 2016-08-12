@@ -1,13 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.GeneralPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class DemoThi : TestBases
     {
-
+        LoginPageActions loginPageActions;
+        GeneralPageActions generalPageActions;
         private string username = "thi.nguyen";
         private string pass = "1";
         //private string statuspublic = "public";
@@ -17,8 +20,8 @@ namespace SeleniumAdvance_Group2.TestCases
 
        public void Demo_Thi()
         {
-            loginPageActions = OpenURL(Constant.DashboardURL);
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respository, username, pass);
+            loginPageActions = new LoginPageActions();
+            generalPageActions = loginPageActions.Login(Constant.Respository, username, pass);
             generalPageActions.DeleteAllPages();        
         }
     }
