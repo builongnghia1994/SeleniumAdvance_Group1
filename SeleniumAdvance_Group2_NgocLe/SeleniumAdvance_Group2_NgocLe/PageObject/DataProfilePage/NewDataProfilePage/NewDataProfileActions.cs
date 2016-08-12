@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumAdvance_Group2.PageObject.GeneralPage;
 using System;
 using System.Collections.Generic;

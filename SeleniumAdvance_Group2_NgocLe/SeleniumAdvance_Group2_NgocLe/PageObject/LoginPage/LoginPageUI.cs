@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeleniumAdvance_Group2.PageObject.GeneralPage;
 using SeleniumAdvance_Group2.Common;
 
 

@@ -35,6 +35,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
                 ClickControl(GeneralPageUI.menuUser);
                 ClickControl(GeneralPageUI.itemLogOut);
             }
+           
             return new LoginPageActions();
 
         }
