@@ -11,7 +11,6 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class NgocTC : TestBases
     {
-        LoginPage loginPage;
         GeneralPage generalPage;
         NewPage newPage;
 
@@ -35,17 +34,17 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = new LoginPage();
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
             newPage = generalPage.GotoNewPage();
-  
+
             generalPage = newPage.CreateNewPage("public", Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage("public", Constant.timesystem+"1", Constant.timesystem, Constant.defaultValue, Constant.defaultValue);
-            
+            generalPage = newPage.CreateNewPage("public", Constant.timesystem + "1", Constant.timesystem, Constant.defaultValue, Constant.defaultValue);
+
 
             generalPage.DeletePage(Constant.timesystem);
             generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
 
-            generalPage.VerifyAlertMessenge("Cannot delete page '"+Constant.timesystem+"' since it has child page(s)");
+            generalPage.VerifyAlertMessenge("Cannot delete page '" + Constant.timesystem + "' since it has child page(s)");
             generalPage.AcceptAlert();
 
             generalPage.DeletePage(Constant.timesystem + "/" + Constant.timesystem + "1");

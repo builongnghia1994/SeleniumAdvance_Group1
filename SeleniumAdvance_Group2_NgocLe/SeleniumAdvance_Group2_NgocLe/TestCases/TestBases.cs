@@ -1,11 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.Login;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class TestBases : CommonActions
     {
+        public LoginPage loginPage;
 
         public TestContext TestContext { get; set; }
 
@@ -24,7 +26,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMethods()
         {
-            OpenURL(Constant.DashboardURL);
+            loginPage = OpenURL(Constant.DashboardURL);
         }
         [TestCleanup]
         public void TestCleanupMethods()

@@ -8,12 +8,11 @@ using SeleniumAdvance_Group2.PageObject.DataProfile;
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
-    public class DataProfileTestCases: TestBases
+    public class DataProfileTestCases : TestBases
     {
-        LoginPage loginPage;
         GeneralPage generalPage;
         DataProfileManagerPage dataProfileManagerPage;
-        
+
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
@@ -49,7 +48,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
-            newDataProfilePage= dataProfileManagerPage.GotoNewDataProfile();
+            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfile();
 
             newDataProfilePage.VerifyDropdownlistDisplayByPriority(Constant.itemTypeValues, newDataProfilePage.GetItemTypeValues());
         }
