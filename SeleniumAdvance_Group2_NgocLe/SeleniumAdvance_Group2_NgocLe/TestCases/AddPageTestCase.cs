@@ -11,11 +11,10 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class AddPageTestCase : TestBases
     {
-        LoginPage loginPage;
         GeneralPage generalPage;
         NewPage newPage;
 
-       
+
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
@@ -24,7 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);            
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);
             loginPage = generalPage.LogOut();
 
         }
@@ -51,7 +50,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //vp
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);
             loginPage = generalPage.LogOut();
-        } 
+        }
 
     }
 }

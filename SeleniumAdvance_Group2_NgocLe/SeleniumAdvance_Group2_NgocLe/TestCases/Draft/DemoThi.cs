@@ -9,17 +9,15 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class DemoThi : TestBases
     {
-        LoginPage loginPage;
         GeneralPage generalPage;
-       
 
         [TestMethod]
 
-       public void Demo_Thi()
+        public void Demo_Thi()
         {
             loginPage = new LoginPage();
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            generalPage.DeleteAllPages();        
+            generalPage.DeleteAllPages();
         }
     }
-} 
+}
