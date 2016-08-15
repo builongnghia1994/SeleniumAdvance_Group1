@@ -220,8 +220,14 @@ namespace SeleniumAdvance_Group2.Common
 
         public int CountItems(string locator)
         {
+            return FindElements(locator).Count;
+        }
+
+        public IList<IWebElement> FindElements(string locator)
+        {
             By element = FindElementBy(locator);
-            return Constant.WebDriver.FindElements(element).Count;
+            WaitForControl(element, Constant.timeout);
+            return Constant.WebDriver.FindElements(element);
         }
 
         #region verify
