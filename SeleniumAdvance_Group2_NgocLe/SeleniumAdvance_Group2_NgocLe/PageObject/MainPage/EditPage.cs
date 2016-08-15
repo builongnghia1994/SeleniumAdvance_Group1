@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage.EditPage
 {
-  public  class EditPageActions:GeneralPageActions
+  public  class EditPageActions: GeneralPageActions
     {
         public GeneralPageActions EditPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
