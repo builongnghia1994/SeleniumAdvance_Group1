@@ -60,10 +60,10 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPageActions();
         }
-        public LoginPageUI OpenURL1(string url)
+        public LoginPage OpenURL1(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPageUI();
+            return new LoginPage();
         }
         public IWebElement FindElement(By control)
         {
