@@ -47,9 +47,9 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = new LoginPage();
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             loginPage = generalPage.LogOut();
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_TestRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginSuccessfully(Constant.Respos_TestRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
             //VP
-            generalPage.VerifyWelComeUserDisplayed(Constant.Username_thi);
+            generalPage.VerifyWelComeUserDisplayed(Constant.UsernameAdmin);
             loginPage = generalPage.LogOut();
         }
     }
