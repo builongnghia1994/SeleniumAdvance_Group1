@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         public string[] GetItemTypeValues()
         {
             List<string> itemTypeValues = new List<string>();
-            IWebElement element = FindElement("item type list");
+            IWebElement element = FindElementFromPage("item type list");
             IList<IWebElement> lists = element.FindElements(By.TagName("option"));
             foreach (IWebElement ele in lists)
             {

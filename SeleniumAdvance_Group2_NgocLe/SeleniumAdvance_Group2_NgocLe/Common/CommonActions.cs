@@ -198,7 +198,7 @@ namespace SeleniumAdvance_Group2.Common
             WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             string alertText = alert.Text;
-            Constant.WebDriver.SwitchTo().DefaultContent();
+           // Constant.WebDriver.SwitchTo().DefaultContent();
             return alertText;
         }
 
@@ -345,6 +345,10 @@ namespace SeleniumAdvance_Group2.Common
             FindElement(locator).Click();
         }
 
+        public IWebElement FindElementFromPage(string locator)
+        {
+            return FindElement(locator);
+        }
         public IWebElement FindElement(string locator)
         {
            
@@ -362,7 +366,7 @@ namespace SeleniumAdvance_Group2.Common
                     iDictionary = Constant.NewPanelDictionary;
                     break;
                 case "PanelManagerPage":
-                    iDictionary = Constant.NewPanelDictionary;
+                    iDictionary = Constant.PanelManagerDictionary;
                     break;
                 case "EditPage":
                 case "NewPage":
@@ -424,6 +428,8 @@ namespace SeleniumAdvance_Group2.Common
         {
             string page = GetClassCaller(2);
             //   page = page.Substring(0, page.Length - 7);
+            if (page == "EditPage")
+                page = "NewPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
 

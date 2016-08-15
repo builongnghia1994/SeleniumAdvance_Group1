@@ -21,7 +21,7 @@ namespace SeleniumAdvance_Group2.PageObject.Login
             return new GeneralPage();
         }
 
-        public void Login(string respository, string username, string password)
+        public void  Login(string respository, string username, string password)
         {
             SelectItemByDropdownList("repository list", respository);
             TypeValue("username textbox", username);
@@ -36,6 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject.Login
         public void VerifyDashboardErrorMessageLogin(string expectederromessage)
         {
             VerifyText(expectederromessage, GetTextFromAlertPopup());
+            AcceptAlert();
         }
     }
 }

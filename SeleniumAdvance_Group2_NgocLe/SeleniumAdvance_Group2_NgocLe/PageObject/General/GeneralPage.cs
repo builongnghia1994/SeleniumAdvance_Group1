@@ -117,6 +117,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyTextFromControl(username, "user link");
+        
         }
 
 
