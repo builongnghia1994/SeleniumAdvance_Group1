@@ -12,6 +12,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.LoginPage;
 using System.Xml;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -141,8 +142,26 @@ namespace SeleniumAdvance_Group2.Common
 
         public void WaitForControl(By control, int timesecond)
         {
+            bool Displayed = false;
 
-                Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));   
+            // Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+
+            try
+            {
+                Thread.Sleep(500);
+                WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
+                wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
+                Displayed = Constant.WebDriver.FindElement(control).Displayed;
+                if(Displayed)
+                {
+                }
+            }
+
+            catch(Exception)
+            {
+                Console.WriteLine("eo' chay.");
+            }
+
         }
 
 
