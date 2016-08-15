@@ -13,11 +13,14 @@ using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
+        public bool Displayed { get; private set; }
+
         public static void OpenBrowser(string browser)
 
         {
@@ -35,6 +38,8 @@ namespace SeleniumAdvance_Group2.Common
                     optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
                     Constant.WebDriver = new InternetExplorerDriver(optionIE);
                     Constant.WebDriver.Manage().Window.Maximize();
+
+                   
                     break;
                 case "firefox":
                     Constant.WebDriver = new FirefoxDriver();
@@ -64,7 +69,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, Constant.timeout);
+           
             return Constant.WebDriver.FindElement(control);
         }
 
@@ -145,14 +150,14 @@ namespace SeleniumAdvance_Group2.Common
 
         public void WaitForControl(By control, int timesecond)
         {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
 
         }
 
         public void WaitForControl(string locator, int timesecond)
         {
             By control = BYFindElement(locator);
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
         }
 
         public void WaitForControlNotVisible(By control, int timesecond)
@@ -342,6 +347,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public IWebElement FindElement(string locator)
         {
+           
             string page = GetClassCaller(3);
             //  page = page.Substring(0, page.Length - 7);
             string filename = Constant.XMLPath + page + ".xml";
@@ -444,6 +450,18 @@ namespace SeleniumAdvance_Group2.Common
             By element = BYFindElement(locator);
             return Constant.WebDriver.FindElements(element).Count;
         }
+
+
+
+        public  IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
+        {
+           
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+                return wait.Until(drv => drv.FindElement(by));
+            
+           
+        }
+
 
 
     }

@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
-            loginPage = new LoginPage();
+         
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
@@ -32,8 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
             EditPage editPage;
-
-            loginPage = new LoginPage();
+           
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
 
             //add page1
