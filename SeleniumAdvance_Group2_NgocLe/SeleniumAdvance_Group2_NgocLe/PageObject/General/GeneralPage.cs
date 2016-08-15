@@ -117,7 +117,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyTextFromControl(username, "user link");
-        
+
         }
 
 
@@ -144,9 +144,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 {
                     string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
                     By realitemnamepage = By.XPath(itemnamepage);
-                    string real = GetText(realitemnamepage);
                     VerifyText(namepage, realitemnamepage);
-
                 }
             }
 
