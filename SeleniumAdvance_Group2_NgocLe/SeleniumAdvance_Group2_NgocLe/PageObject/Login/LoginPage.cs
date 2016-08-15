@@ -21,23 +21,17 @@ namespace SeleniumAdvance_Group2.PageObject.Login
             return new GeneralPage();
         }
 
-        public GeneralPage Login(string respository, string username, string password)
+        public void  Login(string respository, string username, string password)
         {
             SelectItemByDropdownList("repository list", respository);
             TypeValue("username textbox", username);
             TypeValue("password textbox", password);
             ClickControl("login button");
-            return new GeneralPage();
+           
         }
 
 
-        //public void Login(string respository, string username, string password)
-        //{
-        //    SelectItemByDropdownList(LoginPageUI.ddlRespository, respository);
-        //    TypeValue(LoginPageUI.txtUserName, username);
-        //    TypeValue(LoginPageUI.txtPassWord, password);
-        //    ClickControl(LoginPageUI.btnLogin);
-        //}
+        
 
         public void VerifyDashboardErrorMessageLogin(string expectederromessage)
         {
