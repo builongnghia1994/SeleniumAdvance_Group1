@@ -5,19 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using SeleniumAdvance_Group2.PageObject.DataProfilePage.NewDataProfilePage;
+using SeleniumAdvance_Group2.PageObject.General;
+using SeleniumAdvance_Group2.Common;
 
-namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage
+namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
-    public class DataProfileManagerPageActions : GeneralPageActions
+    public class DataProfileManagerPage : GeneralPage
     {
-        #region GotoPage methods
-
-        public NewDataProfileActions GotoNewDataProfile()
+        public DataProfileManagerPage()
         {
-            ClickControl(DataProfileManagerPageUI.linkAddNew);
-            return new NewDataProfileActions();
+            Constant.DataProfileDictionary = ReadXML();
+        }
+
+        #region GotoPage methods
+        public NewDataProfilePage GotoNewDataProfile()
+        {
+            ClickControl("add new link");
+            return new NewDataProfilePage();
         }
 
         #endregion
@@ -25,7 +29,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
         public string[] GetActualPreDataPRofile()
         {
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < CountItems(DataProfileManagerPageUI.tblDataProfile); i++)
+            for (int i = 2; i < CountItems("data profile table"); i++)
             {
                 string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
                 tableValues.Add(FindElement(By.XPath(row)).Text);
@@ -42,10 +46,10 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
                 Assert.Fail("The actual results are less than the expected results");
             }
             else
-            {        
+            {
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
-                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '"+expectedValues[i]+"' does not exist in actual results");
+                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '" + expectedValues[i] + "' does not exist in actual results");
                 }
             }
         }
@@ -60,7 +64,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPa
                 if (StringComparer.Ordinal.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
                 {
                     alphabetical = false;
-                    errorMessage = "The '"+ listPreSetDataProfile[i]+"' and the '"+ listPreSetDataProfile[i + 1]+"' do not display in alphabet";
+                    errorMessage = "The '" + listPreSetDataProfile[i] + "' and the '" + listPreSetDataProfile[i + 1] + "' do not display in alphabet";
                     break;
                 }
             }

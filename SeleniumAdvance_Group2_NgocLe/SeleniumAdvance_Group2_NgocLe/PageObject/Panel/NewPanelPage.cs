@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.Common;
-using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
+using SeleniumAdvance_Group2.PageObject.General;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage
+namespace SeleniumAdvance_Group2.PageObject.Panel
 {
-    public class NewPanelPageActions : GeneralPageActions
+    public class NewPanelPage : GeneralPage
     {
+
+        public NewPanelPage()
+        {
+            Constant.NewPanelDictionary = ReadXML();
+        }
 
         public void ClickOK()
         {
-            ClickControl(NewPanelPageUI.btnOK);
+            ClickControl("ok button");
 
         }
         public void VerifyTextInAlertPopup(string expectedString)
         {
             VerifyText(expectedString, GetTextFromAlertPopup());
             AcceptAlert();
-            ClickControl(NewPanelPageUI.btnCancel);
+            ClickControl("cancel button");
         }
     }
 }

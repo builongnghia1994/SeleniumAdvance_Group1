@@ -1,4 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DataProfile>
-  
+  <ddlItemType>
+    <name>item type list</name>
+    <type>id</type>
+    <value>cbbEntityType</value>
+  </ddlItemType>
 </DataProfile>

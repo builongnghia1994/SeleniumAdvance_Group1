@@ -7,85 +7,87 @@ using SeleniumAdvance_Group2.Common;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
-using SeleniumAdvance_Group2.PageObject.LoginPage;
-using SeleniumAdvance_Group2.PageObject.DataProfilePage.DataProfileManagerPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+using SeleniumAdvance_Group2.PageObject.Login;
+using SeleniumAdvance_Group2.PageObject.DataProfile;
 using SeleniumAdvance_Group2.TestCases;
-using SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage;
-using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
+using SeleniumAdvance_Group2.PageObject.Panel;
+using SeleniumAdvance_Group2.PageObject.MainPage;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 
 
-namespace SeleniumAdvance_Group2.PageObject.GeneralPage
+namespace SeleniumAdvance_Group2.PageObject.General
 {
-    public class GeneralPageActions : CommonActions
+    public class GeneralPage : CommonActions
     {
-        public LoginPageActions LogOut()
+        public GeneralPage()
+        {
+            Constant.GeneralDictionary = ReadXML();
+        }
+        public LoginPage LogOut()
         {
             if (Constant.Browser == "ie")
             {
 
-                ClickControlByJS(GeneralPageUI.menuUser);
-                ClickControlByJS(GeneralPageUI.itemLogOut);
+                ClickControlByJS("user link");
+                ClickControlByJS("log out link");
             }
             else
             {
-                ClickControl(GeneralPageUI.menuUser);
-                ClickControl(GeneralPageUI.itemLogOut);
+                ClickControl("user link");
+                ClickControl("log out link");
             }
-           
-            return new LoginPageActions();
+
+            return new LoginPage();
 
         }
 
-        public DataProfileManagerPageActions GotoDataProfilePage()
+        public DataProfileManagerPage GotoDataProfilePage()
         {
             if (Constant.Browser == "ie")
             {
 
-                ClickControlByJS(GeneralPageUI.menuAdminister);
-                ClickControlByJS(GeneralPageUI.itemDataProfile);
+                ClickControlByJS("administer link");
+                ClickControlByJS("data profile link");
             }
             else
             {
-                ClickControl(GeneralPageUI.menuAdminister);
-                ClickControl(GeneralPageUI.itemDataProfile);
+                ClickControl("administer link");
+                ClickControl("data profile link");
             }
 
-            return new DataProfileManagerPageActions();
+            return new DataProfileManagerPage();
         }
 
-        public PanelManagerPageUI GotoPanelManagerPage()
+        public PanelManagerPage GotoPanelManagerPage()
         {
 
 
             if (Constant.Browser == "ie")
             {
-                ClickControlByJS(GeneralPageUI.menuAdminister);
-                ClickControlByJS(GeneralPageUI.itemPanel);
+                ClickControlByJS("administer link");
+                ClickControlByJS("panel link");
             }
 
             else
             {
-                ClickControl(GeneralPageUI.menuAdminister);
-                ClickControl(GeneralPageUI.itemPanel);
+                ClickControl("administer link");
+                ClickControl("panel link");
             }
 
-            return new PanelManagerPageUI();
+            return new PanelManagerPage();
         }
 
-        public NewPanelPageUI GotoPanelPage()
+        public NewPanelPage GotoPanelPage()
         {
-            PanelManagerPageUI panelManagerPage = GotoPanelManagerPage();
-            PanelManagerPageActions pmpa = new PanelManagerPageActions();
-            return pmpa.GoToPanelPage();
+            PanelManagerPage panelManagerPage = GotoPanelManagerPage();
+
+            return panelManagerPage.GoToPanelPage();
         }
 
         public void GotoPage(string way)
         {
-            WaitForControl(GeneralPageUI.menuUser, 5);
+            WaitForControl("user link", Constant.timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
@@ -114,7 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
 
         public void VerifyWelComeUserDisplayed(string username)
         {
-            VerifyText(username, GeneralPageUI.menuUser);
+            VerifyTextFromControl(username, "user link");
         }
 
 
@@ -122,7 +124,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
 
-            ClickControl(GeneralPageUI.menuGlobalSetting);
+            ClickControl("global setting");
             ClickControl(control);
         }
 
@@ -130,7 +132,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         {
             WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
 
-            int numberitemsmainmenu = CountItems(GeneralPageUI.itemsMainPage) - 2;
+            int numberitemsmainmenu = CountItems("main page") - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
 
@@ -150,19 +152,19 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         }
 
 
-        public NewPageActions GotoNewPage()
+        public NewPage GotoNewPage()
         {
 
             SelectGlobalSetting("Add Page");
-            return new NewPageActions();
+            return new NewPage();
         }
 
-        public EditPageActions GotoEditPage(string namepage)
+        public EditPage GotoEditPage(string namepage)
         {
 
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             SelectGlobalSetting("Edit");
-            return new EditPageActions();
+            return new EditPage();
         }
 
 
@@ -176,7 +178,7 @@ namespace SeleniumAdvance_Group2.PageObject.GeneralPage
         public void VerifyPageNotExist(string way)
         {
 
-            WaitForControl(GeneralPageUI.menuUser, 5);
+            WaitForControl("user link", 5);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";

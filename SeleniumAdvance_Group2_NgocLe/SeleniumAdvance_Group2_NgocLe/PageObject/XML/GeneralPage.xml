@@ -1,1 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<GeneralPage>
+  <menuUser>
+    <name>user link</name>
+    <type>xpath</type>
+    <value>//a[@href='#Welcome']</value>
+  </menuUser>
+  <itemLogOut>
+    <name>log out link</name>
+    <type>xpath</type>
+    <value>//a[@href='logout.do']</value>
+  </itemLogOut>
+  <menuAdminister>
+    <name>administer link</name>
+    <type>xpath</type>
+    <value>//a[@href='#Administer']</value>
+  </menuAdminister>
+  <itemDataProfile>
+    <name>data profile link</name>
+    <type>xpath</type>
+    <value>//a[@href='profiles.jsp']</value>
+  </itemDataProfile>
+  <itemPanel>
+    <name>panel link</name>
+    <type>xpath</type>
+    <value>//a[@href='panels.jsp']</value>
+  </itemPanel>
+  <menuGlobalSetting>
+    <name>global setting</name>
+    <type>xpath</type>
+    <value>//li[@class='mn-setting']/a</value>
+  </menuGlobalSetting>
+  <itemAddPage>
+    <name>add page item</name>
+    <type>xpath</type>
+    <value>//a[@class='add' and text()='Add Page']</value>
+  </itemAddPage>
+  <txtPageName>
+    <name>page name textbox</name>
+    <type>id</type>
+    <value>name</value>
+  </txtPageName>
+  <rdIsPublic>
+    <name>public radio button</name>
+    <type>id</type>
+    <value>ispublic</value>
+  </rdIsPublic>
+  <drdparentname>
+    <name>parent</name>
+    <type>id</type>
+    <value>parent</value>
+  </drdparentname>
+  <drdafterpage>
+    <name>after page</name>
+    <type>id</type>
+    <value>afterpage</value>
+  </drdafterpage>
+  <drdnumberclm>
+    <name>number column</name>
+    <type>id</type>
+    <value>columnnumber</value>
+  </drdnumberclm>
+  <btnOK>
+    <name>ok button</name>
+    <type>id</type>
+    <value>OK</value>
+  </btnOK>
+  <menuitemsMainPage>
+    <name>main page item</name>
+    <type>xpath</type>
+    <value>//div[@id='main-menu']/div/ul/li[{0}]/a</value>
+  </menuitemsMainPage>
+  <itemsMainPage>
+    <name>main page</name>
+    <type>xpath</type>
+    <value>//div[@id='main-menu']/div/ul/li/a</value>
+  </itemsMainPage>
+  <itemDelete>
+    <name>delete</name>
+    <type>xpath</type>
+    <value>//li/a[@class='delete']</value>
+  </itemDelete>
+</GeneralPage>
