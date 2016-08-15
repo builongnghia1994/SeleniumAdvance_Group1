@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.IO;
+using System.Collections.Generic;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -71,6 +72,13 @@ namespace SeleniumAdvance_Group2.Common
         public static string XMLLoginPage = "LoginPage.xml";
         public static string XMLPanelManagerPage = "PanelManagerPage.xml";
         public static string XMLNewPanelPage = "NewPanelPage.xml";
+        public static Dictionary<string, string>[] LoginDictionary;
+        public static Dictionary<string, string>[] NewPanelDictionary;
+        public static Dictionary<string, string>[] PanelManagerDictionary;
+        public static Dictionary<string, string>[] NewPageDictionary;
+        public static Dictionary<string, string>[] NewDataProfileDictionary;
+        public static Dictionary<string, string>[] DataProfileDictionary;
+        public static Dictionary<string, string>[] GeneralDictionary;
 
         #endregion
 

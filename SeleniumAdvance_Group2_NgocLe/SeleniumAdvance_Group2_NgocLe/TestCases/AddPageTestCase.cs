@@ -2,56 +2,55 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using System.Threading;
-using SeleniumAdvance_Group2.PageObject.LoginPage;
-using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.EditPage;
+using SeleniumAdvance_Group2.PageObject.Login;
+using SeleniumAdvance_Group2.PageObject.General;
+using SeleniumAdvance_Group2.PageObject.MainPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class AddPageTestCase : TestBases
     {
-        LoginPageActions loginPageActions;
-        GeneralPageActions generalPageActions;
-        NewPageActions newPageActions;
+        LoginPage loginPage;
+        GeneralPage generalPage;
+        NewPage newPage;
 
        
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
-            loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            newPageActions = generalPageActions.GotoNewPage();
-            generalPageActions = newPageActions.CreadNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            loginPage = new LoginPage();
+            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
-            generalPageActions.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);            
-            loginPageActions = generalPageActions.LogOut();
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);            
+            loginPage = generalPage.LogOut();
 
         }
 
         [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
-            EditPageActions editPageActions;
+            EditPage editPage;
 
-            loginPageActions = new LoginPageActions();
-            generalPageActions = loginPageActions.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            loginPage = new LoginPage();
+            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
 
             //add page1
-            newPageActions = generalPageActions.GotoNewPage();
-            generalPageActions = newPageActions.CreadNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //add page2
 
             Thread.Sleep(500);
-            newPageActions = generalPageActions.GotoNewPage();
-            generalPageActions = newPageActions.CreadNewPage(Constant.statuspublic, Constant.pagename2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             Thread.Sleep(500);
-            editPageActions = generalPageActions.GotoEditPage(Constant.pagename1);
-            generalPageActions = editPageActions.EditPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.itemdisplayafter, Constant.defaultValue);
+            editPage = generalPage.GotoEditPage(Constant.pagename1);
+            generalPage = editPage.EditAPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.itemdisplayafter, Constant.defaultValue);
             //vp
-            generalPageActions.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);
-            loginPageActions = generalPageActions.LogOut();
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);
+            loginPage = generalPage.LogOut();
         } 
 
     }

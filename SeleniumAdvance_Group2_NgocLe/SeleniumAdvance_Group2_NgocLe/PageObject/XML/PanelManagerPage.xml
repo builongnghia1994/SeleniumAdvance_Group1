@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PanelManager>
-<linkAddNewPanel>
-  <type>xpath</type>
-  <value>//a[contains(@href,'javascript:Dashboard.openAddPanel')]</value>
-</linkAddNewPanel>
+  <linkAddNewPanel>
+    <name>add new link</name>
+    <type>xpath</type>
+    <value>//a[contains(@href,'javascript:Dashboard.openAddPanel')]</value>
+  </linkAddNewPanel>
 </PanelManager>

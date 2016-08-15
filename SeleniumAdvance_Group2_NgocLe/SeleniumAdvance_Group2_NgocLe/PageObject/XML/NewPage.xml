@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page>
+  <txtPageName>
+    <name>page name textbox</name>
+    <type>id</type>
+    <value>name</value>
+  </txtPageName>
+  <ddlParentName>
+    <name>parent name list</name>
+    <type>id</type>
+    <value>parent</value>
+  </ddlParentName>
+  <ddlDisplayAfter>
+    <name>page display after</name>
+    <type>id</type>
+    <value>afterpage</value>
+  </ddlDisplayAfter>
+  <rdPublic>
+    <name>public checkbox</name>
+    <type>id</type>
+    <value>ispublic</value>
+  </rdPublic>
+  <ddlnumbercolum>
+    <name>number column list</name>
+    <type>id</type>
+    <value>columnnumber</value>
+  </ddlnumbercolum>
+  <btnOk>
+    <name>OK button</name>
+    <type>id</type>
+    <value>OK</value>
+  </btnOk>
+</Page>
