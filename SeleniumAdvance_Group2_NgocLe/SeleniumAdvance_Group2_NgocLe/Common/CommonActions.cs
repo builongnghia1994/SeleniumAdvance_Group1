@@ -51,259 +51,12 @@ namespace SeleniumAdvance_Group2.Common
                     break;
             }
         }
-        public static void CloseBrowser()
-        {
-            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
-            Constant.WebDriver.Quit();
-        }
         public LoginPage OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
             return new LoginPage();
         }
-
-        public IWebElement FindElement(By control)
-        {
-            WaitForControl(control, Constant.timeout);
-            return Constant.WebDriver.FindElement(control);
-        }
-
-        public void ClickControl(By control)
-        {
-            FindElement(control).Click();
-        }
-
-        public void ClickControl(IWebElement control)
-        {
-            control.Click();
-        }
-
-        public void ClickControlByJS(By control)
-        {
-            IWebElement webElement = FindElement(control);
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
-            executor.ExecuteScript("arguments[0].click();", webElement);
-        }
-
-        public void ClickControlByJS(string locator)
-        {
-            IWebElement webElement = FindElement(locator);
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
-            executor.ExecuteScript("arguments[0].click();", webElement);
-        }
-
-        public void ClickControlByJS(IWebElement control)
-        {
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
-            executor.ExecuteScript("arguments[0].click();", control);
-        }
-
-        public void TypeValue(By control, string value)
-        {
-            FindElement(control).Clear();
-            FindElement(control).SendKeys(value);
-        }
-
-        public void TypeValue(IWebElement control, string value)
-        {
-            control.Clear();
-            control.SendKeys(value);
-        }
-        public void SelectItemByDropdownList(By control, string value)
-        {
-            SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
-            SelectElementByXpath.SelectByText(value);
-        }
-
-        public void SelectItemByDropdownList(IWebElement control, string value)
-        {
-            SelectElement SelectElementByXpath = new SelectElement(control);
-            SelectElementByXpath.SelectByText(value);
-        }
-
-        public string GetText(By control)
-        {
-            return FindElement(control).Text;
-        }
-
-        public string GetText(IWebElement control)
-        {
-            return control.Text;
-        }
-        public bool DoesControlExist(By control)
-        {
-            try
-            {
-                Constant.WebDriver.FindElement(control);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
-        public void WaitForControl(By control, int timesecond)
-        {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
-
-        }
-
-        public void WaitForControl(string locator, int timesecond)
-        {
-            By control = BYFindElement(locator);
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
-        }
-
-        public void WaitForControlNotVisible(By control, int timesecond)
-        {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
-        }
-
-        public int CountItems(By control)
-        {
-            return Constant.WebDriver.FindElements(control).Count;
-        }
-
-        public void VerifyText(string expectedText, By element)
-        {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
-
-        public void VerifyTextFromControl(string expectedText, string locator)
-        {
-            By element = BYFindElement(locator);
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
-
-        public void VerifyText(string expectedText, IWebElement element)
-        {
-            string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
-        }
-        public void VerifyText(string expectedText, string actualText)
-        {
-            Assert.AreEqual(expectedText, actualText);
-        }
-
-        public string GetTextFromAlertPopup()
-        {
-            WaitForAlertPresent(Constant.timeout);
-            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
-            string alertText = alert.Text;
-           // Constant.WebDriver.SwitchTo().DefaultContent();
-            return alertText;
-        }
-
-
-        public void DismissAlert()
-        {
-            WaitForAlertPresent(Constant.timeout);
-            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
-            alert.Dismiss();
-            Constant.WebDriver.SwitchTo().DefaultContent();
-        }
-
-        public void AcceptAlert()
-        {
-            WaitForAlertPresent(Constant.timeout);
-            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
-            alert.Accept();
-            Constant.WebDriver.SwitchTo().DefaultContent();
-        }
-
-        public void WaitForAlertPresent(int timeout)
-        {
-            new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
-        }
-
-        public void VerifyControlNotExist(By control)
-        {
-            Assert.IsFalse(DoesControlExist(control));
-        }
-
-        public void VerifyDoesControlExist(By control)
-        {
-            Assert.IsTrue(DoesControlExist(control));
-        }
-
-
-        //public Dictionary<string, string>[] ReadXMlFile(string filename)
-        //{
-        //    XmlDocument xd = new XmlDocument();
-        //    xd.Load(filename);
-
-        //    Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
-        //    Dictionary<string, string> valueDictionary = new Dictionary<string, string>();
-        //    foreach (XmlNode node in xd.DocumentElement.ChildNodes)
-        //    {
-        //        typeDictionary.Add(node.Name, node.ChildNodes[0].InnerText);
-        //        valueDictionary.Add(node.Name, node.ChildNodes[1].InnerText);
-        //    }
-        //    Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
-        //    iDictionary[0] = typeDictionary;
-        //    iDictionary[1] = valueDictionary;
-        //    return iDictionary;
-        //}
-
-        public IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
-        {
-            return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
-        }
-
-        public By BYFindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
-        {
-            return BYFindElementByType(iDictionary[0][key], iDictionary[1][key]);
-        }
-        public IWebElement FindElementByType(string type, string value)
-        {
-            By element = null;
-            switch (type.ToLower())
-            {
-                case "id":
-                    element = By.Id(value);
-                    break;
-                case "xpath":
-                    element = By.XPath(value);
-                    break;
-                case "class":
-                    element = By.ClassName(value);
-                    break;
-                case "name":
-                    element = By.Name(value);
-                    break;
-            }
-
-            return FindElement(element);
-        }
-
-        #region temporary
-        public By BYFindElementByType(string type, string value)
-        {
-            By element = null;
-            switch (type.ToLower())
-            {
-                case "id":
-                    element = By.Id(value);
-                    break;
-                case "xpath":
-                    element = By.XPath(value);
-                    break;
-                case "class":
-                    element = By.ClassName(value);
-                    break;
-                case "name":
-                    element = By.Name(value);
-                    break;
-            }
-
-            return element;
-        }
-        #endregion
-
-        public Dictionary<string, string>[] ReadXMlFile(string filename)
+        private Dictionary<string, string>[] ReadXMlFile(string filename)
         {
             XmlDocument xd = new XmlDocument();
             xd.Load(filename);
@@ -320,39 +73,34 @@ namespace SeleniumAdvance_Group2.Common
             iDictionary[1] = valueDictionary;
             return iDictionary;
         }
-
-        public void TypeValue(string locator, string value)
+        public Dictionary<string, string>[] ReadXML()
         {
-            IWebElement element = FindElement(locator);
-            element.Clear();
-            element.SendKeys(value);
+            string page = GetClassCaller(2);
+            if (page == "EditPage")
+                page = "NewPage";
+            string filename = Constant.XMLPath + page + ".xml";
+            return ReadXMlFile(filename);
         }
-
-        public void SelectItemByDropdownList(string locator, string value)
+        private static string GetClassCaller(int level)
         {
-
-            SelectElement selectElementByControl = new SelectElement(FindElement(locator));
-            selectElementByControl.SelectByText(value);
+            var m = new StackTrace().GetFrame(level).GetMethod();
+            return m.DeclaringType.Name;
         }
-
-        public void ClickControl(string locator)
+        public IWebElement FindElement(By control)
         {
-            FindElement(locator).Click();
-        }
-
-        public IWebElement FindElementFromPage(string locator)
-        {
-            return FindElement(locator);
+            WaitForControl(control, Constant.timeout);
+            return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
         {
-            string page = GetClassCaller(3);
-            //  page = page.Substring(0, page.Length - 7);
-            string filename = Constant.XMLPath + page + ".xml";
+            return FindElement(FindElementBy(locator));
+        }
+        public By FindElementBy(string locator)
+        {
+            string page = GetClassCaller(4);
             Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
             switch (page)
             {
-
                 case "LoginPage":
                     iDictionary = Constant.LoginDictionary;
                     break;
@@ -377,80 +125,275 @@ namespace SeleniumAdvance_Group2.Common
                     break;
 
             }
-            //    Dictionary<string, string>[] iDictionary = ReadXMlFile(filename);
             return FindElementFromXML(locator, iDictionary);
         }
-
-        public By BYFindElement(string locator)
+        private By FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
         {
-            string page = GetClassCaller(3);
-            //  page = page.Substring(0, page.Length - 7);
-            string filename = Constant.XMLPath + page + ".xml";
-            Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
-            switch (page)
+            return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
+        }
+        private By FindElementByType(string type, string value)
+        {
+            By element = null;
+            switch (type.ToLower())
             {
-
-                case "LoginPage":
-                    iDictionary = Constant.LoginDictionary;
+                case "id":
+                    element = By.Id(value);
                     break;
-                case "NewPanelPage":
-                    iDictionary = Constant.NewPanelDictionary;
+                case "xpath":
+                    element = By.XPath(value);
                     break;
-                case "PanelManagerPage":
-                    iDictionary = Constant.NewPanelDictionary;
+                case "class":
+                    element = By.ClassName(value);
                     break;
-                case "EditPage":
-                case "NewPage":
-                    iDictionary = Constant.NewPageDictionary;
+                case "name":
+                    element = By.Name(value);
                     break;
-                case "DataProfileManagerPage":
-                    iDictionary = Constant.DataProfileDictionary;
-                    break;
-                case "NewDataProfilePage":
-                    iDictionary = Constant.NewDataProfileDictionary;
-                    break;
-                case "GeneralPage":
-                    iDictionary = Constant.GeneralDictionary;
-                    break;
-
             }
-            //    Dictionary<string, string>[] iDictionary = ReadXMlFile(filename);
-            return BYFindElementFromXML(locator, iDictionary);
+
+            return element;
+        }
+        public IWebElement FindElementFromPage(string locator)
+        {
+            return FindElement(locator);
         }
 
-        public Dictionary<string, string>[] ReadXML()
+        public void ClickControl(By control)
         {
-            string page = GetClassCaller(2);
-            //   page = page.Substring(0, page.Length - 7);
-            if (page == "EditPage")
-                page = "NewPage";
-            string filename = Constant.XMLPath + page + ".xml";
-            return ReadXMlFile(filename);
-
+            FindElement(control).Click();
+        }
+        public void ClickControlByJS(string locator)
+        {
+            IWebElement webElement = FindElement(locator);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
         }
 
-        private static string GetClassCaller(int level)
+        public void ClickControl(string locator)
         {
-            // StackTrace stackTrace = new StackTrace();           // get call stack
-            //  StackFrame[] stackFrames = stackTrace.GetFrames();  // get method calls (frames)
+            FindElement(locator).Click();
+        }
 
-            //   StackFrame callingFrame = stackFrames[1];
+        public void TypeValue(string locator, string value)
+        {
+            IWebElement element = FindElement(locator);
+            element.Clear();
+            element.SendKeys(value);
+        }
 
-            //   var method = callingFrame.GetMethod();
+        public void SelectItemByDropdownList(string locator, string value)
+        {
+            SelectElement selectElementByControl = new SelectElement(FindElement(locator));
+            selectElementByControl.SelectByText(value);
+        }
 
-            //    var n = System.Reflection.MethodBase.GetCurrentMethod();
+        public string GetText(By control)
+        {
+            return FindElement(control).Text;
+        }
+        public bool DoesControlExist(By control)
+        {
+            try
+            {
+                Constant.WebDriver.FindElement(control);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+        public void WaitForControl(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
 
+        }
+        public void WaitForControl(string locator, int timesecond)
+        {
+            By control = FindElementBy(locator);
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+        }
 
-            var m = new StackTrace().GetFrame(level).GetMethod();
-            return m.DeclaringType.Name;
+        public int CountItems(By control)
+        {
+            return Constant.WebDriver.FindElements(control).Count;
         }
 
         public int CountItems(string locator)
         {
-            By element = BYFindElement(locator);
+            By element = FindElementBy(locator);
             return Constant.WebDriver.FindElements(element).Count;
         }
 
+        #region verify
+        public void VerifyText(string expectedText, By element)
+        {
+            string actualText = GetText(element);
+            Assert.AreEqual(expectedText, actualText);
+        }
+        public void VerifyTextFromControl(string expectedText, string locator)
+        {
+            By element = FindElementBy(locator);
+            string actualText = GetText(element);
+            Assert.AreEqual(expectedText, actualText);
+        }
+        public void VerifyText(string expectedText, string actualText)
+        {
+            Assert.AreEqual(expectedText, actualText);
+        }
+
+
+        #endregion
+
+        #region alert
+        public void DismissAlert()
+        {
+            WaitForAlertPresent(Constant.timeout);
+            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+            alert.Dismiss();
+            Constant.WebDriver.SwitchTo().DefaultContent();
+        }
+
+        public void AcceptAlert()
+        {
+            WaitForAlertPresent(Constant.timeout);
+            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+            alert.Accept();
+            Constant.WebDriver.SwitchTo().DefaultContent();
+        }
+
+        public void WaitForAlertPresent(int timeout)
+        {
+            new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.AlertIsPresent());
+        }
+
+        public string GetTextFromAlertPopup()
+        {
+            WaitForAlertPresent(Constant.timeout);
+            IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+            return alert.Text;
+        }
+        #endregion
+
+        #region 0 reference
+        public void VerifyControlNotExist(By control)
+        {
+            Assert.IsFalse(DoesControlExist(control));
+        }
+        public void VerifyDoesControlExist(By control)
+        {
+            Assert.IsTrue(DoesControlExist(control));
+        }
+        public void WaitForControlNotVisible(By control, int timesecond)
+        {
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
+        }
+        public void ClickControl(IWebElement control)
+        {
+            control.Click();
+        }
+
+        public void ClickControlByJS(By control)
+        {
+            IWebElement webElement = FindElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        public void ClickControlByJS(IWebElement control)
+        {
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
+            executor.ExecuteScript("arguments[0].click();", control);
+        }
+
+        public void TypeValue(By control, string value)
+        {
+            FindElement(control).Clear();
+            FindElement(control).SendKeys(value);
+        }
+
+        public void TypeValue(IWebElement control, string value)
+        {
+            control.Clear();
+            control.SendKeys(value);
+        }
+
+        public void SelectItemByDropdownList(By control, string value)
+        {
+            SelectElement SelectElementByXpath = new SelectElement(FindElement(control));
+            SelectElementByXpath.SelectByText(value);
+        }
+
+        public void SelectItemByDropdownList(IWebElement control, string value)
+        {
+            SelectElement SelectElementByXpath = new SelectElement(control);
+            SelectElementByXpath.SelectByText(value);
+        }
+
+        //public By BYFindElement(string locator)
+        //{
+        //    string page = GetClassCaller(3);
+        //    //  page = page.Substring(0, page.Length - 7);
+        //    string filename = Constant.XMLPath + page + ".xml";
+        //    Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
+        //    switch (page)
+        //    {
+
+        //        case "LoginPage":
+        //            iDictionary = Constant.LoginDictionary;
+        //            break;
+        //        case "NewPanelPage":
+        //            iDictionary = Constant.NewPanelDictionary;
+        //            break;
+        //        case "PanelManagerPage":
+        //            iDictionary = Constant.NewPanelDictionary;
+        //            break;
+        //        case "EditPage":
+        //        case "NewPage":
+        //            iDictionary = Constant.NewPageDictionary;
+        //            break;
+        //        case "DataProfileManagerPage":
+        //            iDictionary = Constant.DataProfileDictionary;
+        //            break;
+        //        case "NewDataProfilePage":
+        //            iDictionary = Constant.NewDataProfileDictionary;
+        //            break;
+        //        case "GeneralPage":
+        //            iDictionary = Constant.GeneralDictionary;
+        //            break;
+
+        //    }
+        //    //    Dictionary<string, string>[] iDictionary = ReadXMlFile(filename);
+        //    return BYFindElementFromXML(locator, iDictionary);
+        //}
+
+        //public IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
+        //{
+        //    return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
+        //}
+
+        //public IWebElement FindElementByType(string type, string value)
+        //{
+        //    By element = null;
+        //    switch (type.ToLower())
+        //    {
+        //        case "id":
+        //            element = By.Id(value);
+        //            break;
+        //        case "xpath":
+        //            element = By.XPath(value);
+        //            break;
+        //        case "class":
+        //            element = By.ClassName(value);
+        //            break;
+        //        case "name":
+        //            element = By.Name(value);
+        //            break;
+        //    }
+
+        //    return FindElement(element);
+        //}
+
+        #endregion
 
     }
 }
