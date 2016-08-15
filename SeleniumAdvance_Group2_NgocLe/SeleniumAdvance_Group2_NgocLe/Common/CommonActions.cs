@@ -10,8 +10,9 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
-using SeleniumAdvance_Group2.PageObject.LoginPage;
+using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
+using System.Diagnostics;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -55,16 +56,12 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
             Constant.WebDriver.Quit();
         }
-        public LoginPageActions OpenURL(string url)
+        public LoginPage OpenURL(string url)
         {
             Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPageActions();
+            return new LoginPage();
         }
-        public LoginPageUI OpenURL1(string url)
-        {
-            Constant.WebDriver.Navigate().GoToUrl(url);
-            return new LoginPageUI();
-        }
+
         public IWebElement FindElement(By control)
         {
             WaitForControl(control, Constant.timeout);
@@ -84,6 +81,13 @@ namespace SeleniumAdvance_Group2.Common
         public void ClickControlByJS(By control)
         {
             IWebElement webElement = FindElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        public void ClickControlByJS(string locator)
+        {
+            IWebElement webElement = FindElement(locator);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Constant.WebDriver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
@@ -144,6 +148,13 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
 
         }
+
+        public void WaitForControl(string locator, int timesecond)
+        {
+            By control = BYFindElement(locator);
+            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+        }
+
         public void WaitForControlNotVisible(By control, int timesecond)
         {
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
@@ -156,6 +167,13 @@ namespace SeleniumAdvance_Group2.Common
 
         public void VerifyText(string expectedText, By element)
         {
+            string actualText = GetText(element);
+            Assert.AreEqual(expectedText, actualText);
+        }
+
+        public void VerifyTextFromControl(string expectedText, string locator)
+        {
+            By element = BYFindElement(locator);
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
@@ -212,27 +230,32 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-        public Dictionary<string, string>[] ReadXMlFile(string filename)
-        {
-            XmlDocument xd = new XmlDocument();
-            xd.Load(filename);
+        //public Dictionary<string, string>[] ReadXMlFile(string filename)
+        //{
+        //    XmlDocument xd = new XmlDocument();
+        //    xd.Load(filename);
 
-            Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
-            Dictionary<string, string> valueDictionary = new Dictionary<string, string>();
-            foreach (XmlNode node in xd.DocumentElement.ChildNodes)
-            {
-                typeDictionary.Add(node.Name, node.ChildNodes[0].InnerText);
-                valueDictionary.Add(node.Name, node.ChildNodes[1].InnerText);
-            }
-            Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
-            iDictionary[0] = typeDictionary;
-            iDictionary[1] = valueDictionary;
-            return iDictionary;
-        }
+        //    Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
+        //    Dictionary<string, string> valueDictionary = new Dictionary<string, string>();
+        //    foreach (XmlNode node in xd.DocumentElement.ChildNodes)
+        //    {
+        //        typeDictionary.Add(node.Name, node.ChildNodes[0].InnerText);
+        //        valueDictionary.Add(node.Name, node.ChildNodes[1].InnerText);
+        //    }
+        //    Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
+        //    iDictionary[0] = typeDictionary;
+        //    iDictionary[1] = valueDictionary;
+        //    return iDictionary;
+        //}
 
         public IWebElement FindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
         {
             return FindElementByType(iDictionary[0][key], iDictionary[1][key]);
+        }
+
+        public By BYFindElementFromXML(string key, Dictionary<string, string>[] iDictionary)
+        {
+            return BYFindElementByType(iDictionary[0][key], iDictionary[1][key]);
         }
         public IWebElement FindElementByType(string type, string value)
         {
@@ -254,7 +277,174 @@ namespace SeleniumAdvance_Group2.Common
             }
 
             return FindElement(element);
+        }
+
+        #region temporary
+        public By BYFindElementByType(string type, string value)
+        {
+            By element = null;
+            switch (type.ToLower())
+            {
+                case "id":
+                    element = By.Id(value);
+                    break;
+                case "xpath":
+                    element = By.XPath(value);
+                    break;
+                case "class":
+                    element = By.ClassName(value);
+                    break;
+                case "name":
+                    element = By.Name(value);
+                    break;
+            }
+
+            return element;
+        }
+        #endregion
+
+        public Dictionary<string, string>[] ReadXMlFile(string filename)
+        {
+            XmlDocument xd = new XmlDocument();
+            xd.Load(filename);
+
+            Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
+            Dictionary<string, string> valueDictionary = new Dictionary<string, string>();
+            foreach (XmlNode node in xd.DocumentElement.ChildNodes)
+            {
+                typeDictionary.Add(node.ChildNodes[0].InnerText, node.ChildNodes[1].InnerText);
+                valueDictionary.Add(node.ChildNodes[0].InnerText, node.ChildNodes[2].InnerText);
+            }
+            Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
+            iDictionary[0] = typeDictionary;
+            iDictionary[1] = valueDictionary;
+            return iDictionary;
+        }
+
+        public void TypeValue(string locator, string value)
+        {
+            IWebElement element = FindElement(locator);
+            element.Clear();
+            element.SendKeys(value);
+        }
+
+        public void SelectItemByDropdownList(string locator, string value)
+        {
+
+            SelectElement selectElementByControl = new SelectElement(FindElement(locator));
+            selectElementByControl.SelectByText(value);
+        }
+
+        public void ClickControl(string locator)
+        {
+            FindElement(locator).Click();
+        }
+
+        public IWebElement FindElement(string locator)
+        {
+            string page = GetClassCaller(3);
+            //  page = page.Substring(0, page.Length - 7);
+            string filename = Constant.XMLPath + page + ".xml";
+            Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
+            switch (page)
+            {
+
+                case "LoginPage":
+                    iDictionary = Constant.LoginDictionary;
+                    break;
+                case "NewPanelPage":
+                    iDictionary = Constant.NewPanelDictionary;
+                    break;
+                case "PanelManagerPage":
+                    iDictionary = Constant.NewPanelDictionary;
+                    break;
+                case "EditPage":
+                case "NewPage":
+                    iDictionary = Constant.NewPageDictionary;
+                    break;
+                case "DataProfileManagerPage":
+                    iDictionary = Constant.DataProfileDictionary;
+                    break;
+                case "NewDataProfilePage":
+                    iDictionary = Constant.NewDataProfileDictionary;
+                    break;
+                case "GeneralPage":
+                    iDictionary = Constant.GeneralDictionary;
+                    break;
+
+            }
+            //    Dictionary<string, string>[] iDictionary = ReadXMlFile(filename);
+            return FindElementFromXML(locator, iDictionary);
+        }
+
+        public By BYFindElement(string locator)
+        {
+            string page = GetClassCaller(3);
+            //  page = page.Substring(0, page.Length - 7);
+            string filename = Constant.XMLPath + page + ".xml";
+            Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
+            switch (page)
+            {
+
+                case "LoginPage":
+                    iDictionary = Constant.LoginDictionary;
+                    break;
+                case "NewPanelPage":
+                    iDictionary = Constant.NewPanelDictionary;
+                    break;
+                case "PanelManagerPage":
+                    iDictionary = Constant.NewPanelDictionary;
+                    break;
+                case "EditPage":
+                case "NewPage":
+                    iDictionary = Constant.NewPageDictionary;
+                    break;
+                case "DataProfileManagerPage":
+                    iDictionary = Constant.DataProfileDictionary;
+                    break;
+                case "NewDataProfilePage":
+                    iDictionary = Constant.NewDataProfileDictionary;
+                    break;
+                case "GeneralPage":
+                    iDictionary = Constant.GeneralDictionary;
+                    break;
+
+            }
+            //    Dictionary<string, string>[] iDictionary = ReadXMlFile(filename);
+            return BYFindElementFromXML(locator, iDictionary);
+        }
+
+        public Dictionary<string, string>[] ReadXML()
+        {
+            string page = GetClassCaller(2);
+            //   page = page.Substring(0, page.Length - 7);
+            string filename = Constant.XMLPath + page + ".xml";
+            return ReadXMlFile(filename);
 
         }
+
+        private static string GetClassCaller(int level)
+        {
+            // StackTrace stackTrace = new StackTrace();           // get call stack
+            //  StackFrame[] stackFrames = stackTrace.GetFrames();  // get method calls (frames)
+
+            //   StackFrame callingFrame = stackFrames[1];
+
+            //   var method = callingFrame.GetMethod();
+
+            //    var n = System.Reflection.MethodBase.GetCurrentMethod();
+
+
+            var m = new StackTrace().GetFrame(level).GetMethod();
+            return m.DeclaringType.Name;
+        }
+
+        public int CountItems(string locator)
+        {
+            By element = BYFindElement(locator);
+            return Constant.WebDriver.FindElements(element).Count;
+        }
+
+
     }
 }

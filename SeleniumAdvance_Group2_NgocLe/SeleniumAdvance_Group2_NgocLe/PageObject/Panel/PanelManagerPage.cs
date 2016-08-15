@@ -1,19 +1,24 @@
-﻿using SeleniumAdvance_Group2.PageObject.GeneralPage;
+﻿using SeleniumAdvance_Group2.PageObject.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
+using SeleniumAdvance_Group2.PageObject.Panel;
+using SeleniumAdvance_Group2.Common;
 
-namespace SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage
+namespace SeleniumAdvance_Group2.PageObject.Panel
 {
-    public class PanelManagerPageActions: GeneralPage.GeneralPageActions
+    public class PanelManagerPage : GeneralPage
     {
-        public NewPanelPageUI GoToPanelPage()
+        public PanelManagerPage()
         {
-            ClickControl(PanelManagerPageUI.linkAddNewPanel);
-            return new NewPanelPageUI();
+            Constant.PanelManagerDictionary = ReadXML();
+        }
+        public NewPanelPage GoToPanelPage()
+        {
+            ClickControl("add new link");
+            return new NewPanelPage();
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <NewPanel>
   <txtDisplayName>
+    <name>display name textbox</name>
     <type>id</type>
     <value>txtDisplayName</value>
   </txtDisplayName>
   <btnOK>
+    <name>ok button</name>
     <type>id</type>
     <value>OK</value>
   </btnOK>
   <btnCancel>
+    <name>cancel button</name>
     <type>id</type>
     <value>Cancel</value>
   </btnCancel>

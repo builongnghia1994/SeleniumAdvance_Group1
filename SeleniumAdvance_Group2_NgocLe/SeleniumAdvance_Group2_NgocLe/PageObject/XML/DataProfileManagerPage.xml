@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataProfileManager>
+  <tblDataProfile>
+    <name>data profile table</name>
+    <type>xpath</type>
+    <value>//table[@class='GridView']/tbody/tr</value>
+  </tblDataProfile>
+  <linkAddNew>
+    <name>add new link</name>
+    <type>xpath</type>
+    <value>//form[@id='form1']//a[@href='profile.jsp?action=create']</value>
+  </linkAddNew>
+</DataProfileManager>

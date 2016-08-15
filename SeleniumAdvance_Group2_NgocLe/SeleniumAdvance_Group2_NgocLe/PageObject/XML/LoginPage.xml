@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Login>
   <ddlRespository>
+    <name>repository list</name>
     <type>id</type>
     <value>repository</value>
   </ddlRespository>
   <txtUserName>
+    <name>username textbox</name>
     <type>id</type>
     <value>username</value>
   </txtUserName>
   <txtPassWord>
+    <name>password textbox</name>
     <type>id</type>
     <value>password</value>
   </txtPassWord>
   <btnLogin>
+    <name>login button</name>
     <type>xpath</type>
     <value>//div[@id='content']//div[@class='btn-login']</value>
   </btnLogin>

@@ -1,37 +1,42 @@
-﻿using SeleniumAdvance_Group2.PageObject.GeneralPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.NewPage;
+﻿using SeleniumAdvance_Group2.PageObject.General;
+using SeleniumAdvance_Group2.PageObject.MainPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeleniumAdvance_Group2.Common;
 
-namespace SeleniumAdvance_Group2.PageObject.MainPage.EditPage
+namespace SeleniumAdvance_Group2.PageObject.MainPage
 {
-  public  class EditPageActions: GeneralPageActions
+  public  class EditPage: GeneralPage
     {
-        public GeneralPageActions EditPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
+        public EditPage()
+        {
+            Constant.NewPageDictionary = ReadXML();
+        }
+        public GeneralPage EditAPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
             switch (status.ToLower())
             {
                 case "public":
-                    ClickControl(NewPageUI.rdPublic);
+                    ClickControl("public checkbox");
                     break;
                 default:
                     break;
             }
             if (pagename != null)
-            { TypeValue(NewPageUI.txtPageName, pagename); }
+            { TypeValue("page name textbox", pagename); }
             if (parentname != null)
-            { SelectItemByDropdownList(NewPageUI.ddlParentName, parentname); }
+            { SelectItemByDropdownList("parent name list", parentname); }
             if (numbercolum != null)
-            { SelectItemByDropdownList(NewPageUI.ddlnumbercolum, numbercolum); }
+            { SelectItemByDropdownList("number column list", numbercolum); }
             if (afterpage != null)
-            { SelectItemByDropdownList(NewPageUI.ddlDisplayAfter, afterpage); }
-            ClickControl(NewPageUI.btnOk);
+            { SelectItemByDropdownList("page display after", afterpage); }
+            ClickControl("OK button");
 
-            return new GeneralPageActions();
+            return new GeneralPage();
         }
     }
 }
