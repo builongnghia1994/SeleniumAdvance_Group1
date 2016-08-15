@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.Common
 {
     public class CommonActions
     {
-        public bool Displayed { get; private set; }
+      
 
         public static void OpenBrowser(string browser)
 
@@ -69,7 +69,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public IWebElement FindElement(By control)
         {
-           
+            WaitForControl(control, 5);           
             return Constant.WebDriver.FindElement(control);
         }
 
@@ -150,9 +150,22 @@ namespace SeleniumAdvance_Group2.Common
 
         public void WaitForControl(By control, int timesecond)
         {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
+           
+    
+            try
+            {
+                Thread.Sleep(500);
+                WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
+                wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
+               
+            }
 
-        }
+           catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        
+    }
 
         public void WaitForControl(string locator, int timesecond)
         {
@@ -459,16 +472,7 @@ namespace SeleniumAdvance_Group2.Common
 
 
 
-        public  IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
-        {
-           
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                return wait.Until(drv => drv.FindElement(by));
-            
-           
-        }
-
-
+       
 
     }
 }
