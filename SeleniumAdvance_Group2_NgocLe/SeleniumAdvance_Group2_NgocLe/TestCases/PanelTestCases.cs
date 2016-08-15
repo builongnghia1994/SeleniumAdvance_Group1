@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             NewPanelPage newPanelPage ;
             GeneralPage generalPage = new GeneralPage();
-            generalPage = loginPage.Login(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.ClickOK();
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgRequiredFieldPanel);
