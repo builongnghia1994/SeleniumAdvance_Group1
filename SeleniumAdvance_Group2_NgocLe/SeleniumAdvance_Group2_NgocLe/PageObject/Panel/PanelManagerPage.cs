@@ -8,7 +8,7 @@ using SeleniumAdvance_Group2.PageObject.PanelPage.NewPanelPage;
 
 namespace SeleniumAdvance_Group2.PageObject.PanelPage.PanelManagerPage
 {
-    public class PanelManagerPageActions: GeneralPageActions
+    public class PanelManagerPageActions: GeneralPage.GeneralPageActions
     {
         public NewPanelPageUI GoToPanelPage()
         {
