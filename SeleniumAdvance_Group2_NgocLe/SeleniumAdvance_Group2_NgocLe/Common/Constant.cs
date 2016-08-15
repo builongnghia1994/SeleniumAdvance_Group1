@@ -26,7 +26,7 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Status per Assigned Users", "Test Objective Execution"};
 
         public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
-            "Actions", "Interface Entities", "Test Results", "Test Cases results" };
+            "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
         #region MessageLogin
         public static string MsgRequiredFieldPanel = "Display Name is a required field.";
@@ -62,9 +62,6 @@ namespace SeleniumAdvance_Group2.Common
         public static string defaultValue = null;
 
         #endregion
-
-
-
 
         #region XML
 
