@@ -29,7 +29,7 @@ namespace SeleniumAdvance_Group2.Common
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
         #region Message
-        public static string MsgRequiredFieldPanel = "Display Name is a required field.";
+        public static string MsgRequiredFieldPanel = "Display Name is a required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
         public static string MsgInvalidPanelDisplayName = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
         #endregion

@@ -191,6 +191,11 @@ namespace SeleniumAdvance_Group2.Common
         {
             return FindElement(control).Text;
         }
+
+        public string GetText(IWebElement control)
+        {
+            return control.Text;
+        }
         public bool DoesControlExist(By control)
         {
             try
@@ -248,13 +253,13 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void VerifyTextFromControl(string expectedText, string locator)
         {
-            By element = FindElementBy(locator);
+            IWebElement element = FindElement(locator);
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
         public void VerifyText(string expectedText, string actualText)
         {
-            Assert.AreEqual(expectedText, actualText);
+            Assert.AreEqual(expectedText, actualText,"Text does not match with expectation.");
         }
 
 

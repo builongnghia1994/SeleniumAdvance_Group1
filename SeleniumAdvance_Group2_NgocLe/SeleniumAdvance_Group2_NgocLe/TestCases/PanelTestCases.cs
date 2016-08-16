@@ -40,7 +40,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newPanelPage = panelManagerPage.GoToPanelPage();
             newPanelPage.AddNewPanel(atsignPanel, series);
             panelManagerPage.VerifyPanelDisplayed(atsignPanel);
+            generalPage.LogOut();
         }
-
     }
 }
