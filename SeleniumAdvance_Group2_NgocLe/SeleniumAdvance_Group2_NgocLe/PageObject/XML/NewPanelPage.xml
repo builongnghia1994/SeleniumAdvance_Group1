@@ -5,6 +5,11 @@
     <type>id</type>
     <value>txtDisplayName</value>
   </txtDisplayName>
+  <ddlSeriesField>
+    <name>series list</name>
+    <type>id</type>
+    <value>cbbSeriesField</value>
+  </ddlSeriesField>
   <btnOK>
     <name>ok button</name>
     <type>id</type>
