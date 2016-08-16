@@ -26,7 +26,7 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Status per Assigned Users", "Test Objective Execution"};
 
         public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
-            "Actions", "Interface Entities", "Test Results", "Test Cases results" };
+            "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
         #region MessageLogin
         public static string MsgRequiredFieldPanel = "Display Name is a required field.";
@@ -56,15 +56,13 @@ namespace SeleniumAdvance_Group2.Common
         #region DataCreateNewpage
 
         public static string statuspublic = "public";
-        public static string pagename1 = "page1" + Constant.timesystem;
-        public static string pagename2 = "page2" + Constant.timesystem;
+        public static string pagename = "page" + timesystem;
+        public static string pagename1 = "page1" + timesystem;
+        public static string pagename2 = "page2" + timesystem;
         public static string itemdisplayafter = "Overview";
         public static string defaultValue = null;
 
         #endregion
-
-
-
 
         #region XML
 

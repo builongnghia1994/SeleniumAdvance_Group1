@@ -117,6 +117,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyTextFromControl(username, "user link");
+
         }
 
 
@@ -130,7 +131,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
         {
-            WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
+          //  WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
 
             int numberitemsmainmenu = CountItems("main page") - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
@@ -143,9 +144,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 {
                     string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
                     By realitemnamepage = By.XPath(itemnamepage);
-                    string real = GetText(realitemnamepage);
                     VerifyText(namepage, realitemnamepage);
-
                 }
             }
 
@@ -156,6 +155,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         {
 
             SelectGlobalSetting("Add Page");
+
             return new NewPage();
         }
 
@@ -227,7 +227,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
 
-                Thread.Sleep(300);
+               Thread.Sleep(300);
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
                 Console.WriteLine("a" + i);
             }
