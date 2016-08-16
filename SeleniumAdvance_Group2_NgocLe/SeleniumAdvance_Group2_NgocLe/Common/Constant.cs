@@ -28,9 +28,10 @@ namespace SeleniumAdvance_Group2.Common
         public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
-        #region MessageLogin
-        public static string MsgRequiredFieldPanel = "Display Name is a required field.";
+        #region Message
+        public static string MsgRequiredFieldPanel = "Display Name is a required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
+        public static string MsgInvalidPanelDisplayName = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
         #endregion
 
         #region Browser/Url
