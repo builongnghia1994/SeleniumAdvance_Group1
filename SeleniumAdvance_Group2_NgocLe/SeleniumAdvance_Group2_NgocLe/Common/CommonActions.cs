@@ -13,6 +13,7 @@ using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -204,7 +205,16 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void WaitForControl(By control, int timesecond)
         {
-            new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementExists(control));
+          try
+            {                
+                Thread.Sleep(500);
+                WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
+                wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
         public void WaitForControl(string locator, int timesecond)

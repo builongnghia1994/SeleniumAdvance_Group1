@@ -56,8 +56,9 @@ namespace SeleniumAdvance_Group2.Common
         #region DataCreateNewpage
 
         public static string statuspublic = "public";
-        public static string pagename1 = "page1" + Constant.timesystem;
-        public static string pagename2 = "page2" + Constant.timesystem;
+        public static string pagename = "page" + timesystem;
+        public static string pagename1 = "page1" + timesystem;
+        public static string pagename2 = "page2" + timesystem;
         public static string itemdisplayafter = "Overview";
         public static string defaultValue = null;
 
