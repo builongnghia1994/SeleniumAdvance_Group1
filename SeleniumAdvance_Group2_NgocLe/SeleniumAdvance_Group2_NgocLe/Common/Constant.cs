@@ -58,7 +58,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public static string statusPublic = "public";
         public static string pageName = "page" + timesystem;
-        public static string pagename1 = "page1" + timesystem;
+        public static string pageName1 = "page1" + timesystem;
         public static string pageName2 = "page2" + timesystem;
         public static string itemDisplayAfter = "Overview";
         public static string defaultValue = null;

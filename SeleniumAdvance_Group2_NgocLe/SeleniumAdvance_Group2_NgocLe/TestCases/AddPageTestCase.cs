@@ -36,18 +36,17 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //add page2
-
-            //Thread.Sleep(500);
+           
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-            //Thread.Sleep(500);
-            editPage = generalPage.GotoEditPage(Constant.pagename1);
-            generalPage = editPage.EditAPage(Constant.statusPublic, Constant.pagename1, Constant.defaultValue, Constant.itemDisplayAfter, Constant.defaultValue);
-            //vp
-            //Thread.Sleep(500);
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pagename1);
+           
+            editPage = generalPage.GotoEditPage(Constant.pageName1);
+            generalPage = editPage.EditAPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.itemDisplayAfter, Constant.defaultValue);
+            //vp        
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName1);
+                      
             loginPage = generalPage.LogOut();
         }
 

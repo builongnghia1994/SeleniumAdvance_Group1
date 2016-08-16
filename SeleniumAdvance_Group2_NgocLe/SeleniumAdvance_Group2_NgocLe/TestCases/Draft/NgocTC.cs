@@ -56,19 +56,19 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.AcceptAlert();
             //vp4
             generalPage.VerifyPageNotExist( Constant.timesystem + "/" + Constant.timesystem + "1");
-                     
-            generalPage.DeletePage( Constant.timesystem);
-           //vp5
+
+            generalPage.DeletePage(Constant.timesystem);
+            //vp5
             generalPage.VerifyAlertMessage("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
-            //vp6           
+            //vp6
             generalPage.VerifyPageNotExist(Constant.timesystem);
-            
-           // generalPage.GotoPage("Overview");
-           
+
+            generalPage.GotoPage("Overview");
+
             //generalPage.VerifyControlNotExist(PageObject.GeneralPage.GeneralPageUI.itemDelete);
         }
 
-        
+
     }
 }
