@@ -170,14 +170,15 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void DeletePage(string path)
         {
+           
             GotoPage(path);
             SelectGlobalSetting("Delete");
         }
 
-        public void VerifyAlertMessenge(string expected)
+        public void VerifyAlertMessage(string expected)
         {
-            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
-            Assert.AreEqual(expected, actual);
+            VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
+          
         }
 
 
@@ -186,7 +187,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyPageNotExist(string way)
         {
 
-            WaitForControl("user link", 5);
+            //WaitForControl("user link", 5);
+            Thread.Sleep(1000);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
@@ -235,7 +237,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
 
-               Thread.Sleep(300);
+                Thread.Sleep(500);
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
                 Console.WriteLine("a" + i);
             }

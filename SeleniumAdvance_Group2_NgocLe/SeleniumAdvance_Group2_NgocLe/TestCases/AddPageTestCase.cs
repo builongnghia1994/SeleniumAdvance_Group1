@@ -21,9 +21,9 @@ namespace SeleniumAdvance_Group2.TestCases
          
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName);
             loginPage = generalPage.LogOut();
 
         }
@@ -37,18 +37,18 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pagename1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //add page2
 
             //Thread.Sleep(500);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statuspublic, Constant.pagename2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //Thread.Sleep(500);
             editPage = generalPage.GotoEditPage(Constant.pagename1);
-            generalPage = editPage.EditAPage(Constant.statuspublic, Constant.pagename1, Constant.defaultValue, Constant.itemdisplayafter, Constant.defaultValue);
+            generalPage = editPage.EditAPage(Constant.statusPublic, Constant.pagename1, Constant.defaultValue, Constant.itemDisplayAfter, Constant.defaultValue);
             //vp
             //Thread.Sleep(500);
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemdisplayafter, Constant.pagename1);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pagename1);
             loginPage = generalPage.LogOut();
         }
 

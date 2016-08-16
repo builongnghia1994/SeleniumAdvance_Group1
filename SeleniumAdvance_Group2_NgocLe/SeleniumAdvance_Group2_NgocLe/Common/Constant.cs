@@ -55,11 +55,11 @@ namespace SeleniumAdvance_Group2.Common
 
         #region DataCreateNewpage
 
-        public static string statuspublic = "public";
-        public static string pagename = "page" + timesystem;
+        public static string statusPublic = "public";
+        public static string pageName = "page" + timesystem;
         public static string pagename1 = "page1" + timesystem;
-        public static string pagename2 = "page2" + timesystem;
-        public static string itemdisplayafter = "Overview";
+        public static string pageName2 = "page2" + timesystem;
+        public static string itemDisplayAfter = "Overview";
         public static string defaultValue = null;
 
         #endregion

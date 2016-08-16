@@ -207,7 +207,7 @@ namespace SeleniumAdvance_Group2.Common
         {
           try
             {                
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
                 wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
             }
