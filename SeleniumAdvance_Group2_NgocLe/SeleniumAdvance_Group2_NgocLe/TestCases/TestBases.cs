@@ -26,12 +26,13 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMethods()
         {
-            loginPage = OpenURL(Constant.DashboardURL);
+           loginPage = OpenURL(Constant.DashboardURL);
         }
+
         [TestCleanup]
-        public void TestCleanupMethods()
+       public void TestCleanupMethods()
         {
-            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
+           Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
         }
 
     }

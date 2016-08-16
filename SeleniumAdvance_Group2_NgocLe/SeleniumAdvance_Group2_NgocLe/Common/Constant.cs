@@ -32,6 +32,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string MsgRequiredFieldPanel = "Display Name is a required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
         public static string MsgInvalidPanelDisplayName = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
+        public static string MsgInvalidFolder_Panel = "Panel folder is incorrect";
         #endregion
 
         #region Browser/Url
@@ -56,11 +57,11 @@ namespace SeleniumAdvance_Group2.Common
 
         #region DataCreateNewpage
 
-        public static string statuspublic = "public";
-        public static string pagename = "page" + timesystem;
-        public static string pagename1 = "page1" + timesystem;
-        public static string pagename2 = "page2" + timesystem;
-        public static string itemdisplayafter = "Overview";
+        public static string statusPublic = "public";
+        public static string pageName = "page" + timesystem;
+        public static string pageName1 = "page1" + timesystem;
+        public static string pageName2 = "page2" + timesystem;
+        public static string itemDisplayAfter = "Overview";
         public static string defaultValue = null;
 
         #endregion
@@ -78,6 +79,8 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] NewDataProfileDictionary;
         public static Dictionary<string, string>[] DataProfileDictionary;
         public static Dictionary<string, string>[] GeneralDictionary;
+        public static Dictionary<string, string>[] ChoosePanelDictionary;
+        public static Dictionary<string, string>[] PanelConfigurationDictionary;
 
         #endregion
 
