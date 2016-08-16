@@ -28,8 +28,9 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public string[] GetActualPreDataPRofile()
         {
+            int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < CountItems("data profile table"); i++)
+            for (int i = 2; i < numberOfrow; i++)
             {
                 string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
                 tableValues.Add(FindElement(By.XPath(row)).Text);
