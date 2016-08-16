@@ -13,6 +13,7 @@ using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
+using OpenQA.Selenium.Remote;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -146,7 +147,14 @@ namespace SeleniumAdvance_Group2.Common
         public void WaitForControl(By control, int timesecond)
         {
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+            try
+            {
 
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         public void WaitForControl(string locator, int timesecond)
@@ -443,8 +451,14 @@ namespace SeleniumAdvance_Group2.Common
         {
             By element = BYFindElement(locator);
             return Constant.WebDriver.FindElements(element).Count;
+            
         }
-
-
+        public void remoteedge()
+        {
+            EdgeOptions options = new EdgeOptions();
+            options.PageLoadStrategy = EdgePageLoadStrategy.Eager;
+            RemoteWebDriver driver = new EdgeDriver();
+        }
+        
     }
 }
