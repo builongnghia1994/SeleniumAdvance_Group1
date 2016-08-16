@@ -96,7 +96,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             return FindElement(FindElementBy(locator));
         }
-        public By FindElementBy(string locator)
+        private By FindElementBy(string locator)
         {
             string page = GetClassCaller(4);
             Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
@@ -123,6 +123,12 @@ namespace SeleniumAdvance_Group2.Common
                     break;
                 case "GeneralPage":
                     iDictionary = Constant.GeneralDictionary;
+                    break;
+                case "ChoosePanelPage":
+                    iDictionary = Constant.ChoosePanelDictionary;
+                    break;
+                case "PanelConfigurationPage":
+                    iDictionary = Constant.PanelConfigurationDictionary;
                     break;
 
             }
@@ -224,7 +230,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void WaitForControl(string locator, int timesecond)
         {
-            By control = FindElementBy(locator);
+            IWebElement control = FindElement(locator);
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
         }
 
@@ -262,6 +268,12 @@ namespace SeleniumAdvance_Group2.Common
             Assert.AreEqual(expectedText, actualText,"Text does not match with expectation.");
         }
 
+        public void VerifyTextFromAlertAndAccept(string expectedText)
+        {
+            string alertText = GetTextFromAlertPopup();
+            AcceptAlert();
+            VerifyText(expectedText, alertText);
+        }
 
         #endregion
 
