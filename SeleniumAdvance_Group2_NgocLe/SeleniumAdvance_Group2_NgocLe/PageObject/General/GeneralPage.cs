@@ -174,10 +174,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
             SelectGlobalSetting("Delete");
         }
 
-        public void VerifyAlertMessenge(string expected)
+        public void VerifyAlertMessage(string expected)
         {
-            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
-            Assert.AreEqual(expected, actual);
+            VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
         }
 
 

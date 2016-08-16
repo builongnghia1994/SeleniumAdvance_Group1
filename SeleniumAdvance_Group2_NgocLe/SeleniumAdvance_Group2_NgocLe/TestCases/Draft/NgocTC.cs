@@ -55,20 +55,16 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.VerifyAlertMessage("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
             //vp4
-           // Thread.Sleep(1000);
             generalPage.VerifyPageNotExist( Constant.timesystem + "/" + Constant.timesystem + "1");
-
-            //Thread.Sleep(1000);
+                     
             generalPage.DeletePage( Constant.timesystem);
-            //
-            //Thread.Sleep(1000);
+           //vp5
             generalPage.VerifyAlertMessage("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
-            //vp6
-            Thread.Sleep(1000);
+            //vp6           
             generalPage.VerifyPageNotExist(Constant.timesystem);
-            //Thread.Sleep(1000);
-            generalPage.GotoPage("Overview");
+            
+           // generalPage.GotoPage("Overview");
            
             //generalPage.VerifyControlNotExist(PageObject.GeneralPage.GeneralPageUI.itemDelete);
         }

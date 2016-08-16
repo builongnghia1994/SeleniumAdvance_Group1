@@ -16,9 +16,7 @@ namespace SeleniumAdvance_Group2.TestCases
             GeneralPage generalPage;         
 
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            //VP
-
-            Thread.Sleep(1000);
+            //VP         
             generalPage.VerifyWelComeUserDisplayed(Constant.Username_thi);
             loginPage = generalPage.LogOut();
         }
