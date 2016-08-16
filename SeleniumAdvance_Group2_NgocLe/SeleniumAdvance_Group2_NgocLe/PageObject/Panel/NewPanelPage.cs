@@ -30,5 +30,12 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             AcceptAlert();
             ClickControl("cancel button");
         }
+
+        public void AddNewPanel(string displayName, string series)
+        {
+            TypeValue("display name textbox", displayName);
+            SelectItemByDropdownList("series list", series);
+            ClickControl("ok button");
+        }
     }
 }

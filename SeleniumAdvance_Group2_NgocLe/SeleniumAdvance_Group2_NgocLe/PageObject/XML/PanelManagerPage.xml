@@ -5,4 +5,9 @@
     <type>xpath</type>
     <value>//a[contains(@href,'javascript:Dashboard.openAddPanel')]</value>
   </linkAddNewPanel>
+  <tblPanel>
+    <name>panel table</name>
+    <type>xpath</type>
+    <value>//table[@class='GridView']/tbody/tr</value>
+  </tblPanel>
 </PanelManager>
