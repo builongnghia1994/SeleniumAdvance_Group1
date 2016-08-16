@@ -80,4 +80,9 @@
     <type>xpath</type>
     <value>//li/a[@class='delete']</value>
   </itemDelete>
+  <menuChoosePanel>
+    <name>choose panel menu</name>
+    <type>id</type>
+    <value>btnChoosepanel</value>
+  </menuChoosePanel>
 </GeneralPage>

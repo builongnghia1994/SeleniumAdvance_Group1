@@ -124,6 +124,12 @@ namespace SeleniumAdvance_Group2.Common
                 case "GeneralPage":
                     iDictionary = Constant.GeneralDictionary;
                     break;
+                case "ChoosePanelPage":
+                    iDictionary = Constant.ChoosePanelDictionary;
+                    break;
+                case "PanelConfigurationPage":
+                    iDictionary = Constant.PanelConfigurationDictionary;
+                    break;
 
             }
             return FindElementFromXML(locator, iDictionary);
@@ -262,6 +268,12 @@ namespace SeleniumAdvance_Group2.Common
             Assert.AreEqual(expectedText, actualText,"Text does not match with expectation.");
         }
 
+        public void VerifyTextFromAlertAndAccept(string expectedText)
+        {
+            string alertText = GetTextFromAlertPopup();
+            AcceptAlert();
+            VerifyText(expectedText, alertText);
+        }
 
         #endregion
 

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ChoosePanel>
+  <btnCreateNewPanel>
+    <name>create new panel button</name>
+    <type>xpath</type>
+    <value>//span[text()='Create new panel']</value>
+  </btnCreateNewPanel>
+  <btnHide>
+    <name>hide button</name>
+    <type>id</type>
+    <value>btnHidePanel</value>
+  </btnHide>
+</ChoosePanel>
