@@ -96,7 +96,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             return FindElement(FindElementBy(locator));
         }
-        public By FindElementBy(string locator)
+        private By FindElementBy(string locator)
         {
             string page = GetClassCaller(4);
             Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
