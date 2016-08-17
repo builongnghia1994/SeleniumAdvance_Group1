@@ -77,8 +77,8 @@ namespace SeleniumAdvance_Group2.Common
         public Dictionary<string, string>[] ReadXML()
         {
             string page = GetClassCaller(2);
-            if (page == "EditPage")
-                page = "NewPage";
+            //if (page == "EditPage")
+            //    page = "NewPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
         }
@@ -120,6 +120,9 @@ namespace SeleniumAdvance_Group2.Common
                     break;
                 case "NewDataProfilePage":
                     iDictionary = Constant.NewDataProfileDictionary;
+                    break;
+                case "EditDataProfilePage":
+                    iDictionary = Constant.EditDataProfileDictionary;
                     break;
                 case "GeneralPage":
                     iDictionary = Constant.GeneralDictionary;

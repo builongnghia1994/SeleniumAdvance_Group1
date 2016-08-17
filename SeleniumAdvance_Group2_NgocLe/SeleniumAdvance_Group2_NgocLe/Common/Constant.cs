@@ -14,7 +14,7 @@ namespace SeleniumAdvance_Group2.Common
         public static int timeout = 10;
         public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
 
-      
+        public static string nameOfDataProfile = "nghia" + timesystem;
 
         public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
@@ -72,6 +72,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string XMLLoginPage = "LoginPage.xml";
         public static string XMLPanelManagerPage = "PanelManagerPage.xml";
         public static string XMLNewPanelPage = "NewPanelPage.xml";
+        public static string XMLEditDataProfilePage = "EditDataProfile.xml";
         public static Dictionary<string, string>[] LoginDictionary;
         public static Dictionary<string, string>[] NewPanelDictionary;
         public static Dictionary<string, string>[] PanelManagerDictionary;
@@ -81,6 +82,7 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] GeneralDictionary;
         public static Dictionary<string, string>[] ChoosePanelDictionary;
         public static Dictionary<string, string>[] PanelConfigurationDictionary;
+        public static Dictionary<string, string>[] EditDataProfileDictionary;
 
         #endregion
 

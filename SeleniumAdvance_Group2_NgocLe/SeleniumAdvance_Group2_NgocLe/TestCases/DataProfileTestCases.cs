@@ -20,7 +20,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
-            dataProfileManagerPage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             dataProfileManagerPage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
         }
@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
-            dataProfileManagerPage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             dataProfileManagerPage.VerifyDataProfileInAlphabeticalOrder();
         }
@@ -46,7 +46,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
-            dataProfileManagerPage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
@@ -54,23 +54,50 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
         [TestMethod]
-        public void DA_DP_TC076Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
+        public void DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
         {
             NewDataProfilePage newDataProfilePage;
+            EditDataProfilePage editDataProfilePage;
 
             loginPage = new LoginPage();
 
             generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
-            dataProfileManagerPage = generalPage.GotoDataProfilePage();
+            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            dataProfileManagerPage = newDataProfilePage.AddADataProfile("nghiabui", "Test Modules", "Related bugs");
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.nameOfDataProfile, "test modules", "Related test results");
 
-            newDataProfilePage = dataProfileManagerPage.GotoEditProfilePage("nghiabui");
+            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.nameOfDataProfile);
 
-            newDataProfilePage.VerifyPageDisplayCorrectlyWithLeftNavigation();
+            editDataProfilePage.ClickTab("general settings tab");
+            editDataProfilePage.VerifyPageDisplay("General Settings");
+
+            editDataProfilePage.ClickTab("display fields tab");
+            editDataProfilePage.VerifyPageDisplay("Display Fields");
+
+            editDataProfilePage.ClickTab("sort fields tab");
+            editDataProfilePage.VerifyPageDisplay("Sort Fields");
+
+            editDataProfilePage.ClickTab("filter fields tab");
+            editDataProfilePage.VerifyPageDisplay("Filter Fields");
+
+            editDataProfilePage.ClickTab("statistic fields tab");
+            editDataProfilePage.VerifyPageDisplay("Statistic Fields");
+
+            editDataProfilePage.ClickTab("display sub fields tab");
+            editDataProfilePage.VerifyPageDisplay("Display Sub-Fields");
+
+            editDataProfilePage.ClickTab("sort sub fields tab");
+            editDataProfilePage.VerifyPageDisplay("Sort Sub-Fields");
+
+            editDataProfilePage.ClickTab("filter sub fields tab");
+            editDataProfilePage.VerifyPageDisplay("Filter Sub-Fields");
+
+            editDataProfilePage.ClickTab("statistic sub fields tab");
+            editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
+
         }
     }
 }

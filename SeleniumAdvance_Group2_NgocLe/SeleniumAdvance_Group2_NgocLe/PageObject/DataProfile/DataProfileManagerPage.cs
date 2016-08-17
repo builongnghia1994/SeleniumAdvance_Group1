@@ -24,6 +24,12 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             return new NewDataProfilePage();
         }
 
+        public EditDataProfilePage GotoEditDataProfilePage(string profile)
+        {
+            ClickControl(By.XPath("//td/a[contains(.,'" + profile + "')]"));
+            return new EditDataProfilePage();
+        }
+
         #endregion
 
         public string[] GetActualPreDataPRofile()
@@ -71,13 +77,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
             Assert.IsTrue(alphabetical, errorMessage);
         }
-
-        public NewDataProfilePage GotoEditProfilePage(string profile)
-        {
-            ClickControl(By.XPath("//td/a[contains(.,'" + profile + "')]"));
-            return new NewDataProfilePage();
-        }
-
         #endregion
     }
 }

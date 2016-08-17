@@ -49,23 +49,9 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             TypeValue("data profile name", name);
             SelectItemByDropdownList("item type list", itemType);
+            SelectItemByDropdownList("related data list", relatedData);
             ClickControl("finish button");
             return new DataProfileManagerPage();
-        }
-
-
-        public void VerifyPageDisplayCorrectlyWithLeftNavigation()
-        {
-            ClickControl("general setting tab");
-            VerifyTextFromControl("General Settings", "header of tab");
-            ClickControl("display fields tab");
-            VerifyTextFromControl("Display Fields", "header of tab");
-            ClickControl("sort fields tab");
-            VerifyTextFromControl("Sort Fields", "header of tab");
-            ClickControl("filter fields tab");
-            VerifyTextFromControl("Filter Fields", "header of tab");
-            ClickControl("statistic fields tab");
-            VerifyTextFromControl("Statistic Fields", "header of tab");
         }
 
         #endregion

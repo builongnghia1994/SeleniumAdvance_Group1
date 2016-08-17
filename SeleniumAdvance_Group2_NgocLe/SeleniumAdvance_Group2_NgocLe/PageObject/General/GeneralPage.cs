@@ -42,7 +42,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         }
 
-        public DataProfileManagerPage GotoDataProfilePage()
+        public DataProfileManagerPage GotoDataProfileManagerPage()
         {
             if (Constant.Browser == "ie")
             {
