@@ -19,12 +19,12 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC014_Public_pages_can_be_visible_and_accessed_by_all_users()
         {
           
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             loginPage = newPage.LogOut();
             //vp
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.timesystem);
 
         }
@@ -33,7 +33,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children_and_except_Overview_page()
         {
           
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic,Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);

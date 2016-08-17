@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
@@ -30,7 +30,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
@@ -44,7 +44,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
@@ -60,7 +60,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 

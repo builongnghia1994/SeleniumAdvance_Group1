@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC029_Verify_that_user_is_unable_to_create_new_panel_when_required_field_is_not_filled()
         {
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.ClickOK();
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgRequiredFieldPanel);
@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
             string atsignPanel = "panel" + Constant.timesystem + "@";
             string series = "  Name";
             PanelManagerPage panelManagerPage = new PanelManagerPage();
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.AddNewPanel(specialCharacterPanel, series);
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgInvalidPanelDisplayName);
@@ -47,7 +47,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             string displayName = "panel" + Constant.timesystem ;
             string series = "  Name";
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
             newPanelPage = choosePanelPage.GoToNewPanelPage();
