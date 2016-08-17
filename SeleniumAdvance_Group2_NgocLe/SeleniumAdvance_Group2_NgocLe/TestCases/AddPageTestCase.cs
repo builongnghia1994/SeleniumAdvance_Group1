@@ -19,11 +19,14 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
         {
          
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+
             newPage = generalPage.GotoNewPage();
+            
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName);
+
             loginPage = generalPage.LogOut();
 
         }
@@ -32,7 +35,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
             EditPage editPage;           
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
 
             //add page1
             newPage = generalPage.GotoNewPage();

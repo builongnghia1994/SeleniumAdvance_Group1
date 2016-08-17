@@ -41,6 +41,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Selenium.WebDriver.WaitExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.WaitExtensions.1.0.0\lib\Selenium.WebDriver.WaitExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
@@ -71,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\WebElement.cs" />
     <Compile Include="PageObject\DataProfile\DataProfileManagerPage.cs" />
     <Compile Include="PageObject\DataProfile\EditDataProfilePage.cs" />
     <Compile Include="PageObject\DataProfile\NewDataProfilePage.cs" />

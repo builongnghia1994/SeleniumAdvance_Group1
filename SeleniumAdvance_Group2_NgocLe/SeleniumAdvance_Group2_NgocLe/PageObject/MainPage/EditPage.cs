@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage
 {
@@ -18,6 +19,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
         public GeneralPage EditAPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
+            Thread.Sleep(500);// sleep to wait all elements ared loaded
             switch (status.ToLower())
             {
                 case "public":

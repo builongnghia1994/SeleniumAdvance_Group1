@@ -88,8 +88,7 @@ namespace SeleniumAdvance_Group2.Common
             return m.DeclaringType.Name;
         }
         public IWebElement FindElement(By control)
-        {
-            WaitForControl(control, Constant.timeout);
+        {            
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
@@ -219,18 +218,10 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void WaitForControl(By control, int timesecond)
         {
-          try
-            {                
-                Thread.Sleep(1000);
-                WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
-                wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
+            WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(control));
         }
+
         public void WaitForControl(string locator, int timesecond)
         {
             IWebElement control = FindElement(locator);
