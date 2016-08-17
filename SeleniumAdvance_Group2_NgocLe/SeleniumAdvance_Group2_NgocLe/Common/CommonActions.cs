@@ -216,7 +216,7 @@ namespace SeleniumAdvance_Group2.Common
         public void WaitForControl(By control, int timesecond)
         {
             WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
-            IWebElement element = wait.Until(ExpectedConditions.ElementExists(control));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(control));
         }
 
         public void WaitForControl(string locator, int timesecond)

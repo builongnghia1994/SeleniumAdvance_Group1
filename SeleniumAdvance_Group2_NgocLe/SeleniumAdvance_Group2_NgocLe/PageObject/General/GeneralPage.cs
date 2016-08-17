@@ -26,6 +26,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         }
         public LoginPage LogOut()
         {
+            Thread.Sleep(1000); //wait to logout button is loaded
             if (Constant.Browser == "ie")
             {
 
@@ -38,6 +39,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 ClickControl("log out link");
             }
 
+           
             return new LoginPage();
 
         }
@@ -128,6 +130,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
+            Thread.Sleep(1000);//wait for element display
 
             if (Constant.Browser == "ie")
             { 
@@ -143,8 +146,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
         {
-            //  WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 3);
+            //WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 10);
 
+            Thread.Sleep(500);//wait to element of page just created is loaded
             int numberitemsmainmenu = CountItems("main page") - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
@@ -165,7 +169,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
-
+            Thread.Sleep(1000);//wait to page loaded
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
@@ -173,7 +177,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public EditPage GotoEditPage(string namepage)
         {
-
+            Thread.Sleep(1000); //wait to page just created is load
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
             SelectGlobalSetting("Edit");
             return new EditPage();
@@ -224,7 +228,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void DeleteAllPages()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(500);// sleep to wait all elements are stable to count
             int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
@@ -248,7 +252,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
 
-                Thread.Sleep(500);
+                Thread.Sleep(500); // sleep to wait elements are updated to count a gain
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
                 Console.WriteLine("a" + i);
             }

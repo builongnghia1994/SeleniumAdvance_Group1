@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.Common;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.Login
 {
@@ -17,6 +18,7 @@ namespace SeleniumAdvance_Group2.PageObject.Login
 
         public GeneralPage LoginDashBoard(string respository, string username, string password)
         {
+            Thread.Sleep(500); //sleep to wait login page is loaded to login
             Login(respository, username, password);
             return new GeneralPage();
         }

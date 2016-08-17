@@ -20,10 +20,13 @@ namespace SeleniumAdvance_Group2.TestCases
         {
          
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+
             newPage = generalPage.GotoNewPage();
+            
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             //vp  
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName);
+
             loginPage = generalPage.LogOut();
 
         }
