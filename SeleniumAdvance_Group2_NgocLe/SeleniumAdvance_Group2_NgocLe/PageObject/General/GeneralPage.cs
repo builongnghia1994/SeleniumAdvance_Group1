@@ -188,7 +188,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyAlertMessage(string expected)
         {
+          Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
             VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
+            
         }
 
 
