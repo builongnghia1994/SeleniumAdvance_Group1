@@ -5,4 +5,44 @@
     <type>id</type>
     <value>cbbEntityType</value>
   </ddlItemType>
+  <txtName>
+    <name>data profile name</name>
+    <type>id</type>
+    <value>txtProfileName</value>
+  </txtName>
+  <btnFinish>
+    <name>finish button</name>
+    <type>xpath</type>
+    <value>//input[@value='Finish']</value>
+  </btnFinish>
+  <tabGeneralSetting>
+    <name>general setting tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'General Settings')]</value>
+  </tabGeneralSetting>
+  <tabDisplayFields>
+    <name>display fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Display Fields')]</value>
+  </tabDisplayFields>
+  <tabSortFields>
+    <name>sort fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Sort Fields')]</value>
+  </tabSortFields>
+  <tabFilterFields>
+    <name>filter fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Filter Fields')]</value>
+  </tabFilterFields>
+  <tabStatisticFields>
+    <name>statistic fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Statistic Fields')]</value>
+  </tabStatisticFields>
+  <header>
+    <name>header of tab</name>
+    <type>xpath</type>
+    <value>//td[@class='profilesettingheader']</value>
+  </header>
 </DataProfile>

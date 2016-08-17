@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         }
 
         #region GotoPage methods
-        public NewDataProfilePage GotoNewDataProfile()
+        public NewDataProfilePage GotoNewDataProfilePage()
         {
             ClickControl("add new link");
             return new NewDataProfilePage();
@@ -70,6 +70,12 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
                 }
             }
             Assert.IsTrue(alphabetical, errorMessage);
+        }
+
+        public NewDataProfilePage GotoEditProfilePage(string profile)
+        {
+            ClickControl(By.XPath("//td/a[contains(.,'" + profile + "')]"));
+            return new NewDataProfilePage();
         }
 
         #endregion

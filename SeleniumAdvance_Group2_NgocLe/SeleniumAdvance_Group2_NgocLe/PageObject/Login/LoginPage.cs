@@ -15,7 +15,7 @@ namespace SeleniumAdvance_Group2.PageObject.Login
             Constant.LoginDictionary = ReadXML();
         }
 
-        public GeneralPage LoginSuccessfully(string respository, string username, string password)
+        public GeneralPage LoginDashBoard(string respository, string username, string password)
         {
             Login(respository, username, password);
             return new GeneralPage();

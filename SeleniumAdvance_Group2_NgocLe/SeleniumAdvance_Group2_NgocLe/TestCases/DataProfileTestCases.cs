@@ -18,7 +18,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
@@ -30,7 +30,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
@@ -44,13 +44,33 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = new LoginPage();
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfilePage();
 
-            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfile();
+            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
             newDataProfilePage.VerifyDropdownlistDisplayByPriority(Constant.itemTypeValues, newDataProfilePage.GetItemTypeValues());
+        }
+
+        [TestMethod]
+        public void DA_DP_TC076Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
+        {
+            NewDataProfilePage newDataProfilePage;
+
+            loginPage = new LoginPage();
+
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+
+            dataProfileManagerPage = generalPage.GotoDataProfilePage();
+
+            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
+
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile("nghiabui", "Test Modules", "Related bugs");
+
+            newDataProfilePage = dataProfileManagerPage.GotoEditProfilePage("nghiabui");
+
+            newDataProfilePage.VerifyPageDisplayCorrectlyWithLeftNavigation();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void Demo_Thi_DeleteAllPage()
         {
             loginPage = new LoginPage();
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             generalPage.DeleteAllPages();
             //generalPage.DeletePagesJustCreated("page1160820160300190324");
 
@@ -28,7 +28,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void Demo_Thi_DeletePageJustCreated()
         {
             loginPage = new LoginPage();
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
            newPage= generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             newPage = generalPage.GotoNewPage();
