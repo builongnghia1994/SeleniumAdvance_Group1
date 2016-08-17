@@ -88,7 +88,8 @@ namespace SeleniumAdvance_Group2.Common
             return m.DeclaringType.Name;
         }
         public IWebElement FindElement(By control)
-        {            
+        {
+            WaitPageLoad();         
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
@@ -226,6 +227,11 @@ namespace SeleniumAdvance_Group2.Common
         {
             IWebElement control = FindElement(locator);
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+        }
+
+        public void WaitPageLoad()
+        {
+            Constant.WebDriver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(100));
         }
 
         public int CountItems(By control)
