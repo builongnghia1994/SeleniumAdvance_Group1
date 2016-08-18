@@ -10,4 +10,14 @@
     <type>id</type>
     <value>btnHidePanel</value>
   </btnHide>
+  <itemsColumnChart>
+    <name>items column in chart</name>
+    <type>xpath</type>
+    <value>//div[@id='container']//div[@class='ptit pchart']/../table//tr[1]/td</value>
+  </itemsColumnChart>
+  <itemsRowChart>
+    <name>items row in chart</name>
+    <type>xpath</type>
+    <value>//div[@id='container']//div[@class='ptit pchart']/../table//tr</value>
+  </itemsRowChart>
 </ChoosePanel>
