@@ -309,6 +309,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public ChoosePanelPage GotoChoosePanelPage()
         {
+            Thread.Sleep(1000);//sleep to wait elements are stable after add new pages
             ClickControl("choose panel menu");
             return new ChoosePanelPage();
         }

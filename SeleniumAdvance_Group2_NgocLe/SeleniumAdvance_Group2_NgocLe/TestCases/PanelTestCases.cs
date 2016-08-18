@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Panel;
+using SeleniumAdvance_Group2.PageObject.MainPage;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -50,13 +51,36 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
-            newPanelPage = choosePanelPage.GoToNewPanelPage();
+            newPanelPage = choosePanelPage.GotoNewPanelPage();
             newPanelPage.AddNewPanel(displayName, series);
             PanelConfigurationPage panelConfiguration = new PanelConfigurationPage();
             panelConfiguration.CreatePanelConfiguration(null, null, "");
             VerifyTextFromAlertAndAccept(Constant.MsgInvalidFolder_Panel);
 
         }
+
+
+        [TestMethod]
+        public void DA_PANEL_TC042_Verify_that_all_pages_are_listed_correctly_under_the_Select_page_dropped_down_menu_of_Pane_Configuration_form()
+        {
+            //add page1
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            NewPage newPage = new NewPage();
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            //add page2
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi2" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            //add page 3
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi3" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+
+            ChoosePanelPage choosePanelPage = new ChoosePanelPage();
+            choosePanelPage = generalPage.GotoChoosePanelPage();
+
+            PanelConfigurationPage panelConfigurationPage = new PanelConfigurationPage();
+            panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
+        } 
 
     }
 }

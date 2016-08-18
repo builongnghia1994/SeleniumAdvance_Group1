@@ -12,7 +12,7 @@ namespace SeleniumAdvance_Group2.Common
         public static IWebElement WebElement;
 
         public static int timeout = 10;
-        public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmssffff"));
+        public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));
 
         public static string nameOfDataProfile = "nghia" + timesystem;
 

@@ -18,11 +18,11 @@ namespace SeleniumAdvance_Group2.TestCases
             OpenBrowser(Constant.Browser);
         }
 
-        [AssemblyCleanup]
-        public static void AssemblyCleanupMethod()
-        {
-            Constant.WebDriver.Quit();
-        }
+        //[AssemblyCleanup]
+        //public static void AssemblyCleanupMethod()
+        //{
+        //    Constant.WebDriver.Quit();
+        //}
 
         [TestInitialize]
         public void TestInitializeMethods()
@@ -39,15 +39,15 @@ namespace SeleniumAdvance_Group2.TestCases
             loginPage = OpenURL(Constant.DashboardURL);
         }
 
-        [TestCleanup]
-        public void TestCleanupMethods()
-        {
-            Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
-            if (TestContext.CurrentTestOutcome.ToString() == "Failed")
-            {
-                Constant.WebDriver.Quit();
-            }
-        }
+        //[TestCleanup]
+        //public void TestCleanupMethods()
+        //{
+        //    Constant.WebDriver.Manage().Cookies.DeleteAllCookies();
+        //    if (TestContext.CurrentTestOutcome.ToString() == "Failed")
+        //    {
+        //        Constant.WebDriver.Quit();
+        //    }
+        //}
 
     }
 }

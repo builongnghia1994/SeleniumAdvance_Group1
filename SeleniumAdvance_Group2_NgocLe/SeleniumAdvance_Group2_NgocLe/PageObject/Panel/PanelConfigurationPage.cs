@@ -26,5 +26,8 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             ClickControl("ok button");
             return new GeneralPage();
         }
+
+
+
     }
 }
