@@ -88,8 +88,7 @@ namespace SeleniumAdvance_Group2.Common
             return m.DeclaringType.Name;
         }
         public IWebElement FindElement(By control)
-        {
-            WaitPageLoad();         
+        {       
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
