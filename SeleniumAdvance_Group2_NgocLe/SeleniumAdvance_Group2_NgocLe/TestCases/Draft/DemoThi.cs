@@ -37,5 +37,6 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.DeletePagesJustCreated(Constant.pageName);
 
         }
+       
     }
 }

@@ -130,7 +130,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-            Thread.Sleep(1000);//wait for element display
+           Thread.Sleep(1000);//wait for element display
 
             if (Constant.Browser == "ie")
             { 
@@ -169,7 +169,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
-            Thread.Sleep(1000);//wait to page loaded
+           Thread.Sleep(1000);//wait to page loaded
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
@@ -248,7 +248,15 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                 }
 
-                ClickControl(By.XPath(xpath));
+                if (Constant.Browser == "ie")
+                {
+                    
+                    ClickControlByJS(By.XPath(xpath));
+                }
+                else
+                {
+                    ClickControlByJS(By.XPath(xpath));
+                }
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
 
@@ -282,7 +290,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 ClickControl(By.XPath(xpath2));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
-                Thread.Sleep(500);
+                Thread.Sleep(500);// sleep to wait all elements are stable to count
             }          
                        
         }
