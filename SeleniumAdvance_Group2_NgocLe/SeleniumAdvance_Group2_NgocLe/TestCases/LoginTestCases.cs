@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -12,10 +13,10 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_with_correct_credentials()
         {
-            GeneralPage generalPage;          
+            GeneralPage generalPage;         
 
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            //VP
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            //VP         
             generalPage.VerifyWelComeUserDisplayed(Constant.Username_thi);
             loginPage = generalPage.LogOut();
         }
@@ -43,9 +44,9 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             GeneralPage generalPage;
           
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
             loginPage = generalPage.LogOut();
-            generalPage = loginPage.LoginSuccessfully(Constant.Respos_TestRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_TestRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
             //VP
             generalPage.VerifyWelComeUserDisplayed(Constant.UsernameAdmin);
             loginPage = generalPage.LogOut();

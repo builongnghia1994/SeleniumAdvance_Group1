@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EditDataProfile>
+  <tabGeneralSetting>
+    <name>general settings tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'General Settings')]</value>
+  </tabGeneralSetting>
+  <tabDisplayFields>
+    <name>display fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Display Fields')]</value>
+  </tabDisplayFields>
+  <tabSortFields>
+    <name>sort fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Sort Fields')]</value>
+  </tabSortFields>
+  <tabFilterFields>
+    <name>filter fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Filter Fields')]</value>
+  </tabFilterFields>
+  <tabStatisticFields>
+    <name>statistic fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Statistic Fields')]</value>
+  </tabStatisticFields>
+  <tabDisplaySubFields>
+    <name>display sub fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Display Sub-Fields')]</value>
+  </tabDisplaySubFields>
+  <tabSortSubFields>
+    <name>sort sub fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Sort Sub-Fields')]</value>
+  </tabSortSubFields>
+  <tabFilterSubFields>
+    <name>filter sub fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Filter Sub-Fields')]</value>
+  </tabFilterSubFields>
+  <tabStatisticSubFields>
+    <name>statistic sub fields tab</name>
+    <type>xpath</type>
+    <value>//ul[@id='wstep']/li[contains(.,'Statistic Sub-Fields')]</value>
+  </tabStatisticSubFields>
+  <header>
+    <name>header of tab</name>
+    <type>xpath</type>
+    <value>//td[@class='profilesettingheader']</value>
+  </header>
+</EditDataProfile>

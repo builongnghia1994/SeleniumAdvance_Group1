@@ -45,6 +45,15 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
         }
 
+        public DataProfileManagerPage AddADataProfile(string name, string itemType, string relatedData)
+        {
+            TypeValue("data profile name", name);
+            SelectItemByDropdownList("item type list", itemType);
+            SelectItemByDropdownList("related data list", relatedData);
+            ClickControl("finish button");
+            return new DataProfileManagerPage();
+        }
+
         #endregion
     }
 }

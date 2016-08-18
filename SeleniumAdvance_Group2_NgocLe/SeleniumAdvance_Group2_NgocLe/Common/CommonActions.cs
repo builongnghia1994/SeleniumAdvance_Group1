@@ -77,8 +77,8 @@ namespace SeleniumAdvance_Group2.Common
         public Dictionary<string, string>[] ReadXML()
         {
             string page = GetClassCaller(2);
-            if (page == "EditPage")
-                page = "NewPage";
+            //if (page == "EditPage")
+            //    page = "NewPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
         }
@@ -89,14 +89,14 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitPageLoad();         
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
         {
             return FindElement(FindElementBy(locator));
         }
-        public By FindElementBy(string locator)
+        private By FindElementBy(string locator)
         {
             string page = GetClassCaller(4);
             Dictionary<string, string>[] iDictionary = new Dictionary<string, string>[2];
@@ -121,8 +121,17 @@ namespace SeleniumAdvance_Group2.Common
                 case "NewDataProfilePage":
                     iDictionary = Constant.NewDataProfileDictionary;
                     break;
+                case "EditDataProfilePage":
+                    iDictionary = Constant.EditDataProfileDictionary;
+                    break;
                 case "GeneralPage":
                     iDictionary = Constant.GeneralDictionary;
+                    break;
+                case "ChoosePanelPage":
+                    iDictionary = Constant.ChoosePanelDictionary;
+                    break;
+                case "PanelConfigurationPage":
+                    iDictionary = Constant.PanelConfigurationDictionary;
                     break;
 
             }
@@ -191,6 +200,11 @@ namespace SeleniumAdvance_Group2.Common
         {
             return FindElement(control).Text;
         }
+
+        public string GetText(IWebElement control)
+        {
+            return control.Text;
+        }
         public bool DoesControlExist(By control)
         {
             try
@@ -205,22 +219,19 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void WaitForControl(By control, int timesecond)
         {
-          try
-            {                
-                Thread.Sleep(500);
-                WebDriverWait wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond));
-                wait.Until((d) => { return Constant.WebDriver.FindElement(control); });
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
+            WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(control));
         }
+
         public void WaitForControl(string locator, int timesecond)
         {
-            By control = FindElementBy(locator);
+            IWebElement control = FindElement(locator);
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+        }
+
+        public void WaitPageLoad()
+        {
+            Constant.WebDriver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(100));
         }
 
         public int CountItems(By control)
@@ -248,15 +259,21 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void VerifyTextFromControl(string expectedText, string locator)
         {
-            By element = FindElementBy(locator);
+            IWebElement element = FindElement(locator);
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
         }
         public void VerifyText(string expectedText, string actualText)
         {
-            Assert.AreEqual(expectedText, actualText);
+            Assert.AreEqual(expectedText, actualText,"Text does not match with expectation.");
         }
 
+        public void VerifyTextFromAlertAndAccept(string expectedText)
+        {
+            string alertText = GetTextFromAlertPopup();
+            AcceptAlert();
+            VerifyText(expectedText, alertText);
+        }
 
         #endregion
 

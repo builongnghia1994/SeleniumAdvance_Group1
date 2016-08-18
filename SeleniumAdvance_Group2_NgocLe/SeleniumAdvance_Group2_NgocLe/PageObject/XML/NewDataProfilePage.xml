@@ -1,8 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<DataProfile>
+<NewDataProfile>
   <ddlItemType>
     <name>item type list</name>
     <type>id</type>
     <value>cbbEntityType</value>
   </ddlItemType>
-</DataProfile>
+  <ddlRelatedData>
+    <name>related data list</name>
+    <type>id</type>
+    <value>cbbSubReport</value>
+  </ddlRelatedData>
+  <txtName>
+    <name>data profile name</name>
+    <type>id</type>
+    <value>txtProfileName</value>
+  </txtName>
+  <btnFinish>
+    <name>finish button</name>
+    <type>xpath</type>
+    <value>//input[@value='Finish']</value>
+  </btnFinish>
+  
+</NewDataProfile>

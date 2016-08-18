@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PanelConfiguration>
+  <ddlPage>
+    <name>page list</name>
+    <type>id</type>
+    <value>cbbPages</value>
+  </ddlPage>
+  <txtHeight>
+    <name>height textbox</name>
+    <type>id</type>
+    <value>txtHeight</value>
+  </txtHeight>
+  <txtFolder>
+    <name>folder textbox</name>
+    <type>id</type>
+    <name>txtFolder</name>
+  </txtFolder>
+  <btnOK>
+    <name>ok button</name>
+    <type>id</type>
+    <value>OK</value>
+  </btnOK>
+  <btnCancel>
+    <name>cancel button</name>
+    <type>id</type>
+    <value>Cancel</value>
+  </btnCancel>
+</PanelConfiguration>
