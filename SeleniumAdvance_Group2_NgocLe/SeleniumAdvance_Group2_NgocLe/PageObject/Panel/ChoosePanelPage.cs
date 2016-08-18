@@ -25,10 +25,10 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public PanelConfigurationPage GotoConfigurationPage()
         {
-            
-            SelectChartItemPanel();
-
+            Thread.Sleep(1000);//wait to page loaded
+            SelectChartItemPanel();            
             return new PanelConfigurationPage();
+            
         }
 
         public void SelectChartItemPanel ()
@@ -54,12 +54,10 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
                         else
                         {
                             ClickControl(By.XPath(itemNameChart));
-                        }                
-                                                       
-
+                        }              
+                                                      
            }
 
-
-
+      
     }
 }

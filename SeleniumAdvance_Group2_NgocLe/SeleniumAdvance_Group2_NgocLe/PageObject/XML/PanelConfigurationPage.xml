@@ -5,6 +5,11 @@
     <type>id</type>
     <value>cbbPages</value>
   </ddlPage>
+  <ddlPage>
+    <name>option in select page list</name>
+    <type>xpath</type>
+    <value>//select[@id='cbbPages']/option</value>
+  </ddlPage>
   <txtHeight>
     <name>height textbox</name>
     <type>id</type>
