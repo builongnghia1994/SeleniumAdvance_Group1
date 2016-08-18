@@ -46,9 +46,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public DataProfileManagerPage GotoDataProfileManagerPage()
         {
+            Thread.Sleep(500);
             if (Constant.Browser == "ie")
             {
-
                 ClickControlByJS("administer link");
                 ClickControlByJS("data profile link");
             }
@@ -83,7 +83,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public NewPanelPage GotoPanelPage()
         {
             PanelManagerPage panelManagerPage = GotoPanelManagerPage();
-
             return panelManagerPage.GoToPanelPage();
         }
 
@@ -273,12 +272,13 @@ namespace SeleniumAdvance_Group2.PageObject.General
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
             xpath = "//div[@id='main-menu']/div/ul/li/a[text()='"+namepageparrent+"']";
-            //itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-            while(DoesControlExist(By.XPath(xpath)))
-            {                
+            Thread.Sleep(500);
+            while (DoesControlExist(By.XPath(xpath)))
+            {
+                         
                 string xpath2 = xpath;
                 itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class");
-                while (itemclasscurrent.Equals("active haschild"))
+                while (itemclasscurrent.Equals("haschild") || itemclasscurrent.Equals("active haschild"))
                 {
                     Actions builder = new Actions(Constant.WebDriver);
                     Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath2)));
@@ -286,7 +286,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     string next = "/following-sibling::ul/li/a";
                     xpath2 = xpath2 + next;
                     itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class").ToString();
+                    
                 }
+                Console.Write(xpath2);
                 ClickControl(By.XPath(xpath2));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();

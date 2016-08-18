@@ -77,8 +77,8 @@ namespace SeleniumAdvance_Group2.Common
         public Dictionary<string, string>[] ReadXML()
         {
             string page = GetClassCaller(2);
-            if (page == "EditPage")
-                page = "NewPage";
+            //if (page == "EditPage")
+            //    page = "NewPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
         }
@@ -87,13 +87,11 @@ namespace SeleniumAdvance_Group2.Common
             var m = new StackTrace().GetFrame(level).GetMethod();
             return m.DeclaringType.Name;
         }
-
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitPageLoad();         
             return Constant.WebDriver.FindElement(control);
         }
-
         public IWebElement FindElement(string locator)
         {
             return FindElement(FindElementBy(locator));
@@ -229,6 +227,11 @@ namespace SeleniumAdvance_Group2.Common
         {
             IWebElement control = FindElement(locator);
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
+        }
+
+        public void WaitPageLoad()
+        {
+            Constant.WebDriver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(100));
         }
 
         public int CountItems(By control)

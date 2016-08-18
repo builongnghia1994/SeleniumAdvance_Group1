@@ -29,7 +29,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             loginPage = new LoginPage();
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-           newPage= generalPage.GotoNewPage();
+            newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             newPage = generalPage.GotoNewPage();
 
