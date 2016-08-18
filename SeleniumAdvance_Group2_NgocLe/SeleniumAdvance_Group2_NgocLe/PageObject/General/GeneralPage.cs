@@ -233,7 +233,11 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
 
         }
-
+        public void VerifyAlertMessenge(string expected)
+        {
+            string actual = Constant.WebDriver.SwitchTo().Alert().Text;
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }

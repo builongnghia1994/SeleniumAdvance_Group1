@@ -41,22 +41,22 @@ namespace SeleniumAdvance_Group2.TestCases
 
 
             generalPage.DeletePage(Constant.timesystem);
-            //generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
+            generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
 
-           // generalPage.VerifyAlertMessenge("Cannot delete page '" + Constant.timesystem + "' since it has child page(s)");
+           generalPage.VerifyAlertMessenge("Cannot delete page '" + Constant.timesystem + "' since it has child page(s)");
             generalPage.AcceptAlert();
 
             generalPage.DeletePage(Constant.timesystem + "/" + Constant.timesystem + "1");
-           // generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
+           generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
             generalPage.VerifyPageNotExist(Constant.timesystem + "/" + Constant.timesystem + "1");
 
             generalPage.DeletePage(Constant.timesystem);
-           // generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
+            generalPage.VerifyAlertMessenge("Are you sure you want to remove this page?");
             generalPage.AcceptAlert();
             generalPage.VerifyPageNotExist(Constant.timesystem);
-            //generalPage.VerifyControlNotExist(PageObject.GeneralPage.GeneralPageUI.itemDelete);
+           // generalPage.VerifyControlNotExist(x);
         }
 
     }
