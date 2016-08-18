@@ -83,7 +83,7 @@ namespace SeleniumAdvance_Group2.TestCases
             panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
 
             //vp          
-            panelConfigurationPage.VerifyAllPagesAreListedCorrectlyUnderTheSelectPage("thi1" + Constant.timesystem, "thi1" + Constant.timesystem, "thi3" + Constant.timeout);
+            panelConfigurationPage.VerifyAllPagesAreListedCorrectlyUnderTheSelectPage("thi1" + Constant.timesystem, "thi2" + Constant.timesystem, "thi3" + Constant.timeout);
             
         } 
 
