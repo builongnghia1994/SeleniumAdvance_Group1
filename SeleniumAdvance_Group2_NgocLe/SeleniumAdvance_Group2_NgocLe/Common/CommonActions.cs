@@ -13,6 +13,7 @@ using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
+
 using System.Threading;
 
 namespace SeleniumAdvance_Group2.Common
@@ -250,8 +251,12 @@ namespace SeleniumAdvance_Group2.Common
             return Constant.WebDriver.FindElements(element);
         }
 
-        #region verify
-        public void VerifyText(string expectedText, By element)
+
+       
+       
+
+    #region verify
+    public void VerifyText(string expectedText, By element)
         {
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);

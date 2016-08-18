@@ -8,6 +8,7 @@ using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Panel;
 using SeleniumAdvance_Group2.PageObject.MainPage;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -80,6 +81,10 @@ namespace SeleniumAdvance_Group2.TestCases
 
             PanelConfigurationPage panelConfigurationPage = new PanelConfigurationPage();
             panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
+
+            //vp          
+            panelConfigurationPage.VerifyAllPagesAreListedCorrectlyUnderTheSelectPage("thi1" + Constant.timesystem, "thi1" + Constant.timesystem, "thi3" + Constant.timeout);
+            
         } 
 
     }
