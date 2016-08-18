@@ -264,24 +264,23 @@ namespace SeleniumAdvance_Group2.PageObject.General
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
             xpath = "//div[@id='main-menu']/div/ul/li/a[text()='"+namepageparrent+"']";
-            while(DoesControlExist(By.XPath(xpath)))
-            {                
+            Thread.Sleep(500);
+            while (DoesControlExist(By.XPath(xpath)))
+            {
+                         
                 string xpath2 = xpath;
                 itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class");
-                while (itemclasscurrent.Equals("active haschild"))
+                while (itemclasscurrent.Equals("haschild") || itemclasscurrent.Equals("active haschild"))
                 {
-                    //Actions builder = new Actions(Constant.WebDriver);
-                    //Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath2)));
-                    //hoverClick.Build().Perform();
+                    Actions builder = new Actions(Constant.WebDriver);
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath2)));
+                    hoverClick.Build().Perform();
                     string next = "/following-sibling::ul/li/a";
                     xpath2 = xpath2 + next;
                     itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class").ToString();
-                    string javaScript = "var evObj = document.createEvent('MouseEvents');" +
-                    "evObj.initMouseEvent(\"mouseover\",true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);" +
-                    "arguments[0].dispatchEvent(evObj);";
-                    ((IJavaScriptExecutor)Constant.WebDriver).ExecuteScript(javaScript, By.XPath(xpath2));
+                    
                 }
-                
+                Console.Write(xpath2);
                 ClickControl(By.XPath(xpath2));
                 SelectGlobalSetting("Delete");
                 AcceptAlert();
