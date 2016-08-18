@@ -38,10 +38,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 ClickControl("user link");
                 ClickControl("log out link");
             }
-
-           
             return new LoginPage();
-
         }
 
         public DataProfileManagerPage GotoDataProfileManagerPage()
@@ -57,26 +54,21 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 ClickControl("administer link");
                 ClickControl("data profile link");
             }
-
             return new DataProfileManagerPage();
         }
 
         public PanelManagerPage GotoPanelManagerPage()
         {
-
-
             if (Constant.Browser == "ie")
             {
                 ClickControlByJS("administer link");
                 ClickControlByJS("panel link");
             }
-
             else
             {
                 ClickControl("administer link");
                 ClickControl("panel link");
             }
-
             return new PanelManagerPage();
         }
 
@@ -92,7 +84,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
-
             if (allpages.Length == 1)
             {
                 //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
@@ -111,31 +102,28 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentpagexpath = currentpagexpath + next;
                     lastpage = By.XPath(currentpagexpath);
                 }
-
-                if(Constant.Browser=="ie")
+                if (Constant.Browser == "ie")
                 { ClickControlByJS(lastpage); }
                 else
-                ClickControl(lastpage);
+                    ClickControl(lastpage);
             }
         }
 
         public void VerifyWelComeUserDisplayed(string username)
         {
             VerifyTextFromControl(username, "user link");
-
         }
-
 
         public void SelectGlobalSetting(string settingname)
         {
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-           Thread.Sleep(1000);//wait for element display
-
+            //wait for element display
+            Thread.Sleep(1000);
             if (Constant.Browser == "ie")
-            { 
-              ClickControlByJS("global setting");
-              ClickControlByJS(control);
-             }
+            {
+                ClickControlByJS("global setting");
+                ClickControlByJS(control);
+            }
             else
             {
                 ClickControl("global setting");
@@ -146,12 +134,10 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
         {
             //WaitForControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"), 10);
-
             Thread.Sleep(500);//wait to element of page just created is loaded
             int numberitemsmainmenu = CountItems("main page") - 2;
             for (int i = 1; i <= numberitemsmainmenu; i++)
             {
-
                 string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
                 By realitemMainpage = By.XPath(itemmenuMainPage);
                 if (GetText(realitemMainpage).Equals(itemdisplayafter))
@@ -162,13 +148,11 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     VerifyText(namepage, realitemnamepage);
                 }
             }
-
         }
-
 
         public NewPage GotoNewPage()
         {
-           Thread.Sleep(1000);//wait to page loaded
+            Thread.Sleep(1000);//wait to page loaded
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
@@ -182,7 +166,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return new EditPage();
         }
 
-
         public void DeletePage(string path)
         {
             GotoPage(path);
@@ -191,22 +174,16 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyAlertMessage(string expected)
         {
-          Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
+            Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
             VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
-            
         }
-
-
-
 
         public void VerifyPageNotExist(string way)
         {
-
             WaitForControl("user link", Constant.timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
-
             if (allpages.Length == 1)
             {
                 lastpage = By.XPath(currentpagexpath);
@@ -224,7 +201,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-
         public void DeleteAllPages()
         {
             Thread.Sleep(500);// sleep to wait all elements are stable to count
@@ -236,7 +212,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
             {
                 xpath = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
                 itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-
                 while (itemclasscurrent.Equals("haschild"))
                 {
                     Actions builder = new Actions(Constant.WebDriver);
@@ -246,36 +221,32 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     xpath = xpath + next;
                     itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                 }
-
-                if (Constant.Browser == "ie")
+                if (Constant.Browser.Equals("ie"))
                 {
-                    
                     ClickControlByJS(By.XPath(xpath));
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
                 }
                 else
                 {
-                    ClickControlByJS(By.XPath(xpath));
+                    ClickControl(By.XPath(xpath));
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
                 }
-                SelectGlobalSetting("Delete");
-                AcceptAlert();
 
                 Thread.Sleep(500); // sleep to wait elements are updated to count a gain
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
                 Console.WriteLine("a" + i);
             }
-
         }
 
         public void DeletePagesJustCreated(string namepageparrent)
-
-        {          
+        {
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
-            xpath = "//div[@id='main-menu']/div/ul/li/a[text()='"+namepageparrent+"']";
-            Thread.Sleep(500);
+            xpath = "//div[@id='main-menu']/div/ul/li/a[text()='" + namepageparrent + "']";
             while (DoesControlExist(By.XPath(xpath)))
             {
-                         
                 string xpath2 = xpath;
                 itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class");
                 while (itemclasscurrent.Equals("haschild") || itemclasscurrent.Equals("active haschild"))
@@ -286,19 +257,23 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     string next = "/following-sibling::ul/li/a";
                     xpath2 = xpath2 + next;
                     itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class").ToString();
-                    
                 }
-                Console.Write(xpath2);
-                ClickControl(By.XPath(xpath2));
-                SelectGlobalSetting("Delete");
-                AcceptAlert();
-                Thread.Sleep(500);// sleep to wait all elements are stable to count
-            }          
-                       
+                if (Constant.Browser.Equals("ie"))
+                {
+                    ClickControlByJS(By.XPath(xpath2));
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
+                }
+                else
+                {
+                    Console.Write(xpath2);
+                    ClickControl(By.XPath(xpath2));
+                    SelectGlobalSetting("Delete");
+                    AcceptAlert();
+                    Thread.Sleep(500);
+                }
+            }
         }
-
-
-
 
         public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
         {
@@ -306,10 +281,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum);
         }
 
-
         public ChoosePanelPage GotoChoosePanelPage()
         {
-            Thread.Sleep(1000);//sleep to wait elements are stable after add new pages
             ClickControl("choose panel menu");
             return new ChoosePanelPage();
         }

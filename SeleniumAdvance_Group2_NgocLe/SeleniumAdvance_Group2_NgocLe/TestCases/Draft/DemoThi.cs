@@ -15,7 +15,6 @@ namespace SeleniumAdvance_Group2.TestCases
         NewPage newPage;
 
         [TestMethod]
-
         public void Demo_Thi_DeleteAllPage()
         {
             loginPage = new LoginPage();
