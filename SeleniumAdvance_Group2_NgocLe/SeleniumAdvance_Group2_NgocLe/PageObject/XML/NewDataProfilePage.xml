@@ -20,5 +20,19 @@
     <type>xpath</type>
     <value>//input[@value='Finish']</value>
   </btnFinish>
-  
+  <btnNext>
+    <name>next button</name>
+    <type>xpath</type>
+    <value>//input[@value='Next']</value>
+  </btnNext>
+  <ddlField_SortFields>
+    <name>field dropdown list in SortFields</name>
+    <type>id</type>
+    <value>cbbFields</value>
+  </ddlField_SortFields>
+  <btnAddLevel>
+    <name>add level button</name>
+    <type>xpath</type>
+    <value>//input[@value='Add Level']</value>
+  </btnAddLevel>
 </NewDataProfile>

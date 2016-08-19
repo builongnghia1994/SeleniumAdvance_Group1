@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
-    <Compile Include="Common\WebElement.cs" />
     <Compile Include="PageObject\DataProfile\DataProfileManagerPage.cs" />
     <Compile Include="PageObject\DataProfile\EditDataProfilePage.cs" />
     <Compile Include="PageObject\DataProfile\NewDataProfilePage.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="PageObject\Panel\NewPanelPage.cs" />
     <Compile Include="PageObject\Panel\PanelConfigurationPage.cs" />
     <Compile Include="PageObject\Panel\PanelManagerPage.cs" />
+    <Compile Include="TestCases\Draft\Nghia.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
     <Compile Include="TestCases\Draft\NgocTC.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />

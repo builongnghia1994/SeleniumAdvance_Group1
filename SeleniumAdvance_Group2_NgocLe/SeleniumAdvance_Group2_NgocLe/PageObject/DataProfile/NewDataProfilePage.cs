@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
+using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
@@ -45,15 +46,64 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
         }
 
-        public DataProfileManagerPage AddADataProfile(string name, string itemType, string relatedData)
+        public void EnterValueGeneralSetting(string name, string itemType, string relatedData)
         {
             TypeValue("data profile name", name);
             SelectItemByDropdownList("item type list", itemType);
             SelectItemByDropdownList("related data list", relatedData);
+        }
+
+        public DataProfileManagerPage AddADataProfile(string name, string itemType, string relatedData)
+        {
+            EnterValueGeneralSetting(name, itemType, relatedData);
             ClickControl("finish button");
             return new DataProfileManagerPage();
         }
 
+        public void NavigateToSortField(string name, string itemType, string relatedData)
+        {
+            EnterValueGeneralSetting(name, itemType, relatedData);
+            ClickControl("next button");
+            Thread.Sleep(500);
+            ClickControl("next button");
+        }
+
+        public void AddASortField(string sortValue)
+        {
+            Thread.Sleep(500);
+            SelectItemByDropdownList("field dropdown list in SortFields", sortValue);
+            ClickControl("add level button");
+        }
+
+        public void MoveLevelOfSortFieldlUp(string field)
+        {
+            string locator = "//span[text()='" + field + "']/../..//button[@title='Move up']";
+            ClickControl(By.XPath(locator));
+        }
+
+        public void MoveLevelOfSortFieldDown(string field)
+        {
+            string locator = "//span[text()='" + field + "']/../..//button[@title='Move down']";
+            ClickControl(By.XPath(locator));
+        }
+
+        public void VerifyMoveLevel(string expected, string actual)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        public string GetValueSortBy()
+        {
+            string locator = "//span[text()='Sort by:']//..//span[2]";
+            return GetText(By.XPath(locator));
+        }
+
+        public string GetValueThenBy()
+        {
+            Thread.Sleep(500);
+            string locator = "//span[text()='Then by:']//..//span[2]";
+            return GetText(By.XPath(locator));
+        }
         #endregion
     }
 }
