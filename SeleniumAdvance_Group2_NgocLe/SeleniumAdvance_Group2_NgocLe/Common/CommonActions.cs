@@ -89,7 +89,8 @@ namespace SeleniumAdvance_Group2.Common
             return m.DeclaringType.Name;
         }
         public IWebElement FindElement(By control)
-        {       
+        {
+            WaitForControl(control, Constant.timeout);
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
@@ -219,8 +220,44 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void WaitForControl(By control, int timesecond)
         {
-            WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
-            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(control));
+            //WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
+            //IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(control));
+            //bool control = false;
+            IWebElement element = null;
+
+            for (int i = 0; i < timesecond; i++)
+            {
+                try
+                {
+                    element = Constant.WebDriver.FindElement(control);
+                    Console.WriteLine(i.ToString() + control.ToString());
+                    if (element.Displayed) //add this condition since the test case 30, add panel, then open new panel again, txtdisplayname is not visible at the first time
+                        return;
+                }
+
+                catch
+                {
+                    Thread.Sleep(1000);
+                }
+
+            }
+        }
+
+        public void WaitForPageLoad()
+        {
+
+            try
+            {
+                IWait<IWebDriver> wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(30.00));
+                wait.Until(driver1 => ((IJavaScriptExecutor)Constant.WebDriver).ExecuteScript("return document.readyState").Equals("complete"));
+                Thread.Sleep(500);
+            }
+            catch (WebDriverException e)
+            {
+
+                Console.WriteLine(e.Message + "page load1111");
+            }
+
         }
 
         public void WaitForControl(string locator, int timesecond)
@@ -229,13 +266,9 @@ namespace SeleniumAdvance_Group2.Common
             Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementToBeClickable(control));
         }
 
-        public void WaitPageLoad()
-        {
-            Constant.WebDriver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(100));
-        }
-
         public int CountItems(By control)
         {
+            WaitForControl(control, Constant.timeout);
             return Constant.WebDriver.FindElements(control).Count;
         }
 
@@ -252,11 +285,11 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-       
-       
 
-    #region verify
-    public void VerifyText(string expectedText, By element)
+
+
+        #region verify
+        public void VerifyText(string expectedText, By element)
         {
             string actualText = GetText(element);
             Assert.AreEqual(expectedText, actualText);
@@ -269,7 +302,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public void VerifyText(string expectedText, string actualText)
         {
-            Assert.AreEqual(expectedText, actualText,"Text does not match with expectation.");
+            Assert.AreEqual(expectedText, actualText, "Text does not match with expectation.");
         }
 
         public void VerifyTextFromAlertAndAccept(string expectedText)
