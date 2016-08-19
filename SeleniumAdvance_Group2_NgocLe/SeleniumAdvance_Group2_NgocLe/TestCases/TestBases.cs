@@ -14,7 +14,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
         public TestContext TestContext { get; set; }
 
-        //[AssemblyInitialize]
+        [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
             OpenBrowser(Constant.Browser);

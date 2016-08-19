@@ -13,7 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
         GeneralPage generalPage;
         DataProfileManagerPage dataProfileManagerPage;
 
-       [TestMethod]
+        [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
             loginPage = new LoginPage();
@@ -35,22 +35,6 @@ namespace SeleniumAdvance_Group2.TestCases
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             dataProfileManagerPage.VerifyDataProfileInAlphabeticalOrder();
-        }
-
-        [TestMethod]
-        public void DA_DP_TC073_Verify_that_all_data_profile_types_are_listed_in_priority_order_under_Item_Type_dropped_down_menu()
-        {
-            NewDataProfilePage newDataProfilePage;
-
-            loginPage = new LoginPage();
-
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
-
-            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
-
-            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
-
-            newDataProfilePage.VerifyDropdownlistDisplayByPriority(Constant.itemTypeValues, newDataProfilePage.GetItemTypeValues());
         }
 
         [TestMethod]
@@ -98,6 +82,34 @@ namespace SeleniumAdvance_Group2.TestCases
             editDataProfilePage.ClickTab("statistic sub fields tab");
             editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
 
+        }
+
+        [TestMethod]
+        public void DA_DP_TC085_Verify_that_user_is_able_to_change_the_level_of_sorting_amongst_fields_by_using_Up_and_Down_arrow()
+        {
+            NewDataProfilePage newDataProfilePage;
+
+            loginPage = new LoginPage();
+
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository,Constant.Username_nghia, Constant.Password);
+
+            dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
+
+            newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
+
+            newDataProfilePage.NavigateToSortField(Constant.nameOfDataProfile, "test modules", "Related test results");
+
+            newDataProfilePage.AddASortField("Source");
+
+            newDataProfilePage.AddASortField("Location");
+
+            newDataProfilePage.MoveLevelOfSortFieldlUp("Location");
+
+            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueSortBy());
+
+            newDataProfilePage.MoveLevelOfSortFieldDown("Location");
+
+            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueThenBy());
         }
     }
 }
