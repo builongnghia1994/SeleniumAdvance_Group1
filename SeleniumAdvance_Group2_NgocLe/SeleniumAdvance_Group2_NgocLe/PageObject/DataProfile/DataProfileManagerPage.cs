@@ -21,14 +21,12 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         #region GotoPage methods
         public NewDataProfilePage GotoNewDataProfilePage()
         {
-            Thread.Sleep(500);
             ClickControl("add new link");
             return new NewDataProfilePage();
         }
 
         public EditDataProfilePage GotoEditDataProfilePage(string profile)
         {
-            Thread.Sleep(500);
             ClickControl(By.XPath("//td/a[contains(.,'" + profile + "')]"));
             return new EditDataProfilePage();
         }
@@ -37,7 +35,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public string[] GetActualPreDataPRofile()
         {
-            Thread.Sleep(500);
             int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
             for (int i = 2; i < numberOfrow; i++)

@@ -18,7 +18,6 @@ namespace SeleniumAdvance_Group2.PageObject.Login
 
         public GeneralPage LoginDashBoard(string respository, string username, string password)
         {
-            Thread.Sleep(500); //sleep to wait login page is loaded to login
             Login(respository, username, password);
             return new GeneralPage();
         }

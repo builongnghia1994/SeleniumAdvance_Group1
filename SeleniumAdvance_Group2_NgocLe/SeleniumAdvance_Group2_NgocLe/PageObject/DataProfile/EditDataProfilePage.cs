@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
-    public class EditDataProfilePage: GeneralPage
+    public class EditDataProfilePage : GeneralPage
     {
         public EditDataProfilePage()
         {
@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         }
         public void VerifyPageDisplay(string expected)
         {
-            Thread.Sleep(500);
+            WaitForPageLoad();
             VerifyTextFromControl(expected, "header of tab");
         }
         #endregion
