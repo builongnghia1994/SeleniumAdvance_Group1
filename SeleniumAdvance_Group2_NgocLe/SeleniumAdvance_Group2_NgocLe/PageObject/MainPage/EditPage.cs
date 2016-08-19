@@ -19,7 +19,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
         public GeneralPage EditAPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
-            Thread.Sleep(500);// sleep to wait all elements ared loaded
             switch (status.ToLower())
             {
                 case "public":
@@ -37,7 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             if (afterpage != null)
             { SelectItemByDropdownList("page display after", afterpage); }
             ClickControl("OK button");
-
+            WaitForPageLoad();
             return new GeneralPage();
         }
     }

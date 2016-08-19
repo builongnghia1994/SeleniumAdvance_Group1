@@ -19,8 +19,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
         public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
-            Thread.Sleep(1000);//wait to elements are located
-            switch (status.ToLower())
+           switch (status.ToLower())
             {
                 case "public":
                     ClickControl("public checkbox");
@@ -37,8 +36,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             if (afterpage != null)
             { SelectItemByDropdownList("page display after", afterpage); }
             ClickControl("OK button");
-            //Thread.Sleep(500);
-
+            WaitForPageLoad();
             return new GeneralPage();
             
         }

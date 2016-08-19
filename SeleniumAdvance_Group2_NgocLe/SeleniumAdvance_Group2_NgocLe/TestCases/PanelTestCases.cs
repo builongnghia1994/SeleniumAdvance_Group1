@@ -39,6 +39,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newPanelPage.AddNewPanel(specialCharacterPanel, series);
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgInvalidPanelDisplayName);
             newPanelPage = panelManagerPage.GoToPanelPage();
+           // WaitForPageLoad();
             newPanelPage.AddNewPanel(atsignPanel, series);
             panelManagerPage.VerifyPanelDisplayed(atsignPanel);
             generalPage.LogOut();

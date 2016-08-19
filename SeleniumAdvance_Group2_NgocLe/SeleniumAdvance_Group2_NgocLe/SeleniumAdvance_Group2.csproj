@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
-    <Compile Include="Common\WebElement.cs" />
     <Compile Include="PageObject\DataProfile\DataProfileManagerPage.cs" />
     <Compile Include="PageObject\DataProfile\EditDataProfilePage.cs" />
     <Compile Include="PageObject\DataProfile\NewDataProfilePage.cs" />
