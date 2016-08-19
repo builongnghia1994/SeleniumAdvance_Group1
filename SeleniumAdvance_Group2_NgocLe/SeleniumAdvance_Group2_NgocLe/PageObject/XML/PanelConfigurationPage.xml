@@ -20,6 +20,11 @@
     <type>id</type>
     <name>txtFolder</name>
   </txtFolder>
+  <imgOpenFolder>
+    <name>open folder button</name>
+    <type>xpath</type>
+    <value>//table[@id='infoSettings']//a[@title='Open']</value>
+  </imgOpenFolder>
   <btnOK>
     <name>ok button</name>
     <type>id</type>

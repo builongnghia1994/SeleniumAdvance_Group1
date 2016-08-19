@@ -19,9 +19,8 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public NewPanelPage GotoNewPanelPage()
         {
-            Thread.Sleep(1000); //wait to page load
             ClickControl("create new panel button");
-           
+
             return new NewPanelPage();
         }
 
