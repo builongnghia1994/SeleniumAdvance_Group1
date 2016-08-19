@@ -15,6 +15,7 @@ using System.Xml;
 using System.Diagnostics;
 
 using System.Threading;
+using OpenQA.Selenium.Remote;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -28,13 +29,14 @@ namespace SeleniumAdvance_Group2.Common
 
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("--disable-extensions");
+                    options.AddArguments("--disable-extensions");                 
                     Constant.WebDriver = new ChromeDriver(options);
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":
+
                     InternetExplorerOptions optionIE = new InternetExplorerOptions();
-                    optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+                    optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;                               
                     Constant.WebDriver = new InternetExplorerDriver(optionIE);
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
@@ -252,8 +254,9 @@ namespace SeleniumAdvance_Group2.Common
         }
 
 
-       
-       
+      
+
+
 
     #region verify
     public void VerifyText(string expectedText, By element)
@@ -284,6 +287,8 @@ namespace SeleniumAdvance_Group2.Common
         #region alert
         public void DismissAlert()
         {
+         
+
             WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Dismiss();
@@ -292,6 +297,11 @@ namespace SeleniumAdvance_Group2.Common
 
         public void AcceptAlert()
         {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.IsJavaScriptEnabled = true;
+            capabilities.SetCapability(CapabilityType.AcceptSslCertificates, true);
+            capabilities.SetCapability("ignoreProtectedModeSettings", true);
+
             WaitForAlertPresent(Constant.timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Accept();

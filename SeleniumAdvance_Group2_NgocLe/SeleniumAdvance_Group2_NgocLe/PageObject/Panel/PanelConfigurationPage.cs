@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
+using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
 using System.Threading;
 
@@ -70,11 +71,17 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             {
                 ClickControl("ok button");
                 return false;
-            }
-
-            
-
+            }           
         }
+
+
+        public SelectFolderPage GotoSelectFolderPage()
+        {
+            Thread.Sleep(1000);//wait to page loaded
+            ClickControl("folder textbox");
+            return new SelectFolderPage();
+        }
+
 
 
     }

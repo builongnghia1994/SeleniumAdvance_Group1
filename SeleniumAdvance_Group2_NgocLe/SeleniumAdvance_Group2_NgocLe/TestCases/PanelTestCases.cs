@@ -64,8 +64,9 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC042_Verify_that_all_pages_are_listed_correctly_under_the_Select_page_dropped_down_menu_of_Pane_Configuration_form()
         {
-            //add page1
+         
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            //add page1
             NewPage newPage = new NewPage();
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
@@ -85,7 +86,31 @@ namespace SeleniumAdvance_Group2.TestCases
             //vp          
             panelConfigurationPage.VerifyAllPagesAreListedCorrectlyUnderTheSelectPage("thi1" + Constant.timesystem, "thi2" + Constant.timesystem, "thi3" + Constant.timeout);
             
-        } 
+        }
 
+
+        [TestMethod]
+        public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form() 
+        {
+            string series = "  Name";
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            //add page1
+            NewPage newPage = new NewPage();
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+
+            ChoosePanelPage choosePanelPage = new ChoosePanelPage();
+            choosePanelPage = generalPage.GotoChoosePanelPage();
+
+            NewPanelPage newPanelPage = new NewPanelPage();
+            newPanelPage = choosePanelPage.GotoNewPanelPage();
+
+            PanelConfigurationPage panelConfigurationPage = new PanelConfigurationPage();
+            panelConfigurationPage = newPanelPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.timesystem,series);
+
+            SelectFolderPage selectFolderPage = new SelectFolderPage();
+            selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
+
+        }
     }
 }
