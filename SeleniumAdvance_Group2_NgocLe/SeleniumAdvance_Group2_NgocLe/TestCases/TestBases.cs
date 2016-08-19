@@ -32,14 +32,14 @@ namespace SeleniumAdvance_Group2.TestCases
             try
             {
                 //start remote firefox browser
-                DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-                capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-                capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114/wd/node"), capabilities, TimeSpan.FromSeconds(1000));
+                //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
+                //capabilities.SetCapability(CapabilityType.Version, "47.0.1");
+                //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114/wd/node"), capabilities, TimeSpan.FromSeconds(1000));
                                
-                Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
-                Constant.WebDriver.Manage().Window.Maximize();
+                //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
+                //Constant.WebDriver.Manage().Window.Maximize();
                 string url = Constant.WebDriver.Url;
 
             }
