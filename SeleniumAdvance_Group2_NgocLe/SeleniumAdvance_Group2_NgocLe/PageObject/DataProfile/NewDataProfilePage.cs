@@ -64,13 +64,12 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             EnterValueGeneralSetting(name, itemType, relatedData);
             ClickControl("next button");
-            Thread.Sleep(500);
+            WaitForPageLoad();
             ClickControl("next button");
         }
 
         public void AddASortField(string sortValue)
         {
-            Thread.Sleep(500);
             SelectItemByDropdownList("field dropdown list in SortFields", sortValue);
             ClickControl("add level button");
         }
@@ -100,7 +99,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public string GetValueThenBy()
         {
-            Thread.Sleep(500);
             string locator = "//span[text()='Then by:']//..//span[2]";
             return GetText(By.XPath(locator));
         }

@@ -7,7 +7,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumAdvance_Group2.TestCases
-{
+{  
     [TestClass]
     public class DemoThi : TestBases
     {
