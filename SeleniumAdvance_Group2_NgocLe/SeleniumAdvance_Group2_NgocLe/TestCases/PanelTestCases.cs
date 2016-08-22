@@ -8,6 +8,7 @@ using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Panel;
 using SeleniumAdvance_Group2.PageObject.MainPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
@@ -53,8 +54,9 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
-            newPanelPage = choosePanelPage.GotoNewPanelPage();
-            newPanelPage.AddNewPanel(displayName, series);
+            NewPanelForPage newPanelForPage = new NewPanelForPage();
+            newPanelForPage = choosePanelPage.GotoNewPanelPage();
+            newPanelForPage.AddNewPanel(displayName, series);
             PanelConfigurationPage panelConfiguration = new PanelConfigurationPage();
             panelConfiguration.CreatePanelConfiguration(null, null, "");
             VerifyTextFromAlertAndAccept(Constant.MsgInvalidFolder_Panel);
@@ -103,11 +105,11 @@ namespace SeleniumAdvance_Group2.TestCases
             ChoosePanelPage choosePanelPage = new ChoosePanelPage();
             choosePanelPage = generalPage.GotoChoosePanelPage();
 
-            NewPanelPage newPanelPage = new NewPanelPage();
-            newPanelPage = choosePanelPage.GotoNewPanelPage();
+            NewPanelForPage newPanelForPage = new NewPanelForPage();
+            newPanelForPage = choosePanelPage.GotoNewPanelPage();
 
             PanelConfigurationPage panelConfigurationPage = new PanelConfigurationPage();
-            panelConfigurationPage = newPanelPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.timesystem,series);
+            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.timesystem,series);
 
             SelectFolderPage selectFolderPage = new SelectFolderPage();
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 
-namespace SeleniumAdvance_Group2.PageObject.Panel
+namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
-  public  class SelectFolderPage:GeneralPage
+    public class SelectFolderPage : GeneralPage
     {
 
 

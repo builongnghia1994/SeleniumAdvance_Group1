@@ -13,7 +13,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
     {
         public EditDataProfilePage()
         {
-            Constant.EditDataProfileDictionary = ReadXML();
+            if (Constant.EditDataProfileDictionary == null)
+                Constant.EditDataProfileDictionary = ReadXML();
         }
 
         #region Verify Method

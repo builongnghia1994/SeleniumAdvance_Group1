@@ -15,7 +15,8 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
     {
         public PanelManagerPage()
         {
-            Constant.PanelManagerDictionary = ReadXML();
+            if (Constant.PanelManagerDictionary == null)
+                Constant.PanelManagerDictionary = ReadXML();
         }
         public NewPanelPage GoToPanelPage()
         {
@@ -39,10 +40,10 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
             }
             Assert.Fail("Panel does not exist.");
-           
+
         }
 
-     
+
 
     }
 }

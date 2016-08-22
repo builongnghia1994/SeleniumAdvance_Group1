@@ -107,6 +107,7 @@ namespace SeleniumAdvance_Group2.Common
                     iDictionary = Constant.LoginDictionary;
                     break;
                 case "NewPanelPage":
+                case "NewPanelForPage":
                     iDictionary = Constant.NewPanelDictionary;
                     break;
                 case "PanelManagerPage":
@@ -231,7 +232,9 @@ namespace SeleniumAdvance_Group2.Common
                 {
                     element = Constant.WebDriver.FindElement(control);
                     Console.WriteLine(i.ToString() + control.ToString());
-                    if (element.Displayed) //add this condition since the test case 30, add panel, then open new panel again, txtdisplayname is not visible at the first time
+                    if (element.Displayed)
+                        //add this condition since the test case 30, add panel,
+                        //then open new panel again, txtdisplayname is not visible at the first time
                         return;
                 }
 
@@ -255,7 +258,7 @@ namespace SeleniumAdvance_Group2.Common
             catch (WebDriverException e)
             {
 
-                Console.WriteLine(e.Message + "page load1111");
+                Console.WriteLine(e.Message);
             }
 
         }

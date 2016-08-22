@@ -9,13 +9,14 @@ using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
 using System.Threading;
 
-namespace SeleniumAdvance_Group2.PageObject.Panel
+namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
     public class PanelConfigurationPage : GeneralPage
     {
         public PanelConfigurationPage()
         {
-            Constant.PanelConfigurationDictionary = ReadXML();
+            if (Constant.PanelConfigurationDictionary == null)
+                Constant.PanelConfigurationDictionary = ReadXML();
         }
 
         public GeneralPage CreatePanelConfiguration(string page, string height, string folder)

@@ -15,7 +15,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
     {
         public NewDataProfilePage()
         {
-            Constant.NewDataProfileDictionary = ReadXML();
+            if (Constant.NewDataProfileDictionary == null)
+                Constant.NewDataProfileDictionary = ReadXML();
         }
         public string[] GetItemTypeValues()
         {
