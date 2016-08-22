@@ -14,12 +14,13 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
     {
         public NewPage()
         {
-            Constant.NewPageDictionary = ReadXML();
+            if (Constant.NewPageDictionary == null)
+                Constant.NewPageDictionary = ReadXML();
         }
         public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 
         {
-           switch (status.ToLower())
+            switch (status.ToLower())
             {
                 case "public":
                     ClickControl("public checkbox");
@@ -44,7 +45,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             ClickControl("OK button");
             WaitForPageLoad();
             return new GeneralPage();
-            
+
         }
 
         public void PageNameFormat(string pagename, int level)
@@ -60,4 +61,4 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
         }
 
     }
-} 
+}

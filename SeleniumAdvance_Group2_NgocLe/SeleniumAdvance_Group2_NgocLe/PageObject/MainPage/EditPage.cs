@@ -10,11 +10,12 @@ using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage
 {
-  public  class EditPage: GeneralPage
+    public class EditPage : GeneralPage
     {
         public EditPage()
         {
-            Constant.NewPageDictionary = ReadXML();
+            if (Constant.NewPageDictionary == null)
+                Constant.NewPageDictionary = ReadXML();
         }
         public GeneralPage EditAPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
 

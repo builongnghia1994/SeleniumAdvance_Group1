@@ -68,7 +68,7 @@ namespace SeleniumAdvance_Group2.Common
 
         #region XML
 
-        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\PageObject\\XML\\";
+        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces";
         public static string XMLLoginPage = "LoginPage.xml";
         public static string XMLPanelManagerPage = "PanelManagerPage.xml";
         public static string XMLNewPanelPage = "NewPanelPage.xml";

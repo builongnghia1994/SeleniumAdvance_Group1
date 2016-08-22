@@ -8,21 +8,21 @@ using OpenQA.Selenium;
 using SeleniumAdvance_Group2.PageObject.General;
 using System.Threading;
 
-namespace SeleniumAdvance_Group2.PageObject.Panel
+namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
     public class ChoosePanelPage : GeneralPage
     {
         public ChoosePanelPage()
         {
-            Constant.ChoosePanelDictionary = ReadXML();
+            if (Constant.ChoosePanelDictionary == null)
+                Constant.ChoosePanelDictionary = ReadXML();
         }
 
-        public NewPanelPage GotoNewPanelPage()
+        public NewPanelForPage GotoNewPanelPage()
         {
-            Thread.Sleep(1000); //wait to page load
             ClickControl("create new panel button");
-           
-            return new NewPanelPage();
+
+            return new NewPanelForPage();
         }
 
         public PanelConfigurationPage GotoConfigurationPage()

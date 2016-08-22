@@ -82,11 +82,12 @@
     <Compile Include="PageObject\Login\LoginPage.cs" />
     <Compile Include="PageObject\MainPage\EditPage.cs" />
     <Compile Include="PageObject\MainPage\NewPage.cs" />
-    <Compile Include="PageObject\Panel\ChoosePanelPage.cs" />
+    <Compile Include="PageObject\MainPage\Panel\ChoosePanelPage.cs" />
+    <Compile Include="PageObject\MainPage\Panel\NewPanelForPage.cs" />
     <Compile Include="PageObject\Panel\NewPanelPage.cs" />
-    <Compile Include="PageObject\Panel\PanelConfigurationPage.cs" />
+    <Compile Include="PageObject\MainPage\Panel\PanelConfigurationPage.cs" />
     <Compile Include="PageObject\Panel\PanelManagerPage.cs" />
-    <Compile Include="PageObject\Panel\SelectFolderPage.cs" />
+    <Compile Include="PageObject\MainPage\Panel\SelectFolderPage.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
     <Compile Include="TestCases\Draft\NgocTC.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />
@@ -108,16 +109,16 @@
       <Link>MicrosoftWebDriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="PageObject\XML\ChoosePanelPage.xml" />
-    <Content Include="PageObject\XML\EditDataProfilePage.xml" />
-    <Content Include="PageObject\XML\GeneralPage.xml" />
-    <Content Include="PageObject\XML\LoginPage.xml" />
-    <Content Include="PageObject\XML\NewDataProfilePage.xml" />
-    <Content Include="PageObject\XML\NewPage.xml" />
-    <Content Include="PageObject\XML\NewPanelPage.xml" />
-    <Content Include="PageObject\XML\PanelConfigurationPage.xml" />
-    <Content Include="PageObject\XML\PanelManagerPage.xml" />
-    <Content Include="PageObject\XML\DataProfileManagerPage.xml" />
+    <Content Include="Interfaces\ChoosePanelPage.xml" />
+    <Content Include="Interfaces\EditDataProfilePage.xml" />
+    <Content Include="Interfaces\GeneralPage.xml" />
+    <Content Include="Interfaces\LoginPage.xml" />
+    <Content Include="Interfaces\NewDataProfilePage.xml" />
+    <Content Include="Interfaces\NewPage.xml" />
+    <Content Include="Interfaces\NewPanelPage.xml" />
+    <Content Include="Interfaces\PanelConfigurationPage.xml" />
+    <Content Include="Interfaces\PanelManagerPage.xml" />
+    <Content Include="Interfaces\DataProfileManagerPage.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

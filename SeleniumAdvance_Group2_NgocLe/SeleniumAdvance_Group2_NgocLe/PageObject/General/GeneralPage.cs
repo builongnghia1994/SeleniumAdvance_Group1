@@ -12,6 +12,7 @@ using SeleniumAdvance_Group2.PageObject.DataProfile;
 using SeleniumAdvance_Group2.TestCases;
 using SeleniumAdvance_Group2.PageObject.Panel;
 using SeleniumAdvance_Group2.PageObject.MainPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 
@@ -22,7 +23,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
     {
         public GeneralPage()
         {
-            Constant.GeneralDictionary = ReadXML();
+            if (Constant.GeneralDictionary == null)
+                Constant.GeneralDictionary = ReadXML();
         }
         public LoginPage LogOut()
         {
@@ -195,7 +197,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void DeleteAllPages()
         {
-              int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
+            int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
 

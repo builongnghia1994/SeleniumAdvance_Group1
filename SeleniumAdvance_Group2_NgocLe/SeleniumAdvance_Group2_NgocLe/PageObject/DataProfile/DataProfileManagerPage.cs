@@ -15,7 +15,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
     {
         public DataProfileManagerPage()
         {
-            Constant.DataProfileDictionary = ReadXML();
+            if (Constant.DataProfileDictionary == null)
+                Constant.DataProfileDictionary = ReadXML();
         }
 
         #region GotoPage methods

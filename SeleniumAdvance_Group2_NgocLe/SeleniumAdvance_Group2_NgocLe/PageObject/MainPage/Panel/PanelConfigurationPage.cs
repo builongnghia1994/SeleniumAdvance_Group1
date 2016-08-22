@@ -9,13 +9,14 @@ using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
 using System.Threading;
 
-namespace SeleniumAdvance_Group2.PageObject.Panel
+namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
     public class PanelConfigurationPage : GeneralPage
     {
         public PanelConfigurationPage()
         {
-            Constant.PanelConfigurationDictionary = ReadXML();
+            if (Constant.PanelConfigurationDictionary == null)
+                Constant.PanelConfigurationDictionary = ReadXML();
         }
 
         public GeneralPage CreatePanelConfiguration(string page, string height, string folder)
@@ -34,7 +35,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
         public bool VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(string a, string b, string c)
         {
             ClickControl("page list");
-           
+
 
             int numberresult = 0;
             int numberOption = CountItems("option in select page list");
@@ -45,15 +46,15 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             lstCompare.Add(c);
             int numbercompare = lstCompare.Count;
             Console.WriteLine(numbercompare);
-           
-            for (int j = 0; j< numbercompare; j++)
+
+            for (int j = 0; j < numbercompare; j++)
             {
                 for (int i = 1; i <= numberOption; i++)
                 {
                     string optionSelectPage = "//select[@id='cbbPages']/option[" + i + "]";
                     Console.WriteLine(GetText(By.XPath(optionSelectPage)));
 
-                    if(GetText(By.XPath(optionSelectPage)).Equals(lstCompare[j]))
+                    if (GetText(By.XPath(optionSelectPage)).Equals(lstCompare[j]))
                     {
                         numberresult++;
                         break;
@@ -65,20 +66,19 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             {
                 ClickControl("ok button");
                 return true;
-                
+
             }
             else
             {
                 ClickControl("ok button");
                 return false;
-            }           
+            }
         }
 
 
         public SelectFolderPage GotoSelectFolderPage()
         {
-            Thread.Sleep(1000);//wait to page loaded
-            ClickControl("folder textbox");
+            ClickControl("open folder button");
             return new SelectFolderPage();
         }
 

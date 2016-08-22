@@ -17,7 +17,8 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public NewPanelPage()
         {
-            Constant.NewPanelDictionary = ReadXML();
+            if (Constant.NewPanelDictionary == null)
+                Constant.NewPanelDictionary = ReadXML();
         }
 
         public void ClickOK()
@@ -36,17 +37,9 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public void AddNewPanel(string displayName, string series)
         {
-            Thread.Sleep(1000);//wait to page load
             TypeValue("display name textbox", displayName);
             SelectItemByDropdownList("series list", series);
             ClickControl("ok button");
-        }
-
-        public PanelConfigurationPage GotoPanelConfigurationPageByAddNewPanel(string displayName, string series)
-        {
-            Thread.Sleep(1000);// wait for page loaded
-            AddNewPanel(displayName, series);           
-            return new PanelConfigurationPage();
         }
     }
 }
