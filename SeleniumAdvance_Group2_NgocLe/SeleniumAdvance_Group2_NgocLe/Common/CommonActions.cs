@@ -253,7 +253,7 @@ namespace SeleniumAdvance_Group2.Common
             {
                 IWait<IWebDriver> wait = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(30.00));
                 wait.Until(driver1 => ((IJavaScriptExecutor)Constant.WebDriver).ExecuteScript("return document.readyState").Equals("complete"));
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
             catch (WebDriverException e)
             {
