@@ -13,11 +13,11 @@ namespace SeleniumAdvance_Group2.TestCases
     {
         GeneralPage generalPage;
         NewPage newPage;
-
-        [TestMethod]
+       
+            [TestMethod]
         public void Demo_Thi_DeleteAllPage()
         {
-            loginPage = new LoginPage();
+           
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             generalPage.DeleteAllPages();
             //generalPage.DeletePagesJustCreated("page1160820160300190324");
@@ -26,16 +26,30 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void Demo_Thi_DeletePageJustCreated()
         {
-            loginPage = new LoginPage();
+            
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
-            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
 
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName1, Constant.pageName, Constant.defaultValue, Constant.defaultValue);
-            generalPage.DeletePagesJustCreated(Constant.pageName);
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc1", "abc", Constant.defaultValue, Constant.defaultValue);
+
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc2", "abc1", Constant.defaultValue, Constant.defaultValue);
+
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc3","abc2" , Constant.defaultValue, Constant.defaultValue);
+
+            //generalPage.DeletePagesJustCreated(Constant.pageName);
 
         }
-       
+
+
+        [TestMethod]
+        public void Demo_Thi_Spaceeeeeee()
+        {
+            newPage = new NewPage();
+            newPage.AddSpace("b", 2);
+        }
     }
 }

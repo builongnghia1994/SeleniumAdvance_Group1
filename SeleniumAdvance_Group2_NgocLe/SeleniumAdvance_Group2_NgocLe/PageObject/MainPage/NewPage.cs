@@ -30,7 +30,13 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             if (pagename != null)
             { TypeValue("page name textbox", pagename); }
             if (parentname != null)
-            { SelectItemByDropdownList("parent name list", parentname); }
+            {
+                
+                
+                SelectItemByDropdownList("parent name list", pagename);
+
+
+            }
             if (numbercolum != null)
             { SelectItemByDropdownList("number column list", numbercolum); }
             if (afterpage != null)
@@ -38,6 +44,18 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             ClickControl("OK button");
             WaitForPageLoad();
             return new GeneralPage();
+            
+        }
+
+        public void PageNameFormat(string pagename, int level)
+        {
+            string space = "c    a";//space=4 at level 1            
+
+            for (int i=1; i<=level; i++)
+            {
+                pagename =space+pagename;
+                Console.WriteLine(pagename);
+            }
             
         }
 
