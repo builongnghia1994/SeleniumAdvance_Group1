@@ -27,18 +27,20 @@ namespace SeleniumAdvance_Group2.TestCases
         public void Demo_Thi_DeletePageJustCreated()
         {
             
+            
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc", Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc1", "abc", Constant.defaultValue, Constant.defaultValue);
+          
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc1", "abc", Constant.defaultValue, Constant.defaultValue, 1);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc2", "abc1", Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc2", "abc1", Constant.defaultValue, Constant.defaultValue,2);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc3","abc2" , Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc3","abc2" , Constant.defaultValue, Constant.defaultValue,3);
 
             //generalPage.DeletePagesJustCreated(Constant.pageName);
 
@@ -49,7 +51,8 @@ namespace SeleniumAdvance_Group2.TestCases
         public void Demo_Thi_Spaceeeeeee()
         {
             newPage = new NewPage();
-            newPage.AddSpace("b", 2);
+            newPage.PageNameFormat("b", 3);
+            
         }
     }
 }

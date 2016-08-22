@@ -64,11 +64,13 @@ namespace SeleniumAdvance_Group2.Common
         public static string itemDisplayAfter = "Overview";
         public static string defaultValue = null;
 
+        
+
         #endregion
 
         #region XML
 
-        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces";
+        public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces\\";
         public static string XMLLoginPage = "LoginPage.xml";
         public static string XMLPanelManagerPage = "PanelManagerPage.xml";
         public static string XMLNewPanelPage = "NewPanelPage.xml";

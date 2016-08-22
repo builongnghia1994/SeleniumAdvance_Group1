@@ -52,7 +52,7 @@ namespace SeleniumAdvance_Group2.TestCases
             string displayName = "panel" + Constant.timesystem ;
             string series = "  Name";
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
-            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
             NewPanelForPage newPanelForPage = new NewPanelForPage();
             newPanelForPage = choosePanelPage.GotoNewPanelPage();
@@ -72,13 +72,13 @@ namespace SeleniumAdvance_Group2.TestCases
             //add page1
             NewPage newPage = new NewPage();
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             //add page2
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi2" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi2" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             //add page 3
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi3" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi3" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
 
             ChoosePanelPage choosePanelPage = new ChoosePanelPage();
             choosePanelPage = generalPage.GotoChoosePanelPage();
@@ -100,7 +100,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //add page1
             NewPage newPage = new NewPage();
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, "thi1" + Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
 
             ChoosePanelPage choosePanelPage = new ChoosePanelPage();
             choosePanelPage = generalPage.GotoChoosePanelPage();

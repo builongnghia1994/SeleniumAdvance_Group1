@@ -21,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
           
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             loginPage = newPage.LogOut();
             //vp
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
@@ -36,10 +36,10 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic,Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic,Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic,Constant.timesystem+"1",Constant.timesystem, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic,Constant.timesystem+"1",Constant.timesystem, Constant.defaultValue, Constant.defaultValue,0);
 
 
             generalPage.DeletePage(Constant.timesystem);

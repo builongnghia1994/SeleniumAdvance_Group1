@@ -17,7 +17,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             if (Constant.NewPageDictionary == null)
                 Constant.NewPageDictionary = ReadXML();
         }
-        public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum)
+        public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
 
         {
             switch (status.ToLower())
@@ -32,12 +32,16 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             { TypeValue("page name textbox", pagename); }
             if (parentname != null)
             {
-                
-                
+                string space = "    ";//space=4 at level 1           
+                for (int i = 1; i <= level; i++)
+                {
+                    parentname = space + parentname;
+                    Console.WriteLine(parentname);
+                }
+
                 SelectItemByDropdownList("parent name list", pagename);
-
-
             }
+            
             if (numbercolum != null)
             { SelectItemByDropdownList("number column list", numbercolum); }
             if (afterpage != null)
@@ -48,17 +52,20 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
 
         }
 
-        public void PageNameFormat(string pagename, int level)
+        public  void PageNameFormat(string pagename, int level)
         {
-            string space = "c    a";//space=4 at level 1            
+            string space = "    ";//space=4 at level 1            
 
-            for (int i=1; i<=level; i++)
+            for (int i = 1; i <= level; i++)
             {
-                pagename =space+pagename;
+               pagename = space + pagename;
                 Console.WriteLine(pagename);
             }
-            
+
         }
+
+
+
 
     }
 }
