@@ -135,6 +135,9 @@ namespace SeleniumAdvance_Group2.Common
                 case "PanelConfigurationPage":
                     iDictionary = Constant.PanelConfigurationDictionary;
                     break;
+                case "SelectFolderPage":
+                    iDictionary = Constant.SelectFolderPageDictionary;
+                    break;
 
             }
             return FindElementFromXML(locator, iDictionary);

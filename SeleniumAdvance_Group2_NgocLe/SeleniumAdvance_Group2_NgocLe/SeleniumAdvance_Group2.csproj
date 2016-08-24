@@ -120,6 +120,7 @@
     <Content Include="Interfaces\PanelConfigurationPage.xml" />
     <Content Include="Interfaces\PanelManagerPage.xml" />
     <Content Include="Interfaces\DataProfileManagerPage.xml" />
+    <Content Include="Interfaces\SelectFolderPage.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
