@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
             Constant.WebDriver.Quit();
         }
 
-        //[TestInitialize]
+        [TestInitialize]
         public void TestInitializeMethods()
         {
             //try
