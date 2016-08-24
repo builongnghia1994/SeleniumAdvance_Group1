@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPage = generalPage.GotoNewPage();
             
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             //vp  
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName);
 
@@ -39,11 +39,11 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
             //add page2
            
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue);
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
            
             editPage = generalPage.GotoEditPage(Constant.pageName1);
             generalPage = editPage.EditAPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.itemDisplayAfter, Constant.defaultValue);
