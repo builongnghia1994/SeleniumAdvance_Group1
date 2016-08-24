@@ -20,9 +20,9 @@ namespace SeleniumAdvance_Group2.TestCases
             //DesiredCapabilities capabilities = DesiredCapabilities.Chrome();
             //capabilities.SetCapability(CapabilityType.Version, "51");
             //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-            Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
-            Constant.WebDriver.Manage().Window.Maximize();
-            //OpenBrowser(Constant.Browser);
+         //   Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
+          //  Constant.WebDriver.Manage().Window.Maximize();
+            OpenBrowser(Constant.Browser);
         }
 
         [AssemblyCleanup]
@@ -34,15 +34,15 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMethods()
         {
-            //try
-            //{
-            //    //Constant.WebDriver.Manage().Window.Maximize();
-            //    //string url = Constant.WebDriver.Url;
-            //}
-            //catch (Exception)
-            //{
-            //    //OpenBrowser(Constant.Browser);
-            //}
+            try
+            {
+                //Constant.WebDriver.Manage().Window.Maximize();
+               string url = Constant.WebDriver.Url;
+            }
+            catch (Exception)
+            {
+                OpenBrowser(Constant.Browser);
+            }
 
             loginPage = OpenURL(Constant.DashboardURL);
         }
