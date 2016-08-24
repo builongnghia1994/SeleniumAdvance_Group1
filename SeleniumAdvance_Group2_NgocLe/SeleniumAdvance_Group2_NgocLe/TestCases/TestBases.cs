@@ -14,36 +14,30 @@ namespace SeleniumAdvance_Group2.TestCases
 
         public TestContext TestContext { get; set; }
 
-        //[AssemblyInitialize]
+        [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
+            //DesiredCapabilities capabilities = DesiredCapabilities.Chrome();
+            //capabilities.SetCapability(CapabilityType.Version, "51");
+            //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+            Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
+            Constant.WebDriver.Manage().Window.Maximize();
             //OpenBrowser(Constant.Browser);
-            Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.205:4444/wd/hub"), DesiredCapabilities.Firefox());
-
         }
 
-        //[AssemblyCleanup]
+        [AssemblyCleanup]
         public static void AssemblyCleanupMethod()
         {
             Constant.WebDriver.Quit();
         }
 
-        //[TestInitialize]
+        [TestInitialize]
         public void TestInitializeMethods()
         {
             //try
             //{
-            //    //start remote firefox browser
-            //    //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-            //    //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-            //    //capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-            //    //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-            //    //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114/wd/node"), capabilities, TimeSpan.FromSeconds(1000));
-
-            //    //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
             //    //Constant.WebDriver.Manage().Window.Maximize();
             //    //string url = Constant.WebDriver.Url;
-
             //}
             //catch (Exception)
             //{
