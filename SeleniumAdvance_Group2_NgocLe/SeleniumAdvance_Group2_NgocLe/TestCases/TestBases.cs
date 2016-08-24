@@ -5,6 +5,7 @@ using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
 
+
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
@@ -14,12 +15,15 @@ namespace SeleniumAdvance_Group2.TestCases
 
         public TestContext TestContext { get; set; }
 
-        //[AssemblyInitialize]
+        [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            //OpenBrowser(Constant.Browser);
-            Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.205:4444/wd/hub"), DesiredCapabilities.Firefox());
+            
+           Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
 
+            //String Node = "http://192.168.189.235:4444/wd/hub";
+            //DesiredCapabilities capability = DesiredCapabilities.Firefox();           
+            //Constant.WebDriver = new RemoteWebDriver(new Uri(Node), capability);
         }
 
         //[AssemblyCleanup]

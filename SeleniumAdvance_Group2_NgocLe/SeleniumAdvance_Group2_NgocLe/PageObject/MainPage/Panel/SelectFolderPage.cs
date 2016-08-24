@@ -10,6 +10,18 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
     public class SelectFolderPage : GeneralPage
     {
+        public SelectFolderPage()
+        {
+            if (Constant.SelectFolderPageDictionary == null)
+                Constant.SelectFolderPageDictionary = ReadXML();
+        }
+
+        public PanelConfigurationPage GotoPanelConfigurationPageAfterSelectFolder(string path)
+        {
+            GotoFolder(path);
+            ClickControl("ok button");
+            return new PanelConfigurationPage();
+        }
 
 
     }
