@@ -15,7 +15,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
-
+using System.Windows.Forms;
 
 namespace SeleniumAdvance_Group2.PageObject.General
 {
@@ -116,6 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void SelectGlobalSetting(string settingname)
         {
+            WaitForPageLoad();
             By control = By.XPath("//li/a[text()='" + settingname + "']");
             if (Constant.Browser == "ie")
             {
@@ -166,10 +167,18 @@ namespace SeleniumAdvance_Group2.PageObject.General
             SelectGlobalSetting("Delete");
         }
 
+        public void DeletePageConfirmed(string path)
+        {
+            DeletePage(path);
+            AcceptAlert();
+            WaitForPageLoad();
+        }
+
         public void VerifyAlertMessage(string expected)
         {
             Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
-            VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
+            string actual = GetTextFromAlertPopup().TrimEnd();
+            VerifyText(expected, actual);
         }
 
         public void VerifyPageNotExist(string way)
@@ -219,7 +228,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 {
                     ClickControlByJS(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
-                    AcceptAlert();
+                    IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+                    SendKeys.SendWait("{ENTER}");
                 }
                 else
                 {
@@ -272,7 +282,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
         {
             NewPage newPage = GotoNewPage();
-            return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum,level);
+            return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum, level);
         }
 
         public ChoosePanelPage GotoChoosePanelPage()
@@ -281,9 +291,12 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return new ChoosePanelPage();
         }
 
-
-        
-
+        public void VerifyControlNotExistInGlobalSetting(string settingname)
+        {
+            WaitForPageLoad();
+            By control = By.XPath("//li/a[text()='" + settingname + "']");
+            VerifyControlNotExist(control);
+        }
     }
 }
 

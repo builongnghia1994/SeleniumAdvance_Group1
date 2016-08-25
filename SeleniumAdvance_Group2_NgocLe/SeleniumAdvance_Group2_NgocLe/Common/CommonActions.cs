@@ -230,6 +230,8 @@ namespace SeleniumAdvance_Group2.Common
                 return false;
             }
         }
+
+       
         public void WaitForControl(By control, int timesecond)
         {
             //WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));

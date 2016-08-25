@@ -5,6 +5,7 @@ using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.MainPage;
 using OpenQA.Selenium.Support.UI;
+using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 
 namespace SeleniumAdvance_Group2.TestCases
 {  
@@ -53,6 +54,23 @@ namespace SeleniumAdvance_Group2.TestCases
             newPage = new NewPage();
             newPage.PageNameFormat("b", 3);
             
+        }
+
+        
+        public void DA_PANEL_TC045_Verify_that_Folder_field_is_not_allowed_to_be_empty()
+        {
+            string displayName = "panel" + Constant.timesystem;
+            string series = "  Name";
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
+            NewPanelForPage newPanelForPage = new NewPanelForPage();
+            newPanelForPage = choosePanelPage.GotoNewPanelPage();
+            newPanelForPage.AddNewPanel(displayName, series);
+            PanelConfigurationPage panelConfiguration = new PanelConfigurationPage();
+            panelConfiguration.CreatePanelConfiguration(null, null, "");
+            VerifyTextFromAlertAndAccept(Constant.MsgInvalidFolder_Panel);
+
         }
     }
 }

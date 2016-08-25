@@ -95,6 +95,8 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
             string actual = Clipboard.GetText();
+            //Constant.WebDriver.SwitchTo().DefaultContent();
+            SendKeys.SendWait("{ESC}");
             actual = actual.Substring(1);
             VerifyText(expected, actual);
         }

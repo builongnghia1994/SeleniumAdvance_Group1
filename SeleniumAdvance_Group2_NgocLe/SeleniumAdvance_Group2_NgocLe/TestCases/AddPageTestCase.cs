@@ -32,6 +32,53 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
         [TestMethod]
+        public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children_and_except_Overview_page()
+        {
+
+            string parentPage = Constant.timesystem;
+            string childPage = Constant.timesystem + "1";
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, parentPage, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+
+            newPage = generalPage.GotoNewPage();
+            generalPage = newPage.CreateNewPage(Constant.statusPublic, childPage, parentPage, Constant.defaultValue, Constant.defaultValue, 0);
+
+
+            generalPage.DeletePage(Constant.timesystem);
+            //vp1
+            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
+            generalPage.AcceptAlert();
+            //vp2
+            generalPage.VerifyAlertMessage("Cannot delete page '" + parentPage + "' since it has child page(s).");
+            generalPage.AcceptAlert();
+
+            generalPage.DeletePage(parentPage + "/" + childPage);
+            //vp3
+            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
+            generalPage.AcceptAlert();
+            //vp4
+            generalPage.VerifyPageNotExist(parentPage + "/" + childPage);
+
+            generalPage.DeletePage(parentPage);
+            //vp5
+            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
+            generalPage.AcceptAlert();
+            //vp6
+            generalPage.VerifyPageNotExist(parentPage);
+
+            generalPage.GotoPage("Overview");
+
+            //vp7
+            generalPage.VerifyControlNotExistInGlobalSetting("Delete");
+
+            //post-condition
+            generalPage.LogOut();
+        }
+
+
+        [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
             EditPage editPage;           
