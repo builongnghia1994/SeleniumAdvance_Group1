@@ -11,12 +11,12 @@ namespace SeleniumAdvance_Group2.Common
         public static IWebDriver WebDriver;
         public static IWebElement WebElement;
 
-        public static int timeout = 10;
-        public static string timesystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));
+        public static int Timeout = 10;
+        public static string TimeSystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));
 
-        public static string nameOfDataProfile = "nghia" + timesystem;
+        public static string NameOfDataProfile = "nghia" + TimeSystem;
 
-        public static string[] preSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
+        public static string[] PreSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
             "Test Case Execution Results", "Test Case Execution Trend",
             "Test Module Execution", "Test Module Execution Failure Trend",
@@ -25,7 +25,7 @@ namespace SeleniumAdvance_Group2.Common
             "Test Module Implementation By Priority", "Test Module Implementation By Status",
             "Test Module Status per Assigned Users", "Test Objective Execution"};
 
-        public static string[] itemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
+        public static string[] ItemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
         #region Message
@@ -37,7 +37,6 @@ namespace SeleniumAdvance_Group2.Common
         #endregion
 
         #region Browser/Url
-
         public static string Browser = ConfigurationManager.AppSettings["browser"];
         public static string DashboardURL = ConfigurationManager.AppSettings["url"];
         #endregion
@@ -58,14 +57,12 @@ namespace SeleniumAdvance_Group2.Common
 
         #region DataCreateNewpage
 
-        public static string statusPublic = "public";
-        public static string pageName = "page" + timesystem;
-        public static string pageName1 = "page1" + timesystem;
-        public static string pageName2 = "page2" + timesystem;
-        public static string itemDisplayAfter = "Overview";
-        public static string defaultValue = null;
-
-
+        public static string StatusPublic = "public";
+        public static string PageName = "page" + TimeSystem;
+        public static string PageName1 = "page1" + TimeSystem;
+        public static string PageName2 = "page2" + TimeSystem;
+        public static string ItemDisplayAfter = "Overview";
+        public static string DefaultValue = null;
 
         #endregion
 
@@ -87,7 +84,6 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] PanelConfigurationDictionary;
         public static Dictionary<string, string>[] EditDataProfileDictionary;
         public static Dictionary<string, string>[] SelectFolderPageDictionary;
-
 
         #endregion
 

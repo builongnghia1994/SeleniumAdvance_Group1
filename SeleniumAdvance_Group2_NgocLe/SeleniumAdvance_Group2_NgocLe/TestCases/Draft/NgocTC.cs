@@ -21,11 +21,11 @@ namespace SeleniumAdvance_Group2.TestCases
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
             loginPage = newPage.LogOut();
             //vp
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.timesystem);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.ItemDisplayAfter, Constant.TimeSystem);
 
         }      
 

@@ -22,7 +22,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
-            dataProfileManagerPage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
+            dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
         }
 
         [TestMethod]
@@ -51,9 +51,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.nameOfDataProfile, "test modules", "Related test results");
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.NameOfDataProfile, "test modules", "Related test results");
 
-            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.nameOfDataProfile);
+            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 
             editDataProfilePage.ClickTab("general settings tab");
             editDataProfilePage.VerifyPageDisplay("General Settings");
@@ -97,7 +97,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            newDataProfilePage.NavigateToSortField(Constant.nameOfDataProfile, "test modules", "Related test results");
+            newDataProfilePage.NavigateToSortField(Constant.NameOfDataProfile, "test modules", "Related test results");
 
             newDataProfilePage.AddASortField("Source");
 

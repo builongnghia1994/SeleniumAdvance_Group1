@@ -23,9 +23,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPage = generalPage.GotoNewPage();
             
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue,0);
             //vp  
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.ItemDisplayAfter, Constant.PageName);
 
             loginPage = generalPage.LogOut();
 
@@ -35,18 +35,18 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_MP_TC017_user_can_remove_any_main_parent_page_without_children_and_except_Overview_page()
         {
 
-            string parentPage = Constant.timesystem;
-            string childPage = Constant.timesystem + "1";
+            string parentPage = Constant.TimeSystem;
+            string childPage = Constant.TimeSystem + "1";
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, parentPage, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, childPage, parentPage, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, childPage, parentPage, Constant.DefaultValue, Constant.DefaultValue, 0);
 
 
-            generalPage.DeletePage(Constant.timesystem);
+            generalPage.DeletePage(Constant.TimeSystem);
             //vp1
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
@@ -86,16 +86,16 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue,0);
             //add page2
            
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, Constant.pageName2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue,0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue,0);
            
-            editPage = generalPage.GotoEditPage(Constant.pageName1);
-            generalPage = editPage.EditAPage(Constant.statusPublic, Constant.pageName1, Constant.defaultValue, Constant.itemDisplayAfter, Constant.defaultValue);
+            editPage = generalPage.GotoEditPage(Constant.PageName1);
+            generalPage = editPage.EditAPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.ItemDisplayAfter, Constant.DefaultValue);
             //vp        
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.itemDisplayAfter, Constant.pageName1);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.ItemDisplayAfter, Constant.PageName1);
                       
             loginPage = generalPage.LogOut();
         }

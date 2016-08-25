@@ -92,7 +92,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitForControl(control, Constant.Timeout);
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
@@ -284,7 +284,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public int CountItems(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitForControl(control, Constant.Timeout);
             return Constant.WebDriver.FindElements(control).Count;
         }
 
@@ -296,7 +296,7 @@ namespace SeleniumAdvance_Group2.Common
         public IList<IWebElement> FindElements(string locator)
         {
             By element = FindElementBy(locator);
-            WaitForControl(element, Constant.timeout);
+            WaitForControl(element, Constant.Timeout);
             return Constant.WebDriver.FindElements(element);
         }
 
@@ -333,7 +333,7 @@ namespace SeleniumAdvance_Group2.Common
         #region alert
         public void DismissAlert()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Dismiss();
             Constant.WebDriver.SwitchTo().DefaultContent();
@@ -341,7 +341,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public void AcceptAlert()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Accept();
             Constant.WebDriver.SwitchTo().DefaultContent();
@@ -354,7 +354,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public string GetTextFromAlertPopup()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             return alert.Text;
         }
