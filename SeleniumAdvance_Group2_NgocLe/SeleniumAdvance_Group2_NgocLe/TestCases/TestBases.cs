@@ -5,7 +5,6 @@ using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
 
-
 namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
@@ -18,12 +17,12 @@ namespace SeleniumAdvance_Group2.TestCases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            OpenBrowser(Constant.Browser); 
-           //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
-
-            //String Node = "http://192.168.189.235:4444/wd/hub";
-            //DesiredCapabilities capability = DesiredCapabilities.Firefox();           
-            //Constant.WebDriver = new RemoteWebDriver(new Uri(Node), capability);
+            //DesiredCapabilities capabilities = DesiredCapabilities.Chrome();
+            //capabilities.SetCapability(CapabilityType.Version, "51");
+            //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+         //   Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
+          //  Constant.WebDriver.Manage().Window.Maximize();
+            OpenBrowser(Constant.Browser);
         }
 
         [AssemblyCleanup]
@@ -37,8 +36,8 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             try
             {
-                string url = Constant.WebDriver.Url;
-
+                //Constant.WebDriver.Manage().Window.Maximize();
+               string url = Constant.WebDriver.Url;
             }
             catch (Exception)
             {

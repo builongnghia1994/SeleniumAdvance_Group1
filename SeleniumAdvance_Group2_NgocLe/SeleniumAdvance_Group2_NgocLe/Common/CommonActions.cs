@@ -80,6 +80,8 @@ namespace SeleniumAdvance_Group2.Common
             string page = GetClassCaller(2);
             if (page == "EditPage")
                 page = "NewPage";
+            if (page == "NewPanelForPage")
+                page = "NewPanelPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
         }
@@ -96,6 +98,12 @@ namespace SeleniumAdvance_Group2.Common
         public IWebElement FindElement(string locator)
         {
             return FindElement(FindElementBy(locator));
+        }
+
+        //this method is just used for test case 49
+        public IWebElement FindElementFor49(string locator)
+        {
+            return FindElement(locator);
         }
         private By FindElementBy(string locator)
         {
