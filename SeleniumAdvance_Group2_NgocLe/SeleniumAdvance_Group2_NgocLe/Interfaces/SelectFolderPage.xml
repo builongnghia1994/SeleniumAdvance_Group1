@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<SelectFolder>
+  <btnOK>
+    <name>ok button</name>
+    <type>id</type>
+    <value>btnFolderSelectionOK</value>
+  </btnOK>
+  <btnCancel>
+    <name>cancle button</name>
+    <type>id</type>
+    <value>Cancel</value>
+  </btnCancel>
+</SelectFolder>
