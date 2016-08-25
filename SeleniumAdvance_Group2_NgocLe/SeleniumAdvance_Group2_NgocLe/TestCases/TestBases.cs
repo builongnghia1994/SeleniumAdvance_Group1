@@ -18,9 +18,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            
-           Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
-
+            OpenBrowser(Constant.Browser);
+           //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
             //String Node = "http://192.168.189.235:4444/wd/hub";
             //DesiredCapabilities capability = DesiredCapabilities.Firefox();           
             //Constant.WebDriver = new RemoteWebDriver(new Uri(Node), capability);
@@ -35,8 +34,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMethods()
         {
-            //try
-            //{
+            try
+            {
             //    //start remote firefox browser
             //    //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
             //    //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
@@ -46,13 +45,13 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //    //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
             //    //Constant.WebDriver.Manage().Window.Maximize();
-            //    //string url = Constant.WebDriver.Url;
+           string url = Constant.WebDriver.Url;
 
-            //}
-            //catch (Exception)
-            //{
-            //    //OpenBrowser(Constant.Browser);
-            //}
+            }
+            catch (Exception)
+            {
+            OpenBrowser(Constant.Browser);
+            }
 
             loginPage = OpenURL(Constant.DashboardURL);
         }
@@ -67,6 +66,6 @@ namespace SeleniumAdvance_Group2.TestCases
             }
         }
 
-    }
+    }   
 }
 
