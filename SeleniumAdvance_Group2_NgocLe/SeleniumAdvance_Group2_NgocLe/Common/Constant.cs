@@ -85,6 +85,8 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] ChoosePanelDictionary;
         public static Dictionary<string, string>[] PanelConfigurationDictionary;
         public static Dictionary<string, string>[] EditDataProfileDictionary;
+        public static Dictionary<string, string>[] SelectFolderPageDictionary;
+
 
         #endregion
 

@@ -148,6 +148,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
+            WaitForPageLoad();
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
@@ -197,6 +198,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void DeleteAllPages()
         {
+            WaitForPageLoad();
             int items = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
             string itemclasscurrent = string.Empty;
             string xpath = string.Empty;
@@ -279,6 +281,10 @@ namespace SeleniumAdvance_Group2.PageObject.General
             ClickControl("choose panel menu");
             return new ChoosePanelPage();
         }
+
+
+        
+
     }
 }
 

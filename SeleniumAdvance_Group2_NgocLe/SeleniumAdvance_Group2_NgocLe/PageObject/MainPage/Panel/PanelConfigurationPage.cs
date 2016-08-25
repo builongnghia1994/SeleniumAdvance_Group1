@@ -8,6 +8,8 @@ using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
 using System.Threading;
+using OpenQA.Selenium.Interactions;
+using System.Windows.Forms;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
@@ -82,7 +84,20 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             return new SelectFolderPage();
         }
 
+        public void VerifySelectedFolder(string expected)
+        {
+            WaitForPageLoad();
+            IWebElement folderElement = FindElementFor49("folder textbox");
+            Actions builder = new Actions(Constant.WebDriver);
 
+
+            builder.DoubleClick(folderElement).Build().Perform();
+            folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
+            folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
+            string actual = Clipboard.GetText();
+            actual = actual.Substring(1);
+            VerifyText(expected, actual);
+        }
 
     }
 }

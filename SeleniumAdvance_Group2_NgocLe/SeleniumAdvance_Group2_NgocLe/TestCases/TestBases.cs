@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
@@ -18,18 +17,12 @@ namespace SeleniumAdvance_Group2.TestCases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            Uri uri = new Uri("http://192.168.190.205:4444/wd/hub");
-
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities = DesiredCapabilities.Firefox();
-            capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-            capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-            capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-            RemoteWebDriver webDriver = new RemoteWebDriver(uri, capabilities);
-            //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
-            webDriver.Manage().Window.Maximize();
-
-            //OpenBrowser(Constant.Browser);
+            //DesiredCapabilities capabilities = DesiredCapabilities.Chrome();
+            //capabilities.SetCapability(CapabilityType.Version, "51");
+            //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+         //   Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
+          //  Constant.WebDriver.Manage().Window.Maximize();
+            OpenBrowser(Constant.Browser);
         }
 
         [AssemblyCleanup]
@@ -43,21 +36,12 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             try
             {
-                //start remote firefox browser
-                //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-                //capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-                //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114/wd/node"), capabilities, TimeSpan.FromSeconds(1000));
-
-                //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
                 //Constant.WebDriver.Manage().Window.Maximize();
-                string url = Constant.WebDriver.Url;
-
+               string url = Constant.WebDriver.Url;
             }
             catch (Exception)
             {
-                //OpenBrowser(Constant.Browser);
+                OpenBrowser(Constant.Browser);
             }
 
             loginPage = OpenURL(Constant.DashboardURL);
