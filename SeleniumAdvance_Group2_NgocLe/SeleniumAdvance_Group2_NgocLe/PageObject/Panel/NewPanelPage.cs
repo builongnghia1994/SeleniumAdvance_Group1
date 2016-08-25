@@ -23,6 +23,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public void ClickOK()
         {
+            
             ClickControl("ok button");
 
         }
