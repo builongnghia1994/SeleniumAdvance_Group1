@@ -18,15 +18,15 @@ namespace SeleniumAdvance_Group2.TestCases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            
-           Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
+            OpenBrowser(Constant.Browser); 
+           //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.189.235:4444/wd/hub"), DesiredCapabilities.Firefox());
 
             //String Node = "http://192.168.189.235:4444/wd/hub";
             //DesiredCapabilities capability = DesiredCapabilities.Firefox();           
             //Constant.WebDriver = new RemoteWebDriver(new Uri(Node), capability);
         }
 
-        //[AssemblyCleanup]
+        [AssemblyCleanup]
         public static void AssemblyCleanupMethod()
         {
             Constant.WebDriver.Quit();
@@ -35,24 +35,15 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestInitialize]
         public void TestInitializeMethods()
         {
-            //try
-            //{
-            //    //start remote firefox browser
-            //    //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-            //    //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-            //    //capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-            //    //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-            //    //Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114/wd/node"), capabilities, TimeSpan.FromSeconds(1000));
+            try
+            {
+                string url = Constant.WebDriver.Url;
 
-            //    //Constant.WebDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1000));
-            //    //Constant.WebDriver.Manage().Window.Maximize();
-            //    //string url = Constant.WebDriver.Url;
-
-            //}
-            //catch (Exception)
-            //{
-            //    //OpenBrowser(Constant.Browser);
-            //}
+            }
+            catch (Exception)
+            {
+                OpenBrowser(Constant.Browser);
+            }
 
             loginPage = OpenURL(Constant.DashboardURL);
         }

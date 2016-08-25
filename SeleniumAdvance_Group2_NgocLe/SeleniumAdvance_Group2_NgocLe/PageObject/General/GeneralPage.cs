@@ -148,6 +148,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
+            WaitForPageLoad();
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
