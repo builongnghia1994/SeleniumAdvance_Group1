@@ -5,6 +5,7 @@ using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.MainPage;
 using OpenQA.Selenium.Support.UI;
+using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 
 namespace SeleniumAdvance_Group2.TestCases
 {  
@@ -31,13 +32,13 @@ namespace SeleniumAdvance_Group2.TestCases
             
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc"+Constant.timesystem, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             newPage = generalPage.GotoNewPage();          
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc1"+Constant.timesystem, "abc"+Constant.timesystem, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc1"+Constant.TimeSystem, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc2"+Constant.timesystem, "abc1"+Constant.timesystem, Constant.defaultValue, Constant.defaultValue,1);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc2"+Constant.TimeSystem, "abc1"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue,1);
 
             //newPage = generalPage.GotoNewPage();
             //generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc3","abc2" , Constant.defaultValue, Constant.defaultValue,2);
@@ -53,6 +54,23 @@ namespace SeleniumAdvance_Group2.TestCases
             newPage = new NewPage();
             newPage.PageNameFormat("b", 3);
             
+        }
+
+        
+        public void DA_PANEL_TC045_Verify_that_Folder_field_is_not_allowed_to_be_empty()
+        {
+            string displayName = "panel" + Constant.TimeSystem;
+            string series = "  Name";
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
+            NewPanelForPage newPanelForPage = new NewPanelForPage();
+            newPanelForPage = choosePanelPage.GotoNewPanelPage();
+            newPanelForPage.AddNewPanel(displayName, series);
+            PanelConfigurationPage panelConfiguration = new PanelConfigurationPage();
+            panelConfiguration.CreatePanelConfiguration(null, null, "");
+            VerifyTextFromAlertAndAccept(Constant.MsgInvalidFolder_Panel);
+
         }
     }
 }
