@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
@@ -22,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
-            dataProfileManagerPage.VerifyPreDataProfile(Constant.preSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
+            dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
         }
 
         [TestMethod]
@@ -51,9 +50,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.nameOfDataProfile, "test modules", "Related test results");
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.NameOfDataProfile, "test modules", "Related test results");
 
-            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.nameOfDataProfile);
+            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 
             editDataProfilePage.ClickTab("general settings tab");
             editDataProfilePage.VerifyPageDisplay("General Settings");
@@ -97,19 +96,19 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            newDataProfilePage.NavigateToSortField(Constant.nameOfDataProfile, "test modules", "Related test results");
+            newDataProfilePage.NavigateToSortField(Constant.NameOfDataProfile, Constant.ItemType, Constant.RelatedData);
 
-            newDataProfilePage.AddASortField("Source");
+            newDataProfilePage.AddASortField(Constant.SortField_Source);
 
-            newDataProfilePage.AddASortField("Location");
+            newDataProfilePage.AddASortField(Constant.SortField_Location);
 
-            newDataProfilePage.MoveLevelOfSortFieldlUp("Location");
+            newDataProfilePage.MoveLevelOfSortFieldlUp(Constant.SortField_Location);
 
-            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueSortBy());
+            newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueSortBy());
 
-            newDataProfilePage.MoveLevelOfSortFieldDown("Location");
+            newDataProfilePage.MoveLevelOfSortFieldDown(Constant.SortField_Location);
 
-            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueThenBy());
+            newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueThenBy());
         }
     }
 }

@@ -17,12 +17,46 @@ namespace SeleniumAdvance_Group2.TestCases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            //DesiredCapabilities capabilities = DesiredCapabilities.Chrome();
-            //capabilities.SetCapability(CapabilityType.Version, "51");
-            //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-         //   Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.InternetExplorer());
-          //  Constant.WebDriver.Manage().Window.Maximize();
-            OpenBrowser(Constant.Browser);
+            switch (Constant.RunType.ToLower())
+            {
+                case "local":
+                    OpenBrowser(Constant.Browser);
+                    break;
+                case "parallel":
+
+                    break;
+                case "grid":
+                    Uri uri = new Uri("http://192.168.190.114:4444/wd/hub");
+                    switch (Constant.Browser.ToLower())
+                    {
+                        case "firefox":
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
+                            Constant.WebDriver.Manage().Window.Maximize();
+                            break;
+                        case "chrome":
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
+                            Constant.WebDriver.Manage().Window.Maximize();
+                            break;
+                        case "ie":
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
+                            Constant.WebDriver.Manage().Window.Maximize();
+                            break;
+                        case "edgewin":
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
+                            Constant.WebDriver.Manage().Window.Maximize();
+                            break;
+                        default:
+                            Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", Constant.Browser));
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
+                            Constant.WebDriver.Manage().Window.Maximize();
+                            break;
+                    }
+                    break;
+                default:
+                    Console.WriteLine(String.Format("Run type '{0}' is not recognized. Spawning default Firefox browser.", Constant.RunType));
+                    OpenBrowser(Constant.Browser);
+                    break;
+            }
         }
 
         [AssemblyCleanup]
@@ -36,8 +70,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             try
             {
-                //Constant.WebDriver.Manage().Window.Maximize();
-               string url = Constant.WebDriver.Url;
+                string url = Constant.WebDriver.Url;
             }
             catch (Exception)
             {

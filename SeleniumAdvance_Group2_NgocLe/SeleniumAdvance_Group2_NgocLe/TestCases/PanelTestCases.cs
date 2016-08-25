@@ -40,8 +40,8 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC030_Verify_that_no_special_character_except_at_sign_character_is_allowed_to_be_inputted_into_Display_Name_field()
         {
-            string specialCharacterPanel = "panel" + Constant.timesystem + "#$%";
-            string atsignPanel = "panel" + Constant.timesystem + "@";
+            string specialCharacterPanel = "panel" + Constant.TimeSystem + "#$%";
+            string atsignPanel = "panel" + Constant.TimeSystem + "@";
             string series = "  Name";
             panelManagerPage = new PanelManagerPage();
 
@@ -63,20 +63,20 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC042_Verify_that_all_pages_are_listed_correctly_under_the_Select_page_dropped_down_menu_of_Pane_Configuration_form()
         {
-            string page1 = "thi1" + Constant.timesystem;
-            string page2 = "thi2" + Constant.timesystem;
-            string page3 = "thi3" + Constant.timesystem;
+            string page1 = "thi1" + Constant.TimeSystem;
+            string page2 = "thi2" + Constant.TimeSystem;
+            string page3 = "thi3" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, page1, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
             //add page2
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, page2, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
             //add page 3
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, page3, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page3, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
             panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
@@ -95,7 +95,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form()
         {
-            string pageName = "thi1" + Constant.timesystem;
+            string pageName = "thi1" + Constant.TimeSystem;
             string series = "  Name";
             string folderPath = "Car Rental - Mobile/Actions/Car";
             NewPanelForPage newPanelForPage;
@@ -104,11 +104,11 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.statusPublic, pageName, Constant.defaultValue, Constant.defaultValue, Constant.defaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
             newPanelForPage = choosePanelPage.GotoNewPanelPage();
-            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.timesystem, series);
+            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.TimeSystem, series);
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
             panelConfigurationPage = selectFolderPage.GotoPanelConfigurationPageAfterSelectFolder(folderPath);
 
