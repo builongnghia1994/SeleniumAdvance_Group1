@@ -47,7 +47,7 @@ namespace SeleniumAdvance_Group2.Common
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 default:
-                    Console.WriteLine(String.Format("Browser '{0}' not recognized. Spawning default Firefox browser.", browser));
+                    Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", browser));
                     Constant.WebDriver = new FirefoxDriver();
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;

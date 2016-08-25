@@ -183,7 +183,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageNotExist(string way)
         {
-            WaitForControl("user link", Constant.Timeout);
+            //WaitForControl("user link", Constant.Timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
