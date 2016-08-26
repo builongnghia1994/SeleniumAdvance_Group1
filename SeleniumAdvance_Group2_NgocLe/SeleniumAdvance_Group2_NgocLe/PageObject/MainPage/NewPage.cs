@@ -20,7 +20,8 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
         public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
 
         {
-            
+            WaitForPageLoad();
+
             switch (status.ToLower())
             {
                 case "public":
@@ -51,7 +52,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             { SelectItemByDropdownList("page display after", afterpage); }
 
             ClickControl("OK button");
-            WaitForPageLoad();
             return new GeneralPage();
 
         }

@@ -27,7 +27,10 @@ namespace SeleniumAdvance_Group2.TestCases
             //vp  
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.ItemDisplayAfter, Constant.PageName);
 
+            //post-condition
+            generalPage.DeletePagesJustCreated(Constant.PageName);
             loginPage = generalPage.LogOut();
+
 
         }
 
