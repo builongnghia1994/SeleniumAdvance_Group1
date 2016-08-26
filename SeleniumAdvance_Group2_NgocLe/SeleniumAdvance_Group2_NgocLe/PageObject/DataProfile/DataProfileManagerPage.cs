@@ -31,7 +31,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         #endregion
 
-        public string[] GetActualPreDataPRofile()
+        public string[] GetActualPreDataProfile()
         {
             int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
@@ -65,7 +65,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             bool alphabetical = true;
             string errorMessage = string.Empty;
-            string[] listPreSetDataProfile = GetActualPreDataPRofile();
+            string[] listPreSetDataProfile = GetActualPreDataProfile();
             for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
             {
                 if (StringComparer.OrdinalIgnoreCase.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)

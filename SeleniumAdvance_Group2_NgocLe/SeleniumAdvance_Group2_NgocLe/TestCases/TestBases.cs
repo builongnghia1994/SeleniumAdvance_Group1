@@ -53,6 +53,7 @@ namespace SeleniumAdvance_Group2.TestCases
                     break;
                 default:
                     Console.WriteLine(String.Format("Run type '{0}' is not recognized. Spawning default Firefox browser.", Constant.RunType));
+
                     OpenBrowser(Constant.Browser);
                     break;
             }
