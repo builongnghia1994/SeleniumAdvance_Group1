@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.TestCases
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             //vp
-            dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
+            dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataProfile());
 
             //post-condition
             generalPage.LogOut();

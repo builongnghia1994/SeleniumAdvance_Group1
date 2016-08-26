@@ -29,10 +29,10 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         }
 
 
-        public bool VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(string page1, string page2, string page3)
+        public bool VerifyCreatedPagePresent(string page1, string page2, string page3)
         {
             ClickControl("page list");
-            
+
             int numberresult = 0;
             int numberOption = CountItems("option in select page list");
             Console.WriteLine(numberOption);
@@ -58,7 +58,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 }
             }
 
-            if (numberresult >= 3)
+            if (numberresult >= lstCompare.Count)
             {
                 ClickControl("ok button");
                 return true;
@@ -80,18 +80,24 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         public void VerifySelectedFolder(string expected)
         {
             WaitForPageLoad();
+
             IWebElement folderElement = FindElementFor49("folder textbox");
+
             Actions builder = new Actions(Constant.WebDriver);
-            
             builder.DoubleClick(folderElement).Build().Perform();
+
+            //cannot get property Text of this control so we get Text by using Copy value of this textbox (Ctrl-A, Ctrl-C)
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
             string actual = Clipboard.GetText();
-            //Constant.WebDriver.SwitchTo().DefaultContent();
+
+            //cannot click OK button since property Displayed=false, so we use SendKey
             SendKeys.SendWait("{ESC}");
+         
+            //remove character '/' at the beginning of folder
             actual = actual.Substring(1);
+
             VerifyText(expected, actual);
         }
-
     }
 }

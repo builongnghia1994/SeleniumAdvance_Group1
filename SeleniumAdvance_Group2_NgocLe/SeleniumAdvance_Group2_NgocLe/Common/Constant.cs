@@ -80,6 +80,12 @@ namespace SeleniumAdvance_Group2.Common
 
         #endregion
 
+        #region DataPanel
+
+        public static string Series = "  Name";
+        
+        #endregion
+
         #region XML
 
         public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces\\";

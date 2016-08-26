@@ -72,34 +72,40 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return panelManagerPage.GoToPanelPage();
         }
 
-        public void GotoPage(string way)
+        public void GotoPage(string path)
         {
-            WaitForControl("user link", Constant.Timeout);
-            string[] allpages = way.Split('/');
-            By lastpage = By.XPath("");
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
-            if (allpages.Length == 1)
+            WaitForPageLoad();
+            string[] allPages = path.Split('/');
+            By lastPage = By.XPath("");
+            string currentPageXpath = "//ul/li/a[text()='" + allPages[0] + "']";
+            if (allPages.Length == 1)
             {
                 //cover trường hợp tới 1 page chính nào đó mà k qua bất kì 1 page nào nữa
-                lastpage = By.XPath(currentpagexpath);
-                ClickControl(lastpage);
+                lastPage = By.XPath(currentPageXpath);
+                ClickControl(lastPage);
             }
             else
             {
+                string next = string.Empty;
+
                 //trường hợp nếu phải thông qua nhiều page
-                for (int b = 1; b < allpages.Length; b++)
+                for (int b = 1; b < allPages.Length; b++)
                 {
                     Actions builder = new Actions(Constant.WebDriver);
-                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentpagexpath)));
+                    Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(currentPageXpath)));
                     hoverClick.Build().Perform();
-                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
-                    currentpagexpath = currentpagexpath + next;
-                    lastpage = By.XPath(currentpagexpath);
+
+                    next = "/following-sibling::ul/li/a[text()='" + allPages[b] + "']";
+                    currentPageXpath = currentPageXpath + next;
+                    lastPage = By.XPath(currentPageXpath);
                 }
                 if (Constant.Browser == "ie")
-                { ClickControlByJS(lastpage); }
+                {
+                    ClickControlByJS(lastPage);
+                }
+
                 else
-                    ClickControl(lastpage);
+                    ClickControl(lastPage);
             }
         }
 
@@ -124,7 +130,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-        public void VerifyPageDisplayedBesideAnotherPage(string pageBefore, string namepage)
+        public void VerifyPageDisplayedBesideAnotherPage(string pageBefore, string namePage)
         {
             int numberItemsMainMenu = CountItems("main page") - 2;
             for (int i = 1; i <= numberItemsMainMenu; i++)
@@ -132,11 +138,10 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 string itemMenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
                 By realItemMainpage = By.XPath(itemMenuMainPage);
                 if (GetText(realItemMainpage).Equals(pageBefore))
-
                 {
                     string itemNamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
                     By realItemNamepage = By.XPath(itemNamepage);
-                    VerifyText(namepage, realItemNamepage);
+                    VerifyText(namePage, realItemNamepage);
                     return;
                 }
             }
@@ -149,53 +154,55 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return new NewPage();
         }
 
-        public EditPage GotoEditPage(string namepage)
+        public EditPage GotoEditPage(string namePage)
         {
-            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namepage + "']"));
+            ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namePage + "']"));
+
             SelectGlobalSetting("Edit");
+
             return new EditPage();
         }
 
-        public void DeletePage(string path)
+        public void SelectDeletePage(string path)
         {
             GotoPage(path);
             SelectGlobalSetting("Delete");
         }
 
-        public void DeletePageConfirmed(string path)
+        public void DeletePage(string path)
         {
-            DeletePage(path);
+            SelectDeletePage(path);
             AcceptAlert();
             WaitForPageLoad();
         }
 
         public void VerifyAlertMessage(string expected)
         {
-            Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
-            string actual = GetTextFromAlertPopup().TrimEnd();
-            VerifyText(expected, actual);
+            VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
         }
 
-        public void VerifyPageNotExist(string way)
+        public void VerifyPageNotExist(string path)
         {
-            //WaitForControl("user link", Constant.Timeout);
-            string[] allpages = way.Split('/');
-            By lastpage = By.XPath("");
-            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
-            if (allpages.Length == 1)
+            string[] allPages = path.Split('/');
+            By lastPage = By.XPath("");
+            string currentPageXpath = "//ul/li/a[text()='" + allPages[0] + "']";
+
+            if (allPages.Length == 1)
             {
-                lastpage = By.XPath(currentpagexpath);
-                Assert.IsFalse(DoesControlExist(lastpage));
+                lastPage = By.XPath(currentPageXpath);
+                Assert.IsFalse(DoesControlExist(lastPage));
             }
             else
             {
-                for (int b = 1; b < allpages.Length; b++)
+                string next = string.Empty;
+
+                for (int b = 1; b < allPages.Length; b++)
                 {
-                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
-                    currentpagexpath = currentpagexpath + next;
-                    lastpage = By.XPath(currentpagexpath);
+                    next = "/following-sibling::ul/li/a[text()='" + allPages[b] + "']";
+                    currentPageXpath = currentPageXpath + next;
+                    lastPage = By.XPath(currentPageXpath);
                 }
-                Assert.IsFalse(DoesControlExist(lastpage));
+                Assert.IsFalse(DoesControlExist(lastPage));
             }
         }
 
@@ -286,10 +293,10 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return new ChoosePanelPage();
         }
 
-        public void VerifyControlNotExistInGlobalSetting(string settingname)
+        public void VerifyControlNotExistInGlobalSetting(string settingName)
         {
             WaitForPageLoad();
-            By control = By.XPath("//li/a[text()='" + settingname + "']");
+            By control = By.XPath("//li/a[text()='" + settingName + "']");
             VerifyControlNotExist(control);
         }
     }
