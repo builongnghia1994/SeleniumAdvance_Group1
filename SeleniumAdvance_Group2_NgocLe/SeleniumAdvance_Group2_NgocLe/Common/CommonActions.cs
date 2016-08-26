@@ -80,6 +80,8 @@ namespace SeleniumAdvance_Group2.Common
             string page = GetClassCaller(2);
             if (page == "EditPage")
                 page = "NewPage";
+            if (page == "NewPanelForPage")
+                page = "NewPanelPage";
             string filename = Constant.XMLPath + page + ".xml";
             return ReadXMlFile(filename);
         }
@@ -90,12 +92,18 @@ namespace SeleniumAdvance_Group2.Common
         }
         public IWebElement FindElement(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitForControl(control, Constant.Timeout);
             return Constant.WebDriver.FindElement(control);
         }
         public IWebElement FindElement(string locator)
         {
             return FindElement(FindElementBy(locator));
+        }
+
+        //this method is just used for test case 49
+        public IWebElement FindElementFor49(string locator)
+        {
+            return FindElement(locator);
         }
         private By FindElementBy(string locator)
         {
@@ -222,6 +230,8 @@ namespace SeleniumAdvance_Group2.Common
                 return false;
             }
         }
+
+       
         public void WaitForControl(By control, int timesecond)
         {
             //WebDriverWait wait = new WebDriverWait(Constant.WebDriver, new TimeSpan(timesecond));
@@ -274,7 +284,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public int CountItems(By control)
         {
-            WaitForControl(control, Constant.timeout);
+            WaitForControl(control, Constant.Timeout);
             return Constant.WebDriver.FindElements(control).Count;
         }
 
@@ -286,7 +296,7 @@ namespace SeleniumAdvance_Group2.Common
         public IList<IWebElement> FindElements(string locator)
         {
             By element = FindElementBy(locator);
-            WaitForControl(element, Constant.timeout);
+            WaitForControl(element, Constant.Timeout);
             return Constant.WebDriver.FindElements(element);
         }
 
@@ -323,7 +333,7 @@ namespace SeleniumAdvance_Group2.Common
         #region alert
         public void DismissAlert()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Dismiss();
             Constant.WebDriver.SwitchTo().DefaultContent();
@@ -331,7 +341,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public void AcceptAlert()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Accept();
             Constant.WebDriver.SwitchTo().DefaultContent();
@@ -344,7 +354,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public string GetTextFromAlertPopup()
         {
-            WaitForAlertPresent(Constant.timeout);
+            WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             return alert.Text;
         }

@@ -15,7 +15,7 @@ using SeleniumAdvance_Group2.PageObject.MainPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
-
+using System.Windows.Forms;
 
 namespace SeleniumAdvance_Group2.PageObject.General
 {
@@ -80,7 +80,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void GotoPage(string way)
         {
-            WaitForControl("user link", Constant.timeout);
+            WaitForControl("user link", Constant.Timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
@@ -116,6 +116,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void SelectGlobalSetting(string settingname)
         {
+            WaitForPageLoad();
             By control = By.XPath("//li/a[text()='" + settingname + "']");
             if (Constant.Browser == "ie")
             {
@@ -166,15 +167,23 @@ namespace SeleniumAdvance_Group2.PageObject.General
             SelectGlobalSetting("Delete");
         }
 
+        public void DeletePageConfirmed(string path)
+        {
+            DeletePage(path);
+            AcceptAlert();
+            WaitForPageLoad();
+        }
+
         public void VerifyAlertMessage(string expected)
         {
             Console.WriteLine(GetTextFromAlertPopup().TrimEnd());
-            VerifyText(expected, GetTextFromAlertPopup().TrimEnd());
+            string actual = GetTextFromAlertPopup().TrimEnd();
+            VerifyText(expected, actual);
         }
 
         public void VerifyPageNotExist(string way)
         {
-            WaitForControl("user link", Constant.timeout);
+            WaitForControl("user link", Constant.Timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
@@ -219,7 +228,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 {
                     ClickControlByJS(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
-                    AcceptAlert();
+                    IAlert alert = Constant.WebDriver.SwitchTo().Alert();
+                    SendKeys.SendWait("{ENTER}");
                 }
                 else
                 {
@@ -272,7 +282,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
         {
             NewPage newPage = GotoNewPage();
-            return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum,level);
+            return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum, level);
         }
 
         public ChoosePanelPage GotoChoosePanelPage()
@@ -281,44 +291,12 @@ namespace SeleniumAdvance_Group2.PageObject.General
             return new ChoosePanelPage();
         }
 
-
-        public void GotoFolder(string pathfolder)
+        public void VerifyControlNotExistInGlobalSetting(string settingname)
         {
             WaitForPageLoad();
-            string[] allpathfolders = pathfolder.Split('/');
-            By lastfolder = By.XPath("");
-            string currentfolderxpath = "//div[@id='async_html_2']//table[1]/tbody/tr/td[2]//input[@value='/" + allpathfolders[0] + "']";
-            if (allpathfolders.Length == 1)
-            {
-                lastfolder = By.XPath(currentfolderxpath);
-                ClickControl(lastfolder);
-            }
-            else
-            {
-                string next = string.Empty;
-                for (int b = 1; b < allpathfolders.Length; b++)
-                {
-
-                    ClickControl(By.XPath(currentfolderxpath + "/../a[1]"));
-
-                    next += "/" + allpathfolders[b];
-                    currentfolderxpath = "//div[@id='async_html_2']//table[1]/tbody/tr/td[2]//input[@value='/" + allpathfolders[0] + next + "']";
-                    Console.WriteLine(currentfolderxpath);
-
-                }
-                lastfolder = By.XPath(currentfolderxpath + "/../a[2]");
-                Console.WriteLine(lastfolder);
-                if (Constant.Browser == "ie")
-                {
-                    WaitForPageLoad();
-                    ClickControlByJS(lastfolder);
-                }
-                else
-                    WaitForPageLoad();
-                ClickControl(lastfolder);
-            }
+            By control = By.XPath("//li/a[text()='" + settingname + "']");
+            VerifyControlNotExist(control);
         }
-
     }
 }
 
