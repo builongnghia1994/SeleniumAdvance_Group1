@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
-using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
-using System.Threading;
 using OpenQA.Selenium.Interactions;
 using System.Windows.Forms;
 
@@ -34,18 +29,17 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         }
 
 
-        public bool VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(string a, string b, string c)
+        public bool VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(string page1, string page2, string page3)
         {
             ClickControl("page list");
-
-
+            
             int numberresult = 0;
             int numberOption = CountItems("option in select page list");
             Console.WriteLine(numberOption);
             List<string> lstCompare = new List<string>();
-            lstCompare.Add(a);
-            lstCompare.Add(b);
-            lstCompare.Add(c);
+            lstCompare.Add(page1);
+            lstCompare.Add(page2);
+            lstCompare.Add(page3);
             int numbercompare = lstCompare.Count;
             Console.WriteLine(numbercompare);
 
@@ -68,7 +62,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             {
                 ClickControl("ok button");
                 return true;
-
             }
             else
             {
@@ -89,8 +82,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             WaitForPageLoad();
             IWebElement folderElement = FindElementFor49("folder textbox");
             Actions builder = new Actions(Constant.WebDriver);
-
-
+            
             builder.DoubleClick(folderElement).Build().Perform();
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");

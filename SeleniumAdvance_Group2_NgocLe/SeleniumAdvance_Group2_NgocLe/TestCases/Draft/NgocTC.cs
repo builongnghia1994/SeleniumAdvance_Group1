@@ -12,23 +12,6 @@ namespace SeleniumAdvance_Group2.TestCases
     [TestClass]
     public class NgocTC : TestBases
     {
-        GeneralPage generalPage;
-        NewPage newPage;
-
-        [TestMethod]
-        public void DA_MP_TC014_Public_pages_can_be_visible_and_accessed_by_all_users()
-        {
-
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
-            newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            loginPage = newPage.LogOut();
-            //vp
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.ItemDisplayAfter, Constant.TimeSystem);
-
-        }      
-
 
     }
 }

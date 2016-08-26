@@ -1,20 +1,10 @@
-﻿using OpenQA.Selenium;
-using SeleniumAdvance_Group2.Common;
+﻿using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
 
 namespace SeleniumAdvance_Group2.PageObject.Panel
 {
     public class NewPanelPage : GeneralPage
     {
-
         public NewPanelPage()
         {
             if (Constant.NewPanelDictionary == null)

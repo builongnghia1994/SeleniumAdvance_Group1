@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Panel;
 using SeleniumAdvance_Group2.PageObject.MainPage;
 using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
-using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
 {

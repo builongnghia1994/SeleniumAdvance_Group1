@@ -75,7 +75,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string PageName = "page" + TimeSystem;
         public static string PageName1 = "page1" + TimeSystem;
         public static string PageName2 = "page2" + TimeSystem;
-        public static string ItemDisplayAfter = "Overview";
+        public static string Overview = "Overview";
         public static string DefaultValue = null;
 
         #endregion

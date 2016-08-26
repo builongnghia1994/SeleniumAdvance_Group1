@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.Common;
-using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
@@ -58,6 +55,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             {
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
+                    //nhieu vp cho nay qua, nen viet lai
                     Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '" + expectedValues[i] + "' does not exist in actual results");
                 }
             }
