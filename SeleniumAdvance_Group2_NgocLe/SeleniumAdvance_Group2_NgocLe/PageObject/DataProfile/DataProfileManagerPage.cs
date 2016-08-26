@@ -35,6 +35,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
+
+            //Because the table has header (th tag), the loop starts from 2
             for (int i = 2; i < numberOfrow; i++)
             {
                 string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
@@ -47,6 +49,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
+            string errorPoint = string.Empty;
+            bool contain = false;
             if (expectedValues.Length > actualValues.Length)
             {
                 Assert.Fail("The actual results are less than the expected results");
@@ -55,9 +59,14 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             {
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
-                    //nhieu vp cho nay qua, nen viet lai
-                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '" + expectedValues[i] + "' does not exist in actual results");
+                    contain = actualValues.Contains(expectedValues[i]);
+                    if (contain == false)
+                    {
+                        errorPoint = expectedValues[i];
+                        break;
+                    }
                 }
+                Assert.IsTrue(contain, "The '" + errorPoint + "' does not exist in actual results");
             }
         }
 
@@ -66,6 +75,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             bool alphabetical = true;
             string errorMessage = string.Empty;
             string[] listPreSetDataProfile = GetActualPreDataPRofile();
+
+            //Because the last row is not a data, so length of list have to minus 1
             for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
             {
                 if (StringComparer.OrdinalIgnoreCase.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
