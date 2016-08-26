@@ -1,10 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
-using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.MainPage;
-using OpenQA.Selenium.Support.UI;
 using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 
 namespace SeleniumAdvance_Group2.TestCases
@@ -24,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //generalPage.DeletePagesJustCreated("page1160820160300190324");
 
         }
-        [TestMethod]
+       // [TestMethod]
         public void Demo_Thi_DeletePageJustCreated()
         {
             generalPage = new GeneralPage();
@@ -48,7 +45,7 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
 
-        [TestMethod]
+       // [TestMethod]
         public void Demo_Thi_Spaceeeeeee()
         {
             newPage = new NewPage();

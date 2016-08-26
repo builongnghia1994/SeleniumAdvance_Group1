@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,7 +10,6 @@ using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
-
 using System.Threading;
 
 namespace SeleniumAdvance_Group2.Common
@@ -47,7 +43,7 @@ namespace SeleniumAdvance_Group2.Common
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 default:
-                    Console.WriteLine(String.Format("Browser '{0}' not recognized. Spawning default Firefox browser.", browser));
+                    Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", browser));
                     Constant.WebDriver = new FirefoxDriver();
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;

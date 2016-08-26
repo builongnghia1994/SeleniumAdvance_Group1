@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SeleniumAdvance_Group2.Common;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Interactions;
-using SeleniumAdvance_Group2.PageObject.Login;
-using SeleniumAdvance_Group2.PageObject.DataProfile;
-using SeleniumAdvance_Group2.TestCases;
-using SeleniumAdvance_Group2.PageObject.Panel;
-using SeleniumAdvance_Group2.PageObject.MainPage;
-using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 using System.Windows.Forms;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using SeleniumAdvance_Group2.PageObject.Login;
+using SeleniumAdvance_Group2.PageObject.DataProfile;
+using SeleniumAdvance_Group2.PageObject.Panel;
+using SeleniumAdvance_Group2.PageObject.MainPage;
+using SeleniumAdvance_Group2.PageObject.MainPage.Panel;
+using SeleniumAdvance_Group2.Common;
 
 namespace SeleniumAdvance_Group2.PageObject.General
 {
@@ -80,8 +74,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void GotoPage(string way)
         {
-            //WaitForControl("user link", Constant.Timeout);
-            WaitForPageLoad();
+            WaitForControl("user link", Constant.Timeout);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
@@ -131,19 +124,20 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-        public void VerifyPageDisplayedBesideAnotherPage(string itemdisplayafter, string namepage)
+        public void VerifyPageDisplayedBesideAnotherPage(string pageBefore, string namepage)
         {
-            int numberitemsmainmenu = CountItems("main page") - 2;
-            for (int i = 1; i <= numberitemsmainmenu; i++)
+            int numberItemsMainMenu = CountItems("main page") - 2;
+            for (int i = 1; i <= numberItemsMainMenu; i++)
             {
-                string itemmenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
-                By realitemMainpage = By.XPath(itemmenuMainPage);
-                if (GetText(realitemMainpage).Equals(itemdisplayafter))
+                string itemMenuMainPage = "//div[@id='main-menu']/div/ul/li[" + i + "]/a";
+                By realItemMainpage = By.XPath(itemMenuMainPage);
+                if (GetText(realItemMainpage).Equals(pageBefore))
 
                 {
-                    string itemnamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
-                    By realitemnamepage = By.XPath(itemnamepage);
-                    VerifyText(namepage, realitemnamepage);
+                    string itemNamepage = "//div[@id='main-menu']/div/ul/li[" + (i + 1) + "]/a";
+                    By realItemNamepage = By.XPath(itemNamepage);
+                    VerifyText(namepage, realItemNamepage);
+                    return;
                 }
             }
         }
@@ -185,7 +179,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public void VerifyPageNotExist(string way)
         {
             //WaitForControl("user link", Constant.Timeout);
-            WaitForPageLoad();
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";

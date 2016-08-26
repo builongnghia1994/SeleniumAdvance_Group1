@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
-using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.DataProfile;
 
@@ -16,25 +14,29 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
-            loginPage = new LoginPage();
-
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
+            //vp
             dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataPRofile());
+
+            //post-condition
+            generalPage.LogOut();
         }
 
         [TestMethod]
         public void DA_DP_TC067_Verify_that_Data_Profiles_are_listed_alphabetically()
         {
-            loginPage = new LoginPage();
-
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
+            //vp
             dataProfileManagerPage.VerifyDataProfileInAlphabeticalOrder();
+
+            //post-condition
+            generalPage.LogOut();
         }
 
         [TestMethod]
@@ -42,8 +44,6 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             NewDataProfilePage newDataProfilePage;
             EditDataProfilePage editDataProfilePage;
-
-            loginPage = new LoginPage();
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
@@ -55,33 +55,40 @@ namespace SeleniumAdvance_Group2.TestCases
 
             editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 
-            editDataProfilePage.ClickTab("general settings tab");
-            editDataProfilePage.VerifyPageDisplay("General Settings");
-
             editDataProfilePage.ClickTab("display fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Display Fields");
 
             editDataProfilePage.ClickTab("sort fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Sort Fields");
 
             editDataProfilePage.ClickTab("filter fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Filter Fields");
 
             editDataProfilePage.ClickTab("statistic fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Statistic Fields");
 
             editDataProfilePage.ClickTab("display sub fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Display Sub-Fields");
 
             editDataProfilePage.ClickTab("sort sub fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Sort Sub-Fields");
 
             editDataProfilePage.ClickTab("filter sub fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Filter Sub-Fields");
 
             editDataProfilePage.ClickTab("statistic sub fields tab");
+            //vp
             editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
 
+            //post-condition
+            generalPage.LogOut();
         }
 
         [TestMethod]
@@ -89,27 +96,29 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             NewDataProfilePage newDataProfilePage;
 
-            loginPage = new LoginPage();
-
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository,Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            newDataProfilePage.NavigateToSortField(Constant.NameOfDataProfile, "test modules", "Related test results");
+            newDataProfilePage.NavigateToSortField(Constant.NameOfDataProfile, Constant.ItemType, Constant.RelatedData);
 
-            newDataProfilePage.AddASortField("Source");
+            newDataProfilePage.AddASortField(Constant.SortField_Source);
 
-            newDataProfilePage.AddASortField("Location");
+            newDataProfilePage.AddASortField(Constant.SortField_Location);
 
-            newDataProfilePage.MoveLevelOfSortFieldlUp("Location");
+            newDataProfilePage.MoveLevelOfSortFieldlUp(Constant.SortField_Location);
 
-            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueSortBy());
+            //vp
+            newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueSortBy());
 
-            newDataProfilePage.MoveLevelOfSortFieldDown("Location");
+            newDataProfilePage.MoveLevelOfSortFieldDown(Constant.SortField_Location);
+            //vp
+            newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueThenBy());
 
-            newDataProfilePage.VerifyMoveLevel("Location", newDataProfilePage.GetValueThenBy());
+            //post-condition
+            generalPage.LogOut();
         }
     }
 }

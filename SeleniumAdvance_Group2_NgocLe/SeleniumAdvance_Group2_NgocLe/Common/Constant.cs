@@ -12,9 +12,7 @@ namespace SeleniumAdvance_Group2.Common
         public static IWebElement WebElement;
 
         public static int Timeout = 10;
-        public static string TimeSystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));
-
-        public static string NameOfDataProfile = "nghia" + TimeSystem;
+        public static string TimeSystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));        
 
         public static string[] PreSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
@@ -28,20 +26,25 @@ namespace SeleniumAdvance_Group2.Common
         public static string[] ItemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
-        #region Message
+        #region 
+
         public static string MsgRequiredFieldPanel = "Display Name is required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
         public static string MsgInvalidPanelDisplayName = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
         public static string MsgInvalidFolder_Panel = "Panel folder is incorrect";
         public static string MsgDeletePage = "Are you sure you want to remove this page?";
+
         #endregion
 
         #region Browser/Url
+        public static string RunType = ConfigurationManager.AppSettings["runType"];
         public static string Browser = ConfigurationManager.AppSettings["browser"];
         public static string DashboardURL = ConfigurationManager.AppSettings["url"];
+        
         #endregion
 
-        #region DataLogin_
+        #region DataLogin
+
         public static string UsernameAdmin = ConfigurationManager.AppSettings["usernameadmin"];
         public static string PasswordAdmin = ConfigurationManager.AppSettings["passwordadmin"];
 
@@ -55,13 +58,24 @@ namespace SeleniumAdvance_Group2.Common
 
         #endregion
 
+        #region DataTest_DataProfile
+
+        public static string NameOfDataProfile = "nghia" + TimeSystem;
+        public static string ItemType = "test modules";
+        public static string RelatedData = "Related test results";
+
+        public static string SortField_Location = "Location";
+        public static string SortField_Source = "Source";
+
+        #endregion
+
         #region DataCreateNewpage
 
         public static string StatusPublic = "public";
         public static string PageName = "page" + TimeSystem;
         public static string PageName1 = "page1" + TimeSystem;
         public static string PageName2 = "page2" + TimeSystem;
-        public static string ItemDisplayAfter = "Overview";
+        public static string Overview = "Overview";
         public static string DefaultValue = null;
 
         #endregion
@@ -86,6 +100,5 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] SelectFolderPageDictionary;
 
         #endregion
-
     }
 }
