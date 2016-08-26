@@ -55,10 +55,6 @@ namespace SeleniumAdvance_Group2.TestCases
 
             editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 
-            editDataProfilePage.ClickTab("general settings tab");
-            //vp
-            editDataProfilePage.VerifyPageDisplay("General Settings");
-
             editDataProfilePage.ClickTab("display fields tab");
             //vp
             editDataProfilePage.VerifyPageDisplay("Display Fields");

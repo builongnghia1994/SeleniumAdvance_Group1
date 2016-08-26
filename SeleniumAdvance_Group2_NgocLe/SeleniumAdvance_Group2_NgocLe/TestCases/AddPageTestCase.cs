@@ -17,7 +17,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
             //vp  
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName);
 
