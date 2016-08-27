@@ -21,7 +21,7 @@ namespace SeleniumAdvance_Group2.TestCases
             dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataProfile());
 
             //post-condition
-            generalPage.LogOut();
+            dataProfileManagerPage.LogOut();
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace SeleniumAdvance_Group2.TestCases
             dataProfileManagerPage.VerifyDataProfileInAlphabeticalOrder();
 
             //post-condition
-            generalPage.LogOut();
+            dataProfileManagerPage.LogOut();
         }
 
         [TestMethod]
@@ -78,7 +78,9 @@ namespace SeleniumAdvance_Group2.TestCases
             editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
 
             //post-condition
-            generalPage.LogOut();
+            dataProfileManagerPage = editDataProfilePage.GotoDataProfileManagerPage();
+            dataProfileManagerPage.DeleteAllDataProfile();
+            dataProfileManagerPage.LogOut();
         }
 
         [TestMethod]
@@ -105,7 +107,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueThenBy());
 
             //post-condition
-            generalPage.LogOut();
+            newDataProfilePage.LogOut();
         }
     }
 }

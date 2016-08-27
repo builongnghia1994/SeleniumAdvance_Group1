@@ -29,13 +29,13 @@ namespace SeleniumAdvance_Group2.TestCases
             
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             newPage = generalPage.GotoNewPage();          
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc1"+Constant.TimeSystem, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc1"+Constant.TimeSystem, "abc"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc2"+Constant.TimeSystem, "abc1"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue,1);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, "abc2"+Constant.TimeSystem, "abc1"+Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue,"1");
 
             //newPage = generalPage.GotoNewPage();
             //generalPage = newPage.CreateNewPage(Constant.statusPublic, "abc3","abc2" , Constant.defaultValue, Constant.defaultValue,2);
@@ -45,13 +45,7 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
 
-       // [TestMethod]
-        public void Demo_Thi_Spaceeeeeee()
-        {
-            newPage = new NewPage();
-            newPage.PageNameFormat("b", 3);
-            
-        }
+       
 
         
         public void DA_PANEL_TC045_Verify_that_Folder_field_is_not_allowed_to_be_empty()
@@ -59,7 +53,7 @@ namespace SeleniumAdvance_Group2.TestCases
             string displayName = "panel" + Constant.TimeSystem;
             string series = "  Name";
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
-            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
             NewPanelForPage newPanelForPage = new NewPanelForPage();
             newPanelForPage = choosePanelPage.GotoNewPanelPage();

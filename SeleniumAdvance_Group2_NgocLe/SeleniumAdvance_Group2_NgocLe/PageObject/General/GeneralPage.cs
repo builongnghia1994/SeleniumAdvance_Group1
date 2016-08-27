@@ -184,6 +184,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageNotExist(string path)
         {
+            WaitForPageLoad();
             string[] allPages = path.Split('/');
             By lastPage = By.XPath("");
             string currentPageXpath = "//ul/li/a[text()='" + allPages[0] + "']";
@@ -191,7 +192,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             if (allPages.Length == 1)
             {
                 lastPage = By.XPath(currentPageXpath);
-                Assert.IsFalse(DoesControlExist(lastPage));
+                VerifyControlNotExist(lastPage);
             }
             else
             {
@@ -203,7 +204,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                Assert.IsFalse(DoesControlExist(lastPage));
+                VerifyControlNotExist(lastPage);
             }
         }
 
@@ -246,7 +247,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
+        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, string level)
         {
             NewPage newPage = GotoNewPage();
             return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum, level);
@@ -263,6 +264,13 @@ namespace SeleniumAdvance_Group2.PageObject.General
             WaitForPageLoad();
             By control = By.XPath("//li/a[text()='" + settingName + "']");
             VerifyControlNotExist(control);
+        }
+
+        public void VerifyPageNameDisplay(string namePage)
+        {
+            WaitForPageLoad();
+            By control = By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namePage + "']");
+            VerifyControlExist(control);
         }
     }
 }

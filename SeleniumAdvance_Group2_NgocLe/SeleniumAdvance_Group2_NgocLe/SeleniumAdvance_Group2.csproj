@@ -81,7 +81,7 @@
     <Compile Include="PageObject\DataProfile\NewDataProfilePage.cs" />
     <Compile Include="PageObject\General\GeneralPage.cs" />
     <Compile Include="PageObject\Login\LoginPage.cs" />
-    <Compile Include="PageObject\MainPage\EditPage.cs" />
+    <Compile Include="PageObject\MainPage\Panel\EditPage.cs" />
     <Compile Include="PageObject\MainPage\NewPage.cs" />
     <Compile Include="PageObject\MainPage\Panel\ChoosePanelPage.cs" />
     <Compile Include="PageObject\MainPage\Panel\NewPanelForPage.cs" />

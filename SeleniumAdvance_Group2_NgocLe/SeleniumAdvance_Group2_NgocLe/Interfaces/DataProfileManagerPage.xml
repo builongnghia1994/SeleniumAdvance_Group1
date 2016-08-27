@@ -10,4 +10,14 @@
     <type>xpath</type>
     <value>//form[@id='form1']//a[@href='profile.jsp?action=create']</value>
   </linkAddNew>
+  <cbCheckAll>
+    <name>check all checkbox</name>
+    <type>xpath</type>
+    <value>//a[text()='Check All']</value>
+  </cbCheckAll>
+  <linkDelete>
+    <name>delete link</name>
+    <type>xpath</type>
+    <value>//div[@class='panel_tag2']/a[text()='Delete']</value>
+  </linkDelete>
 </DataProfileManager>
