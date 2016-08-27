@@ -79,7 +79,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //post-condition
             dataProfileManagerPage = editDataProfilePage.GotoDataProfileManagerPage();
-            dataProfileManagerPage.DeleteAllDataProfile();
+            dataProfileManagerPage.DeleteCreatedDataProfile(Constant.NameOfDataProfile);
             dataProfileManagerPage.LogOut();
         }
 
