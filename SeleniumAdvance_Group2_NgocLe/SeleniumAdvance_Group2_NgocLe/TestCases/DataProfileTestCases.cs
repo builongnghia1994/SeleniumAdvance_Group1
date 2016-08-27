@@ -51,7 +51,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.NameOfDataProfile, "test modules", "Related test results");
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.NameOfDataProfile, Constant.ItemType, Constant.RelatedData);
 
             editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 

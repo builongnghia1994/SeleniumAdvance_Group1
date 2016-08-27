@@ -47,6 +47,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
+            string errorMsg = string.Empty;
+            bool contain = false;
             if (expectedValues.Length > actualValues.Length)
             {
                 Assert.Fail("The actual results are less than the expected results");
@@ -55,8 +57,12 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             {
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
-                    //nhieu vp cho nay qua, nen viet lai
-                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '" + expectedValues[i] + "' does not exist in actual results");
+                    contain = actualValues.Contains(expectedValues[i]);
+                    if(contain == false)
+                    {
+                        errorMsg = "The '" + expectedValues[i] + "' does not exist in actual results";
+                        break;
+                    }
                 }
             }
         }
