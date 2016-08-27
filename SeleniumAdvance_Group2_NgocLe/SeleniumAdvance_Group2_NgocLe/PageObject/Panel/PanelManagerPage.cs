@@ -38,7 +38,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             Assert.Fail("Panel does not exist.");
         }
 
-        public GeneralPage DeletePanel(string panelName)
+        public void DeletePanel(string panelName)
         {
             int panelItemCount = CountItems("panel table");
 
@@ -55,13 +55,12 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
                     ClickControl(By.XPath(checkbox));
                     ClickControl("delete link");
                     AcceptAlert();
-                    return new GeneralPage();
+                    return;
                 }
             }
-            return new GeneralPage();
         }
 
-        public GeneralPage DeleteAllPanel()
+        public void DeleteAllPanel()
         {
             int panelItemCount = CountItems("panel table");
 
@@ -73,7 +72,6 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
                 ClickControl("delete link");
                 AcceptAlert();
             }
-            return new GeneralPage();
         }
     }
 }

@@ -190,7 +190,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             if (allPages.Length == 1)
             {
                 lastPage = By.XPath(currentPageXpath);
-                Assert.IsFalse(DoesControlExist(lastPage));
+                VerifyControlNotExist(lastPage);
             }
             else
             {
@@ -202,7 +202,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                Assert.IsFalse(DoesControlExist(lastPage));
+                VerifyControlNotExist(lastPage);
             }
         }
 
