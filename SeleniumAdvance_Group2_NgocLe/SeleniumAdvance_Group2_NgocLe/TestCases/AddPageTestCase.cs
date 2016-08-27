@@ -20,7 +20,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newPage = generalPage.GotoNewPage();
 
             generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            //vp  
+            
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName);
 
             //post-condition
@@ -38,8 +38,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             loginPage = generalPage.LogOut();
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-
-            //vp
+            
             generalPage.VerifyPageNameDisplay(Constant.TimeSystem);
 
             //post-condition: Log in  as creator page account and delete newly added page
@@ -65,35 +64,29 @@ namespace SeleniumAdvance_Group2.TestCases
 
 
             generalPage.SelectDeletePage(parentPage);
-
-            //vp1
+            
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-
-            //vp2
+            
             generalPage.VerifyAlertMessage("Cannot delete page '" + parentPage + "' since it has child page(s).");
             generalPage.AcceptAlert();
 
             generalPage.SelectDeletePage(parentPage + "/" + childPage);
-            //vp3
+            
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-
-            //vp4
+            
             generalPage.VerifyPageNotExist(parentPage + "/" + childPage);
 
             generalPage.SelectDeletePage(parentPage);
-
-            //vp5
+            
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-
-            //vp6
+            
             generalPage.VerifyPageNotExist(parentPage);
 
             generalPage.GotoPage(Constant.Overview);
-
-            //vp7
+            
             generalPage.VerifyControlNotExistInGlobalSetting("Delete");
 
             //post-condition
@@ -106,18 +99,16 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             EditPage editPage;
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-
-            //add page1
+            
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            //add page2
+            
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             editPage = generalPage.GotoEditPage(Constant.PageName1);
             generalPage = editPage.EditAPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.Overview, Constant.DefaultValue);
-
-            //vp        
+     
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName1);
 
             //post-condition

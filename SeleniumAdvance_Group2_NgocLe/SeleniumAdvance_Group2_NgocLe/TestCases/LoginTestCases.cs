@@ -13,7 +13,7 @@ namespace SeleniumAdvance_Group2.TestCases
             GeneralPage generalPage;         
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            //VP         
+                  
             generalPage.VerifyWelComeUserDisplayed(Constant.Username_thi);
             loginPage = generalPage.LogOut();
         }
@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
           
             loginPage.Login(Constant.Respos_SampleRepository, "abc", "abc");
-            //vp
+            
             loginPage.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
         }
 
@@ -32,7 +32,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
           
             loginPage.Login(Constant.Respos_SampleRepository, Constant.UsernameAdmin, "abc");
-            //vp
+           
             loginPage.VerifyDashboardErrorMessageLogin(Constant.MsgDashboardErrorLogin);
         }
 
@@ -44,7 +44,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
             loginPage = generalPage.LogOut();
             generalPage = loginPage.LoginDashBoard(Constant.Respos_TestRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
-            //VP
+           
             generalPage.VerifyWelComeUserDisplayed(Constant.UsernameAdmin);
             loginPage = generalPage.LogOut();
         }
