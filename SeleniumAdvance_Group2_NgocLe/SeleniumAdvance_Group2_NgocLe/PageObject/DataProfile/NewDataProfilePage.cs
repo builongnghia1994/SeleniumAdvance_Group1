@@ -14,35 +14,9 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             if (Constant.NewDataProfileDictionary == null)
                 Constant.NewDataProfileDictionary = ReadXML();
         }
-        public string[] GetItemTypeValues()
-        {
-            List<string> itemTypeValues = new List<string>();
-            IWebElement element = FindElementFromPage("item type list");
-            IList<IWebElement> lists = element.FindElements(By.TagName("option"));
-            foreach (IWebElement ele in lists)
-            {
-                itemTypeValues.Add(ele.Text);
-            }
-            return itemTypeValues.ToArray();
-        }
-
+        
         #region Verify Methods
-        public void VerifyDropdownlistDisplayByPriority(string[] expectedValues, string[] actualValues)
-        {
-            Console.WriteLine(expectedValues.Length + "======" + actualValues.Length);
-            if (expectedValues.Length == actualValues.Length)
-            {
-                for (int i = 0; i < expectedValues.Length; i++)
-                {
-                    VerifyText(expectedValues[i], actualValues[i]);
-                }
-            }
-            else
-            {
-                Assert.Fail("Length between actual results and expected results do not match with each other.");
-            }
-        }
-
+     
         public void EnterValueGeneralSetting(string name, string itemType, string relatedData)
         {
             TypeValue("data profile name", name);

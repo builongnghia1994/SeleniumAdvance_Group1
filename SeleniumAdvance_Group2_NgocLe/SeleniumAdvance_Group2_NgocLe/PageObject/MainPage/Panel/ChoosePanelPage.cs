@@ -28,15 +28,15 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
         public void SelectChartItemPanel()
         {
-            int numberrows = CountItems("items row in chart");
-            int numbercolumn = CountItems("items column in chart");
+            int numberRows = CountItems("items row in chart");
+            int numberColumn = CountItems("items column in chart");
 
             int itemRow;
             int itemRowColumn;
             Random i = new Random();
-            itemRow = i.Next(1, numberrows);
+            itemRow = i.Next(1, numberRows);
             Random j = new Random();
-            itemRowColumn = j.Next(1, numbercolumn);
+            itemRowColumn = j.Next(1, numberColumn);
 
             string itemNameChart = "//div[@id='container']//div[@class='ptit pchart']/../table//tr[" + itemRow + "]/td[" + itemRowColumn + "]//a";
 
@@ -49,9 +49,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             {
                 ClickControl(By.XPath(itemNameChart));
             }
-
         }
-
 
     }
 }

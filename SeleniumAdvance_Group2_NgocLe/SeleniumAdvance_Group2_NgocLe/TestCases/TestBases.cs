@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Remote;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
 
@@ -53,6 +54,7 @@ namespace SeleniumAdvance_Group2.TestCases
                     break;
                 default:
                     Console.WriteLine(String.Format("Run type '{0}' is not recognized. Spawning default Firefox browser.", Constant.RunType));
+
                     OpenBrowser(Constant.Browser);
                     break;
             }

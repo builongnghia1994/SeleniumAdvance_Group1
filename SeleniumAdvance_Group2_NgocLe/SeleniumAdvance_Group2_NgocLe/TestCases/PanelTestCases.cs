@@ -21,7 +21,9 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC029_Verify_that_user_is_unable_to_create_new_panel_when_required_field_is_not_filled()
         {
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+
             newPanelPage = generalPage.GotoPanelPage();
+
             newPanelPage.ClickOK();
 
             //vp
@@ -36,17 +38,19 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             string specialCharacterPanel = "panel" + Constant.TimeSystem + "#$%";
             string atsignPanel = "panel" + Constant.TimeSystem + "@";
-            string series = "  Name";
             panelManagerPage = new PanelManagerPage();
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+
             newPanelPage = generalPage.GotoPanelPage();
-            newPanelPage.AddNewPanel(specialCharacterPanel, series);
+            newPanelPage.AddNewPanel(specialCharacterPanel, Constant.Series);
+
             //vp
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgInvalidPanelDisplayName);
 
             newPanelPage = panelManagerPage.GoToPanelPage();
-            newPanelPage.AddNewPanel(atsignPanel, series);
+            newPanelPage.AddNewPanel(atsignPanel, Constant.Series);
+
             //vp
             panelManagerPage.VerifyPanelDisplayed(atsignPanel);
 
@@ -62,27 +66,34 @@ namespace SeleniumAdvance_Group2.TestCases
             string page3 = "thi3" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+
             //add page1
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+
             //add page2
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            //add page 3
+
+            //add page3
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page3, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
+
             panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
 
             //vp          
-            panelConfigurationPage.VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(page1, page2, page3);
+            panelConfigurationPage.VerifyCreatedPagePresent(page1, page2, page3);
 
             //post-condition: delete created pages and log out
             WaitForPageLoad();
-            generalPage.DeletePageConfirmed(page1);
-            generalPage.DeletePageConfirmed(page2);
-            generalPage.DeletePageConfirmed(page3);
+            generalPage.DeletePage(page1);
+
+            generalPage.DeletePage(page2);
+
+            generalPage.DeletePage(page3);
+
             generalPage.LogOut();
         }
 
@@ -90,7 +101,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form()
         {
             string pageName = "thi1" + Constant.TimeSystem;
-            string series = "  Name";
+            string displayName = "test" + Constant.TimeSystem;
             string folderPath = "Car Rental - Mobile/Actions/Car";
             NewPanelForPage newPanelForPage;
             SelectFolderPage selectFolderPage;
@@ -101,18 +112,34 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
+
             newPanelForPage = choosePanelPage.GotoNewPanelPage();
-            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.TimeSystem, series);
+
+            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel(displayName, Constant.Series);
+
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
-            panelConfigurationPage = selectFolderPage.GotoPanelConfigurationPageAfterSelectFolder(folderPath);
+
+            panelConfigurationPage = selectFolderPage.SelectFolder(folderPath);
 
             //vp
             panelConfigurationPage.VerifySelectedFolder(folderPath);
 
             //post-condition: delete created page and log out
-            generalPage.DeletePageConfirmed(pageName);
-            generalPage.LogOut();
+            generalPage.DeletePage(pageName);
 
+            generalPage.LogOut();
+        }
+
+        [TestMethod]
+        public void deletepanel()
+        {
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+
+            panelManagerPage = generalPage.GotoPanelManagerPage();
+
+            generalPage = panelManagerPage.DeleteAllPanel();
+
+            generalPage.LogOut();
         }
     }
 }

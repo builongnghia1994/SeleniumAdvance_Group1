@@ -69,5 +69,40 @@ namespace SeleniumAdvance_Group2.TestCases
             VerifyTextFromAlertAndAccept(Constant.MsgInvalidFolder_Panel);
 
         }
+
+        //public void DeletePagesJustCreated(string namepageparrent)
+        //{
+        //    string itemclasscurrent = string.Empty;
+        //    string xpath = string.Empty;
+        //    xpath = "//div[@id='main-menu']/div/ul/li/a[text()='" + namepageparrent + "']";
+        //    while (DoesControlExist(By.XPath(xpath)))
+        //    {
+        //        string xpath2 = xpath;
+        //        itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class");
+        //        while (itemclasscurrent.Equals("haschild") || itemclasscurrent.Equals("active haschild"))
+        //        {
+        //            Actions builder = new Actions(Constant.WebDriver);
+        //            Actions hoverClick = builder.MoveToElement(FindElement(By.XPath(xpath2)));
+        //            hoverClick.Build().Perform();
+        //            string next = "/following-sibling::ul/li/a";
+        //            xpath2 = xpath2 + next;
+        //            itemclasscurrent = FindElement(By.XPath(xpath2)).GetAttribute("class").ToString();
+        //        }
+        //        if (Constant.Browser.Equals("ie"))
+        //        {
+        //            ClickControlByJS(By.XPath(xpath2));
+        //            SelectGlobalSetting("Delete");
+        //            AcceptAlert();
+        //        }
+        //        else
+        //        {
+        //            Console.Write(xpath2);
+        //            ClickControl(By.XPath(xpath2));
+        //            SelectGlobalSetting("Delete");
+        //            AcceptAlert();
+        //            Thread.Sleep(500);
+        //        }
+        //    }
+        //}
     }
 }
