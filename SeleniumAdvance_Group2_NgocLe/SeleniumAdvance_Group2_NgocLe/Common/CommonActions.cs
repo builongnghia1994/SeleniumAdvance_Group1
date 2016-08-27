@@ -11,6 +11,7 @@ using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
 using System.Threading;
+using OpenQA.Selenium.Remote;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -44,6 +45,34 @@ namespace SeleniumAdvance_Group2.Common
                 default:
                     Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", browser));
                     Constant.WebDriver = new FirefoxDriver();
+                    Constant.WebDriver.Manage().Window.Maximize();
+                    break;
+            }
+        }
+
+        public static void OpenBrowserGrid(Uri uri, string browser)
+        {
+            switch (browser.ToLower())
+            {
+                case "firefox":
+                    Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
+                    Constant.WebDriver.Manage().Window.Maximize();
+                    break;
+                case "chrome":
+                    Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
+                    Constant.WebDriver.Manage().Window.Maximize();
+                    break;
+                case "ie":
+                    Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
+                    Constant.WebDriver.Manage().Window.Maximize();
+                    break;
+                case "edgewin":
+                    Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
+                    Constant.WebDriver.Manage().Window.Maximize();
+                    break;
+                default:
+                    Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", Constant.Browser));
+                    Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
                     Constant.WebDriver.Manage().Window.Maximize();
                     break;
             }

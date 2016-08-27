@@ -35,10 +35,15 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
-            for (int i = 2; i < numberOfrow; i++)
+            string row = string.Empty;
+
+            for (int i = 2; i <= numberOfrow; i++)
             {
-                string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
-                tableValues.Add(FindElement(By.XPath(row)).Text);
+                row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
+                if (DoesControlExist(By.XPath(row)))
+                {
+                    tableValues.Add(FindElement(By.XPath(row)).Text);
+                }
             }
             return tableValues.ToArray();
         }
@@ -94,7 +99,14 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
             Assert.IsTrue(alphabetical, errorMessage);
         }
-    
+
+        public void DeleteCreatedDataProfile(string nameOfDataProfile)
+        {
+            string createdPageXpath = "//td[contains(.,'"+ nameOfDataProfile + "')]/../td/a[text()='Delete']";
+            ClickControl(By.XPath(createdPageXpath));
+            AcceptAlert();
+        }
+
         #endregion
     }
 }
