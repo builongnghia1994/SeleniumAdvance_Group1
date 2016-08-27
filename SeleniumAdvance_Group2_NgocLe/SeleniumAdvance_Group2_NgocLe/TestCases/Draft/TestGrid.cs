@@ -16,10 +16,10 @@ namespace SeleniumAdvance_Group2.TestCases
         public void Nghia_Grid()
         {
             LoginPage loginPage = new LoginPage();
-            GeneralPage generalPage;
-            IWebDriver webDriver;
-            webDriver = new RemoteWebDriver(new Uri("http://192.168.190.114:4444/wd/hub"), DesiredCapabilities.Firefox());
-            webDriver.Navigate().GoToUrl("http://192.168.190.205:54000/TADashboard/login.jsp");
+            GeneralPage generalPage = new GeneralPage();
+            //IWebDriver webDriver;
+            Constant.WebDriver = new RemoteWebDriver(new Uri("http://192.168.190.205:4444/wd/hub"), DesiredCapabilities.Firefox());
+            Constant.WebDriver.Navigate().GoToUrl("http://192.168.190.205:54000/TADashboard/login.jsp");
             Thread.Sleep(500);
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
         }

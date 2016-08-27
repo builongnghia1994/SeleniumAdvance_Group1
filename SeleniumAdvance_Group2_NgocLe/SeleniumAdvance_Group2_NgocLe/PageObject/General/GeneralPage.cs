@@ -184,6 +184,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageNotExist(string path)
         {
+            WaitForPageLoad();
             string[] allPages = path.Split('/');
             By lastPage = By.XPath("");
             string currentPageXpath = "//ul/li/a[text()='" + allPages[0] + "']";
@@ -205,6 +206,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 }
                 Assert.IsFalse(DoesControlExist(lastPage));
             }
+
         }
 
         public void DeleteAllPages()
