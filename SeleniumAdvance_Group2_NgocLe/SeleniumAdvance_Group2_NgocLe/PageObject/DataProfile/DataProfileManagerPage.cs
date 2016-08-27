@@ -43,6 +43,16 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             return tableValues.ToArray();
         }
 
+        public void DeleteAllDataProfile()
+        {
+            if (DoesControlExist("check all checkbox"))
+            {
+                ClickControl("check all checkbox");
+                ClickControl("delete link");
+                AcceptAlert();
+            }
+        }
+
         #region Verify methods
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)

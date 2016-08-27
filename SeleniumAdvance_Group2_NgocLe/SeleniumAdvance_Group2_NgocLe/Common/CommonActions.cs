@@ -239,6 +239,19 @@ namespace SeleniumAdvance_Group2.Common
             }
         }
 
+        public bool DoesControlExist(string locator)
+        {
+            try
+            {
+                FindElement(locator);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public void WaitForControl(By control, int timesecond)
         {
             IWebElement element = null;
