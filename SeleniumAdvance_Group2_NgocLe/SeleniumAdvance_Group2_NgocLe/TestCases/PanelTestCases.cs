@@ -69,15 +69,15 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             //add page2
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             //add page3
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page3, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, page3, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
 
@@ -109,7 +109,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             choosePanelPage = generalPage.GotoChoosePanelPage();
 

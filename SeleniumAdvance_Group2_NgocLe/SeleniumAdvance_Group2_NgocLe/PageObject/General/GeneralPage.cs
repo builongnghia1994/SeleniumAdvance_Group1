@@ -245,7 +245,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
+        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, string level)
         {
             NewPage newPage = GotoNewPage();
             return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum, level);
