@@ -298,14 +298,14 @@ namespace SeleniumAdvance_Group2.Common
         public void VerifyText(string expectedText, By element)
         {
             string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
+            VerifyText(expectedText, actualText);
         }
 
         public void VerifyTextFromControl(string expectedText, string locator)
         {
             IWebElement element = FindElement(locator);
             string actualText = GetText(element);
-            Assert.AreEqual(expectedText, actualText);
+            VerifyText(expectedText, actualText);
         }
 
         public void VerifyText(string expectedText, string actualText)
