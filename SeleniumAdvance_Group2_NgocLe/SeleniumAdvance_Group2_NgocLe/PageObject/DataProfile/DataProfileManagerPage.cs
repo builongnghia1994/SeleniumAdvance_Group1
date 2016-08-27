@@ -64,6 +64,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
                         break;
                     }
                 }
+                Assert.IsTrue(contain, errorMsg);
             }
         }
 

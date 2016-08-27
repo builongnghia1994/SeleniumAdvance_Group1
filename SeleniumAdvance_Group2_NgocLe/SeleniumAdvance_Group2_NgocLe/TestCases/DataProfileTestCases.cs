@@ -17,8 +17,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
-
-            //vp
+            
             dataProfileManagerPage.VerifyPreDataProfile(Constant.PreSetDataProfile, dataProfileManagerPage.GetActualPreDataProfile());
 
             //post-condition
@@ -31,8 +30,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
-
-            //vp
+            
             dataProfileManagerPage.VerifyDataProfileInAlphabeticalOrder();
 
             //post-condition
@@ -56,35 +54,27 @@ namespace SeleniumAdvance_Group2.TestCases
             editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
 
             editDataProfilePage.ClickTab("display fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Display Fields");
 
             editDataProfilePage.ClickTab("sort fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Sort Fields");
 
             editDataProfilePage.ClickTab("filter fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Filter Fields");
 
             editDataProfilePage.ClickTab("statistic fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Statistic Fields");
 
             editDataProfilePage.ClickTab("display sub fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Display Sub-Fields");
 
             editDataProfilePage.ClickTab("sort sub fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Sort Sub-Fields");
 
             editDataProfilePage.ClickTab("filter sub fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Filter Sub-Fields");
 
             editDataProfilePage.ClickTab("statistic sub fields tab");
-            //vp
             editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
 
             //post-condition
@@ -109,12 +99,9 @@ namespace SeleniumAdvance_Group2.TestCases
             newDataProfilePage.AddASortField(Constant.SortField_Location);
 
             newDataProfilePage.MoveLevelOfSortFieldlUp(Constant.SortField_Location);
-
-            //vp
             newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueSortBy());
 
             newDataProfilePage.MoveLevelOfSortFieldDown(Constant.SortField_Location);
-            //vp
             newDataProfilePage.VerifyMoveLevel(Constant.SortField_Location, newDataProfilePage.GetValueThenBy());
 
             //post-condition
