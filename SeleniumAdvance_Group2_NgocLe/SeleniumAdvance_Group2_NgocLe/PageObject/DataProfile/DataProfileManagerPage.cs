@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.Common;
-using System.Threading;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
@@ -34,7 +31,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         #endregion
 
-        public string[] GetActualPreDataPRofile()
+        public string[] GetActualPreDataProfile()
         {
             int numberOfrow = CountItems("data profile table");
             List<string> tableValues = new List<string>();
@@ -50,6 +47,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
+            string errorMsg = string.Empty;
+            bool contain = false;
             if (expectedValues.Length > actualValues.Length)
             {
                 Assert.Fail("The actual results are less than the expected results");
@@ -58,8 +57,14 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             {
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
-                    Assert.IsTrue(actualValues.Contains(expectedValues[i]), "The '" + expectedValues[i] + "' does not exist in actual results");
+                    contain = actualValues.Contains(expectedValues[i]);
+                    if(contain == false)
+                    {
+                        errorMsg = "The '" + expectedValues[i] + "' does not exist in actual results";
+                        break;
+                    }
                 }
+                Assert.IsTrue(contain, errorMsg);
             }
         }
 
@@ -67,7 +72,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             bool alphabetical = true;
             string errorMessage = string.Empty;
-            string[] listPreSetDataProfile = GetActualPreDataPRofile();
+            string[] listPreSetDataProfile = GetActualPreDataProfile();
             for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
             {
                 if (StringComparer.OrdinalIgnoreCase.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
@@ -79,6 +84,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
             Assert.IsTrue(alphabetical, errorMessage);
         }
+    
         #endregion
     }
 }

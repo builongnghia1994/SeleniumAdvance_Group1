@@ -10,4 +10,9 @@
     <type>xpath</type>
     <value>//table[@class='GridView']/tbody/tr</value>
   </tblPanel>
+  <linkDeletePanel>
+    <name>delete link</name>
+    <type>xpath</type>
+    <value>//a[contains(@href,'javascript:Dashboard.deletePanels')]</value>
+  </linkDeletePanel>
 </PanelManager>

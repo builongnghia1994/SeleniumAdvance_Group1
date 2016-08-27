@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
-using SeleniumAdvance_Group2.PageObject.Login;
 using SeleniumAdvance_Group2.PageObject.General;
-using System.Threading;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
-    [TestClass]
+   // [TestClass]
     public class LoginTestCases : TestBases
     {
         [TestMethod]

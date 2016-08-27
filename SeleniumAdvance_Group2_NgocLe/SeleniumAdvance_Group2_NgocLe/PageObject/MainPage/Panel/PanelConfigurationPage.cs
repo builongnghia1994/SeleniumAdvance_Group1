@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
-using SeleniumAdvance_Group2.PageObject.Panel;
 using OpenQA.Selenium;
-using System.Threading;
 using OpenQA.Selenium.Interactions;
 using System.Windows.Forms;
 
@@ -33,42 +28,37 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             return new GeneralPage();
         }
 
-
-        public bool VerifyAllPagesAreListedCorrectlyUnderTheSelectPage(string a, string b, string c)
+        public bool VerifyCreatedPagePresent(string page1, string page2, string page3)
         {
             ClickControl("page list");
 
-
-            int numberresult = 0;
+            int numberResult = 0;
             int numberOption = CountItems("option in select page list");
-            Console.WriteLine(numberOption);
-            List<string> lstCompare = new List<string>();
-            lstCompare.Add(a);
-            lstCompare.Add(b);
-            lstCompare.Add(c);
-            int numbercompare = lstCompare.Count;
-            Console.WriteLine(numbercompare);
 
-            for (int j = 0; j < numbercompare; j++)
+            List<string> lstCompare = new List<string>();
+            lstCompare.Add(page1);
+            lstCompare.Add(page2);
+            lstCompare.Add(page3);
+            int numberCompare = lstCompare.Count;
+           
+            for (int j = 0; j < numberCompare; j++)
             {
                 for (int i = 1; i <= numberOption; i++)
                 {
                     string optionSelectPage = "//select[@id='cbbPages']/option[" + i + "]";
-                    Console.WriteLine(GetText(By.XPath(optionSelectPage)));
-
+                   
                     if (GetText(By.XPath(optionSelectPage)).Equals(lstCompare[j]))
                     {
-                        numberresult++;
+                        numberResult++;
                         break;
                     }
                 }
             }
 
-            if (numberresult >= 3)
+            if (numberResult >= numberCompare)
             {
                 ClickControl("ok button");
                 return true;
-
             }
             else
             {
@@ -76,7 +66,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 return false;
             }
         }
-
 
         public SelectFolderPage GotoSelectFolderPage()
         {
@@ -88,19 +77,24 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         public void VerifySelectedFolder(string expected)
         {
             WaitForPageLoad();
-            IWebElement folderElement = FindElementFor49("folder textbox");
+
+            IWebElement folderElement = FindElementFromPage("folder textbox");
+
             Actions builder = new Actions(Constant.WebDriver);
-
-
             builder.DoubleClick(folderElement).Build().Perform();
+
+            //cannot get property Text of this control so we get Text by using Copy value of this textbox (Ctrl-A, Ctrl-C)
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
             string actual = Clipboard.GetText();
-            //Constant.WebDriver.SwitchTo().DefaultContent();
+
+            //cannot click OK button since property Displayed=false, so we use SendKey
             SendKeys.SendWait("{ESC}");
+
+            //remove character '/' at the beginning of folder
             actual = actual.Substring(1);
+
             VerifyText(expected, actual);
         }
-
     }
 }
