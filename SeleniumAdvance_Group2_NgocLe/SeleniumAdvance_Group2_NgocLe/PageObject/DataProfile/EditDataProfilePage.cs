@@ -1,11 +1,5 @@
 ﻿using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.PageObject.DataProfile
 {
@@ -22,11 +16,13 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             ClickControl(tab);
         }
+
         public void VerifyPageDisplay(string expected)
         {
             WaitForPageLoad();
             VerifyTextFromControl(expected, "header of tab");
         }
+       
         #endregion
     }
 }

@@ -89,8 +89,8 @@
     <Compile Include="PageObject\MainPage\Panel\PanelConfigurationPage.cs" />
     <Compile Include="PageObject\Panel\PanelManagerPage.cs" />
     <Compile Include="PageObject\MainPage\Panel\SelectFolderPage.cs" />
+    <Compile Include="TestCases\CleanTestEnvironment.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
-    <Compile Include="TestCases\Draft\NgocTC.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />
     <Compile Include="TestCases\TestBases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

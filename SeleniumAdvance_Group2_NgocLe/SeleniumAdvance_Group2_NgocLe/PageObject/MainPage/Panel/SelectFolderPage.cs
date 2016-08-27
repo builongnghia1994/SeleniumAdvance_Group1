@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using System.Windows.Forms;
 
 namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 {
@@ -19,54 +13,51 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 Constant.SelectFolderPageDictionary = ReadXML();
         }
 
-        public PanelConfigurationPage GotoPanelConfigurationPageAfterSelectFolder(string path)
+        public PanelConfigurationPage SelectFolder(string path)
         {
             GotoFolder(path);
             ClickControl("ok button");
             return new PanelConfigurationPage();
         }
 
-        public void GotoFolder(string pathfolder)
+        public void GotoFolder(string pathFolder)
         {
             WaitForPageLoad();
-            string[] allpathfolders = pathfolder.Split('/');
-            By lastfolder = By.XPath("");
-            string currentfolderxpath = "//div[@id='async_html_2']//tbody/tr/td[2]//input[@value='/" + allpathfolders[0] + "']";
-            Console.WriteLine(currentfolderxpath);
-            if (allpathfolders.Length == 1)
+            string[] allPathFolders = pathFolder.Split('/');
+            By lastFolder = By.XPath("");
+            string currentFolderXpath = "//div[@id='async_html_2']//tbody/tr/td[2]//input[@value='/" + allPathFolders[0] + "']";
+
+            if (allPathFolders.Length == 1)
             {
-                lastfolder = By.XPath(currentfolderxpath);
-                ClickControl(lastfolder);
+                lastFolder = By.XPath(currentFolderXpath);
+                ClickControl(lastFolder);
             }
             else
             {
                 string next = string.Empty;
-                for (int b = 1; b < allpathfolders.Length; b++)
+                for (int b = 1; b < allPathFolders.Length; b++)
                 {
 
-                    ClickControl(By.XPath(currentfolderxpath + "/../a[1]"));
+                    ClickControl(By.XPath(currentFolderXpath + "/../a[1]"));
 
-                    next += "/" + allpathfolders[b];
-                    currentfolderxpath = "//div[@id='async_html_2']//tbody/tr/td[2]//input[@value='/" + allpathfolders[0] + next + "']";
-                    Console.WriteLine(currentfolderxpath);
-
+                    next += "/" + allPathFolders[b];
+                    currentFolderXpath = "//div[@id='async_html_2']//tbody/tr/td[2]//input[@value='/" + allPathFolders[0] + next + "']";
                 }
-                lastfolder = By.XPath(currentfolderxpath + "/../a[2]");
-                Console.WriteLine(lastfolder);
+
+                lastFolder = By.XPath(currentFolderXpath + "/../a[2]");
+
                 if (Constant.Browser == "ie")
                 {
                     WaitForPageLoad();
-                    ClickControlByJS(lastfolder);
+                    ClickControlByJS(lastFolder);
                 }
                 else
                 {
                     WaitForPageLoad();
-                    ClickControl(lastfolder);
+                    ClickControl(lastFolder);
                 }
             }
         }
-
-
 
     }
 }
