@@ -40,7 +40,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
 
             //vp
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.TimeSystem);
+            generalPage.VerifyPageNameDisplay(Constant.TimeSystem);
 
             //post-condition: Log in  as creator page account and delete newly added page
             loginPage = generalPage.LogOut();

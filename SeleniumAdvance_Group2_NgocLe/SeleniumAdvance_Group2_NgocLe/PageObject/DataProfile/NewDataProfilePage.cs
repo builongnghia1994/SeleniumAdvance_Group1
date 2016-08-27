@@ -59,7 +59,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public void VerifyMoveLevel(string expected, string actual)
         {
-            Assert.AreEqual(expected, actual);
+            VerifyText(expected, actual);
         }
 
         public string GetValueSortBy()
