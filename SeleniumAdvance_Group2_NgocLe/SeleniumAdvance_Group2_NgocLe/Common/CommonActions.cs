@@ -353,7 +353,7 @@ namespace SeleniumAdvance_Group2.Common
 
         #region 0 reference
 
-        public void VerifyDoesControlExist(By control)
+        public void VerifyControlExist(By control)
         {
             Assert.IsTrue(DoesControlExist(control));
         }

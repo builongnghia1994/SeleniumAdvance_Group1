@@ -268,7 +268,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         {
             WaitForPageLoad();
             By control = By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namePage + "']");
-            VerifyDoesControlExist(control);
+            VerifyControlExist(control);
         }
     }
 }
