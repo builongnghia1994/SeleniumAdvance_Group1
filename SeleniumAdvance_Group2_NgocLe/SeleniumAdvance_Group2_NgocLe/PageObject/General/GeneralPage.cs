@@ -149,10 +149,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
         }
 
         public NewPage GotoNewPage()
-        {
-            WaitForPageLoad();
+        {           
             SelectGlobalSetting("Add Page");
-
+            WaitForPageLoad();
             return new NewPage();
         }
 
@@ -167,6 +166,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void SelectDeletePage(string path)
         {
+            WaitForPageLoad();
             GotoPage(path);
             SelectGlobalSetting("Delete");
         }
@@ -176,7 +176,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
             WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
-            
+          
+
         }
 
         public void VerifyAlertMessage(string expected)
@@ -243,6 +244,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     ClickControl(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
                     AcceptAlert();
+                   
+
                 }
 
                 WaitForPageLoad();

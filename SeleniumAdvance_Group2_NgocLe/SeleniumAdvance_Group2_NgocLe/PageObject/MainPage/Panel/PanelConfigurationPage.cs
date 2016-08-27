@@ -30,6 +30,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
         public bool VerifyCreatedPagePresent(string page1, string page2, string page3)
         {
+            WaitForPageLoad();
             ClickControl("page list");
 
             int numberResult = 0;
@@ -95,7 +96,9 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             //remove character '/' at the beginning of folder
             actual = actual.Substring(1);
 
-            VerifyText(expected, actual);
+            VerifyText(expected, actual);            
+            
+            
         }
     }
 }

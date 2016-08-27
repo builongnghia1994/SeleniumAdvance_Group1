@@ -96,7 +96,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form()
         {
-            string pageName = "thi1" + Constant.TimeSystem;
+            string pageName = "thi" + Constant.TimeSystem;
             string displayName = "test" + Constant.TimeSystem;
             string folderPath = "Car Rental - Mobile/Actions/Car";
             NewPanelForPage newPanelForPage;
