@@ -206,6 +206,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 }
                 VerifyControlNotExist(lastPage);
             }
+
         }
 
         public void DeleteAllPages()
