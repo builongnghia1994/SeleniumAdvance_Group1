@@ -44,13 +44,13 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.AddNewPanel(specialCharacterPanel, Constant.Series);
-          
+
             //vp
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgInvalidPanelDisplayName);
 
             newPanelPage = panelManagerPage.GoToPanelPage();
             newPanelPage.AddNewPanel(atsignPanel, Constant.Series);
-        
+
             //vp
             panelManagerPage.VerifyPanelDisplayed(atsignPanel);
 
@@ -66,15 +66,15 @@ namespace SeleniumAdvance_Group2.TestCases
             string page3 = "thi3" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
-           
+
             //add page1
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            
+
             //add page2
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            
+
             //add page3
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, page3, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
@@ -126,6 +126,18 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //post-condition: delete created page and log out
             generalPage.DeletePage(pageName);
+
+            generalPage.LogOut();
+        }
+
+        [TestMethod]
+        public void deletepanel()
+        {
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+
+            panelManagerPage = generalPage.GotoPanelManagerPage();
+
+            generalPage = panelManagerPage.DeleteAllPanel();
 
             generalPage.LogOut();
         }
