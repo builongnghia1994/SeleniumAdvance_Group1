@@ -19,7 +19,13 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         #region GotoPage methods
         public NewDataProfilePage GotoNewDataProfilePage()
         {
-            ClickControl("add new link");
+            if (Constant.Browser.Equals("ie"))
+            {
+                ClickControlByJS("add new link");
+            }else
+            {
+                ClickControl("add new link");
+            }
             return new NewDataProfilePage();
         }
 

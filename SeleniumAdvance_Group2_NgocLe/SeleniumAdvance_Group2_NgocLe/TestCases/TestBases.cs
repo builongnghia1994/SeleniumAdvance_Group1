@@ -24,8 +24,7 @@ namespace SeleniumAdvance_Group2.TestCases
                 case "parallel":
                     break;
                 case "grid":
-                    Uri uri = new Uri("//192.168.190.114:4444/wd/hub");
-                    OpenBrowserGrid(uri, Constant.Browser);
+                    OpenBrowserGrid(Constant.Browser);
                     break;
                 default:
                     Console.WriteLine(String.Format("Run type '{0}' is not recognized. Spawning default Firefox browser.", Constant.RunType));

@@ -15,8 +15,13 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
         public NewPanelForPage GotoNewPanelPage()
         {
-            ClickControl("create new panel button");
-
+            if (Constant.Browser.Equals("ie"))
+            {
+                ClickControlByJS("create new panel button");
+            }else
+            {
+                ClickControl("create new panel button");
+            }
             return new NewPanelForPage();
         }
 
