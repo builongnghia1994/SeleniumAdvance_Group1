@@ -176,6 +176,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
+            
         }
 
         public void VerifyAlertMessage(string expected)

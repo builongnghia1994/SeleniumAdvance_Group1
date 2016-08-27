@@ -20,6 +20,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public void VerifyPanelDisplayed(string panelName)
         {
+            WaitForPageLoad();
             int panelItemCount = CountItems("panel table");
 
             string row = string.Empty;
