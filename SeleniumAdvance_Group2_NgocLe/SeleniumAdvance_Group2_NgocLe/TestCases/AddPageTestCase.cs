@@ -19,9 +19,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPage = generalPage.GotoNewPage();
 
-            generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
+            generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
            
-            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName);
+            generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.TimeSystem);
 
             //post-condition
             generalPage.DeletePage(Constant.PageName);

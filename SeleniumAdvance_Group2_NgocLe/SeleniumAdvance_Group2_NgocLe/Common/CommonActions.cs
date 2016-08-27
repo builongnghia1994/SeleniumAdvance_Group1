@@ -394,18 +394,20 @@ namespace SeleniumAdvance_Group2.Common
 
         #endregion
 
-        #region 0 reference
+        
 
         public void VerifyControlExist(By control)
         {
             Assert.IsTrue(DoesControlExist(control));
         }
-        public void WaitForControlNotVisible(By control, int timesecond)
-        {
-            Constant.WebElement = new WebDriverWait(Constant.WebDriver, TimeSpan.FromSeconds(timesecond)).Until(ExpectedConditions.ElementIsVisible(control));
-        }
 
-        #endregion
+
+      
+
+
+
+
+
 
     }
 }
