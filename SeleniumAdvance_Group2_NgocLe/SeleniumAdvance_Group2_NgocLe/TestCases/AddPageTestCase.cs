@@ -19,8 +19,8 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPage = generalPage.GotoNewPage();
 
-            generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            
+            generalPage = newPage.CreateNewPage(Constant.DefaultValue, Constant.PageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
+           
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName);
 
             //post-condition
@@ -34,11 +34,11 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.TimeSystem, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             loginPage = generalPage.LogOut();
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            
+
             generalPage.VerifyPageNameDisplay(Constant.TimeSystem);
 
             //post-condition: Log in  as creator page account and delete newly added page
@@ -57,10 +57,10 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, childPage, parentPage, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, childPage, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
 
             generalPage.SelectDeletePage(parentPage);
@@ -71,15 +71,15 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.VerifyAlertMessage("Cannot delete page '" + parentPage + "' since it has child page(s).");
             generalPage.AcceptAlert();
 
-            generalPage.SelectDeletePage(parentPage + "/" + childPage);
-            
+            generalPage.SelectDeletePage(parentPage + "/" + childPage);           
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-            
+
+           
             generalPage.VerifyPageNotExist(parentPage + "/" + childPage);
 
             generalPage.SelectDeletePage(parentPage);
-            
+
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
             
@@ -99,16 +99,17 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             EditPage editPage;
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
-            
+
+            //add page1
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
-            
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
+            //add page2
             newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, 0);
+            generalPage = newPage.CreateNewPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
 
             editPage = generalPage.GotoEditPage(Constant.PageName1);
-            generalPage = editPage.EditAPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.Overview, Constant.DefaultValue);
-     
+            generalPage = editPage.EditAPage(Constant.DefaultValue, Constant.PageName1, Constant.DefaultValue, Constant.Overview, Constant.DefaultValue,Constant.DefaultValue);
+                                
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName1);
 
             //post-condition

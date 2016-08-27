@@ -11,27 +11,30 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             if (Constant.NewPageDictionary == null)
                 Constant.NewPageDictionary = ReadXML();
         }
-        public GeneralPage CreateNewPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
-        {
-            switch (status.ToLower())
+        public GeneralPage CreateNewPage(string statuspublic, string pagename, string parentname, string afterpage, string numbercolum, string level)
+        {            
+            if(statuspublic!=null&& statuspublic=="public")
             {
-                case "public":
-                    ClickControl("public checkbox");
-                    break;
-                default:
-                    break;
+                ClickControl("public checkbox");
             }
+
             if (pagename != null)
             { TypeValue("page name textbox", pagename); }
 
             if (parentname != null)
             {
-                string space = "    ";//space=4 at level 1                        
-                for (int i = 1; i <= level; i++)
+                if (level != null)
                 {
-                    parentname = space + parentname;
+                    //if pageparent has level that is equal to Overview item, there is no space in selected text in dropdown list parrentpage when selecting, and it means level now is 0. 
+                    //Level 1 to up: pageparents are child of pages have level with equal level to Overview item(level 0)
+                    //Level 1: there are 4 spaces before text of page parent in drpdownlist, and similar to other level, (level 2: 8 spaces.....)
+                    int parentLevel = int.Parse(level);
+                    string space = "    ";                      
+                    for (int i = 1; i <= parentLevel; i++)
+                    {
+                        parentname = space + parentname;
+                    }
                 }
-
                 SelectItemByDropdownList("parent name list", parentname);
             }
 
@@ -46,15 +49,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             return new GeneralPage();
         }
 
-        public void PageNameFormat(string pagename, int level)
-        {
-            string space = "    ";//space=4 at level 1            
-
-            for (int i = 1; i <= level; i++)
-            {
-                pagename = space + pagename;
-            }
-
-        }
+       
+        
     }
 }

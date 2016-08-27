@@ -149,6 +149,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
+            WaitForPageLoad();
             SelectGlobalSetting("Add Page");
 
             return new NewPage();
@@ -183,6 +184,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void VerifyPageNotExist(string path)
         {
+            WaitForPageLoad();
             string[] allPages = path.Split('/');
             By lastPage = By.XPath("");
             string currentPageXpath = "//ul/li/a[text()='" + allPages[0] + "']";
@@ -204,6 +206,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 }
                 VerifyControlNotExist(lastPage);
             }
+
         }
 
         public void DeleteAllPages()
@@ -245,7 +248,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             }
         }
 
-        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, int level)
+        public GeneralPage CreateNewPageFromGeneralPage(string status, string pagename, string parentname, string afterpage, string numbercolum, string level)
         {
             NewPage newPage = GotoNewPage();
             return newPage.CreateNewPage(status, pagename, parentname, afterpage, numbercolum, level);

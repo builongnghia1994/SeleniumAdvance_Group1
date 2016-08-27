@@ -69,6 +69,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
         public SelectFolderPage GotoSelectFolderPage()
         {
+            WaitForPageLoad();
             ClickControl("open folder button");
             return new SelectFolderPage();
         }
