@@ -22,6 +22,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         }
         public LoginPage LogOut()
         {
+            WaitForPageLoad();
             if (Constant.Browser == "ie")
             {
 
@@ -172,9 +173,9 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void DeletePage(string path)
         {
+            WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
-            WaitForPageLoad();
         }
 
         public void VerifyAlertMessage(string expected)
