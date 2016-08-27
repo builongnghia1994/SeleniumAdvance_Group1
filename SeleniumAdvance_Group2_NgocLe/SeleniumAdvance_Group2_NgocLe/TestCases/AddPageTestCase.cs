@@ -46,7 +46,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, childPage, parentPage, Constant.DefaultValue, Constant.DefaultValue, 0);
 
 
-            generalPage.DeletePage(Constant.TimeSystem);
+            generalPage.DeletePage(parentPage);
             //vp1
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();

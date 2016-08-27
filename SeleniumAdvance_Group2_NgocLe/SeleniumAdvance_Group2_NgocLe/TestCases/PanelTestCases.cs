@@ -115,7 +115,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //vp
             panelConfigurationPage.VerifySelectedFolder(folderPath);
 
-            //post-condition: delete created page and log out
+           // post-condition: delete created page and log out
             generalPage.DeletePageConfirmed(pageName);
             generalPage.LogOut();
 

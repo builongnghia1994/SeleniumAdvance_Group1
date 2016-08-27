@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace SeleniumAdvance_Group2.PageObject.Panel
 {
@@ -25,6 +25,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
         {
             
             ClickControl("ok button");
+            SendKeys.SendWait("{ENTER}");
 
         }
         public void VerifyTextInAlertPopup(string expectedString)
