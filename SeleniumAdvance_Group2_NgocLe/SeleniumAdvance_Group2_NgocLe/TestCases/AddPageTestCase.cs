@@ -25,7 +25,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //post-condition
             generalPage.DeletePage(Constant.PageName);
-            loginPage = generalPage.LogOut();
+            generalPage.LogOut();
         }
 
         [TestMethod]
@@ -65,11 +65,11 @@ namespace SeleniumAdvance_Group2.TestCases
 
 
             generalPage.SelectDeletePage(parentPage);
-            
+
             //vp1
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-          
+
             //vp2
             generalPage.VerifyAlertMessage("Cannot delete page '" + parentPage + "' since it has child page(s).");
             generalPage.AcceptAlert();
@@ -78,16 +78,16 @@ namespace SeleniumAdvance_Group2.TestCases
             //vp3
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-            
+
             //vp4
             generalPage.VerifyPageNotExist(parentPage + "/" + childPage);
 
             generalPage.SelectDeletePage(parentPage);
-          
+
             //vp5
             generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
             generalPage.AcceptAlert();
-          
+
             //vp6
             generalPage.VerifyPageNotExist(parentPage);
 
@@ -116,7 +116,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             editPage = generalPage.GotoEditPage(Constant.PageName1);
             generalPage = editPage.EditAPage(Constant.StatusPublic, Constant.PageName1, Constant.DefaultValue, Constant.Overview, Constant.DefaultValue);
-            
+
             //vp        
             generalPage.VerifyPageDisplayedBesideAnotherPage(Constant.Overview, Constant.PageName1);
 

@@ -16,6 +16,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             ClickControl("ok button");
 
         }
+
         public void VerifyTextInAlertPopup(string expectedString)
         {
             string alertText = GetTextFromAlertPopup();

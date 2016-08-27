@@ -101,7 +101,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form()
         {
             string pageName = "thi1" + Constant.TimeSystem;
-            string series = "  Name";
+            string displayName = "test" + Constant.TimeSystem;
             string folderPath = "Car Rental - Mobile/Actions/Car";
             NewPanelForPage newPanelForPage;
             SelectFolderPage selectFolderPage;
@@ -115,11 +115,11 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPanelForPage = choosePanelPage.GotoNewPanelPage();
 
-            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel("test" + Constant.TimeSystem, series);
+            panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel(displayName, Constant.Series);
 
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
 
-            panelConfigurationPage = selectFolderPage.GotoPanelConfigurationPageAfterSelectFolder(folderPath);
+            panelConfigurationPage = selectFolderPage.SelectFolder(folderPath);
 
             //vp
             panelConfigurationPage.VerifySelectedFolder(folderPath);
@@ -128,7 +128,6 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.DeletePage(pageName);
 
             generalPage.LogOut();
-
         }
     }
 }

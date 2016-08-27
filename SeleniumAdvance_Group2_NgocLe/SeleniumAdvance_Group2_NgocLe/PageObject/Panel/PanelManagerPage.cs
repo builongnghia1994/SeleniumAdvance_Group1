@@ -34,11 +34,29 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
             }
             Assert.Fail("Panel does not exist.");
-
         }
 
+        public void DeletePanel(string panelName)
+        {
+            int panelItemCount = CountItems("panel table");
 
+            for (int i = 2; i < panelItemCount; i++)
+            {
+                string row = "//table[@class='GridView']//tr[" + i + "]/td[2]";
 
+                if (FindElement(By.XPath(row)).Text == panelName)
+                {
+                    //check the checkbox
+                    //  ClickControl()
+                }
+            }
+        }
+
+        public void DeleteAllPanel()
+        {
+            //check all
+            //ClickControl();
+        }
     }
 }
 

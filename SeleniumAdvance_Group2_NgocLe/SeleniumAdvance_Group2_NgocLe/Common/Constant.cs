@@ -11,8 +11,8 @@ namespace SeleniumAdvance_Group2.Common
         public static IWebDriver WebDriver;
         public static IWebElement WebElement;
 
-        public static int Timeout = 10;
-        public static string TimeSystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));        
+        public static int Timeout = 20;
+        public static string TimeSystem = Convert.ToString(DateTime.Now.ToString("ddMMyyyyhhmmss"));
 
         public static string[] PreSetDataProfile = { "Action Implementation By Status", "Test Case Execution",
             "Test Case Execution Failed Trend", "Test Case Execution History",
@@ -26,7 +26,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string[] ItemTypeValues = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets",
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
-        #region 
+        #region Message
 
         public static string MsgRequiredFieldPanel = "Display Name is required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
@@ -40,7 +40,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string RunType = ConfigurationManager.AppSettings["runType"];
         public static string Browser = ConfigurationManager.AppSettings["browser"];
         public static string DashboardURL = ConfigurationManager.AppSettings["url"];
-        
+
         #endregion
 
         #region DataLogin
@@ -83,16 +83,12 @@ namespace SeleniumAdvance_Group2.Common
         #region DataPanel
 
         public static string Series = "  Name";
-        
+
         #endregion
 
         #region XML
 
         public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces\\";
-        public static string XMLLoginPage = "LoginPage.xml";
-        public static string XMLPanelManagerPage = "PanelManagerPage.xml";
-        public static string XMLNewPanelPage = "NewPanelPage.xml";
-        public static string XMLEditDataProfilePage = "EditDataProfile.xml";
         public static Dictionary<string, string>[] LoginDictionary;
         public static Dictionary<string, string>[] NewPanelDictionary;
         public static Dictionary<string, string>[] PanelManagerDictionary;

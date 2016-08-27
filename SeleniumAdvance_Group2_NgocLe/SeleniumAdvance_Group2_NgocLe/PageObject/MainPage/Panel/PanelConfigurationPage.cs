@@ -28,37 +28,34 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             return new GeneralPage();
         }
 
-
         public bool VerifyCreatedPagePresent(string page1, string page2, string page3)
         {
             ClickControl("page list");
 
-            int numberresult = 0;
+            int numberResult = 0;
             int numberOption = CountItems("option in select page list");
-            Console.WriteLine(numberOption);
+
             List<string> lstCompare = new List<string>();
             lstCompare.Add(page1);
             lstCompare.Add(page2);
             lstCompare.Add(page3);
-            int numbercompare = lstCompare.Count;
-            Console.WriteLine(numbercompare);
-
-            for (int j = 0; j < numbercompare; j++)
+            int numberCompare = lstCompare.Count;
+           
+            for (int j = 0; j < numberCompare; j++)
             {
                 for (int i = 1; i <= numberOption; i++)
                 {
                     string optionSelectPage = "//select[@id='cbbPages']/option[" + i + "]";
-                    Console.WriteLine(GetText(By.XPath(optionSelectPage)));
-
+                   
                     if (GetText(By.XPath(optionSelectPage)).Equals(lstCompare[j]))
                     {
-                        numberresult++;
+                        numberResult++;
                         break;
                     }
                 }
             }
 
-            if (numberresult >= lstCompare.Count)
+            if (numberResult >= numberCompare)
             {
                 ClickControl("ok button");
                 return true;
@@ -70,7 +67,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             }
         }
 
-
         public SelectFolderPage GotoSelectFolderPage()
         {
             ClickControl("open folder button");
@@ -81,7 +77,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         {
             WaitForPageLoad();
 
-            IWebElement folderElement = FindElementFor49("folder textbox");
+            IWebElement folderElement = FindElementFromPage("folder textbox");
 
             Actions builder = new Actions(Constant.WebDriver);
             builder.DoubleClick(folderElement).Build().Perform();
@@ -93,7 +89,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
             //cannot click OK button since property Displayed=false, so we use SendKey
             SendKeys.SendWait("{ESC}");
-         
+
             //remove character '/' at the beginning of folder
             actual = actual.Substring(1);
 

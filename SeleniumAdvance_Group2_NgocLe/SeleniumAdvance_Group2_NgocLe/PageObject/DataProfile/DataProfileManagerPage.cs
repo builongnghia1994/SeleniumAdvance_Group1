@@ -77,6 +77,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             }
             Assert.IsTrue(alphabetical, errorMessage);
         }
+    
         #endregion
     }
 }

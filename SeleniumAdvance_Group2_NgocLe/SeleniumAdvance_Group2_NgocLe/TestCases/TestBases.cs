@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Remote;
 using SeleniumAdvance_Group2.Common;
+using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
 

@@ -30,7 +30,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
                 for (int i = 1; i <= level; i++)
                 {
                     parentname = space + parentname;
-                    Console.WriteLine(parentname);
                 }
 
                 SelectItemByDropdownList("parent name list", parentname);
@@ -54,13 +53,8 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             for (int i = 1; i <= level; i++)
             {
                 pagename = space + pagename;
-                Console.WriteLine(pagename);
             }
 
         }
-
-
-
-
     }
 }

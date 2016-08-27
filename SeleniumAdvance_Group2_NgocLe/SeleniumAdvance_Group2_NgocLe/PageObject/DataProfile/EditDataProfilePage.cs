@@ -16,11 +16,13 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         {
             ClickControl(tab);
         }
+
         public void VerifyPageDisplay(string expected)
         {
             WaitForPageLoad();
             VerifyTextFromControl(expected, "header of tab");
         }
+       
         #endregion
     }
 }
