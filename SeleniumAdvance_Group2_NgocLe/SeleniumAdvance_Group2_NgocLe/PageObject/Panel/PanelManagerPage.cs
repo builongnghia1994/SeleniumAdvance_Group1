@@ -41,7 +41,6 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public void DeletePanel(string panelName)
         {
-            WaitForPageLoad();
             int panelItemCount = CountItems("panel table");
 
             string row = string.Empty;
@@ -64,7 +63,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
 
         public void DeleteAllPanel()
         {
-            WaitForPageLoad();
+            //WaitForPageLoad();
             int panelItemCount = CountItems("panel table");
 
             if (panelItemCount > 1)

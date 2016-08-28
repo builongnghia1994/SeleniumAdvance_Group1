@@ -39,7 +39,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public DataProfileManagerPage GotoDataProfileManagerPage()
         {
-            if (Constant.Browser == "ie")
+            if (Constant.Browser == "ie" || Constant.Browser == "chrome")
             {
                 ClickControlByJS("administer link");
                 ClickControlByJS("data profile link");
@@ -54,7 +54,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public PanelManagerPage GotoPanelManagerPage()
         {
-            if (Constant.Browser == "ie")
+            if (Constant.Browser == "ie" || Constant.Browser == "chrome")
             {
                 ClickControlByJS("administer link");
                 ClickControlByJS("panel link");
@@ -100,7 +100,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                if (Constant.Browser == "ie" || Constant.Browser == "chorme")
+                if (Constant.Browser == "ie" || Constant.Browser == "chrome")
                 {
                     ClickControlByJS(lastPage);
                 }
@@ -167,14 +167,12 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public void SelectDeletePage(string path)
         {
-            WaitForPageLoad();
             GotoPage(path);
             SelectGlobalSetting("Delete");
         }
 
         public void DeletePage(string path)
         {
-            WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
 
@@ -233,7 +231,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     xpath = xpath + next;
                     itemclasscurrent = FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                 }
-                if (Constant.Browser.Equals("ie"))
+                if (Constant.Browser.Equals("ie") || Constant.Browser.Equals("chrome"))
                 {
                     ClickControlByJS(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
@@ -245,10 +243,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     ClickControl(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
                     AcceptAlert();
-
-
                 }
-
                 WaitForPageLoad();
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
             }
