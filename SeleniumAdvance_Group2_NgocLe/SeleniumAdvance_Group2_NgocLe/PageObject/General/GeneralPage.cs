@@ -100,7 +100,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                if (Constant.Browser == "ie")
+                if (Constant.Browser == "ie"||Constant.Browser=="chorme")
                 {
                     ClickControlByJS(lastPage);
                 }
@@ -149,7 +149,8 @@ namespace SeleniumAdvance_Group2.PageObject.General
         }
 
         public NewPage GotoNewPage()
-        {           
+        {
+            
             SelectGlobalSetting("Add Page");
             WaitForPageLoad();
             return new NewPage();
