@@ -16,7 +16,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         {
             GotoFolder(path);
             ClickControl("ok button");
-            WaitForPageLoad();
             return new PanelConfigurationPage();
         }
 
@@ -47,12 +46,12 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
                 if (Constant.Browser == "ie")
                 {
-                    WaitForPageLoad();
+                   // WaitForPageLoad();
                     ClickControlByJS(lastFolder);
                 }
                 else
                 {
-                    WaitForPageLoad();
+                   // WaitForPageLoad();
                     ClickControl(lastFolder);
                 }
             }

@@ -25,7 +25,7 @@ namespace SeleniumAdvance_Group2.TestCases
             newPanelPage = generalPage.GotoPanelPage();
 
             newPanelPage.ClickOK();
-          
+
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgRequiredFieldPanel);
 
             //post-condition
@@ -43,7 +43,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.AddNewPanel(specialCharacterPanel, Constant.Series);
-           
+
             newPanelPage.VerifyTextInAlertPopup(Constant.MsgInvalidPanelDisplayName);
 
             newPanelPage = panelManagerPage.GoToPanelPage();
@@ -79,11 +79,10 @@ namespace SeleniumAdvance_Group2.TestCases
             choosePanelPage = generalPage.GotoChoosePanelPage();
 
             panelConfigurationPage = choosePanelPage.GotoConfigurationPage();
-                     
+
             panelConfigurationPage.VerifyCreatedPagePresent(page1, page2, page3);
 
             //post-condition: delete created pages and log out
-            WaitForPageLoad();
             generalPage.DeletePage(page1);
 
             generalPage.DeletePage(page2);
@@ -98,7 +97,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             string pageName = "TC49" + Constant.TimeSystem;
             string displayName = "test" + Constant.TimeSystem;
-            string folderPath = "Car Rental - Mobile/Tests/Data Driven Tests";
+            string folderPath = "Car Rental - Mobile/Actions/Car";
             NewPanelForPage newPanelForPage;
             SelectFolderPage selectFolderPage;
 
@@ -116,13 +115,15 @@ namespace SeleniumAdvance_Group2.TestCases
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
 
             panelConfigurationPage = selectFolderPage.SelectFolder(folderPath);
-            
+
             panelConfigurationPage.VerifySelectedFolder(folderPath);
 
             //post-condition: delete created page and log out
             generalPage.DeletePage(pageName);
 
             generalPage.LogOut();
-        }        
+        }
+
+
     }
 }
