@@ -18,7 +18,8 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             if (Constant.Browser.Equals("ie"))
             {
                 ClickControlByJS("create new panel button");
-            }else
+            }
+            else
             {
                 ClickControl("create new panel button");
             }
@@ -35,7 +36,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
         {
             int numberRows = CountItems("items row in chart");
             int numberColumn = CountItems("items column in chart");
-
             int itemRow;
             int itemRowColumn;
             Random i = new Random();
@@ -44,7 +44,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             itemRowColumn = j.Next(1, numberColumn);
 
             string itemNameChart = "//div[@id='container']//div[@class='ptit pchart']/../table//tr[" + itemRow + "]/td[" + itemRowColumn + "]//a";
-
 
             if (Constant.Browser == "ie")
             {
@@ -55,6 +54,5 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 ClickControl(By.XPath(itemNameChart));
             }
         }
-
     }
 }

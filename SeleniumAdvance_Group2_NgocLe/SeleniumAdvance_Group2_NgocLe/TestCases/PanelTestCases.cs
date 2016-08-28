@@ -123,8 +123,6 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.DeletePage(pageName);
 
             generalPage.LogOut();
-        }
-
-        
+        }        
     }
 }

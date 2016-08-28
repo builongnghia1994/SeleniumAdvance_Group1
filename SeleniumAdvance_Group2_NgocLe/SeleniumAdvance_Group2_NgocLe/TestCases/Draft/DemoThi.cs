@@ -116,11 +116,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //generalPage.DeletePagesJustCreated(Constant.pageName);
 
         }
-
-
-       
-
-        
+ 
         public void DA_PANEL_TC045_Verify_that_Folder_field_is_not_allowed_to_be_empty()
         {
             string displayName = "panel" + Constant.TimeSystem;

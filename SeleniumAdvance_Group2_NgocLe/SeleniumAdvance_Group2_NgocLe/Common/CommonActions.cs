@@ -163,7 +163,6 @@ namespace SeleniumAdvance_Group2.Common
                 case "SelectFolderPage":
                     iDictionary = Constant.SelectFolderPageDictionary;
                     break;
-
             }
             return FindElementFromXML(locator, iDictionary);
         }
@@ -191,7 +190,6 @@ namespace SeleniumAdvance_Group2.Common
                     element = By.Name(value);
                     break;
             }
-
             return element;
         }
 
@@ -287,7 +285,6 @@ namespace SeleniumAdvance_Group2.Common
                         //then open new panel again, txtdisplayname is not visible at the first time
                         return;
                 }
-
                 catch
                 {
                     Thread.Sleep(1000);
@@ -307,7 +304,6 @@ namespace SeleniumAdvance_Group2.Common
             {
                 Console.WriteLine(e.Message);
             }
-
         }
 
         public int CountItems(By control)
@@ -359,16 +355,19 @@ namespace SeleniumAdvance_Group2.Common
             Assert.IsFalse(DoesControlExist(control));
         }
 
+        public void VerifyControlExist(By control)
+        {
+            Assert.IsTrue(DoesControlExist(control));
+        }
         #endregion
 
         #region alert
-
         public void AcceptAlert()
         {
             WaitForAlertPresent(Constant.Timeout);
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             alert.Accept();
-           Constant.WebDriver.SwitchTo().DefaultContent();
+            Constant.WebDriver.SwitchTo().DefaultContent();
         }
 
         public void WaitForAlertPresent(int timeout)
@@ -382,23 +381,6 @@ namespace SeleniumAdvance_Group2.Common
             IAlert alert = Constant.WebDriver.SwitchTo().Alert();
             return alert.Text;
         }
-
         #endregion
-
-        
-
-        public void VerifyControlExist(By control)
-        {
-            Assert.IsTrue(DoesControlExist(control));
-        }
-
-
-      
-
-
-
-
-
-
     }
 }

@@ -98,8 +98,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             actual = actual.Substring(1);
 
             VerifyText(expected, actual);            
-            
-            
         }
     }
 }

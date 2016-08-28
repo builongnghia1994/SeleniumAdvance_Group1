@@ -1,5 +1,4 @@
-﻿using System;
-using SeleniumAdvance_Group2.Common;
+﻿using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using OpenQA.Selenium;
 
@@ -38,7 +37,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 string next = string.Empty;
                 for (int b = 1; b < allPathFolders.Length; b++)
                 {
-
                     ClickControl(By.XPath(currentFolderXpath + "/../a[1]"));
 
                     next += "/" + allPathFolders[b];
@@ -59,6 +57,5 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 }
             }
         }
-
     }
 }

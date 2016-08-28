@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.Common;
 
@@ -16,7 +13,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         }
         
         #region Verify Methods
-     
         public void EnterValueGeneralSetting(string name, string itemType, string relatedData)
         {
             TypeValue("data profile name", name);

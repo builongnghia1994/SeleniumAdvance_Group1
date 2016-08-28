@@ -6,8 +6,7 @@ namespace SeleniumAdvance_Group2.TestCases
 {
     [TestClass]
     public class LoginTestCases : TestBases
-    {
-        
+    {         
         [TestMethod]
         public void DA_LOGIN_TC004_Verify_that_user_login_different_repositories_successfully_after_logging_out_current_repository()
         {

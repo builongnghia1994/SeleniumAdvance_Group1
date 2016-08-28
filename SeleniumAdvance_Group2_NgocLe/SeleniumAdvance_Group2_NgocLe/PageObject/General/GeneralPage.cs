@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumAdvance_Group2.PageObject.Login;
@@ -20,12 +17,12 @@ namespace SeleniumAdvance_Group2.PageObject.General
             if (Constant.GeneralDictionary == null)
                 Constant.GeneralDictionary = ReadXML();
         }
+
         public LoginPage LogOut()
         {
             WaitForPageLoad();
             if (Constant.Browser == "ie")
             {
-
                 ClickControlByJS("user link");
                 ClickControlByJS("log out link");
             }
@@ -100,11 +97,10 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                if (Constant.Browser == "ie"||Constant.Browser=="chorme")
+                if (Constant.Browser == "ie" || Constant.Browser == "chorme")
                 {
                     ClickControlByJS(lastPage);
                 }
-
                 else
                     ClickControl(lastPage);
             }
@@ -150,7 +146,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
-            
             SelectGlobalSetting("Add Page");
             WaitForPageLoad();
             return new NewPage();
@@ -159,9 +154,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public EditPage GotoEditPage(string namePage)
         {
             ClickControl(By.XPath("//div[@id='main-menu']/div/ul/li/a[text()='" + namePage + "']"));
-
             SelectGlobalSetting("Edit");
-
             return new EditPage();
         }
 
@@ -177,8 +170,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
             WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
-          
-
         }
 
         public void VerifyAlertMessage(string expected)
@@ -210,7 +201,6 @@ namespace SeleniumAdvance_Group2.PageObject.General
                 }
                 VerifyControlNotExist(lastPage);
             }
-
         }
 
         public void DeleteAllPages()
@@ -245,10 +235,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     ClickControl(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
                     AcceptAlert();
-                   
-
                 }
-
                 WaitForPageLoad();
                 i = CountItems(By.XPath("//div[@id='main-menu']/div/ul/li/a")) - 3;
             }
@@ -281,5 +268,3 @@ namespace SeleniumAdvance_Group2.PageObject.General
         }
     }
 }
-
-

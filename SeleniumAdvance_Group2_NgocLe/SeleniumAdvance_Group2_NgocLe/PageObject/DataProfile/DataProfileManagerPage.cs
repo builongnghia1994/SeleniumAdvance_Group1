@@ -22,7 +22,8 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             if (Constant.Browser.Equals("ie"))
             {
                 ClickControlByJS("add new link");
-            }else
+            }
+            else
             {
                 ClickControl("add new link");
             }
@@ -36,7 +37,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         }
 
         #endregion
-
         public string[] GetActualPreDataProfile()
         {
             int numberOfrow = CountItems("data profile table");
@@ -65,7 +65,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
         }
 
         #region Verify methods
-
         public void VerifyPreDataProfile(string[] expectedValues, string[] actualValues)
         {
             string errorMsg = string.Empty;
@@ -79,7 +78,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
                 for (int i = 0; i < expectedValues.Length; i++)
                 {
                     contain = actualValues.Contains(expectedValues[i]);
-                    if(contain == false)
+                    if (contain == false)
                     {
                         errorMsg = "The '" + expectedValues[i] + "' does not exist in actual results";
                         break;
@@ -108,11 +107,10 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
 
         public void DeleteCreatedDataProfile(string nameOfDataProfile)
         {
-            string createdPageXpath = "//td[contains(.,'"+ nameOfDataProfile + "')]/../td/a[text()='Delete']";
+            string createdPageXpath = "//td[contains(.,'" + nameOfDataProfile + "')]/../td/a[text()='Delete']";
             ClickControl(By.XPath(createdPageXpath));
             AcceptAlert();
         }
-
         #endregion
     }
 }

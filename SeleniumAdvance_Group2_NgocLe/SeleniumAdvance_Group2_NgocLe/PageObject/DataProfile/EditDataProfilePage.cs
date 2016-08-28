@@ -11,7 +11,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
                 Constant.EditDataProfileDictionary = ReadXML();
         }
 
-        #region Verify Method
+        #region Methods
         public void ClickTab(string tab)
         {
             ClickControl(tab);
@@ -22,7 +22,6 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             WaitForPageLoad();
             VerifyTextFromControl(expected, "header of tab");
         }
-       
         #endregion
     }
 }

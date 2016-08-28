@@ -47,9 +47,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             ClickControl("OK button");
             WaitForPageLoad();
             return new GeneralPage();
-        }
-
-       
-        
+        }      
     }
 }
