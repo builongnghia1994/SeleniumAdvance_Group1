@@ -21,62 +21,53 @@ namespace SeleniumAdvance_Group2.Common
         {
             switch (browser.ToLower())
             {
-
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("--disable-extensions");
                     Constant.WebDriver = new ChromeDriver(options);
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":
                     InternetExplorerOptions optionIE = new InternetExplorerOptions();
                     optionIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
                     Constant.WebDriver = new InternetExplorerDriver(optionIE);
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "firefox":
                     Constant.WebDriver = new FirefoxDriver();
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "edgewin":
                     Constant.WebDriver = new EdgeDriver();
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 default:
                     Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", browser));
                     Constant.WebDriver = new FirefoxDriver();
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
             }
+            Constant.WebDriver.Manage().Window.Maximize();
         }
 
         public static void OpenBrowserGrid(string browser)
         {
-            Uri uri = new Uri("http://192.168.190.114:4444/wd/hub");
+            Uri uri = new Uri(Constant.HubRL);
             switch (browser.ToLower())
             {
                 case "firefox":
                     Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "chrome":
                     Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "ie":
                     Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "edgewin":
                     Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 default:
                     Console.WriteLine(String.Format("Browser '{0}' is not recognized. Spawning default Firefox browser.", Constant.Browser));
                     Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
-                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
             }
+            Constant.WebDriver.Manage().Window.Maximize();
         }
 
         public LoginPage OpenURL(string url)

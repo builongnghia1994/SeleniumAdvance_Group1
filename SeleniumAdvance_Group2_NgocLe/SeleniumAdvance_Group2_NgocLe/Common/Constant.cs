@@ -40,6 +40,7 @@ namespace SeleniumAdvance_Group2.Common
         public static string RunType = ConfigurationManager.AppSettings["runType"];
         public static string Browser = ConfigurationManager.AppSettings["browser"];
         public static string DashboardURL = ConfigurationManager.AppSettings["url"];
+        public static string HubRL = ConfigurationManager.AppSettings["hubUrl"];
 
         #endregion
 
