@@ -95,7 +95,7 @@ namespace SeleniumAdvance_Group2.PageObject.DataProfile
             string[] listPreSetDataProfile = GetActualPreDataProfile();
             for (int i = 0; i < listPreSetDataProfile.Length - 1; i++)
             {
-                if (StringComparer.OrdinalIgnoreCase.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
+                if (StringComparer.Ordinal.Compare(listPreSetDataProfile[i], listPreSetDataProfile[i + 1]) > 0)
                 {
                     alphabetical = false;
                     errorMessage = "The '" + listPreSetDataProfile[i] + "' and the '" + listPreSetDataProfile[i + 1] + "' do not display in alphabet";

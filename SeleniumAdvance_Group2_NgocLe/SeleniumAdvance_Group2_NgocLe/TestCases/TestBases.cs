@@ -3,6 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
+using OpenQA.Selenium;
+using System.Collections.Generic;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
+using System.Linq;
+using OpenQA.Selenium.Remote;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -21,7 +28,8 @@ namespace SeleniumAdvance_Group2.TestCases
                     OpenBrowser(Constant.Browser);
                     break;
                 case "parallel":
-                    Constant.WebDriver = new SuperWebDriver();
+                    Constant.WebDriver = new SuperWebDriver(GetDriverSuite());
+                    Constant.WebDriver.Manage().Window.Maximize();
                     break;
                 case "grid":
                     OpenBrowserGrid(Constant.Browser);
@@ -31,6 +39,19 @@ namespace SeleniumAdvance_Group2.TestCases
                     OpenBrowser(Constant.Browser);
                     break;
             }
+        }
+
+        private static IList<IWebDriver> GetDriverSuite()
+        {
+            Uri uri = new Uri(Constant.HubRL);
+            IList<IWebDriver> drivers = new List<Func<IWebDriver>>
+            {
+                () => { return Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox()); },
+                () => { return Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome()); },
+                //() => { return Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer()); },
+            }.AsParallel().Select(d => d()).ToList();
+
+            return drivers;
         }
 
         [AssemblyInitialize]
