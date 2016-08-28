@@ -60,7 +60,6 @@ namespace SeleniumAdvance_Group2.Common
 
         #region DataTest_DataProfile
 
-        public static string NameOfDataProfile = "nghia" + TimeSystem;
         public static string ItemType = "test modules";
         public static string RelatedData = "Related test results";
 
@@ -72,9 +71,6 @@ namespace SeleniumAdvance_Group2.Common
         #region DataCreateNewpage
 
         public static string StatusPublic = "public";
-        public static string PageName = "page" + TimeSystem;
-        public static string PageName1 = "page1" + TimeSystem;
-        public static string PageName2 = "page2" + TimeSystem;
         public static string Overview = "Overview";
         public static string DefaultValue = null;
 

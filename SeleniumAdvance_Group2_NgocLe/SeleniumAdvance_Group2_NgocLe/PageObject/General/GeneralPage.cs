@@ -23,7 +23,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         public LoginPage LogOut()
         {
             WaitForPageLoad();
-            if (Constant.Browser == "ie")
+            if (Constant.Browser == "ie" || Constant.Browser == "chrome")
             {
 
                 ClickControlByJS("user link");
@@ -100,7 +100,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     currentPageXpath = currentPageXpath + next;
                     lastPage = By.XPath(currentPageXpath);
                 }
-                if (Constant.Browser == "ie"||Constant.Browser=="chorme")
+                if (Constant.Browser == "ie" || Constant.Browser == "chorme")
                 {
                     ClickControlByJS(lastPage);
                 }
@@ -119,7 +119,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
         {
             WaitForPageLoad();
             By control = By.XPath("//li/a[text()='" + settingname + "']");
-            if (Constant.Browser == "ie")
+            if (Constant.Browser == "ie" || Constant.Browser == "chrome")
             {
                 ClickControlByJS("global setting");
                 ClickControlByJS(control);
@@ -150,7 +150,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
 
         public NewPage GotoNewPage()
         {
-            
+
             SelectGlobalSetting("Add Page");
             WaitForPageLoad();
             return new NewPage();
@@ -177,7 +177,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
             WaitForPageLoad();
             SelectDeletePage(path);
             AcceptAlert();
-          
+
 
         }
 
@@ -245,7 +245,7 @@ namespace SeleniumAdvance_Group2.PageObject.General
                     ClickControl(By.XPath(xpath));
                     SelectGlobalSetting("Delete");
                     AcceptAlert();
-                   
+
 
                 }
 
