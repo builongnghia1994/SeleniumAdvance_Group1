@@ -47,7 +47,7 @@ namespace SeleniumAdvance_Group2.Common
 
         public static void OpenBrowserGrid(string browser)
         {
-            Uri uri = new Uri("http://192.168.190.114:4444/wd/hub");
+            Uri uri = new Uri(Constant.HubRL);
             switch (browser.ToLower())
             {
                 case "firefox":

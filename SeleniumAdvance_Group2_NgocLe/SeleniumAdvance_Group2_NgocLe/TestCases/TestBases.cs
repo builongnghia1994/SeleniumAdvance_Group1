@@ -1,9 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Fenton.Selenium.SuperDriver;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Remote;
 using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
+using OpenQA.Selenium;
+using System.Collections.Generic;
+using OpenQA.Selenium.Firefox;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -22,6 +26,7 @@ namespace SeleniumAdvance_Group2.TestCases
                     OpenBrowser(Constant.Browser);
                     break;
                 case "parallel":
+                    Constant.WebDriver = new SuperWebDriver();
                     break;
                 case "grid":
                     OpenBrowserGrid(Constant.Browser);
@@ -69,7 +74,6 @@ namespace SeleniumAdvance_Group2.TestCases
                 Constant.WebDriver.Quit();
             }
         }
-
     }
 }
 
