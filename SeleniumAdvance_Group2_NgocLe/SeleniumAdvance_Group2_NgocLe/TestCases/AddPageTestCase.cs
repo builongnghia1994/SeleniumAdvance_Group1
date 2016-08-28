@@ -53,50 +53,7 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.LogOut();
         }
 
-        [TestMethod]
-        public void DA_MP_TC017_Verify_that_user_can_remove_any_main_parent_page_without_children_and_except_Overview_page()
-        {
-            string parentPage = "TC17"+Constant.TimeSystem;
-            string childPage = "TC17"+Constant.TimeSystem + "1";
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
-
-            newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
-
-            newPage = generalPage.GotoNewPage();
-            generalPage = newPage.CreateNewPage(Constant.StatusPublic, childPage, parentPage, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
-
-
-            generalPage.SelectDeletePage(parentPage);
-            
-            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
-            generalPage.AcceptAlert();
-            
-            generalPage.VerifyAlertMessage("Cannot delete page '" + parentPage + "' since it has child page(s).");
-            generalPage.AcceptAlert();
-
-            generalPage.SelectDeletePage(parentPage + "/" + childPage);           
-            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
-            generalPage.AcceptAlert();
-
-           
-            generalPage.VerifyPageNotExist(parentPage + "/" + childPage);
-
-            generalPage.SelectDeletePage(parentPage);
-
-            generalPage.VerifyAlertMessage(Constant.MsgDeletePage);
-            generalPage.AcceptAlert();
-            
-            generalPage.VerifyPageNotExist(parentPage);
-
-            generalPage.GotoPage(Constant.Overview);
-            
-            generalPage.VerifyControlNotExistInGlobalSetting("Delete");
-
-            //post-condition
-            generalPage.LogOut();
-        }
 
 
         [TestMethod]
