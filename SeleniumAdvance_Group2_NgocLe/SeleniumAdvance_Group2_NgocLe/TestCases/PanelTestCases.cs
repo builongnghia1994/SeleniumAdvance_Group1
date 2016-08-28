@@ -58,9 +58,9 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC042_Verify_that_all_pages_are_listed_correctly_under_the_Select_page_dropped_down_menu_of_Pane_Configuration_form()
         {
-            string page1 = "thi1" + Constant.TimeSystem;
-            string page2 = "thi2" + Constant.TimeSystem;
-            string page3 = "thi3" + Constant.TimeSystem;
+            string page1 = "TC421" + Constant.TimeSystem;
+            string page2 = "TC422" + Constant.TimeSystem;
+            string page3 = "TC423" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
 
@@ -96,9 +96,9 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_PANEL_TC049_Verify_that_all_folder_paths_of_corresponding_item_type_are_correct_in_Select_Folder_form()
         {
-            string pageName = "thi" + Constant.TimeSystem;
+            string pageName = "TC49" + Constant.TimeSystem;
             string displayName = "test" + Constant.TimeSystem;
-            string folderPath = "Car Rental - Mobile/Actions/Car";
+            string folderPath = "Car Rental - Mobile/Tests/Data Driven Tests";
             NewPanelForPage newPanelForPage;
             SelectFolderPage selectFolderPage;
 

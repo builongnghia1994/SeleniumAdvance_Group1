@@ -50,7 +50,7 @@ namespace SeleniumAdvance_Group2.TestCases
             //generalPage.DeletePagesJustCreated("page1160820160300190324");
 
         }
-       // [TestMethod]
+        [TestMethod]
         public void DA_MP_TC017_Verify_that_user_can_remove_any_main_parent_page_without_children_and_except_Overview_page()
         {
             string parentPage = "TC17" + Constant.TimeSystem;
@@ -121,8 +121,10 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             string displayName = "panel" + Constant.TimeSystem;
             string series = "  Name";
+            string pageName = "TC45" + Constant.TimeSystem;
+
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
-            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.StatusPublic, Constant.PageName2, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
+            generalPage = generalPage.CreateNewPageFromGeneralPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
             ChoosePanelPage choosePanelPage = generalPage.GotoChoosePanelPage();
             NewPanelForPage newPanelForPage = new NewPanelForPage();
             newPanelForPage = choosePanelPage.GotoNewPanelPage();

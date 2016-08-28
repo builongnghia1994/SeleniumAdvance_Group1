@@ -27,11 +27,13 @@ namespace SeleniumAdvance_Group2.Common
             "Actions", "Interface Entities", "Test Results", "Test Cases results", "Test Suites", "Bugs" };
 
         #region Message
+
         public static string MsgRequiredFieldPanel = "Display Name is required field";
         public static string MsgDashboardErrorLogin = "Username or password is invalid";
         public static string MsgInvalidPanelDisplayName = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
         public static string MsgInvalidFolder_Panel = "Panel folder is incorrect";
         public static string MsgDeletePage = "Are you sure you want to remove this page?";
+
         #endregion
 
         #region Browser/Url
@@ -39,9 +41,11 @@ namespace SeleniumAdvance_Group2.Common
         public static string Browser = ConfigurationManager.AppSettings["browser"];
         public static string DashboardURL = ConfigurationManager.AppSettings["url"];
         public static string HubRL = ConfigurationManager.AppSettings["hubUrl"];
+
         #endregion
 
         #region DataLogin
+
         public static string UsernameAdmin = ConfigurationManager.AppSettings["usernameadmin"];
         public static string PasswordAdmin = ConfigurationManager.AppSettings["passwordadmin"];
 
@@ -52,31 +56,36 @@ namespace SeleniumAdvance_Group2.Common
         public static string Password = ConfigurationManager.AppSettings["password"];
         public static string Respos_SampleRepository = ConfigurationManager.AppSettings["respos_SampleRepository"];
         public static string Respos_TestRepository = ConfigurationManager.AppSettings["respos_TestRepository"];
+
         #endregion
 
         #region DataTest_DataProfile
-        public static string NameOfDataProfile = "nghia" + TimeSystem;
+
         public static string ItemType = "test modules";
         public static string RelatedData = "Related test results";
 
         public static string SortField_Location = "Location";
         public static string SortField_Source = "Source";
+
         #endregion
 
         #region DataCreateNewpage
+
         public static string StatusPublic = "public";
-        public static string PageName = "page" + TimeSystem;
-        public static string PageName1 = "page1" + TimeSystem;
-        public static string PageName2 = "page2" + TimeSystem;
         public static string Overview = "Overview";
         public static string DefaultValue = null;
+
+
         #endregion
 
         #region DataPanel
+
         public static string Series = "  Name";
+
         #endregion
 
         #region XML
+
         public static string XMLPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + "\\Interfaces\\";
         public static Dictionary<string, string>[] LoginDictionary;
         public static Dictionary<string, string>[] NewPanelDictionary;
@@ -89,6 +98,7 @@ namespace SeleniumAdvance_Group2.Common
         public static Dictionary<string, string>[] PanelConfigurationDictionary;
         public static Dictionary<string, string>[] EditDataProfileDictionary;
         public static Dictionary<string, string>[] SelectFolderPageDictionary;
+
         #endregion
     }
 }

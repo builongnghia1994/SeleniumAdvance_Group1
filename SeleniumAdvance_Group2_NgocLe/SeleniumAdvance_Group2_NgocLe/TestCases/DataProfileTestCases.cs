@@ -42,6 +42,7 @@ namespace SeleniumAdvance_Group2.TestCases
         {
             NewDataProfilePage newDataProfilePage;
             EditDataProfilePage editDataProfilePage;
+            string dataProfileName = "TC76" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
@@ -49,9 +50,9 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            dataProfileManagerPage = newDataProfilePage.AddADataProfile(Constant.NameOfDataProfile, Constant.ItemType, Constant.RelatedData);
+            dataProfileManagerPage = newDataProfilePage.AddADataProfile(dataProfileName, Constant.ItemType, Constant.RelatedData);
 
-            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(Constant.NameOfDataProfile);
+            editDataProfilePage = dataProfileManagerPage.GotoEditDataProfilePage(dataProfileName);
 
             editDataProfilePage.ClickTab("display fields tab");
             editDataProfilePage.VerifyPageDisplay("Display Fields");
@@ -79,7 +80,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             //post-condition
             dataProfileManagerPage = editDataProfilePage.GotoDataProfileManagerPage();
-            dataProfileManagerPage.DeleteCreatedDataProfile(Constant.NameOfDataProfile);
+            dataProfileManagerPage.DeleteCreatedDataProfile(dataProfileName);
             dataProfileManagerPage.LogOut();
         }
 
@@ -87,6 +88,7 @@ namespace SeleniumAdvance_Group2.TestCases
         public void DA_DP_TC085_Verify_that_user_is_able_to_change_the_level_of_sorting_amongst_fields_by_using_Up_and_Down_arrow()
         {
             NewDataProfilePage newDataProfilePage;
+            string dataProfileName = "TC85" + Constant.TimeSystem;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
 
@@ -94,7 +96,7 @@ namespace SeleniumAdvance_Group2.TestCases
 
             newDataProfilePage = dataProfileManagerPage.GotoNewDataProfilePage();
 
-            newDataProfilePage.NavigateToSortField(Constant.NameOfDataProfile, Constant.ItemType, Constant.RelatedData);
+            newDataProfilePage.NavigateToSortField(dataProfileName, Constant.ItemType, Constant.RelatedData);
 
             newDataProfilePage.AddASortField(Constant.SortField_Source);
 
