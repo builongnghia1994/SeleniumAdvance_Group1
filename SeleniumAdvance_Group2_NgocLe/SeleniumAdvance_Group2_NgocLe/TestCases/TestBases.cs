@@ -1,13 +1,8 @@
 ﻿using Fenton.Selenium.SuperDriver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Remote;
 using SeleniumAdvance_Group2.Common;
-using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System;
-using OpenQA.Selenium;
-using System.Collections.Generic;
-using OpenQA.Selenium.Firefox;
 
 namespace SeleniumAdvance_Group2.TestCases
 {
@@ -59,7 +54,7 @@ namespace SeleniumAdvance_Group2.TestCases
             }
             catch (Exception)
             {
-                RunBrowser();     
+                RunBrowser();
             }
 
             loginPage = OpenURL(Constant.DashboardURL);
@@ -76,4 +71,3 @@ namespace SeleniumAdvance_Group2.TestCases
         }
     }
 }
-

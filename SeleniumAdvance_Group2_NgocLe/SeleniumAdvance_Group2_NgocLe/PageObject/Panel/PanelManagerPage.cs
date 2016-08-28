@@ -12,6 +12,7 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
             if (Constant.PanelManagerDictionary == null)
                 Constant.PanelManagerDictionary = ReadXML();
         }
+
         public NewPanelPage GoToPanelPage()
         {
             ClickControl("add new link");
@@ -34,7 +35,6 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
                     Assert.IsTrue(true);
                     return;
                 }
-
             }
             Assert.Fail("Panel does not exist.");
         }
@@ -42,7 +42,6 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
         public void DeletePanel(string panelName)
         {
             int panelItemCount = CountItems("panel table");
-
             string row = string.Empty;
             string checkbox = string.Empty;
 
@@ -77,4 +76,3 @@ namespace SeleniumAdvance_Group2.PageObject.Panel
         }
     }
 }
-

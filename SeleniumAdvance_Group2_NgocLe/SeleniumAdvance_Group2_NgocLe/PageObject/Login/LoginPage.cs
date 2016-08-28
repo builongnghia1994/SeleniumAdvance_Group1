@@ -23,7 +23,6 @@ namespace SeleniumAdvance_Group2.PageObject.Login
             TypeValue("username textbox", username);
             TypeValue("password textbox", password);
             ClickControl("login button");
-
         }
 
         public void VerifyDashboardErrorMessageLogin(string expectederromessage)
@@ -33,4 +32,3 @@ namespace SeleniumAdvance_Group2.PageObject.Login
         }
     }
 }
-

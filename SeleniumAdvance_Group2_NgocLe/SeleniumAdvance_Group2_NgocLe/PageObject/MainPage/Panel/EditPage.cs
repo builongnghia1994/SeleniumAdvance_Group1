@@ -11,7 +11,6 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
                 Constant.NewPageDictionary = ReadXML();
         }
         public GeneralPage EditAPage(string status, string pagename, string parentname, string afterpage, string numbercolum, string level)
-
         {
             if (status != null && status == "public")
             {
@@ -19,7 +18,9 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage
             }
 
             if (pagename != null)
-            { TypeValue("page name textbox", pagename); }
+            {
+                TypeValue("page name textbox", pagename);
+            }
 
             if (parentname != null)
             {

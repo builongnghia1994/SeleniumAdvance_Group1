@@ -10,12 +10,9 @@ namespace SeleniumAdvance_Group2.TestCases
     {
         GeneralPage generalPage;
         NewPage newPage;
-        
-
 
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_can_add_additional_pages_besides_Overview_page_successfully()
-
         {
             string pageName = "TC12" + Constant.TimeSystem;
 
@@ -53,15 +50,11 @@ namespace SeleniumAdvance_Group2.TestCases
             generalPage.LogOut();
         }
 
-
-
-
         [TestMethod]
         public void DA_MP_TC025_Verify_that_page_listing_is_correct_when_edit_Display_After_field()
         {
             string pageName1 = "TC25" + Constant.TimeSystem;
             string pageName2 = "TC25" + Constant.TimeSystem + 1;
-
             
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
 
