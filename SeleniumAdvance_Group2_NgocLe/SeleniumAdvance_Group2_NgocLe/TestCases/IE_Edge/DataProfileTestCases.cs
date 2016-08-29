@@ -3,7 +3,7 @@ using SeleniumAdvance_Group2.Common;
 using SeleniumAdvance_Group2.PageObject.General;
 using SeleniumAdvance_Group2.PageObject.DataProfile;
 
-namespace SeleniumAdvance_Group2.TestCases
+namespace SeleniumAdvance_Group2.TestCases.IE_Edge
 {
     [TestClass]
     public class DataProfileTestCases : TestBases
@@ -12,7 +12,7 @@ namespace SeleniumAdvance_Group2.TestCases
         DataProfileManagerPage dataProfileManagerPage;
 
         [TestMethod]
-        public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
+        public void IE_Edge_DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
@@ -25,7 +25,7 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
         [TestMethod]
-        public void DA_DP_TC067_Verify_that_Data_Profiles_are_listed_alphabetically()
+        public void IE_Edge_DA_DP_TC067_Verify_that_Data_Profiles_are_listed_alphabetically()
         {
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
@@ -38,7 +38,7 @@ namespace SeleniumAdvance_Group2.TestCases
         }
 
         [TestMethod]
-        public void DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
+        public void IE_Edge_DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
         {
             NewDataProfilePage newDataProfilePage;
             EditDataProfilePage editDataProfilePage;
@@ -79,13 +79,13 @@ namespace SeleniumAdvance_Group2.TestCases
             editDataProfilePage.VerifyPageDisplay("Statistic Sub-Fields");
 
             //post-condition
-            dataProfileManagerPage = editDataProfilePage.GotoDataProfileManagerPage();
-            dataProfileManagerPage.DeleteCreatedDataProfile(dataProfileName);
-            dataProfileManagerPage.LogOut();
+            // dataProfileManagerPage = editDataProfilePage.GotoDataProfileManagerPage();
+            //dataProfileManagerPage.DeleteCreatedDataProfile(dataProfileName);
+            editDataProfilePage.LogOut();
         }
 
         [TestMethod]
-        public void DA_DP_TC085_Verify_that_user_is_able_to_change_the_level_of_sorting_amongst_fields_by_using_Up_and_Down_arrow()
+        public void IE_Edge_DA_DP_TC085_Verify_that_user_is_able_to_change_the_level_of_sorting_amongst_fields_by_using_Up_and_Down_arrow()
         {
             NewDataProfilePage newDataProfilePage;
             string dataProfileName = "TC85" + Constant.TimeSystem;
