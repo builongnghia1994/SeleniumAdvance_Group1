@@ -78,6 +78,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="PageObject\DataProfile\DataProfileManagerPage.cs" />
