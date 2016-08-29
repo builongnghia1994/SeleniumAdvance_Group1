@@ -29,14 +29,28 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             if (allPathFolders.Length == 1)
             {
                 lastFolder = By.XPath(currentFolderXpath);
-                ClickControl(lastFolder);
+                if (Constant.Browser == "ie" || Constant.Browser == "edgewin")
+                {
+                    ClickControlByJS(lastFolder);
+                }
+                else
+                {
+                    ClickControl(lastFolder);
+                }
             }
             else
             {
                 string next = string.Empty;
                 for (int b = 1; b < allPathFolders.Length; b++)
                 {
-                    ClickControl(By.XPath(currentFolderXpath + "/../a[1]"));
+                    if (Constant.Browser == "ie" || Constant.Browser == "edgewin")
+                    {
+                        ClickControlByJS(By.XPath(currentFolderXpath + "/../a[1]"));
+                    }
+                    else
+                    {
+                        ClickControl(By.XPath(currentFolderXpath + "/../a[1]"));
+                    }
 
                     next += "/" + allPathFolders[b];
                     currentFolderXpath = "//div[@id='async_html_2']//tbody/tr/td[2]//input[@value='/" + allPathFolders[0] + next + "']";
@@ -44,14 +58,12 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
                 lastFolder = By.XPath(currentFolderXpath + "/../a[2]");
 
-                if (Constant.Browser == "ie")
+                if (Constant.Browser == "ie" || Constant.Browser == "edgewin")
                 {
-                   // WaitForPageLoad();
                     ClickControlByJS(lastFolder);
                 }
                 else
                 {
-                   // WaitForPageLoad();
                     ClickControl(lastFolder);
                 }
             }

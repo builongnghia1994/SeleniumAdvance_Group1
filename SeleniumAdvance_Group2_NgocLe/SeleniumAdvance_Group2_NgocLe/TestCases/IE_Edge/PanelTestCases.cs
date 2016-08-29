@@ -111,9 +111,9 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
             newPanelForPage = choosePanelPage.GotoNewPanelPage();
 
             panelConfigurationPage = newPanelForPage.GotoPanelConfigurationPageByAddNewPanel(displayName, Constant.Series);
-
+           
             selectFolderPage = panelConfigurationPage.GotoSelectFolderPage();
-
+         
             panelConfigurationPage = selectFolderPage.SelectFolder(folderPath);
 
             panelConfigurationPage.VerifySelectedFolder(folderPath);

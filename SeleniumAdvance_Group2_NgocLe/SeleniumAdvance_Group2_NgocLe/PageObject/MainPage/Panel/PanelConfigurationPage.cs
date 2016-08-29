@@ -41,13 +41,13 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             lstCompare.Add(page2);
             lstCompare.Add(page3);
             int numberCompare = lstCompare.Count;
-           
+
             for (int j = 0; j < numberCompare; j++)
             {
                 for (int i = 1; i <= numberOption; i++)
                 {
                     string optionSelectPage = "//select[@id='cbbPages']/option[" + i + "]";
-                   
+
                     if (GetText(By.XPath(optionSelectPage)).Equals(lstCompare[j]))
                     {
                         numberResult++;
@@ -70,9 +70,14 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
 
         public SelectFolderPage GotoSelectFolderPage()
         {
-           // WaitForPageLoad();
-            ClickControl("open folder button");
-          //  WaitForPageLoad();
+            if (Constant.Browser == "ie" || Constant.Browser == "edgewin")
+            {
+                ClickControlByJS("open folder button");
+            }
+            else
+            {
+                ClickControl("open folder button");
+            }
             return new SelectFolderPage();
         }
 
@@ -86,6 +91,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             builder.DoubleClick(folderElement).Build().Perform();
 
             //cannot get property Text of this control so we get Text by using Copy value of this textbox (Ctrl-A, Ctrl-C)
+            Clipboard.Clear();
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
             string actual = Clipboard.GetText();
@@ -97,7 +103,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             //remove character '/' at the beginning of folder
             actual = actual.Substring(1);
 
-            VerifyText(expected, actual);            
+            VerifyText(expected, actual);
         }
     }
 }
