@@ -56,7 +56,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
                 }
             }
 
-            if (numberResult >= numberCompare)
+            if (numberResult == numberCompare)
             {
                 ClickControl("ok button");
                 return true;
@@ -95,8 +95,7 @@ namespace SeleniumAdvance_Group2.PageObject.MainPage.Panel
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "a");
             folderElement.SendKeys(OpenQA.Selenium.Keys.Control + "c");
             string actual = Clipboard.GetText();
-            Console.Write(actual);
-
+            
             //cannot click OK button since property Displayed=false, so we use SendKey
             SendKeys.SendWait("{ESC}");
 
