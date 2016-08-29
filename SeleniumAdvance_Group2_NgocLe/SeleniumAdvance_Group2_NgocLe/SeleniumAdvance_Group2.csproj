@@ -94,6 +94,10 @@
     <Compile Include="PageObject\Panel\PanelManagerPage.cs" />
     <Compile Include="PageObject\MainPage\Panel\SelectFolderPage.cs" />
     <Compile Include="TestCases\CleanTestEnvironment.cs" />
+    <Compile Include="TestCases\IE_Edge\AddPageTestCase.cs" />
+    <Compile Include="TestCases\IE_Edge\DataProfileTestCases.cs" />
+    <Compile Include="TestCases\IE_Edge\LoginTestCases.cs" />
+    <Compile Include="TestCases\IE_Edge\PanelTestCases.cs" />
     <Compile Include="TestCases\LoginTestCases.cs" />
     <Compile Include="TestCases\PanelTestCases.cs" />
     <Compile Include="TestCases\TestBases.cs" />
