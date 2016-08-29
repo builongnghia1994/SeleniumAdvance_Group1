@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.TestCases
             PanelManagerPage panelManagerPage;
             DataProfileManagerPage dataProfileManagerPage;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             generalPage.DeleteAllPages();
 

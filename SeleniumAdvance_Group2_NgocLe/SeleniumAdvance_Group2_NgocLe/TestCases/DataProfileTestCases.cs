@@ -14,7 +14,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC065_Verify_that_all_Preset_Data_Profiles_are_populated_correctly()
         {
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
             
@@ -27,7 +27,7 @@ namespace SeleniumAdvance_Group2.TestCases
         [TestMethod]
         public void DA_DP_TC067_Verify_that_Data_Profiles_are_listed_alphabetically()
         {
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
             
@@ -44,7 +44,7 @@ namespace SeleniumAdvance_Group2.TestCases
             EditDataProfilePage editDataProfilePage;
             string dataProfileName = "TC76" + Constant.TimeSystem;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 
@@ -90,7 +90,7 @@ namespace SeleniumAdvance_Group2.TestCases
             NewDataProfilePage newDataProfilePage;
             string dataProfileName = "TC85" + Constant.TimeSystem;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_nghia, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             dataProfileManagerPage = generalPage.GotoDataProfileManagerPage();
 

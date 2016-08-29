@@ -16,7 +16,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
         {
             string pageName = "TC12" + Constant.TimeSystem;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             newPage = generalPage.GotoNewPage();
 
@@ -33,7 +33,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
         public void IE_Edge_DA_MP_TC014_Verify_that_Public_pages_can_be_visible_and_accessed_by_all_users()
         {
             string pageName = "TC14" + Constant.TimeSystem;
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
@@ -45,7 +45,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
 
             //post-condition: Log in  as creator page account and delete newly added page
             //  loginPage = generalPage.LogOut();
-            // generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_ngoc, Constant.Password);
+            // generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
             // generalPage.DeletePage("TC14"+Constant.TimeSystem);
             generalPage.LogOut();
         }
@@ -56,7 +56,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
             string pageName1 = "TC25" + Constant.TimeSystem;
             string pageName2 = "TC25" + Constant.TimeSystem + 1;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_thi, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             //add page1
             newPage = generalPage.GotoNewPage();

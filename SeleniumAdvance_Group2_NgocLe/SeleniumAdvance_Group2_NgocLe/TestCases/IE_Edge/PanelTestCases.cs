@@ -20,7 +20,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
         //   [TestMethod]
         public void IE_Edge_DA_PANEL_TC029_Verify_that_user_is_unable_to_create_new_panel_when_required_field_is_not_filled()
         {
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             newPanelPage = generalPage.GotoPanelPage();
 
@@ -39,7 +39,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
             string atsignPanel = "panel" + Constant.TimeSystem + "@";
             panelManagerPage = new PanelManagerPage();
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             newPanelPage = generalPage.GotoPanelPage();
             newPanelPage.AddNewPanel(specialCharacterPanel, Constant.Series);
@@ -62,7 +62,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
             string page2 = "TC422" + Constant.TimeSystem;
             string page3 = "TC423" + Constant.TimeSystem;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             //add page1
             newPage = generalPage.GotoNewPage();
@@ -101,7 +101,7 @@ namespace SeleniumAdvance_Group2.TestCases.IE_Edge
             NewPanelForPage newPanelForPage;
             SelectFolderPage selectFolderPage;
 
-            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.Username_trang, Constant.Password);
+            generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
 
             newPage = generalPage.GotoNewPage();
             generalPage = newPage.CreateNewPage(Constant.StatusPublic, pageName, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue, Constant.DefaultValue);
