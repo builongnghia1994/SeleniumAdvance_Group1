@@ -67,7 +67,7 @@ namespace SeleniumAdvance_Group2.Common
             {
                 () => { return new RemoteWebDriver(uri, DesiredCapabilities.Firefox()); },
                 () => { return new RemoteWebDriver(uri, DesiredCapabilities.Chrome()); },
-                //() => { return new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer()); },
+                () => { return new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer()); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
@@ -82,12 +82,6 @@ namespace SeleniumAdvance_Group2.Common
                 () =>  { return (IWebDriver)new InternetExplorerDriver(); },
             }.AsParallel().Select(d => d()).ToList();
             return drivers;
-        }
-
-        public static LoginPage OpenDashboard(string url)
-        {
-            Browser.Navigate().GoToUrl(url);
-            return new LoginPage();
         }
     }
 }
