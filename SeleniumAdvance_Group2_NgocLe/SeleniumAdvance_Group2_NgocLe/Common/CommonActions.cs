@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Edge;
 using SeleniumAdvance_Group2.PageObject.Login;
 using System.Xml;
 using System.Diagnostics;
 using System.Threading;
-using OpenQA.Selenium.Remote;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -54,8 +49,8 @@ namespace SeleniumAdvance_Group2.Common
 
         private static string GetClassCaller(int level)
         {
-            var m = new StackTrace().GetFrame(level).GetMethod();
-            return m.DeclaringType.Name;
+            var className = new StackTrace().GetFrame(level).GetMethod();
+            return className.DeclaringType.Name;
         }
 
         public IWebElement FindElement(By control)
@@ -288,13 +283,6 @@ namespace SeleniumAdvance_Group2.Common
         public void VerifyText(string expectedText, string actualText)
         {
             Assert.AreEqual(expectedText, actualText, "Text does not match with expectation.");
-        }
-
-        public void VerifyTextFromAlertAndAccept(string expectedText)
-        {
-            string alertText = GetTextFromAlertPopup();
-            AcceptAlert();
-            VerifyText(expectedText, alertText);
         }
 
         public void VerifyControlNotExist(By control)

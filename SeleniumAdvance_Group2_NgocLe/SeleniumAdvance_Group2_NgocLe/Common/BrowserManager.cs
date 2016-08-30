@@ -4,12 +4,10 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
-using SeleniumAdvance_Group2.PageObject.Login;
+using OpenQA.Selenium.Edge;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumAdvance_Group2.Common
 {
@@ -33,6 +31,9 @@ namespace SeleniumAdvance_Group2.Common
                         case "chrome":
                             Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
                             break;
+                        case "winedge":
+                            Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
+                            break;
                         default:
                             Constant.WebDriver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
                             break;
@@ -50,6 +51,9 @@ namespace SeleniumAdvance_Group2.Common
                             break;
                         case "chrome":
                             Constant.WebDriver = new ChromeDriver();
+                            break;
+                        case "winedge":
+                            Constant.WebDriver = new EdgeDriver();
                             break;
                         default:
                             Constant.WebDriver = new FirefoxDriver();

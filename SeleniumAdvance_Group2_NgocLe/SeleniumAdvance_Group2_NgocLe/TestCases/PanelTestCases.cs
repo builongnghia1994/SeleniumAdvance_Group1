@@ -98,7 +98,7 @@ namespace SeleniumAdvance_Group2.TestCases
             string pageName = "TC49" + Constant.TimeSystem;
             string displayName = "test" + Constant.TimeSystem;
             string folderPath = "Car Rental - Mobile/Actions/Car";
-            NewPanelForPage newPanelForPage;
+            NewPanelForPage newPanelForPage= new NewPanelForPage();
             SelectFolderPage selectFolderPage;
 
             generalPage = loginPage.LoginDashBoard(Constant.Respos_SampleRepository, Constant.UsernameAdmin, Constant.PasswordAdmin);
