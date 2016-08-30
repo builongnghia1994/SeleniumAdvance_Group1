@@ -50,9 +50,6 @@ namespace SeleniumAdvance_Group2.Common
         public static string PasswordAdmin = ConfigurationManager.AppSettings["passwordadmin"];
 
         public static string Username_thi = ConfigurationManager.AppSettings["username_thi"];
-        public static string Username_trang = ConfigurationManager.AppSettings["username_trang"];
-        public static string Username_nghia = ConfigurationManager.AppSettings["username_nghia"];
-        public static string Username_ngoc = ConfigurationManager.AppSettings["username_ngoc"];
         public static string Password = ConfigurationManager.AppSettings["password"];
         public static string Respos_SampleRepository = ConfigurationManager.AppSettings["respos_SampleRepository"];
         public static string Respos_TestRepository = ConfigurationManager.AppSettings["respos_TestRepository"];
