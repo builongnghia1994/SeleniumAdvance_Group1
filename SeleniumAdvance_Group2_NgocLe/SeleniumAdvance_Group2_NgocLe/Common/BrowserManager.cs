@@ -19,7 +19,7 @@ namespace SeleniumAdvance_Group2.Common
         {
             get
             {
-                Uri uri = new Uri(Constant.HubRL);
+                Uri uri = new Uri(Constant.HubURL);
                 if (Constant.Grid.ToLower().Equals("yes"))
                 {
                     switch (Constant.Browser.ToLower())
@@ -62,7 +62,7 @@ namespace SeleniumAdvance_Group2.Common
         }
         private static IList<IWebDriver> GetDriverSuiteGrid()
         {
-            Uri uri = new Uri(Constant.HubRL);
+            Uri uri = new Uri(Constant.HubURL);
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
                 () => { return new RemoteWebDriver(uri, DesiredCapabilities.Firefox()); },
